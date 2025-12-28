@@ -23,7 +23,6 @@
     "check:i18n": "i18n-check -l src/locales -s en -u src -f next-intl"
   },
   "dependencies": {
-    "@arcjet/next": "^1.0.0-beta.15",
     "@t3-oss/env-nextjs": "^0.13.8",
     "next": "^16.0.10",
     "next-intl": "^4.5.8",

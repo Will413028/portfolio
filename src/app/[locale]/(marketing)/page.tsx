@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { Sponsors } from '@/components/Sponsors';
 
 type IIndexProps = {
   params: Promise<{ locale: string }>;
@@ -22,10 +21,6 @@ export async function generateMetadata(props: IIndexProps): Promise<Metadata> {
 export default async function Index(props: IIndexProps) {
   const { locale } = await props.params;
   setRequestLocale(locale);
-  const t = await getTranslations({
-    locale,
-    namespace: 'Index',
-  });
 
   return (
     <>
@@ -80,36 +75,11 @@ export default async function Index(props: IIndexProps) {
             CodeRabbit
           </a>
         </li>
-        <li>
-          🚨 Error monitoring (
-          <a
-            className="font-bold text-blue-700 hover:border-b-2 hover:border-blue-700"
-            href="https://sentry.io/for/nextjs/?utm_source=github&amp;utm_medium=paid-community&amp;utm_campaign=general-fy25q1-nextjs&amp;utm_content=github-banner-nextjsboilerplate-logo"
-          >
-            Sentry
-          </a>
-          ) and logging (LogTape, an alternative to Pino.js)
-        </li>
-        <li>🖥️ Monitoring as Code (Checkly)</li>
-        <li>
-          🔐 Security and bot protection (
-          <a
-            className="font-bold text-blue-700 hover:border-b-2 hover:border-blue-700"
-            href="https://launch.arcjet.com/Q6eLbRE"
-          >
-            Arcjet
-          </a>
-          )
-        </li>
+        <li>Logging with LogTape, an alternative to Pino.js</li>
+
         <li>🤖 SEO optimization (metadata, JSON-LD, Open Graph tags)</li>
         <li>⚙️ Development tools (VSCode config, bundler analyzer, changelog generation)</li>
       </ul>
-      <p className="text-base">
-        Our sponsors&apos; exceptional support has made this project possible. Their services
-        integrate seamlessly with the boilerplate, and we recommend trying them out.
-      </p>
-      <h2 className="mt-5 text-2xl font-bold">{t('sponsors_title')}</h2>
-      <Sponsors />
     </>
   );
 }
