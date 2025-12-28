@@ -69,10 +69,6 @@ export default async function Index(props: IIndexProps) {
           {' '}
           (includes passwordless, social, and multi-factor auth)
         </li>
-        <li>📦 ORM with DrizzleORM (PostgreSQL, SQLite, MySQL support)</li>
-        <li>
-          💽 Dev database with PGlite and production with Neon (PostgreSQL)
-        </li>
         <li>
           🌐 Multi-language support (i18n) with next-intl and
           {' '}

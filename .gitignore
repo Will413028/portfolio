@@ -48,9 +48,6 @@ local
 *.tsbuildinfo
 next-env.d.ts
 
-# Database
-*.db
-
 # storybook
 storybook-static
 *storybook.log
