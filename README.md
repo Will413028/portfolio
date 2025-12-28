@@ -20,7 +20,7 @@ Developer experience first, extremely flexible code structure and only keep what
 - 🔥 Type checking [TypeScript](https://www.typescriptlang.org)
 - 💎 Integrate with [Tailwind CSS](https://tailwindcss.com)
 - ✅ Strict Mode for TypeScript and React 19
-- 🌐 Multi-language (i18n) with next-intl and [Crowdin](https://l.crowdin.com/next-js)
+- 🌐 Multi-language (i18n) with next-intl
 - ♻️ Type-safe environment variables with T3 Env
 - ⌨️ Form handling with React Hook Form
 - 🔴 Validation library with Zod
@@ -61,7 +61,7 @@ Optional features (easy to add):
 
 ### Requirements
 
-- Node.js 22+ and pnpm
+- Node.js 24+ and pnpm
 
 ### Getting started
 
@@ -82,14 +82,6 @@ pnpm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your favorite browser to see your project.
-
-### Translation (i18n) setup
-
-For translation, the project uses `next-intl` combined with [Crowdin](https://l.crowdin.com/next-js). As a developer, you only need to take care of the English (or another default language) version. Translations for other languages are automatically generated and handled by Crowdin. You can use Crowdin to collaborate with your translation team or translate the messages yourself with the help of machine translation.
-
-To set up translation (i18n), create an account at [Crowdin.com](https://l.crowdin.com/next-js) and create a new project. In the newly created project, you will be able to find the project ID. You will also need to create a new Personal Access Token by going to Account Settings > API. Then, in your GitHub Actions, you need to define the following environment variables: `CROWDIN_PROJECT_ID` and `CROWDIN_PERSONAL_TOKEN`.
-
-After defining the environment variables in your GitHub Actions, your localization files will be synchronized with Crowdin every time you push a new commit to the `main` branch.
 
 ### Project structure
 
@@ -128,16 +120,6 @@ You can easily configure Next js Boilerplate by searching the entire project for
 - `.env`: default environment variables
 
 You have full access to the source code for further customization. The provided code is just an example to help you start your project. The sky's the limit 🚀.
-
-### Local Production Build
-
-Generate an optimized production build locally:
-
-```shell
-pnpm run build-local
-```
-
-This only creates the build, it doesn't start the server. To run the build locally, use `pnpm run start`.
 
 ### Deploy to production
 

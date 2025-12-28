@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import Image from 'next/image';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 type IAboutProps = {
@@ -30,15 +29,6 @@ export default async function About(props: IAboutProps) {
   return (
     <>
       <p>{t('about_paragraph')}</p>
-      <a href="https://l.crowdin.com/next-js">
-        <Image
-          className="mx-auto mt-2"
-          src="/assets/images/crowdin-dark.png"
-          alt="Crowdin Translation Management System"
-          width={128}
-          height={26}
-        />
-      </a>
     </>
   );
 }
