@@ -1,4 +1,8 @@
+import { useTranslations } from 'next-intl';
+
 export const Footer = () => {
+  const t = useTranslations('Footer');
+
   return (
     <footer className="border-t border-gray-200 bg-white pt-12 pb-8 dark:border-[#282f39] dark:bg-background-dark">
       <div className="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
@@ -41,8 +45,7 @@ export const Footer = () => {
         </div>
 
         <div className="mt-8 border-t border-gray-200 pt-8 text-center text-sm text-gray-500 dark:border-[#282f39] dark:text-gray-400">
-          © {new Date().getFullYear()} DevPortfolio. All rights reserved. Designed for Freelance
-          Excellence.
+          {t('copyright', { year: new Date().getFullYear() })} {t('designed_for')}
         </div>
       </div>
     </footer>

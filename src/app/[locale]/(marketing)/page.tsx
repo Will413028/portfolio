@@ -1,9 +1,10 @@
-import { setRequestLocale } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Link } from '@/libs/I18nNavigation';
 
 export default async function Index(props: { params: Promise<{ locale: string }> }) {
   const { locale } = await props.params;
   setRequestLocale(locale);
+  const t = await getTranslations('Index');
 
   return (
     <>
@@ -14,31 +15,35 @@ export default async function Index(props: { params: Promise<{ locale: string }>
             <div className="flex flex-1 flex-col items-start gap-6 lg:gap-8">
               <div className="inline-flex items-center rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-sm font-medium text-primary">
                 <span className="mr-2 flex h-2 w-2 animate-pulse rounded-full bg-primary"></span>
-                Available for Freelance Projects
+                {t('hero_badge')}
               </div>
               <h1 className="text-4xl font-black leading-tight tracking-tight text-gray-900 dark:text-white sm:text-5xl lg:text-6xl">
-                Building Scalable <br className="hidden lg:block" />
-                <span className="bg-linear-to-r from-primary to-blue-400 bg-clip-text text-transparent">
-                  Web Solutions
-                </span>
+                {t
+                  .raw('hero_title')
+                  .split('{br}')
+                  .map((text: string, i: number, arr: string[]) => (
+                    <span key={text}>
+                      {text}
+                      {i < arr.length - 1 && <br className="hidden lg:block" />}
+                    </span>
+                  ))}
               </h1>
               <p className="max-w-xl text-lg leading-relaxed text-gray-600 dark:text-gray-400 sm:text-xl">
-                Hi, I'm a Senior Software Engineer specializing in full-stack development. I help
-                businesses transform ideas into robust, high-performance digital products.
+                {t('hero_description')}
               </p>
               <div className="flex w-full flex-wrap gap-4 sm:w-auto">
                 <Link
                   href="/portfolio"
                   className="inline-flex h-12 flex-1 items-center justify-center rounded-lg bg-primary px-8 text-base font-bold text-white shadow-lg shadow-primary/25 transition-all hover:scale-[1.02] hover:bg-primary/90 sm:flex-none"
                 >
-                  View My Services
+                  {t('button_services')}
                 </Link>
                 <Link
                   href="/resume"
                   className="inline-flex h-12 flex-1 items-center justify-center rounded-lg border border-gray-200 bg-white px-8 text-base font-bold text-gray-900 shadow-sm transition-all hover:scale-[1.02] hover:bg-gray-50 dark:border-[#282f39] dark:bg-background-card dark:text-white dark:hover:bg-[#282f39] sm:flex-none"
                 >
                   <span className="material-symbols-outlined mr-2 text-[20px]">download</span>
-                  Download Resume
+                  {t('button_resume')}
                 </Link>
               </div>
             </div>
@@ -80,10 +85,10 @@ export default async function Index(props: { params: Promise<{ locale: string }>
                   </div>
                   <div className="flex flex-col">
                     <span className="text-sm font-bold text-gray-900 dark:text-white">
-                      50+ Projects
+                      {t('stats_projects_count')}
                     </span>
                     <span className="text-xs text-gray-500 dark:text-gray-400">
-                      Delivered Successfully
+                      {t('stats_projects_label')}
                     </span>
                   </div>
                 </div>
@@ -98,10 +103,14 @@ export default async function Index(props: { params: Promise<{ locale: string }>
         <div className="mx-auto max-w-[1280px] px-4 py-10 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {[
-              { label: 'Professional Experience', value: '5+ Years', icon: 'verified' },
-              { label: 'Completed & Delivered', value: '30+ Projects', icon: 'dataset' },
-              { label: 'Worldwide Satisfaction', value: '25+ Clients', icon: 'groups' },
-              { label: 'Technologies Mastered', value: '10+ Stacks', icon: 'code' },
+              { label: t('stats_exp_label'), value: t('stats_exp_val'), icon: 'verified' },
+              { label: t('stats_comp_label'), value: t('stats_comp_val'), icon: 'dataset' },
+              {
+                label: t('stats_satisfaction_label'),
+                value: t('stats_satisfaction_val'),
+                icon: 'groups',
+              },
+              { label: t('stats_tech_label'), value: t('stats_tech_val'), icon: 'code' },
             ].map((stat) => (
               <div
                 key={stat.label}
@@ -120,16 +129,15 @@ export default async function Index(props: { params: Promise<{ locale: string }>
         </div>
       </section>
 
-      {/* Skills & Tech Section */}
+      {/* Skills \u0026 Tech Section */}
       <section className="py-16 md:py-24" id="about">
         <div className="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
           <div className="mb-10 max-w-3xl">
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
-              Technical Expertise
+              {t('skills_title')}
             </h2>
             <p className="mt-4 text-lg text-gray-600 dark:text-gray-400">
-              I leverage cutting-edge technologies to build efficient, scalable, and secure
-              applications. Here is my current tech stack.
+              {t('skills_description')}
             </p>
           </div>
           <div className="flex flex-wrap gap-3">
@@ -137,10 +145,10 @@ export default async function Index(props: { params: Promise<{ locale: string }>
               { name: 'Frontend Development', icon: 'html' },
               { name: 'Backend Architecture', icon: 'dns' },
               { name: 'Cloud Services (AWS)', icon: 'cloud' },
-              { name: 'DevOps & CI/CD', icon: 'rocket_launch' },
+              { name: 'DevOps \u0026 CI/CD', icon: 'rocket_launch' },
               { name: 'Database Management', icon: 'storage' },
-              { name: 'React & Vue.js', icon: 'code_blocks' },
-              { name: 'Node.js & Python', icon: 'terminal' },
+              { name: 'React \u0026 Vue.js', icon: 'code_blocks' },
+              { name: 'Node.js \u0026 Python', icon: 'terminal' },
               { name: 'System Design', icon: 'schema' },
             ].map((skill) => (
               <div
@@ -163,37 +171,36 @@ export default async function Index(props: { params: Promise<{ locale: string }>
           <div className="mb-12 flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
             <div className="max-w-2xl">
               <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
-                Services I Provide
+                {t('services_title')}
               </h2>
               <p className="mt-4 text-lg text-gray-600 dark:text-gray-400">
-                Comprehensive development services tailored to your business needs, from concept to
-                deployment.
+                {t('services_description')}
               </p>
             </div>
             <Link
               className="flex items-center gap-2 text-sm font-bold text-primary hover:text-primary/80"
               href="/contact"
             >
-              Start a Project{' '}
+              {t('services_cta')}{' '}
               <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
             </Link>
           </div>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             {[
               {
-                title: 'Custom Web Development',
+                title: t('service_web_title'),
                 icon: 'web',
-                desc: 'High-performance websites and web applications built with modern frameworks like React, Next.js, and Vue. Responsive, accessible, and fast.',
+                desc: t('service_web_desc'),
               },
               {
-                title: 'API & Backend Systems',
+                title: t('service_api_title'),
                 icon: 'api',
-                desc: 'Robust RESTful and GraphQL APIs designed for scalability. Secure authentication, database optimization, and seamless 3rd-party integrations.',
+                desc: t('service_api_desc'),
               },
               {
-                title: 'Cloud & DevOps',
+                title: t('service_cloud_title'),
                 icon: 'cloud_sync',
-                desc: 'End-to-end deployment solutions using AWS or Docker. CI/CD pipelines setup to automate testing and deployment for your team.',
+                desc: t('service_cloud_desc'),
               },
             ].map((service) => (
               <div
@@ -211,41 +218,11 @@ export default async function Index(props: { params: Promise<{ locale: string }>
                 </div>
                 <div className="mt-8">
                   <span className="text-sm font-semibold text-primary group-hover:underline">
-                    Learn more
+                    {t('service_learn_more')}
                   </span>
                 </div>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section
-        className="border-t border-gray-200 py-16 dark:border-[#282f39] md:py-24"
-        id="contact"
-      >
-        <div className="mx-auto max-w-[960px] px-4 text-center sm:px-6">
-          <h2 className="text-3xl font-black tracking-tight text-gray-900 dark:text-white sm:text-4xl md:text-5xl">
-            Ready to launch your next project?
-          </h2>
-          <p className="mx-auto mt-6 max-w-2xl text-lg text-gray-600 dark:text-gray-400">
-            I'm currently available for freelance work and open to discussing new opportunities.
-            Let's build something amazing together.
-          </p>
-          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Link
-              href="/contact"
-              className="inline-flex h-12 min-w-[160px] items-center justify-center rounded-lg bg-primary px-6 text-base font-bold text-white shadow-lg shadow-primary/25 transition-all hover:scale-[1.02] hover:bg-primary/90"
-            >
-              Contact Me
-            </Link>
-            <Link
-              href="/portfolio"
-              className="inline-flex h-12 min-w-[160px] items-center justify-center rounded-lg border border-gray-200 bg-white px-6 text-base font-bold text-gray-900 shadow-sm transition-all hover:bg-gray-50 dark:border-[#282f39] dark:bg-card-dark dark:text-white dark:hover:bg-[#282f39]"
-            >
-              View Portfolio
-            </Link>
           </div>
         </div>
       </section>

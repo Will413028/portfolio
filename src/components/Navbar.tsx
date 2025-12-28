@@ -1,10 +1,13 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 import { Link } from '@/libs/I18nNavigation';
+import { LocaleSwitcher } from './LocaleSwitcher';
 
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const t = useTranslations('RootLayout');
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-gray-200 bg-white/80 backdrop-blur-md dark:border-[#282f39] dark:bg-background-dark/90">
@@ -23,34 +26,38 @@ export const Navbar = () => {
             className="text-sm font-medium text-gray-600 transition-colors hover:text-primary dark:text-gray-300 dark:hover:text-primary"
             href="/"
           >
-            Home
+            {t('home_link')}
           </Link>
           <Link
             className="text-sm font-medium text-gray-600 transition-colors hover:text-primary dark:text-gray-300 dark:hover:text-primary"
             href="/portfolio"
           >
-            Portfolio
+            {t('portfolio_link')}
           </Link>
           <Link
             className="text-sm font-medium text-gray-600 transition-colors hover:text-primary dark:text-gray-300 dark:hover:text-primary"
             href="/resume"
           >
-            Resume
+            {t('resume_link')}
           </Link>
           <Link
             className="text-sm font-medium text-gray-600 transition-colors hover:text-primary dark:text-gray-300 dark:hover:text-primary"
             href="/contact"
           >
-            Contact
+            {t('contact_link')}
           </Link>
         </nav>
 
         <div className="flex items-center gap-4">
+          <div className="hidden sm:block">
+            <LocaleSwitcher />
+          </div>
+
           <Link
             href="/contact"
             className="inline-flex h-9 items-center justify-center rounded-lg bg-primary px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-primary/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-all"
           >
-            Hire Me
+            {t('hire_me')}
           </Link>
 
           <button
@@ -68,29 +75,32 @@ export const Navbar = () => {
         <div className="border-b border-gray-200 bg-white p-4 dark:border-[#282f39] dark:bg-background-dark md:hidden">
           <nav className="flex flex-col gap-4">
             <Link href="/" className="text-sm font-medium" onClick={() => setIsMenuOpen(false)}>
-              Home
+              {t('home_link')}
             </Link>
             <Link
               href="/portfolio"
               className="text-sm font-medium"
               onClick={() => setIsMenuOpen(false)}
             >
-              Portfolio
+              {t('portfolio_link')}
             </Link>
             <Link
               href="/resume"
               className="text-sm font-medium"
               onClick={() => setIsMenuOpen(false)}
             >
-              Resume
+              {t('resume_link')}
             </Link>
             <Link
               href="/contact"
               className="text-sm font-medium"
               onClick={() => setIsMenuOpen(false)}
             >
-              Contact
+              {t('contact_link')}
             </Link>
+            <div className="mt-2 pt-4 border-t border-gray-100 dark:border-[#282f39]">
+              <LocaleSwitcher />
+            </div>
           </nav>
         </div>
       )}

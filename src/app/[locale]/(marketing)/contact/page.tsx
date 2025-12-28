@@ -1,19 +1,26 @@
-import { setRequestLocale } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 type IContactProps = {
   params: Promise<{ locale: string }>;
 };
 
-export async function generateMetadata() {
+export async function generateMetadata(props: IContactProps) {
+  const { locale } = await props.params;
+  const t = await getTranslations({
+    locale,
+    namespace: 'Contact',
+  });
+
   return {
-    title: 'Resume - DevPortfolio',
-    description: 'Professional journey and technical skills.',
+    title: `${t('meta_title')} - DevPortfolio`,
+    description: t('meta_description'),
   };
 }
 
 export default async function ContactPage(props: IContactProps) {
   const { locale } = await props.params;
   setRequestLocale(locale);
+  const t = await getTranslations('Contact');
 
   return (
     <div className="mx-auto max-w-[1200px] px-4 py-8 md:px-8">
@@ -22,11 +29,10 @@ export default async function ContactPage(props: IContactProps) {
         <div className="flex flex-col gap-8 lg:col-span-5">
           <div className="flex flex-col gap-4">
             <h1 className="text-4xl font-black leading-tight tracking-tight lg:text-5xl">
-              Contact Me
+              {t('page_title')}
             </h1>
             <p className="text-lg font-normal leading-relaxed text-slate-600 dark:text-[#9da8b9]">
-              Whether it's a project collaboration, technical consulting, or just saying hi, feel
-              free to reach out. I'm always looking for interesting projects and challenges.
+              {t('page_description')}
             </p>
           </div>
           <div className="mt-4 flex flex-col gap-6">
@@ -37,7 +43,7 @@ export default async function ContactPage(props: IContactProps) {
               </div>
               <div className="flex flex-col">
                 <p className="mb-1 text-sm font-medium uppercase tracking-wider text-slate-500 dark:text-[#9da8b9]">
-                  Email
+                  {t('email_label')}
                 </p>
                 <a
                   className="text-lg font-semibold transition-colors hover:text-primary"
@@ -54,9 +60,9 @@ export default async function ContactPage(props: IContactProps) {
               </div>
               <div className="flex flex-col">
                 <p className="mb-1 text-sm font-medium uppercase tracking-wider text-slate-500 dark:text-[#9da8b9]">
-                  Location
+                  {t('location_label')}
                 </p>
-                <p className="text-lg font-semibold">Taipei, Taiwan (Remote Available)</p>
+                <p className="text-lg font-semibold">{t('location_value')}</p>
               </div>
             </div>
           </div>
@@ -64,7 +70,7 @@ export default async function ContactPage(props: IContactProps) {
           {/* Social Links */}
           <div className="flex flex-col gap-4">
             <p className="text-sm font-medium uppercase tracking-wider text-slate-500 dark:text-[#9da8b9]">
-              Social Media
+              {t('social_label')}
             </p>
             <div className="flex flex-wrap gap-3">
               {[
@@ -109,13 +115,15 @@ export default async function ContactPage(props: IContactProps) {
         {/* Right Column: Form */}
         <div className="lg:col-span-7">
           <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-xl shadow-gray-200/50 dark:border-border-dark dark:bg-card-dark dark:shadow-none md:p-10">
-            <h3 className="mb-6 text-2xl font-bold text-slate-900 dark:text-white">Send Message</h3>
+            <h3 className="mb-6 text-2xl font-bold text-slate-900 dark:text-white">
+              {t('form_title')}
+            </h3>
             <form className="flex flex-col gap-6">
               {/* Name & Email Row */}
               <div className="flex flex-col gap-6 md:flex-row">
                 <label className="flex flex-1 flex-col">
                   <span className="mb-2 ml-1 text-sm font-semibold text-slate-700 dark:text-gray-200">
-                    Name
+                    {t('name_label')}
                   </span>
                   <div className="relative">
                     <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
@@ -125,14 +133,14 @@ export default async function ContactPage(props: IContactProps) {
                     </div>
                     <input
                       className="h-12 w-full rounded-lg border border-gray-300 bg-gray-50 pl-10 text-slate-900 placeholder:text-gray-400 transition-all focus:border-primary focus:ring-2 focus:ring-primary/20 dark:border-[#3b4554] dark:bg-[#111418] dark:text-white dark:placeholder:text-[#6b7280]"
-                      placeholder="Your Name"
+                      placeholder={t('name_placeholder')}
                       type="text"
                     />
                   </div>
                 </label>
                 <label className="flex flex-1 flex-col">
                   <span className="mb-2 ml-1 text-sm font-semibold text-slate-700 dark:text-gray-200">
-                    Email
+                    {t('email_label')}
                   </span>
                   <div className="relative">
                     <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
@@ -142,7 +150,7 @@ export default async function ContactPage(props: IContactProps) {
                     </div>
                     <input
                       className="h-12 w-full rounded-lg border border-gray-300 bg-gray-50 pl-10 text-slate-900 placeholder:text-gray-400 transition-all focus:border-primary focus:ring-2 focus:ring-primary/20 dark:border-[#3b4554] dark:bg-[#111418] dark:text-white dark:placeholder:text-[#6b7280]"
-                      placeholder="your.email@example.com"
+                      placeholder={t('email_placeholder')}
                       type="email"
                     />
                   </div>
@@ -151,7 +159,7 @@ export default async function ContactPage(props: IContactProps) {
               {/* Subject */}
               <label className="flex flex-col">
                 <span className="mb-2 ml-1 text-sm font-semibold text-slate-700 dark:text-gray-200">
-                  Subject (Optional)
+                  {t('subject_label')}
                 </span>
                 <div className="relative">
                   <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
@@ -161,7 +169,7 @@ export default async function ContactPage(props: IContactProps) {
                   </div>
                   <input
                     className="h-12 w-full rounded-lg border border-gray-300 bg-gray-50 pl-10 text-slate-900 placeholder:text-gray-400 transition-all focus:border-primary focus:ring-2 focus:ring-primary/20 dark:border-[#3b4554] dark:bg-[#111418] dark:text-white dark:placeholder:text-[#6b7280]"
-                    placeholder="Project inquiry..."
+                    placeholder={t('subject_placeholder')}
                     type="text"
                   />
                 </div>
@@ -169,11 +177,11 @@ export default async function ContactPage(props: IContactProps) {
               {/* Message */}
               <label className="flex flex-col">
                 <span className="mb-2 ml-1 text-sm font-semibold text-slate-700 dark:text-gray-200">
-                  Message
+                  {t('message_label')}
                 </span>
                 <textarea
                   className="min-h-[160px] w-full resize-y rounded-lg border border-gray-300 bg-gray-50 p-4 text-slate-900 placeholder:text-gray-400 transition-all focus:border-primary focus:ring-2 focus:ring-primary/20 dark:border-[#3b4554] dark:bg-[#111418] dark:text-white dark:placeholder:text-[#6b7280]"
-                  placeholder="Briefly describe your project needs, budget, and timeline..."
+                  placeholder={t('message_placeholder')}
                 ></textarea>
               </label>
               {/* Submit Button */}
@@ -184,7 +192,7 @@ export default async function ContactPage(props: IContactProps) {
                 >
                   <span className="absolute inset-0 h-full w-full -translate-x-full bg-linear-to-r from-transparent via-white/10 to-transparent transition-transform duration-700 ease-in-out group-hover:translate-x-full"></span>
                   <span className="relative z-10 flex items-center gap-2">
-                    Send Message
+                    {t('send_button')}
                     <span className="material-symbols-outlined text-[20px] transition-transform group-hover:translate-x-1">
                       send
                     </span>
