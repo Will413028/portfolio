@@ -92,14 +92,12 @@ Open [http://localhost:3000](http://localhost:3000) with your favorite browser t
 │   ├── actions                     # Reusable actions
 │   └── workflows                   # GitHub Actions workflows
 ├── .vscode                         # VSCode configuration
-
 ├── public                          # Public assets folder
 ├── src
 │   ├── app                         # Next JS App (App Router)
 │   ├── components                  # React components
 │   ├── libs                        # 3rd party libraries configuration
 │   ├── locales                     # Locales folder (i18n messages)
-
 │   ├── styles                      # Styles folder
 │   ├── templates                   # Templates folder
 │   ├── types                       # Type definitions
@@ -136,16 +134,6 @@ $ pnpm run start
 ```
 
 This command starts a local server using the production build. You can now open [http://localhost:3000](http://localhost:3000) in your preferred browser to see the result.
-
-### Deploy to Sevalla
-
-You can deploy a Next.js application on [Sevalla](https://sevalla.com). First, create an account on [Sevalla](https://sevalla.com).
-
-After registration, click `Application > Create an App`. After connecting your GitHub account, select the repository you want to deploy. Keep the default settings for the remaining options, then click `Create`.
-
-Go to `Environment variables > Add environment variable` if needed.
-
-Finally, initiate a new deployment by clicking `Overview > Latest deployments > Deploy now`. If everything is set up correctly, your application will be deployed successfully.
 
 ### Useful commands
 
