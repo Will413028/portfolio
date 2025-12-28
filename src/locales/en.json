@@ -21,8 +21,7 @@
     "meta_title": "Portfolio",
     "meta_description": "Welcome to my portfolio page!",
     "presentation": "Welcome to my portfolio page! Here you will find a carefully curated collection of my work and accomplishments. Through this portfolio, I'm to showcase my expertise, creativity, and the value I can bring to your projects.",
-    "portfolio_name": "Portfolio {name}",
-    "coverage_powered_by": "Code coverage powered by"
+    "portfolio_name": "Portfolio {name}"
   },
   "PortfolioSlug": {
     "meta_title": "Portfolio {slug}",
