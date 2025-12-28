@@ -4,19 +4,19 @@ export const Footer = () => {
   const t = useTranslations('Footer');
 
   return (
-    <footer className="border-t border-gray-200 bg-white pt-12 pb-8 dark:border-[#282f39] dark:bg-background-dark">
+    <footer className="border-t border-white/10 bg-[#0E0C15] pt-12 pb-8">
       <div className="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
           <div className="flex items-center gap-2">
             <div className="flex size-6 items-center justify-center rounded bg-primary/10 text-primary">
               <span className="material-symbols-outlined text-[16px]">terminal</span>
             </div>
-            <span className="text-base font-bold text-gray-900 dark:text-white">DevPortfolio</span>
+            <span className="text-base font-bold text-white">DevPortfolio</span>
           </div>
 
           <div className="flex gap-6">
             <a
-              className="text-gray-500 transition-colors hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
+              className="text-gray-400 transition-colors hover:text-white"
               href="https://github.com"
             >
               <span className="sr-only">GitHub</span>
@@ -29,7 +29,7 @@ export const Footer = () => {
               </svg>
             </a>
             <a
-              className="text-gray-500 transition-colors hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
+              className="text-gray-400 transition-colors hover:text-white"
               href="https://linkedin.com"
             >
               <span className="sr-only">LinkedIn</span>
@@ -44,7 +44,7 @@ export const Footer = () => {
           </div>
         </div>
 
-        <div className="mt-8 border-t border-gray-200 pt-8 text-center text-sm text-gray-500 dark:border-[#282f39] dark:text-gray-400">
+        <div className="mt-8 border-t border-white/10 pt-8 text-center text-sm text-gray-400">
           {t('copyright', { year: new Date().getFullYear() })} {t('designed_for')}
         </div>
       </div>

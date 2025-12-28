@@ -10,38 +10,36 @@ export const Navbar = () => {
   const t = useTranslations('RootLayout');
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-gray-200 bg-white/80 backdrop-blur-md dark:border-[#282f39] dark:bg-background-dark/90">
+    <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-[#0E0C15]/80 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-[1280px] items-center justify-between px-4 sm:px-6 lg:px-8">
         <div className="flex items-center gap-2">
           <div className="flex size-8 items-center justify-center rounded-lg bg-primary/10 text-primary">
             <span className="material-symbols-outlined text-[24px]">terminal</span>
           </div>
-          <span className="text-lg font-bold tracking-tight text-gray-900 dark:text-white">
-            DevPortfolio
-          </span>
+          <span className="text-lg font-bold tracking-tight text-white">DevPortfolio</span>
         </div>
 
         <nav className="hidden items-center gap-8 md:flex">
           <Link
-            className="text-sm font-medium text-gray-600 transition-colors hover:text-primary dark:text-gray-300 dark:hover:text-primary"
+            className="text-sm font-medium text-gray-300 transition-colors hover:text-primary"
             href="/"
           >
             {t('home_link')}
           </Link>
           <Link
-            className="text-sm font-medium text-gray-600 transition-colors hover:text-primary dark:text-gray-300 dark:hover:text-primary"
+            className="text-sm font-medium text-gray-300 transition-colors hover:text-primary"
             href="/portfolio"
           >
             {t('portfolio_link')}
           </Link>
           <Link
-            className="text-sm font-medium text-gray-600 transition-colors hover:text-primary dark:text-gray-300 dark:hover:text-primary"
+            className="text-sm font-medium text-gray-300 transition-colors hover:text-primary"
             href="/resume"
           >
             {t('resume_link')}
           </Link>
           <Link
-            className="text-sm font-medium text-gray-600 transition-colors hover:text-primary dark:text-gray-300 dark:hover:text-primary"
+            className="text-sm font-medium text-gray-300 transition-colors hover:text-primary"
             href="/contact"
           >
             {t('contact_link')}

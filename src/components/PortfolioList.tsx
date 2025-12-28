@@ -72,26 +72,26 @@ export const PortfolioList = () => {
     filter === t('filter_all') ? projects : projects.filter((p) => p.category === filter);
 
   return (
-    <div className="flex flex-col gap-8 md:gap-12">
+    <div className="flex flex-col gap-10 md:gap-16 bg-[#0E0C15] min-h-screen text-white">
       <div className="flex flex-col gap-4">
-        <h1 className="text-4xl font-black leading-tight tracking-tight md:text-5xl text-gray-900 dark:text-white">
+        <h1 className="text-4xl font-black leading-tight tracking-tight md:text-6xl text-white">
           {t('page_title')}
         </h1>
-        <p className="max-w-2xl text-lg font-normal leading-normal text-gray-600 dark:text-gray-400">
+        <p className="max-w-2xl text-lg font-normal leading-relaxed text-gray-400">
           {t('page_description')}
         </p>
       </div>
 
-      <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
+      <div className="flex gap-3 overflow-x-auto pb-4 scrollbar-hide">
         {categories.map((cat) => (
           <button
             key={cat}
             type="button"
             onClick={() => setFilter(cat)}
-            className={`flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full px-5 transition-all ${
+            className={`flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full px-6 transition-all ${
               filter === cat
-                ? 'bg-primary text-white scale-105'
-                : 'bg-gray-200 text-gray-900 hover:bg-gray-300 dark:bg-[#282f39] dark:text-white dark:hover:bg-[#333b47]'
+                ? 'bg-primary text-white scale-105 shadow-lg shadow-primary/20'
+                : 'bg-white/5 text-gray-300 border border-white/10 hover:bg-white/10 hover:text-white'
             }`}
           >
             <p className="text-sm font-medium leading-normal">{cat}</p>
@@ -99,13 +99,13 @@ export const PortfolioList = () => {
         ))}
       </div>
 
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
         {filteredProjects.map((project) => (
           <div
             key={project.id}
-            className="group flex flex-col overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/10 dark:border-[#282f39] dark:bg-card-dark"
+            className="group flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#191919] transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-2xl hover:shadow-primary/10"
           >
-            <div className="relative aspect-video w-full overflow-hidden bg-gray-200 dark:bg-gray-800">
+            <div className="relative aspect-video w-full overflow-hidden bg-[#121212]">
               <Image
                 alt={project.title}
                 src={project.img}
@@ -113,27 +113,27 @@ export const PortfolioList = () => {
                 fill
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               />
-              <div className="absolute inset-0 flex items-end bg-linear-to-t from-black/60 to-transparent p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                <span className="text-sm font-medium text-white">{t('view_case_study')}</span>
+              <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                <span className="rounded-full bg-white/20 px-4 py-2 text-sm font-medium text-white backdrop-blur-md">
+                  {t('view_case_study')}
+                </span>
               </div>
             </div>
-            <div className="flex flex-col gap-3 p-5">
+            <div className="flex flex-col gap-3 p-6">
               <div className="flex justify-between items-start">
-                <h3 className="text-lg font-bold leading-tight text-gray-900 dark:text-white">
+                <h3 className="text-xl font-bold leading-tight text-white group-hover:text-primary transition-colors">
                   {project.title}
                 </h3>
-                <span className="material-symbols-outlined text-gray-400 transition-colors group-hover:text-primary">
+                <span className="material-symbols-outlined text-gray-500 transition-colors group-hover:text-primary">
                   arrow_outward
                 </span>
               </div>
-              <p className="line-clamp-2 text-sm text-gray-600 dark:text-gray-400">
-                {project.desc}
-              </p>
-              <div className="mt-2 flex flex-wrap gap-2">
+              <p className="line-clamp-2 text-sm leading-relaxed text-gray-400">{project.desc}</p>
+              <div className="mt-4 flex flex-wrap gap-2">
                 {project.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="rounded bg-primary/10 px-2 py-1 text-xs font-semibold text-primary"
+                    className="rounded-lg border border-white/5 bg-white/5 px-3 py-1 text-xs font-medium text-gray-300 transition-colors hover:border-primary/20 hover:text-primary"
                   >
                     {tag}
                   </span>

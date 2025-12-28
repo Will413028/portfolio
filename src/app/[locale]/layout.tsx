@@ -56,7 +56,7 @@ export default async function RootLayout(props: {
         <link href="https://fonts.googleapis.com" rel="preconnect" />
         <link crossOrigin="" href="https://fonts.gstatic.com" rel="preconnect" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Noto+Sans+TC:wght@400;500;700;900&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Instrument+Serif:ital@0;1&family=Noto+Sans+TC:wght@400;500;700;900&display=swap"
           rel="stylesheet"
         />
         <link
