@@ -1,7 +1,7 @@
-import type { NextRequest } from 'next/server';
 import { detectBot } from '@arcjet/next';
-import createMiddleware from 'next-intl/middleware';
+import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
+import createMiddleware from 'next-intl/middleware';
 import arcjet from '@/libs/Arcjet';
 import { routing } from './libs/I18nRouting';
 
@@ -21,9 +21,7 @@ const aj = arcjet.withRule(
   }),
 );
 
-export default async function proxy(
-  request: NextRequest,
-) {
+export default async function proxy(request: NextRequest) {
   // Verify the request with Arcjet
   // Use `process.env` instead of Env to reduce bundle size in middleware
   if (process.env.ARCJET_KEY) {

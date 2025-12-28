@@ -1,15 +1,9 @@
-# Validate commit messages
-commit-msg:
-  commands:
-    commitlint:
-      run: npx --no -- commitlint --edit {1}
-
 # Validate content before committing
 pre-commit:
   commands:
     lint:
       glob: '*'
-      run: npx --no -- eslint --fix --no-warn-ignored {staged_files}
+      run: npx --no -- biome check --write --no-errors-on-unmatched --files-ignore-unknown=true {staged_files}
       stage_fixed: true
       priority: 1
     check-types:
