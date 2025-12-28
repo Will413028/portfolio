@@ -6,13 +6,7 @@
     "contact_link": "Contact",
     "hire_me": "Hire Me"
   },
-  "BaseTemplate": {
-    "description": "Starter code for your Nextjs Boilerplate with Tailwind CSS",
-    "made_with": "Made with <author></author>."
-  },
   "Index": {
-    "meta_title": "Senior Software Engineer Portfolio",
-    "meta_description": "Hi, I'm a Senior Software Engineer specializing in full-stack development. I help businesses transform ideas into robust, high-performance digital products.",
     "hero_badge": "Available for Freelance Projects",
     "hero_title": "Building Scalable {br} Web Solutions",
     "hero_description": "Hi, I'm a Senior Software Engineer specializing in full-stack development. I help businesses transform ideas into robust, high-performance digital products.",

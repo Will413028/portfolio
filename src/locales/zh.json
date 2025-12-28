@@ -6,13 +6,7 @@
     "contact_link": "聯絡我",
     "hire_me": "歡迎洽詢"
   },
-  "BaseTemplate": {
-    "description": "這是您的 Nextjs 範本，結合了 Tailwind CSS",
-    "made_with": "由 <author></author> 製作。"
-  },
   "Index": {
-    "meta_title": "資深軟體工程師作品集",
-    "meta_description": "您好，我是一位專精於全端開發的資深軟體工程師。我協助企業將想法轉化為穩健、高性能的數位產品。",
     "hero_badge": "目前可承接自由接案項目",
     "hero_title": "打造可擴展的 {br} 網路解決方案",
     "hero_description": "您好，我是一位專精於全端開發的資深軟體工程師。我協助企業將想法轉化為穩健、高性能的數位產品。",
