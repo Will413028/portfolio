@@ -1,8 +1,6 @@
-import Link from 'next/link';
-import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { DemoBanner } from '@/components/DemoBanner';
-import { LocaleSwitcher } from '@/components/LocaleSwitcher';
-import { BaseTemplate } from '@/templates/BaseTemplate';
+import { setRequestLocale } from 'next-intl/server';
+import { Footer } from '@/components/Footer';
+import { Navbar } from '@/components/Navbar';
 
 export default async function Layout(props: {
   children: React.ReactNode;
@@ -10,52 +8,12 @@ export default async function Layout(props: {
 }) {
   const { locale } = await props.params;
   setRequestLocale(locale);
-  const t = await getTranslations({
-    locale,
-    namespace: 'RootLayout',
-  });
 
   return (
-    <>
-      <DemoBanner />
-      <BaseTemplate
-        leftNav={
-          <>
-            <li>
-              <Link href="/" className="border-none text-gray-700 hover:text-gray-900">
-                {t('home_link')}
-              </Link>
-            </li>
-            <li>
-              <Link href="/about/" className="border-none text-gray-700 hover:text-gray-900">
-                {t('about_link')}
-              </Link>
-            </li>
-            <li>
-              <Link href="/portfolio/" className="border-none text-gray-700 hover:text-gray-900">
-                {t('portfolio_link')}
-              </Link>
-            </li>
-            <li>
-              <a
-                className="border-none text-gray-700 hover:text-gray-900"
-                href="https://github.com/ixartz/Next-js-Boilerplate"
-              >
-                GitHub
-              </a>
-            </li>
-          </>
-        }
-        rightNav={
-          <>
-            <li>
-              <LocaleSwitcher />
-            </li>
-          </>
-        }
-      >
-        <div className="py-5 text-xl [&_p]:my-6">{props.children}</div>
-      </BaseTemplate>
-    </>
+    <div className="relative flex min-h-screen w-full flex-col bg-background-light text-[#111418] dark:bg-background-dark dark:text-white">
+      <Navbar />
+      <main className="flex-1">{props.children}</main>
+      <Footer />
+    </div>
   );
 }

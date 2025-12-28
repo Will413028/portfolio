@@ -26,9 +26,5 @@ export default async function About(props: IAboutProps) {
     namespace: 'About',
   });
 
-  return (
-    <>
-      <p>{t('about_paragraph')}</p>
-    </>
-  );
+  return <p>{t('about_paragraph')}</p>;
 }

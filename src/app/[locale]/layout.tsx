@@ -3,7 +3,6 @@ import { notFound } from 'next/navigation';
 import { hasLocale, NextIntlClientProvider } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
 
-import { DemoBadge } from '@/components/DemoBadge';
 import { routing } from '@/libs/I18nRouting';
 import '@/styles/global.css';
 
@@ -30,6 +29,9 @@ export const metadata: Metadata = {
       url: '/favicon.ico',
     },
   ],
+  other: {
+    viewport: 'width=device-width, initial-scale=1.0',
+  },
 };
 
 export function generateStaticParams() {
@@ -50,12 +52,20 @@ export default async function RootLayout(props: {
 
   return (
     <html lang={locale}>
+      <head>
+        <link href="https://fonts.googleapis.com" rel="preconnect" />
+        <link crossOrigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Noto+Sans+TC:wght@400;500;700;900&display=swap"
+          rel="stylesheet"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body>
-        <NextIntlClientProvider>
-          {props.children}
-
-          <DemoBadge />
-        </NextIntlClientProvider>
+        <NextIntlClientProvider>{props.children}</NextIntlClientProvider>
       </body>
     </html>
   );

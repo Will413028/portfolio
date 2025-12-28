@@ -14,6 +14,14 @@ const baseConfig: NextConfig = {
   experimental: {
     turbopackFileSystemCacheForDev: true,
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'lh3.googleusercontent.com',
+      },
+    ],
+  },
 };
 
 // Initialize the Next-Intl plugin

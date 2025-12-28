@@ -1,13 +1,11 @@
-import type { Metadata } from 'next';
-
-import Link from 'next/link';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { PortfolioList } from '@/components/PortfolioList';
 
 type IPortfolioProps = {
   params: Promise<{ locale: string }>;
 };
 
-export async function generateMetadata(props: IPortfolioProps): Promise<Metadata> {
+export async function generateMetadata(props: IPortfolioProps) {
   const { locale } = await props.params;
   const t = await getTranslations({
     locale,
@@ -23,22 +21,10 @@ export async function generateMetadata(props: IPortfolioProps): Promise<Metadata
 export default async function Portfolio(props: IPortfolioProps) {
   const { locale } = await props.params;
   setRequestLocale(locale);
-  const t = await getTranslations({
-    locale,
-    namespace: 'Portfolio',
-  });
 
   return (
-    <>
-      <p>{t('presentation')}</p>
-
-      <div className="grid grid-cols-1 justify-items-start gap-3 md:grid-cols-2 xl:grid-cols-3">
-        {Array.from(Array.from({ length: 6 }).keys()).map((elt) => (
-          <Link className="hover:text-blue-700" key={elt} href={`/portfolio/${elt}`}>
-            {t('portfolio_name', { name: elt })}
-          </Link>
-        ))}
-      </div>
-    </>
+    <div className="mx-auto max-w-[1200px] px-4 py-8 md:px-8 md:py-12">
+      <PortfolioList />
+    </div>
   );
 }

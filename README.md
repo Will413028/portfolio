@@ -36,18 +36,6 @@ Developer experience first, extremely flexible code structure and only keep what
 - 🌈 Include a FREE minimalist theme
 - 💯 Maximize lighthouse score
 
-Built-in features from Next.js:
-
-- ☕ Minify HTML & CSS
-- 💨 Live reload
-- ✅ Cache busting
-
-Optional features (easy to add):
-
-- 🔑 Multi-tenancy, Role-based access control (RBAC)
-- 🔐 OAuth for Single Sign-On (SSO), Enterprise SSO, SAML, OpenID Connect (OIDC), EASIE
-- 🔗 Web 3 (Base, MetaMask, Coinbase Wallet, OKX Wallet)
-
 ### Philosophy
 
 - Nothing is hidden from you, allowing you to make any necessary adjustments to suit your requirements and preferences.
