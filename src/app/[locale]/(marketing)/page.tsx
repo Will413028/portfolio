@@ -66,15 +66,6 @@ export default async function Index(props: IIndexProps) {
           </a>{' '}
           (includes passwordless, social, and multi-factor auth)
         </li>
-        <li>
-          🌐 Multi-language support (i18n) with next-intl and{' '}
-          <a
-            className="font-bold text-blue-700 hover:border-b-2 hover:border-blue-700"
-            href="https://l.crowdin.com/next-js"
-          >
-            Crowdin
-          </a>
-        </li>
         <li>🔴 Form handling (React Hook Form) and validation (Zod)</li>
         <li>📏 Linting and formatting (ESLint, Prettier)</li>
         <li>🦊 Git hooks and commit linting (Husky, Commitlint)</li>
