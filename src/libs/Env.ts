@@ -1,7 +1,7 @@
 import { createEnv } from '@t3-oss/env-nextjs';
 import * as z from 'zod';
 
-export const Env = createEnv({
+createEnv({
   server: {},
   client: {
     NEXT_PUBLIC_APP_URL: z.string().optional(),

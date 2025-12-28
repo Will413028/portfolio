@@ -35,8 +35,6 @@ jobs:
 
       - name: Build Next.js
         run: pnpm run build-local
-        env:
-          NEXT_PUBLIC_SENTRY_DISABLED: 'true' # Only upload Sentry source maps in deployment
 
       - if: matrix.node-version == '24.x' && success()
         name: Cache Next.js build output
