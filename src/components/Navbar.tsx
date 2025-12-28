@@ -53,13 +53,6 @@ export const Navbar = () => {
             <LocaleSwitcher />
           </div>
 
-          <Link
-            href="/contact"
-            className="inline-flex h-9 items-center justify-center rounded-lg bg-primary px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-primary/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-all"
-          >
-            {t('hire_me')}
-          </Link>
-
           <button
             type="button"
             className="flex items-center justify-center p-2 text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white md:hidden"
