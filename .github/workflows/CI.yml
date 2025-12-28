@@ -10,7 +10,7 @@ jobs:
   build:
     strategy:
       matrix:
-        node-version: [22.x, 24.x]
+        node-version: [24.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     name: Build with ${{ matrix.node-version }}
@@ -31,14 +31,14 @@ jobs:
           path: |
             .next/cache
           # Generate a new cache whenever packages or source files change.
-          key: nextjs-${{ matrix.node-version }}-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('src/**') }}
+          key: nextjs-${{ matrix.node-version }}-${{ hashFiles('**/pnpm-lock.yaml') }}-${{ hashFiles('src/**') }}
 
       - name: Build Next.js
-        run: npm run build-local
+        run: pnpm run build-local
         env:
           NEXT_PUBLIC_SENTRY_DISABLED: 'true' # Only upload Sentry source maps in deployment
 
-      - if: matrix.node-version == '22.x' && success()
+      - if: matrix.node-version == '24.x' && success()
         name: Cache Next.js build output
         uses: actions/cache/save@v4
         with:
@@ -49,7 +49,7 @@ jobs:
   static:
     strategy:
       matrix:
-        node-version: [22.x]
+        node-version: [24.x]
 
     name: Run static checks
     runs-on: ubuntu-latest
@@ -68,16 +68,16 @@ jobs:
 
 
       - name: Linter
-        run: npm run lint
+        run: pnpm run lint
 
       - name: Type checking
-        run: npm run check:types
+        run: pnpm run check:types
 
       - name: Check dependencies
-        run: npm run check:deps
+        run: pnpm run check:deps
 
       - name: I18n check
-        run: npm run check:i18n
+        run: pnpm run check:i18n
 
 
 
