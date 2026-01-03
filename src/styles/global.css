@@ -24,3 +24,10 @@
   --font-body: "Outfit", "Noto Sans TC", sans-serif;
   --font-serif: "Instrument Serif", serif;
 }
+
+@layer base {
+  html,
+  body {
+    @apply bg-background-light text-[#111418] dark:bg-background-dark dark:text-white;
+  }
+}

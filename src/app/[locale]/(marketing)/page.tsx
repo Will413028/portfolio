@@ -7,7 +7,7 @@ export default async function Index(props: { params: Promise<{ locale: string }>
   const t = await getTranslations('Index');
 
   return (
-    <div className="bg-[#0E0C15] text-white">
+    <div className="bg-background-dark text-white">
       {/* Hero Section */}
       <section className="relative overflow-hidden pt-10 pb-16 md:pt-16 md:pb-24">
         <div className="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
@@ -50,7 +50,7 @@ export default async function Index(props: { params: Promise<{ locale: string }>
             <div className="relative flex-1 lg:flex lg:justify-end">
               <div className="relative aspect-square w-full max-w-[500px] overflow-hidden rounded-2xl bg-linear-to-br from-primary/20 via-primary/5 to-transparent p-4 lg:ml-auto">
                 <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div>
-                <div className="h-full w-full overflow-hidden rounded-xl bg-[#191919]">
+                <div className="h-full w-full overflow-hidden rounded-xl bg-card-dark">
                   <div
                     className="h-full w-full bg-cover bg-center bg-no-repeat duration-700 transition-transform hover:scale-105"
                     style={{
@@ -66,7 +66,7 @@ export default async function Index(props: { params: Promise<{ locale: string }>
       </section>
 
       {/* Stats Section */}
-      <section className="border-y border-white/10 bg-[#0E0C15]">
+      <section className="border-y border-white/10 bg-background-dark">
         <div className="mx-auto max-w-[1280px] px-4 py-12 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {[
@@ -81,7 +81,7 @@ export default async function Index(props: { params: Promise<{ locale: string }>
             ].map((stat) => (
               <div
                 key={stat.label}
-                className="flex flex-col gap-2 rounded-xl border border-white/5 bg-[#191919] p-6 transition-transform hover:-translate-y-1"
+                className="flex flex-col gap-2 rounded-xl border border-white/5 bg-card-dark p-6 transition-transform hover:-translate-y-1"
               >
                 <div className="mb-2 w-fit rounded-lg bg-primary/10 p-2 text-primary">
                   <span className="material-symbols-outlined">{stat.icon}</span>
@@ -116,7 +116,7 @@ export default async function Index(props: { params: Promise<{ locale: string }>
             ].map((skill) => (
               <div
                 key={skill.name}
-                className="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-lg border border-white/10 bg-[#121212] px-5 shadow-sm transition-colors hover:border-primary/50"
+                className="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-lg border border-white/10 bg-surface-dark px-5 shadow-sm transition-colors hover:border-primary/50"
               >
                 <span className="material-symbols-outlined text-[20px] text-primary">
                   {skill.icon}
@@ -166,7 +166,7 @@ export default async function Index(props: { params: Promise<{ locale: string }>
             ].map((service) => (
               <div
                 key={service.title}
-                className="group relative flex flex-col justify-between rounded-2xl border border-white/10 bg-[#191919] p-8 shadow-sm transition-all hover:-translate-y-1 hover:border-primary/30 hover:shadow-md"
+                className="group relative flex flex-col justify-between rounded-2xl border border-white/10 bg-card-dark p-8 shadow-sm transition-all hover:-translate-y-1 hover:border-primary/30 hover:shadow-md"
               >
                 <div>
                   <div className="mb-6 flex size-12 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-white">

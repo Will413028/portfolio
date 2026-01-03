@@ -10,7 +10,7 @@ export default async function Layout(props: {
   setRequestLocale(locale);
 
   return (
-    <div className="relative flex min-h-screen w-full flex-col bg-background-light text-[#111418] dark:bg-background-dark dark:text-white">
+    <div className="relative flex min-h-screen w-full flex-col">
       <Navbar />
       <main className="flex-1">{props.children}</main>
       <Footer />

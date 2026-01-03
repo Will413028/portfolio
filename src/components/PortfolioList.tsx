@@ -72,7 +72,7 @@ export const PortfolioList = () => {
     filter === t('filter_all') ? projects : projects.filter((p) => p.category === filter);
 
   return (
-    <div className="flex flex-col gap-10 md:gap-16 bg-[#0E0C15] min-h-screen text-white">
+    <div className="flex flex-col gap-10 md:gap-16 bg-background-dark min-h-screen text-white">
       <div className="flex flex-col gap-4">
         <h1 className="text-4xl font-black leading-tight tracking-tight md:text-6xl text-white">
           {t('page_title')}
@@ -103,9 +103,9 @@ export const PortfolioList = () => {
         {filteredProjects.map((project) => (
           <div
             key={project.id}
-            className="group flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#191919] transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-2xl hover:shadow-primary/10"
+            className="group flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-card-dark transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-2xl hover:shadow-primary/10"
           >
-            <div className="relative aspect-video w-full overflow-hidden bg-[#121212]">
+            <div className="relative aspect-video w-full overflow-hidden bg-surface-dark">
               <Image
                 alt={project.title}
                 src={project.img}
