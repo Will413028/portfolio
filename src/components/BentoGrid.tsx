@@ -1,0 +1,175 @@
+"use client";
+
+import Image from "next/image";
+import { Copy } from "lucide-react";
+
+const techStack = [
+  { name: "React" },
+  { name: "Next.js" },
+  { name: "TypeScript" },
+  { name: "Tailwind CSS" },
+  { name: "Motion.dev" },
+  { name: "Sanity CMS" },
+  { name: "Figma" },
+  { name: "Node.js" },
+];
+
+const techStack2 = [
+  { name: "PostgreSQL" },
+  { name: "MongoDB" },
+  { name: "Prisma" },
+  { name: "Drizzle" },
+  { name: "Turborepo" },
+  { name: "Zustand" },
+  { name: "PostHog" },
+  { name: "Bun" },
+];
+
+const techStack3 = [
+  { name: "Linux" },
+  { name: "Bash" },
+  { name: "Git" },
+  { name: "GitHub" },
+  { name: "Vercel" },
+  { name: "Docker" },
+  { name: "AWS" },
+  { name: "Cloudflare" },
+];
+
+const timezones = [
+  { city: "London", code: "UK" },
+  { city: "New Delhi", code: "INDIA", active: true },
+  { city: "New York", code: "USA" },
+];
+
+export default function BentoGrid() {
+  return (
+    <section className="px-6 py-16 max-w-6xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {/* Collaboration Card - spans 2 columns on lg */}
+        <div className="lg:col-span-2 card-glow bg-zinc-900/50 border border-zinc-800 rounded-2xl p-8 flex flex-col items-center justify-center text-center hover:border-zinc-700 transition-colors">
+          <div className="relative mb-6">
+            {/* Decorative curved lines */}
+            <div className="absolute -left-20 top-1/2 -translate-y-1/2 w-16 h-32 border-l-2 border-t-2 border-b-2 border-cyan-500/30 rounded-l-full" />
+            <div className="absolute -right-20 top-1/2 -translate-y-1/2 w-16 h-32 border-r-2 border-t-2 border-b-2 border-cyan-500/30 rounded-r-full" />
+            <Image
+              src="https://ext.same-assets.com/4210891837/1148079469.webp"
+              alt="Aayush"
+              width={96}
+              height={96}
+              unoptimized
+              className="w-24 h-24 rounded-full object-cover border-4 border-cyan-500/30 shadow-lg shadow-cyan-500/10"
+            />
+          </div>
+          <p className="text-xs uppercase tracking-[0.2em] text-zinc-500 mb-2">Collaboration</p>
+          <p className="text-xl text-zinc-200">Open communication, async updates, zero surprises</p>
+        </div>
+
+        {/* Tech Stack Card */}
+        <div className="row-span-2 card-glow bg-zinc-900/50 border border-zinc-800 rounded-2xl p-6 overflow-hidden hover:border-zinc-700 transition-colors">
+          <p className="text-xs uppercase tracking-[0.2em] text-zinc-500 mb-2 text-center">Tech Stack</p>
+          <p className="text-lg text-zinc-200 text-center mb-6">Tools I ship production code with</p>
+
+          {/* Marquee rows */}
+          <div className="space-y-3 overflow-hidden">
+            <div className="flex gap-2 animate-marquee">
+              {[...techStack, ...techStack].map((tech, i) => (
+                <div
+                  key={`${tech.name}-${i}`}
+                  className="flex items-center gap-2 px-3 py-1.5 bg-zinc-800/80 rounded-full whitespace-nowrap border border-zinc-700/50"
+                >
+                  <div className="w-4 h-4 rounded bg-gradient-to-br from-cyan-400 to-blue-500 flex items-center justify-center">
+                    <span className="text-[8px] text-white font-bold">{tech.name[0]}</span>
+                  </div>
+                  <span className="text-xs text-zinc-300">{tech.name}</span>
+                </div>
+              ))}
+            </div>
+            <div className="flex gap-2 animate-marquee-reverse">
+              {[...techStack2, ...techStack2].map((tech, i) => (
+                <div
+                  key={`${tech.name}-${i}`}
+                  className="flex items-center gap-2 px-3 py-1.5 bg-zinc-800/80 rounded-full whitespace-nowrap border border-zinc-700/50"
+                >
+                  <div className="w-4 h-4 rounded bg-gradient-to-br from-purple-400 to-pink-500 flex items-center justify-center">
+                    <span className="text-[8px] text-white font-bold">{tech.name[0]}</span>
+                  </div>
+                  <span className="text-xs text-zinc-300">{tech.name}</span>
+                </div>
+              ))}
+            </div>
+            <div className="flex gap-2 animate-marquee">
+              {[...techStack3, ...techStack3].map((tech, i) => (
+                <div
+                  key={`${tech.name}-${i}`}
+                  className="flex items-center gap-2 px-3 py-1.5 bg-zinc-800/80 rounded-full whitespace-nowrap border border-zinc-700/50"
+                >
+                  <div className="w-4 h-4 rounded bg-gradient-to-br from-emerald-400 to-teal-500 flex items-center justify-center">
+                    <span className="text-[8px] text-white font-bold">{tech.name[0]}</span>
+                  </div>
+                  <span className="text-xs text-zinc-300">{tech.name}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Browser mockup */}
+          <div className="mt-6 bg-zinc-800/80 rounded-xl p-4 border border-zinc-700/50">
+            <div className="flex gap-1.5 mb-4">
+              <div className="w-2.5 h-2.5 rounded-full bg-zinc-600" />
+              <div className="w-2.5 h-2.5 rounded-full bg-zinc-600" />
+              <div className="w-2.5 h-2.5 rounded-full bg-zinc-600" />
+            </div>
+            <div className="text-center py-6">
+              <div className="w-10 h-10 mx-auto mb-3 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center shadow-lg">
+                <span className="text-white text-lg font-bold">Q</span>
+              </div>
+              <p className="text-sm font-semibold text-white">Built to Perform.</p>
+              <p className="text-xs text-zinc-400 mt-1">Websites that impact your business.</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Timezone Card */}
+        <div className="card-glow bg-zinc-900/50 border border-zinc-800 rounded-2xl p-6 hover:border-zinc-700 transition-colors">
+          <p className="text-xl text-zinc-200 text-center mb-1">Flexible with time</p>
+          <p className="text-xl font-serif italic gradient-text-pink text-center mb-6">zone communications</p>
+
+          <div className="flex justify-center gap-2 mb-6 flex-wrap">
+            {timezones.map((tz) => (
+              <div
+                key={tz.code}
+                className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium ${
+                  tz.active ? "bg-emerald-500/20 text-emerald-400 border border-emerald-500/30" : "bg-zinc-800/80 text-zinc-400 border border-zinc-700/50"
+                }`}
+              >
+                <span className="text-lg">{tz.code === "UK" ? "🇬🇧" : tz.code === "INDIA" ? "🇮🇳" : "🇺🇸"}</span>
+                {tz.code}
+              </div>
+            ))}
+          </div>
+
+          <p className="text-xs uppercase tracking-[0.2em] text-zinc-500 mb-1 text-center">Timezone</p>
+          <p className="text-lg text-zinc-200 text-center">Based in India, available globally</p>
+        </div>
+
+        {/* CTA Card */}
+        <div className="card-glow bg-zinc-900/50 border border-zinc-800 rounded-2xl p-6 flex flex-col items-center justify-center hover:border-zinc-700 transition-colors">
+          <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-zinc-700 to-zinc-800 flex items-center justify-center mb-4 border border-zinc-600 shadow-lg">
+            <span className="text-xl font-bold text-white">AB</span>
+          </div>
+          <p className="text-xl text-zinc-200 text-center">Let's work together</p>
+          <p className="text-xl font-serif italic gradient-text-pink text-center mb-6">on your next project</p>
+
+          <button
+            type="button"
+            className="flex items-center gap-2 px-5 py-2.5 bg-zinc-800 border border-zinc-700 rounded-full text-sm text-zinc-300 hover:text-white hover:border-zinc-600 transition-all"
+          >
+            <Copy size={14} />
+            hello@aayushbharti.in
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+}
