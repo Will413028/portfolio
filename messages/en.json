@@ -1,0 +1,53 @@
+{
+  "common": {
+    "home": "Home",
+    "about": "About",
+    "work": "Work",
+    "blog": "Blog",
+    "contact": "Contact",
+    "bookACall": "Book a Call",
+    "getInTouch": "Get In Touch",
+    "readMore": "Read More",
+    "learnMore": "Learn More",
+    "viewAll": "View All",
+    "goHome": "Go Home",
+    "subscribe": "Subscribe",
+    "send": "Send",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "noResults": "No results found"
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "work": "Work",
+    "blog": "Blog",
+    "more": "More",
+    "bookACall": "Book a Call"
+  },
+  "footer": {
+    "copyright": "All rights reserved",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfUse": "Terms of Use"
+  },
+  "auth": {
+    "login": "Sign In",
+    "register": "Sign Up",
+    "logout": "Sign Out",
+    "email": "Email",
+    "password": "Password",
+    "forgotPassword": "Forgot Password?",
+    "noAccount": "Don't have an account?",
+    "hasAccount": "Already have an account?"
+  },
+  "dashboard": {
+    "overview": "Overview",
+    "products": "Products",
+    "customers": "Customers",
+    "settings": "Settings",
+    "totalRevenue": "Total Revenue",
+    "orders": "Orders"
+  }
+}
