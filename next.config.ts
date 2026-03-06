@@ -28,9 +28,9 @@ const nextConfig: NextConfig = {
             value: [
               "default-src 'self'",
               "script-src 'self' https://*.sentry.io",
-              "style-src 'self' https://fonts.googleapis.com",
+              "style-src 'self'",
               "img-src 'self' data: blob: https://*.unsplash.com https://*.same-assets.com",
-              "font-src 'self' https://fonts.gstatic.com",
+              "font-src 'self'",
               "connect-src 'self' https://*.sentry.io",
               "frame-ancestors 'none'",
             ].join("; "),
