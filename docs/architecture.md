@@ -268,12 +268,13 @@ Next.js 16 的 Server Actions 已經成熟，可以取代部分 API Route：
 | 第三方 API 代理 | API Routes | 需要自訂 HTTP method、headers |
 | Webhook 接收 | API Routes | 外部服務回呼需要固定 URL |
 | Client Component 資料抓取 | TanStack Query + API Routes | 需要快取、輪詢、樂觀更新 |
-| Server Component 資料抓取 | 直接 `fetch` 或 ORM | 不需要額外的 API 層 |
+| Server Component 資料抓取 | 直接 `fetch` 或 ORM（搭配 `cache()`） | 不需要額外的 API 層 |
 
 ```typescript
 // Server Action 範例（放在 features/contact/actions.ts）
 "use server";
 
+import { revalidatePath } from "next/cache";
 import { contactFormSchema } from "./validations";
 
 type ActionState = {
@@ -290,6 +291,40 @@ export async function submitContactForm(
     return { success: false, errors: parsed.error.flatten().fieldErrors };
   }
   // 儲存到資料庫或發送通知...
+  revalidatePath("/contact"); // 清除此頁面的快取，讓下次載入拿到最新資料
+  return { success: true };
+}
+```
+
+> **Cache Invalidation**：mutation 後必須呼叫 `revalidatePath(path)` 或 `revalidateTag(tag)` 來清除快取。`revalidatePath` 重新驗證特定路徑；`revalidateTag` 重新驗證帶有特定 tag 的所有 `fetch` 請求，適合跨頁面 invalidation。
+
+#### Server Action 內的 Auth 驗證
+
+Middleware 保護的是「路由存取」，但 Server Action 可以被直接 POST 呼叫。**Best practice 是在 action 內部獨立驗證身份**，不要只依賴 middleware：
+
+```typescript
+// features/orders/actions.ts
+"use server";
+
+import { cookies } from "next/headers";
+import { revalidatePath } from "next/cache";
+import { orderSchema } from "./validations";
+
+export async function createOrder(_prevState: ActionState, formData: FormData) {
+  // 1. Auth 驗證 — 不依賴 middleware
+  const token = (await cookies()).get("auth_token")?.value;
+  if (!token) {
+    return { success: false, errors: { auth: ["未登入"] } };
+  }
+
+  // 2. 輸入驗證
+  const parsed = orderSchema.safeParse(Object.fromEntries(formData));
+  if (!parsed.success) {
+    return { success: false, errors: parsed.error.flatten().fieldErrors };
+  }
+
+  // 3. 業務邏輯...
+  revalidatePath("/orders");
   return { success: true };
 }
 ```
@@ -421,6 +456,7 @@ export type ContactFormInput = z.infer<typeof contactFormSchema>;
 
 ```typescript
 import { create } from "zustand";
+import { persist } from "zustand/middleware";
 
 interface CartItem {
   id: string;
@@ -436,24 +472,30 @@ interface CartState {
   clearCart: () => void;
 }
 
-export const useCartStore = create<CartState>((set) => ({
-  items: [],
-  addItem: (item) =>
-    set((state) => {
-      const existing = state.items.find((i) => i.id === item.id);
-      if (existing) {
-        return {
-          items: state.items.map((i) =>
-            i.id === item.id ? { ...i, quantity: i.quantity + 1 } : i
-          ),
-        };
-      }
-      return { items: [...state.items, { ...item, quantity: 1 }] };
+// persist middleware：購物車資料自動存入 localStorage，重新整理不遺失
+export const useCartStore = create<CartState>()(
+  persist(
+    (set) => ({
+      items: [],
+      addItem: (item) =>
+        set((state) => {
+          const existing = state.items.find((i) => i.id === item.id);
+          if (existing) {
+            return {
+              items: state.items.map((i) =>
+                i.id === item.id ? { ...i, quantity: i.quantity + 1 } : i
+              ),
+            };
+          }
+          return { items: [...state.items, { ...item, quantity: 1 }] };
+        }),
+      removeItem: (id) =>
+        set((state) => ({ items: state.items.filter((i) => i.id !== id) })),
+      clearCart: () => set({ items: [] }),
     }),
-  removeItem: (id) =>
-    set((state) => ({ items: state.items.filter((i) => i.id !== id) })),
-  clearCart: () => set({ items: [] }),
-}));
+    { name: "cart-storage" }, // localStorage key
+  ),
+);
 
 // Derived selector — 在元件中使用，不存在 store 裡
 export const selectTotalPrice = (state: CartState) =>
@@ -516,7 +558,7 @@ export const productKeys = {
 
 ```typescript
 // features/products/hooks/use-products.ts
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { useQuery, useMutation, useQueryClient, keepPreviousData } from "@tanstack/react-query";
 import { productApi } from "../api/product-api";
 import { productKeys } from "../api/query-keys";
 
@@ -524,6 +566,7 @@ export function useProducts(params?: { page?: number; category?: string }) {
   return useQuery({
     queryKey: productKeys.list(params),
     queryFn: () => productApi.list(params),
+    placeholderData: keepPreviousData, // 切換篩選/分頁時保留前一次資料，避免 UI 閃爍
   });
 }
 
@@ -1046,8 +1089,9 @@ export default async function LocaleLayout({ children, params }: Props) {
   return (
     <html lang={locale} className={`${inter.variable} ${playfair.variable}`}>
       <body className="font-sans antialiased">
-        {/* Provider 順序：翻譯最先可用 → 資料快取 → URL 狀態 */}
+        {/* Provider 順序：翻譯 → 主題（避免 FOUC）→ 資料快取 → URL 狀態 */}
         <NextIntlClientProvider>
+          {/* 如需明暗切換，加入 AppThemeProvider（見 Dark Mode 章節） */}
           <QueryProvider>
             <NuqsAdapter>
               {children}
@@ -1210,10 +1254,13 @@ export function SearchPage() {
 | 標頭 | 值 | 用途 |
 |------|------|------|
 | Content-Security-Policy | 見下方完整設定 | 防止 XSS |
+| Strict-Transport-Security | `max-age=63072000; includeSubDomains; preload` | 強制 HTTPS（HSTS） |
 | X-Content-Type-Options | `nosniff` | 防止 MIME 嗅探 |
 | X-Frame-Options | `DENY` | 防止 Clickjacking |
 | Referrer-Policy | `strict-origin-when-cross-origin` | 控制 Referer 標頭 |
 | Permissions-Policy | `camera=(), microphone=(), geolocation=()` | 停用不需要的瀏覽器 API |
+
+> **關於 HSTS**：Vercel 會自動加上 HSTS 標頭，但自架或其他平台部署時不會有。作為萬用模板，建議明確設定。
 
 **推薦做法**：開發環境不套用 CSP（避免干擾 HMR），生產環境套用嚴格 CSP（不含 `unsafe-eval`）。
 
@@ -1231,14 +1278,15 @@ async headers() {
           key: "Content-Security-Policy",
           value: [
             "default-src 'self'",
-            "script-src 'self' https://*.sentry.io",
+            "script-src 'self' https://*.sentry.io https://va.vercel-scripts.com",
             "style-src 'self' 'unsafe-inline'",  // Radix UI (shadcn/ui 底層) 會注入 inline style 處理定位
             "img-src 'self' data: blob: https://*.unsplash.com https://*.same-assets.com",
             "font-src 'self'",
-            "connect-src 'self' https://*.sentry.io",
+            "connect-src 'self' https://*.sentry.io https://va.vercel-scripts.com",
             "frame-ancestors 'none'",
           ].join("; "),
         },
+        { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains; preload" },
         { key: "X-Content-Type-Options", value: "nosniff" },
         { key: "X-Frame-Options", value: "DENY" },
         { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
@@ -1294,6 +1342,37 @@ DATABASE_URL=
 ```
 
 > **命名慣例**：`NEXT_PUBLIC_` 前綴 = 前端可見（會打包進 client bundle），無前綴 = 僅伺服器端可用。
+
+### 環境變數驗證 (`lib/env.ts`)
+
+使用 Zod 在啟動時驗證環境變數，缺漏或格式錯誤會立即報錯（fail fast），不會等到 runtime 才爆：
+
+```typescript
+// lib/env.ts
+import { z } from "zod";
+
+const envSchema = z.object({
+  // 伺服器端（不需 NEXT_PUBLIC_ 前綴）
+  DATABASE_URL: z.string().min(1, "DATABASE_URL is required"),
+  AUTH_SECRET: z.string().min(1, "AUTH_SECRET is required"),
+  SENTRY_AUTH_TOKEN: z.string().optional(),
+
+  // 客戶端（NEXT_PUBLIC_ 前綴）
+  NEXT_PUBLIC_APP_URL: z.string().url(),
+  NEXT_PUBLIC_API_URL: z.string().url(),
+});
+
+export const env = envSchema.parse(process.env);
+```
+
+```typescript
+// 使用方式 — import env 取代直接讀 process.env
+import { env } from "@/lib/env";
+
+const res = await fetch(`${env.NEXT_PUBLIC_API_URL}/products`);
+```
+
+> **好處**：TypeScript 自動推導所有 env 的型別，不再需要 `process.env.XXX!` 非空斷言。缺少必要變數時，應用啟動就會報錯，而非在某個使用者操作時才崩潰。
 
 ---
 
@@ -1655,6 +1734,48 @@ export default function OverviewPage() {
 ```
 
 **原則**：`loading.tsx` 用於整頁過場（navigation 時），`<Suspense>` 用於頁面內的獨立資料區塊。兩者互補，不互斥。
+
+### Server Component 資料抓取 — `cache()` 請求去重
+
+同一次 render 中，多個 Server Component 可能需要相同的資料。`fetch` 會被 Next.js 自動去重，但 ORM 呼叫不會。用 `React.cache()` 手動去重：
+
+```typescript
+// features/products/api/queries.ts
+import { cache } from "react";
+import { db } from "@/lib/db";
+
+// cache() 確保同一次 server render 中多處呼叫只查一次 DB
+export const getProduct = cache(async (id: string) => {
+  return db.product.findUnique({ where: { id } });
+});
+
+// 多個 Server Component 可以放心呼叫 getProduct(id)，不會重複查詢
+```
+
+| 場景 | 去重方式 |
+|------|----------|
+| `fetch()` 呼叫 | Next.js 自動去重（同 URL + 同 options） |
+| ORM / 直接 DB 查詢 | 用 `React.cache()` 手動去重 |
+| 跨請求快取（ISR 場景） | 用 `unstable_cache` + `revalidateTag` |
+
+### `next/dynamic` — 延遲載入重量級 Client Component
+
+對於大型第三方套件（圖表庫、Rich Text Editor、地圖），使用 `next/dynamic` 避免它們進入首屏 bundle：
+
+```typescript
+import dynamic from "next/dynamic";
+
+// ssr: false — 只在客戶端載入（適合依賴 window/document 的套件）
+const Chart = dynamic(
+  () => import("@/features/analytics/components/revenue-chart"),
+  {
+    ssr: false,
+    loading: () => <div className="h-64 animate-pulse bg-muted rounded-xl" />,
+  },
+);
+```
+
+> **判斷規則**：如果一個 Client Component 的依賴套件 > 50KB gzipped（如 `recharts`、`@tiptap`、`mapbox-gl`），考慮用 `next/dynamic` 延遲載入。小型元件不需要。
 
 ---
 
