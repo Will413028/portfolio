@@ -9,6 +9,16 @@ const localePrefix = new RegExp(`^/(${routing.locales.join("|")})`);
 const protectedPaths = ["/overview", "/products", "/customers", "/settings"];
 const authPaths = ["/login", "/register", "/forgot-password"];
 
+const csp = [
+  "default-src 'self'",
+  "script-src 'self' 'unsafe-inline' https://*.sentry.io",
+  "style-src 'self' 'unsafe-inline'",
+  "img-src 'self' data: blob: https://*.unsplash.com https://*.same-assets.com",
+  "font-src 'self'",
+  "connect-src 'self' https://*.sentry.io",
+  "frame-ancestors 'none'",
+].join("; ");
+
 export default function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
@@ -31,7 +41,14 @@ export default function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL(`/${locale}/overview`, request.url));
   }
 
-  return intlMiddleware(request);
+  const response = intlMiddleware(request);
+
+  // Skip CSP in development to avoid blocking HMR / Turbopack eval
+  if (process.env.NODE_ENV !== "development") {
+    response.headers.set("Content-Security-Policy", csp);
+  }
+
+  return response;
 }
 
 export const config = {
