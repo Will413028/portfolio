@@ -1,9 +1,11 @@
 "use client";
 
 import { ArrowRight, Copy } from "lucide-react";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 
 export default function Hero() {
+  const t = useTranslations("hero");
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center px-6 pt-24 pb-32 overflow-hidden">
       {/* Stars background - using fixed positions to avoid hydration mismatch */}
@@ -74,10 +76,10 @@ export default function Hero() {
         {/* Announcement banner */}
         <div className="inline-flex items-center gap-2 mb-8 px-1 py-1 bg-zinc-900/60 border border-zinc-800 rounded-full text-sm backdrop-blur-sm hover:border-zinc-700 transition-colors cursor-pointer group">
           <span className="px-2.5 py-0.5 bg-emerald-500 text-black text-xs font-semibold rounded-full">
-            Upcoming
+            {t("badge")}
           </span>
           <span className="text-zinc-300 pr-2">
-            Nextnode is launching soon!
+            {t("badgeText")}
           </span>
           <ArrowRight
             size={14}
@@ -87,17 +89,17 @@ export default function Hero() {
 
         {/* Main headline */}
         <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium leading-[1.1] mb-8 tracking-tight">
-          I help founders turn ideas
+          {t("headline1")}
           <br />
-          into seamless{" "}
+          {t("headline2")}{" "}
           <span className="font-serif italic gradient-text-pink">
-            digital experiences
+            {t("headlineHighlight")}
           </span>
         </h1>
 
         {/* Subtitle with avatars */}
         <div className="flex items-center justify-center gap-3 mb-12 text-lg text-zinc-400 flex-wrap">
-          <span>Hello, I'm Aayush Bharti</span>
+          <span>{t("greeting")}</span>
           <div className="flex -space-x-1">
             <Image
               src="https://ext.same-assets.com/4210891837/1148079469.webp"
@@ -116,7 +118,7 @@ export default function Hero() {
               />
             </div>
           </div>
-          <span>a Full Stack Developer</span>
+          <span>{t("role")}</span>
         </div>
 
         {/* CTAs */}
@@ -125,7 +127,7 @@ export default function Hero() {
             type="button"
             className="group flex items-center gap-2 px-6 py-3 bg-white text-black font-medium rounded-full hover:bg-zinc-100 transition-all duration-200 shadow-lg shadow-white/10"
           >
-            Let's Connect
+            {t("cta")}
             <span className="flex items-center justify-center w-6 h-6 bg-zinc-900 rounded-full">
               <ArrowRight
                 size={14}

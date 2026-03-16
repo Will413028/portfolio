@@ -1,38 +1,30 @@
 "use client";
 
 import { ArrowRight } from "lucide-react";
+import { useTranslations } from 'next-intl';
 
 export default function AboutSection() {
+  const t = useTranslations('aboutSection');
   return (
     <section className="px-6 py-24 max-w-6xl mx-auto">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         {/* Left: Text content */}
         <div>
           <p className="text-xs uppercase tracking-[0.2em] text-zinc-500 mb-4">
-            Know About Me
+            {t('label')}
           </p>
           <h2 className="text-4xl md:text-5xl font-medium leading-tight mb-6">
-            Full-Stack Developer
+            {t('title1')}
             <br />
-            and a little bit
+            {t('title2')}
             <br />
-            <span className="gradient-text-pink">of everything</span>
+            <span className="gradient-text-pink">{t('titleHighlight')}</span>
           </h2>
 
           <div className="space-y-4 text-zinc-400 mb-8">
-            <p>
-              I'm Aayush Bharti, a proactive full-stack developer passionate
-              about creating dynamic web experiences. From frontend to backend,
-              I thrive on solving complex problems with clean, efficient code.
-              My expertise spans React, Next.js, and Node.js, and I'm always
-              eager to learn more.
-            </p>
-            <p>
-              When I'm not immersed in work, I'm exploring new ideas and staying
-              curious. Life's about balance, and I love embracing every part of
-              it.
-            </p>
-            <p>I believe in waking up each day eager to make a difference!</p>
+            <p>{t('bio1')}</p>
+            <p>{t('bio2')}</p>
+            <p>{t('bio3')}</p>
           </div>
 
           {/* Social icons */}
@@ -67,7 +59,7 @@ export default function AboutSection() {
             type="button"
             className="group inline-flex items-center gap-2 text-sm text-zinc-400 hover:text-white transition-colors"
           >
-            <span className="uppercase tracking-[0.2em]">Work Experience</span>
+            <span className="uppercase tracking-[0.2em]">{t('workExperience')}</span>
             <ArrowRight
               size={16}
               className="group-hover:translate-x-1 transition-transform"

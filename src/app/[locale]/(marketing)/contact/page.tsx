@@ -13,6 +13,7 @@ import {
 import Image from "next/image";
 import { useState } from "react";
 import CTASection from "@/components/shared/CTASection";
+import { useTranslations } from 'next-intl';
 
 // Generate calendar days for a month
 function generateCalendarDays(year: number, month: number) {
@@ -54,6 +55,7 @@ const monthNames = [
 const dayNames = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
 
 export default function ContactPage() {
+  const t = useTranslations('contactPage');
   const [activeTab, setActiveTab] = useState<"book" | "message">("book");
   const [selectedDate, setSelectedDate] = useState<number | null>(null);
   const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
@@ -119,11 +121,11 @@ export default function ContactPage() {
       {/* Hero Section */}
       <section className="px-6 pt-32 pb-8 max-w-4xl mx-auto text-center relative z-10">
         <p className="text-[11px] uppercase tracking-[0.35em] text-zinc-500 mb-5">
-          Contact
+          {t('label')}
         </p>
         <h1 className="text-4xl md:text-5xl lg:text-[56px] font-medium leading-tight">
-          Let's Get{" "}
-          <span className="gradient-text-pink font-serif italic">In Touch</span>
+          {t('titlePrefix')}{" "}
+          <span className="gradient-text-pink font-serif italic">{t('titleHighlight')}</span>
         </h1>
       </section>
 
@@ -140,7 +142,7 @@ export default function ContactPage() {
             }`}
           >
             <Calendar size={16} />
-            Book a Call
+            {t('bookACall')}
           </button>
 
           {/* Send Message Tab */}
@@ -153,7 +155,7 @@ export default function ContactPage() {
             }`}
           >
             <MessageSquare size={16} />
-            Send Message
+            {t('sendMessage')}
           </button>
 
           {/* Social Links */}
@@ -226,15 +228,15 @@ export default function ContactPage() {
                   <div className="w-10 h-10 rounded-lg bg-zinc-800 flex items-center justify-center mb-4">
                     <span className="text-white font-bold text-sm">AB</span>
                   </div>
-                  <p className="text-zinc-400 text-sm mb-1">Aayush Bharti</p>
+                  <p className="text-zinc-400 text-sm mb-1">{t('meetingHost')}</p>
                   <h3 className="text-white text-xl font-semibold mb-4">
-                    30 Min Meeting
+                    {t('meetingTitle')}
                   </h3>
 
                   <div className="space-y-3">
                     <div className="flex items-center gap-3 text-zinc-400 text-sm">
                       <CheckSquare size={16} />
-                      <span>Requires confirmation</span>
+                      <span>{t('requiresConfirmation')}</span>
                     </div>
                     <div className="flex items-center gap-3 text-zinc-400 text-sm">
                       <Clock size={16} />
@@ -242,11 +244,11 @@ export default function ContactPage() {
                     </div>
                     <div className="flex items-center gap-3 text-zinc-400 text-sm">
                       <Video size={16} className="text-green-500" />
-                      <span>Google Meet</span>
+                      <span>{t('googleMeet')}</span>
                     </div>
                     <div className="flex items-center gap-3 text-zinc-400 text-sm">
                       <Globe size={16} />
-                      <span>Select...</span>
+                      <span>{t('select')}</span>
                       <ChevronRight size={14} />
                     </div>
                   </div>
@@ -330,11 +332,11 @@ export default function ContactPage() {
                   {selectedDate && (
                     <div className="mt-6 p-4 bg-zinc-800/50 rounded-xl">
                       <p className="text-zinc-400 text-sm mb-2">
-                        Selected: {monthNames[currentMonth]} {selectedDate},{" "}
+                        {t('selected')} {monthNames[currentMonth]} {selectedDate},{" "}
                         {currentYear}
                       </p>
                       <button className="w-full py-3 bg-white text-black font-medium rounded-lg hover:bg-zinc-100 transition-colors">
-                        Confirm Booking
+                        {t('confirmBooking')}
                       </button>
                     </div>
                   )}
@@ -345,7 +347,7 @@ export default function ContactPage() {
             /* Send Message - Contact Form */
             <div className="bg-[#111113] border border-zinc-800 rounded-2xl p-8">
               <h3 className="text-xl font-semibold text-white mb-6">
-                Send a Message
+                {t('sendMessage')}
               </h3>
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -354,7 +356,7 @@ export default function ContactPage() {
                       htmlFor="name"
                       className="block text-sm text-zinc-400 mb-2"
                     >
-                      Name
+                      {t('nameLabel')}
                     </label>
                     <input
                       type="text"
@@ -364,7 +366,7 @@ export default function ContactPage() {
                         setFormData({ ...formData, name: e.target.value })
                       }
                       className="w-full px-4 py-3 bg-zinc-900 border border-zinc-700 rounded-xl text-white placeholder:text-zinc-600 focus:outline-none focus:border-zinc-500 transition-colors"
-                      placeholder="Your name"
+                      placeholder={t('namePlaceholder')}
                       required
                     />
                   </div>
@@ -373,7 +375,7 @@ export default function ContactPage() {
                       htmlFor="email"
                       className="block text-sm text-zinc-400 mb-2"
                     >
-                      Email
+                      {t('emailLabel')}
                     </label>
                     <input
                       type="email"
@@ -383,7 +385,7 @@ export default function ContactPage() {
                         setFormData({ ...formData, email: e.target.value })
                       }
                       className="w-full px-4 py-3 bg-zinc-900 border border-zinc-700 rounded-xl text-white placeholder:text-zinc-600 focus:outline-none focus:border-zinc-500 transition-colors"
-                      placeholder="your@email.com"
+                      placeholder={t('emailPlaceholder')}
                       required
                     />
                   </div>
@@ -394,7 +396,7 @@ export default function ContactPage() {
                     htmlFor="message"
                     className="block text-sm text-zinc-400 mb-2"
                   >
-                    Message
+                    {t('messageLabel')}
                   </label>
                   <textarea
                     id="message"
@@ -404,7 +406,7 @@ export default function ContactPage() {
                     }
                     rows={5}
                     className="w-full px-4 py-3 bg-zinc-900 border border-zinc-700 rounded-xl text-white placeholder:text-zinc-600 focus:outline-none focus:border-zinc-500 transition-colors resize-none"
-                    placeholder="Tell me about your project..."
+                    placeholder={t('messagePlaceholder')}
                     required
                   />
                 </div>
@@ -413,7 +415,7 @@ export default function ContactPage() {
                   type="submit"
                   className="w-full py-4 bg-white text-black font-medium rounded-xl hover:bg-zinc-100 transition-colors"
                 >
-                  Send Message
+                  {t('sendMessageButton')}
                 </button>
               </form>
             </div>
