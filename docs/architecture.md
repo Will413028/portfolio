@@ -17,18 +17,19 @@
 | 全域狀態 | Zustand | 客戶端狀態（購物車、UI 開關、主題） |
 | 伺服器資料 | TanStack Query v5 | API 快取、重新抓取、樂觀更新 |
 | 表單驗證 | React Hook Form + Zod v4 | 高效能表單 + 端到端型別安全驗證 |
-| 動畫效果 | Motion（原 Framer Motion） | 頁面轉場、微互動、滾動動畫 |
+| 動畫效果 | Motion（套件名 `motion`，原 `framer-motion`） | 頁面轉場、微互動、滾動動畫 |
 | 語系切換 | next-intl | App Router 原生支援，Server/Client Component 皆可用 |
 | URL 狀態 | nuqs | 搜尋、過濾器、分頁同步至 URL |
 | 錯誤監控 | Sentry | 前後端錯誤追蹤、Session Replay |
 | 程式碼品質 | Biome | 格式化 + Lint，唯一 linter（無 ESLint） |
+| 未使用程式碼檢測 | Knip | 找出未使用的檔案、export、依賴、型別 |
 | 部署 | Vercel | 圖片自動優化、Edge Functions、ISR |
 
 ### 漸進式採用策略
 
 並非每個專案都需要全部套件。依專案規模分階段導入：
 
-- **Phase 1（必選）**：目錄結構、Tailwind + shadcn/ui、Zustand、Zod、原生 fetch 封裝、Biome
+- **Phase 1（必選）**：目錄結構、Tailwind + shadcn/ui、Zustand、Zod、原生 fetch 封裝、Biome、Knip
 - **Phase 2（規模成長時）**：TanStack Query、React Hook Form、nuqs
 - **Phase 3（正式上線時）**：Sentry、CSP 安全標頭、Motion 頁面轉場
 
@@ -122,7 +123,9 @@ my-project/
 ├── sentry.client.config.ts          # Sentry 客戶端設定（Phase 3）
 ├── sentry.server.config.ts          # Sentry 伺服器端設定（Phase 3）
 ├── sentry.edge.config.ts            # Sentry Edge Runtime 設定（Phase 3）
+├── components.json                  # shadcn/ui 設定（style、base color、alias 路徑）
 ├── biome.json                       # Biome 格式化 + Lint 設定
+├── knip.config.ts                   # Knip 未使用程式碼檢測設定
 ├── .env.example                     # 環境變數範例（交付必備）
 └── package.json
 ```
@@ -275,6 +278,7 @@ Next.js 16 的 Server Actions 已經成熟，可以取代部分 API Route：
 "use server";
 
 import { revalidatePath } from "next/cache";
+import { routing } from "@/i18n/routing";
 import { contactFormSchema } from "./validations";
 
 type ActionState = {
@@ -291,12 +295,19 @@ export async function submitContactForm(
     return { success: false, errors: parsed.error.flatten().fieldErrors };
   }
   // 儲存到資料庫或發送通知...
-  revalidatePath("/contact"); // 清除此頁面的快取，讓下次載入拿到最新資料
+
+  // 使用 next-intl 時，實際路徑帶有 locale 前綴（/en/contact、/zh-TW/contact）
+  // 必須遍歷所有 locale 逐一 revalidate
+  for (const locale of routing.locales) {
+    revalidatePath(`/${locale}/contact`);
+  }
   return { success: true };
 }
 ```
 
 > **Cache Invalidation**：mutation 後必須呼叫 `revalidatePath(path)` 或 `revalidateTag(tag)` 來清除快取。`revalidatePath` 重新驗證特定路徑；`revalidateTag` 重新驗證帶有特定 tag 的所有 `fetch` 請求，適合跨頁面 invalidation。
+>
+> **next-intl 注意**：使用 `[locale]` 路段時，`revalidatePath("/contact")` 不會生效，因為實際路徑是 `/en/contact`、`/zh-TW/contact`。必須遍歷 `routing.locales` 逐一 revalidate。不使用 i18n 時則不需要。或者改用 `revalidateTag(tag)` 可以一次清除所有 locale 的快取（推薦）。
 
 #### Server Action 內的 Auth 驗證
 
@@ -308,13 +319,14 @@ Middleware 保護的是「路由存取」，但 Server Action 可以被直接 PO
 
 import { cookies } from "next/headers";
 import { revalidatePath } from "next/cache";
+import { routing } from "@/i18n/routing";
 import { orderSchema } from "./validations";
 
 export async function createOrder(_prevState: ActionState, formData: FormData) {
   // 1. Auth 驗證 — 不依賴 middleware
   const token = (await cookies()).get("auth_token")?.value;
   if (!token) {
-    return { success: false, errors: { auth: ["未登入"] } };
+    return { success: false, errors: { auth: ["Unauthorized"] } };
   }
 
   // 2. 輸入驗證
@@ -324,7 +336,11 @@ export async function createOrder(_prevState: ActionState, formData: FormData) {
   }
 
   // 3. 業務邏輯...
-  revalidatePath("/orders");
+
+  // 4. Revalidate 所有 locale 的路徑
+  for (const locale of routing.locales) {
+    revalidatePath(`/${locale}/orders`);
+  }
   return { success: true };
 }
 ```
@@ -402,7 +418,9 @@ const products = await apiClient.get<Product[]>("/api/products", {
 - 統一的 `ApiError` 錯誤類別（含 status、message、errors）
 - 支援 Server Component 和 Client Component
 
-**Token 取得策略**：api-client 從 cookie 讀取 `auth_token`（與 middleware 一致）。Server Component 中透過 `cookies()` 讀取；Client Component 中瀏覽器自動帶上 cookie。避免使用 `localStorage` 存放 token（XSS 風險）。
+**Token 取得策略**：api-client 從 cookie 讀取 `auth_token`（與 middleware 一致）。Server Component 中透過 `cookies()` 讀取；Client Component 中瀏覽器自動帶上 cookie（僅限同源 API）。避免使用 `localStorage` 存放 token（XSS 風險）。
+
+> **跨域 API 注意**：上述 cookie 自動帶上僅適用於同源的 Next.js API Routes（`/api/*`）。如果後端 API 在不同 origin（如 `api.example.com`），HttpOnly cookie 不會被瀏覽器自動帶上。解法是新增同源代理 API Route（`app/api/proxy/[...path]/route.ts`），在 server-side 讀取 cookie 後轉發給外部後端。
 
 **Cookie 安全旗標**：設定 `auth_token` cookie 時，必須加上以下旗標：
 
@@ -434,16 +452,18 @@ import { cookies } from "next/headers";
 ```typescript
 import { z } from "zod";
 
-// 定義 Schema
+// 定義 Schema — 錯誤訊息用英文 key，在表單元件層用 t() 翻譯
 export const contactFormSchema = z.object({
-  name: z.string().min(1, "必填"),
-  email: z.string().email("請輸入有效的電子郵件"),
-  message: z.string().min(10, "訊息至少 10 個字"),
+  name: z.string().min(1, "required"),
+  email: z.string().email("invalidEmail"),
+  message: z.string().min(10, "minLength"),
 });
 
 // 自動推導 TypeScript 型別
 export type ContactFormInput = z.infer<typeof contactFormSchema>;
 ```
+
+> **多語系驗證訊息**：Zod schema 的錯誤訊息用英文 key（如 `"required"`），在表單元件中透過 `t(`validation.${error}`)` 翻譯。避免 schema 中寫死特定語言的文字。翻譯檔加上 `"validation": { "required": "必填", "invalidEmail": "請輸入有效的電子郵件" }` 等。不使用 i18n 的專案可直接寫人類可讀的英文訊息（如 `"Required"`）。
 
 > **Zod v4 注意事項**：本專案使用 Zod v4。v4 與 v3 的主要差異：
 > - `z.object()` 預設為 strict mode（不允許多餘屬性），需要 `z.object().passthrough()` 才等同 v3 行為
@@ -743,7 +763,7 @@ export default config;
 
 ## Motion 動畫系統
 
-> **套件更名**：Framer Motion 已更名為 **Motion**，套件名從 `framer-motion` 改為 `motion`，import 路徑為 `motion/react`。
+> **套件更名**：Framer Motion 已更名為 **Motion**，套件名從 `framer-motion` 改為 `motion`，import 路徑為 `motion/react`。新專案直接安裝 `motion`；既有專案遷移：`pnpm remove framer-motion && pnpm add motion`，然後將 import 路徑從 `"framer-motion"` 改為 `"motion/react"`。
 
 ### 預設動畫變體 (`lib/animations.ts`)
 
@@ -802,11 +822,11 @@ import { MotionWrapper } from "@/components/shared/motion-wrapper";
 
 **效能規則**：動畫只使用 `transform` 和 `opacity`（GPU 加速），避免 `width`、`height`、`top`、`left`。
 
-> **遷移提示**：如果既有專案仍使用 `framer-motion`，將 import 路徑從 `"framer-motion"` 改為 `"motion/react"` 即可，API 完全相容。
+> **遷移提示**：如果既有專案仍使用 `framer-motion`，執行 `pnpm remove framer-motion && pnpm add motion`，再將 import 路徑從 `"framer-motion"` 改為 `"motion/react"` 即可，API 完全相容。
 
 ---
 
-## 程式碼品質 — Biome
+## 程式碼品質 — Biome + Knip
 
 使用 [Biome](https://biomejs.dev/) 統一處理格式化與 Lint，取代 ESLint + Prettier 雙工具鏈。
 
@@ -904,12 +924,62 @@ import { MotionWrapper } from "@/components/shared/motion-wrapper";
 {
   "scripts": {
     "lint": "tsc --noEmit && biome check src/",
-    "format": "biome format --write"
+    "format": "biome format --write",
+    "knip": "knip"
   }
 }
 ```
 
 > **Biome Only 策略**：專案僅使用 Biome 處理所有 lint 和格式化，不依賴 ESLint。Next.js 專屬規則由 Biome 內建的 `performance.noImgElement`（對應 `@next/next/no-img-element`）等規則覆蓋。`biome check` 同時執行 lint + format 檢查。
+
+### Knip — 未使用程式碼檢測
+
+[Knip](https://knip.dev/) 用於找出專案中未使用的檔案、export、依賴和型別，保持 codebase 乾淨。
+
+#### 為何需要 Knip
+
+- **Biome 只能檢測單檔內的未使用變數**，無法跨檔案追蹤未使用的 export 和檔案
+- 移除功能後容易殘留孤立檔案、未使用的依賴和多餘的型別定義
+- 定期執行可防止 dead code 累積，降低維護成本
+
+#### 設定方式
+
+```typescript
+// knip.config.ts
+import type { KnipConfig } from 'knip';
+
+const config: KnipConfig = {
+  // 排除不需要檢測的檔案
+  ignore: ['src/libs/I18n.ts', 'src/types/I18n.ts', 'src/utils/Helpers.ts'],
+  // 排除特定依賴（如 CLI 工具、隱式依賴）
+  ignoreDependencies: [],
+  // 排除特定 binary（如 husky、lint-staged 呼叫的指令）
+  ignoreBinaries: [],
+  // CSS @import 解析（讓 Knip 理解 CSS 的 import 語法）
+  compilers: {
+    css: (text: string) => [...text.matchAll(/(?<=@)import[^;]+/g)].join('\n'),
+  },
+};
+
+export default config;
+```
+
+> **`ignore` 清單**：某些檔案雖然沒有被直接 import，但可能被框架隱式使用（如 i18n 設定檔、動態載入的工具函式）。遇到 false positive 時加入 `ignore` 即可。
+
+#### 使用方式
+
+```bash
+# 檢查未使用的檔案、export、依賴
+pnpm knip
+
+# 自動修復（移除未使用的 export 和依賴）
+pnpm knip --fix
+
+# 只檢查未使用的依賴
+pnpm knip --dependencies
+```
+
+> **建議**：在 CI 中加入 `pnpm knip` 作為檢查步驟，防止 dead code 進入主分支。首次導入時可能會有大量報告，建議逐步清理，先用 `ignore` 排除 false positive。
 
 ---
 
@@ -1278,7 +1348,7 @@ async headers() {
           key: "Content-Security-Policy",
           value: [
             "default-src 'self'",
-            "script-src 'self' https://*.sentry.io https://va.vercel-scripts.com",
+            "script-src 'self' 'unsafe-inline' https://*.sentry.io https://va.vercel-scripts.com",  // Next.js hydration 需要 inline script；進階可改用 nonce 機制
             "style-src 'self' 'unsafe-inline'",  // Radix UI (shadcn/ui 底層) 會注入 inline style 處理定位
             "img-src 'self' data: blob: https://*.unsplash.com https://*.same-assets.com",
             "font-src 'self'",
@@ -1359,6 +1429,7 @@ const envSchema = z.object({
 
   // 客戶端（NEXT_PUBLIC_ 前綴）
   NEXT_PUBLIC_APP_URL: z.string().url(),
+  NEXT_PUBLIC_APP_NAME: z.string().min(1),
   NEXT_PUBLIC_API_URL: z.string().url(),
 });
 
@@ -1846,20 +1917,21 @@ features/auth/
 1. `pnpm dlx create-next-app@latest --ts --tailwind --src-dir --app`（Tailwind v4 已內建於 create-next-app）
 2. `pnpm dlx shadcn@latest init`（依專案需求選擇 style 和 base color）
 3. 設定 Biome：`pnpm add -D @biomejs/biome && pnpm biome init`
-4. 依 Phase 1/2/3 安裝需要的套件
-5. 建立目錄：`components/{ui,layout,shared}/`、`features/`、`lib/`、`hooks/`、`store/`、`types/`、`providers/`
-6. 複製 `lib/api-client.ts`、`lib/validations.ts`、`lib/utils.ts`
-7. 複製 `providers/`、`store/`、`types/`
-8. 建立 `.env.example`
-9. 建立 `src/i18n/` 目錄，建立 `routing.ts`、`request.ts`、`navigation.ts`
-10. 將頁面移入 `src/app/[locale]/` 內
-11. 建立 `src/app/[locale]/layout.tsx`（含 `<html lang={locale}>`、Providers）
-12. 建立路由群組：`[locale]/(marketing)/`、`[locale]/(auth)/`、`[locale]/(dashboard)/`
-13. 設定 `next.config.ts`（加入 `createNextIntlPlugin()`、安全標頭）
-14. 設定 `middleware.ts`（next-intl 語系路由 + Auth 保護）
-15. 建立 `messages/en.json`、`messages/zh-TW.json`
-16. 建立 `src/app/global-error.tsx`（最頂層錯誤邊界）
-17. 依專案需求建立 `features/` 模組
+4. 設定 Knip：`pnpm add -D knip` 並建立 `knip.config.ts`
+5. 依 Phase 1/2/3 安裝需要的套件
+6. 建立目錄：`components/{ui,layout,shared}/`、`features/`、`lib/`、`hooks/`、`store/`、`types/`、`providers/`
+7. 複製 `lib/api-client.ts`、`lib/validations.ts`、`lib/utils.ts`
+8. 複製 `providers/`、`store/`、`types/`
+9. 建立 `.env.example`
+10. 建立 `src/i18n/` 目錄，建立 `routing.ts`、`request.ts`、`navigation.ts`
+11. 將頁面移入 `src/app/[locale]/` 內
+12. 建立 `src/app/[locale]/layout.tsx`（含 `<html lang={locale}>`、Providers）
+13. 建立路由群組：`[locale]/(marketing)/`、`[locale]/(auth)/`、`[locale]/(dashboard)/`
+14. 設定 `next.config.ts`（加入 `createNextIntlPlugin()`、安全標頭）
+15. 設定 `middleware.ts`（next-intl 語系路由 + Auth 保護）
+16. 建立 `messages/en.json`、`messages/zh-TW.json`
+17. 建立 `src/app/global-error.tsx`（最頂層錯誤邊界）
+18. 依專案需求建立 `features/` 模組
 
 > **重要**：在元件中使用 `Link` 和 `useRouter` 時，
 > 必須從 `@/i18n/navigation` import，不是從 `next/link` 或 `next/navigation`。
@@ -1892,7 +1964,7 @@ features/auth/
       "@/*": ["./src/*"]
     }
   },
-  "include": ["**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "next-env.d.ts"],
+  "include": ["**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "next-env.d.ts", "build/types/**/*.ts", ".next/dev/types/**/*.ts"],
   "exclude": ["node_modules"]
 }
 ```
@@ -1988,6 +2060,10 @@ import { Analytics } from "@vercel/analytics/react";
 - [ ] Sentry 收到測試事件（可用 `Sentry.captureMessage("test")` 驗證）
 - [ ] `global-error.tsx` 和各路由群組的 `error.tsx` 已就位
 - [ ] 404 頁面（`not-found.tsx`）已客製化
+
+### 程式碼品質
+- [ ] `pnpm lint`（tsc + Biome）通過，無錯誤
+- [ ] `pnpm knip` 通過，無未使用的檔案、export 或依賴（或已加入 ignore）
 
 ### 國際化（如有啟用）
 - [ ] 所有語系的翻譯檔已完成，無遺漏 key
