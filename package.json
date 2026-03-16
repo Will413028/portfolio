@@ -12,13 +12,13 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
-    "@sentry/nextjs": "^10.42.0",
+    "@sentry/nextjs": "^10.43.0",
     "@tanstack/react-query": "^5.90.21",
     "@tanstack/react-query-devtools": "^5.91.3",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "framer-motion": "^12.34.5",
-    "lucide-react": "^0.475.0",
+    "framer-motion": "^12.36.0",
+    "lucide-react": "^0.577.0",
     "next": "^16.1.6",
     "next-intl": "^4.8.3",
     "nuqs": "^2.8.9",
@@ -28,12 +28,12 @@
     "tailwind-merge": "^3.3.0",
     "tailwindcss-animate": "^1.0.7",
     "zod": "^4.3.6",
-    "zustand": "^5.0.11"
+    "zustand": "^5.0.12"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.4.5",
+    "@biomejs/biome": "^2.4.7",
     "@tailwindcss/postcss": "^4.2.1",
-    "@types/node": "^20.17.50",
+    "@types/node": "^20.19.37",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "knip": "^5.86.0",
