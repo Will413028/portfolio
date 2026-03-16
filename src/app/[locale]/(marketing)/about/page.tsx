@@ -1,6 +1,6 @@
 import { ArrowRight } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { useTranslations, useLocale } from "next-intl";
 import { getExperience, getSkills } from "@/lib/experience";
 
 export default function AboutPage() {
@@ -41,13 +41,15 @@ export default function AboutPage() {
             <h2 className="text-2xl font-medium mb-6">{t("valuesTitle")}</h2>
             <div className="space-y-4">
               <div className="p-4 bg-zinc-900/50 border border-zinc-800 rounded-xl">
-                <h3 className="font-medium text-white mb-2">{t("cleanCode")}</h3>
-                <p className="text-sm text-zinc-400">
-                  {t("cleanCodeDesc")}
-                </p>
+                <h3 className="font-medium text-white mb-2">
+                  {t("cleanCode")}
+                </h3>
+                <p className="text-sm text-zinc-400">{t("cleanCodeDesc")}</p>
               </div>
               <div className="p-4 bg-zinc-900/50 border border-zinc-800 rounded-xl">
-                <h3 className="font-medium text-white mb-2">{t("userExperience")}</h3>
+                <h3 className="font-medium text-white mb-2">
+                  {t("userExperience")}
+                </h3>
                 <p className="text-sm text-zinc-400">
                   {t("userExperienceDesc")}
                 </p>
@@ -120,9 +122,7 @@ export default function AboutPage() {
       <section className="px-6 py-16 max-w-6xl mx-auto">
         <div className="p-8 bg-gradient-to-r from-cyan-500/10 to-pink-500/10 border border-zinc-800 rounded-2xl text-center">
           <h2 className="text-2xl font-medium mb-4">{t("ctaTitle")}</h2>
-          <p className="text-zinc-400 mb-6">
-            {t("ctaText")}
-          </p>
+          <p className="text-zinc-400 mb-6">{t("ctaText")}</p>
           <Link
             href="/contact"
             className="group inline-flex items-center gap-2 px-6 py-3 bg-white text-black font-medium rounded-full hover:bg-zinc-100 transition-colors"

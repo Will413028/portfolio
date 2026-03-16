@@ -12,13 +12,13 @@ const localeLabels: Record<string, string> = {
 };
 
 export default function Navigation() {
-  const t = useTranslations('nav');
+  const t = useTranslations("nav");
 
   const navLinks = [
-    { href: "/", label: t('home') },
-    { href: "/about", label: t('about') },
-    { href: "/work", label: t('work') },
-    { href: "/blog", label: t('blog') },
+    { href: "/", label: t("home") },
+    { href: "/about", label: t("about") },
+    { href: "/work", label: t("work") },
+    { href: "/blog", label: t("blog") },
   ];
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [localeMenuOpen, setLocaleMenuOpen] = useState(false);
@@ -78,7 +78,7 @@ export default function Navigation() {
             type="button"
             className="flex items-center gap-1 px-4 py-1.5 text-sm text-zinc-400 hover:text-white rounded-full hover:bg-zinc-800/50 transition-all duration-200"
           >
-            {t('more')} <ChevronDown size={14} />
+            {t("more")} <ChevronDown size={14} />
           </button>
           <div className="w-px h-5 bg-zinc-700 mx-1" />
           <Link
@@ -89,7 +89,7 @@ export default function Navigation() {
                 : "text-zinc-400 hover:text-white hover:bg-zinc-800/50"
             }`}
           >
-            {t('bookACall')}
+            {t("bookACall")}
           </Link>
         </div>
 
@@ -172,7 +172,7 @@ export default function Navigation() {
                   : "text-zinc-400 hover:text-white hover:bg-zinc-800/50"
               }`}
             >
-              {t('bookACall')}
+              {t("bookACall")}
             </Link>
           </div>
         </div>

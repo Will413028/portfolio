@@ -1,8 +1,8 @@
 "use client";
 
 import { Copy } from "lucide-react";
-import { useTranslations } from "next-intl";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 const techStack = [
   { name: "React" },
@@ -66,9 +66,7 @@ export default function BentoGrid() {
           <p className="text-xs uppercase tracking-[0.2em] text-zinc-500 mb-2">
             {t("collaborationLabel")}
           </p>
-          <p className="text-xl text-zinc-200">
-            {t("collaborationText")}
-          </p>
+          <p className="text-xl text-zinc-200">{t("collaborationText")}</p>
         </div>
 
         {/* Tech Stack Card */}
@@ -180,9 +178,7 @@ export default function BentoGrid() {
           <p className="text-xs uppercase tracking-[0.2em] text-zinc-500 mb-1 text-center">
             {t("timezoneLabel")}
           </p>
-          <p className="text-lg text-zinc-200 text-center">
-            {t("basedIn")}
-          </p>
+          <p className="text-lg text-zinc-200 text-center">{t("basedIn")}</p>
         </div>
 
         {/* CTA Card */}

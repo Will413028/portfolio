@@ -1,30 +1,30 @@
 "use client";
 
 import { ArrowRight } from "lucide-react";
-import { useTranslations } from 'next-intl';
+import { useTranslations } from "next-intl";
 
 export default function AboutSection() {
-  const t = useTranslations('aboutSection');
+  const t = useTranslations("aboutSection");
   return (
     <section className="px-6 py-24 max-w-6xl mx-auto">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         {/* Left: Text content */}
         <div>
           <p className="text-xs uppercase tracking-[0.2em] text-zinc-500 mb-4">
-            {t('label')}
+            {t("label")}
           </p>
           <h2 className="text-4xl md:text-5xl font-medium leading-tight mb-6">
-            {t('title1')}
+            {t("title1")}
             <br />
-            {t('title2')}
+            {t("title2")}
             <br />
-            <span className="gradient-text-pink">{t('titleHighlight')}</span>
+            <span className="gradient-text-pink">{t("titleHighlight")}</span>
           </h2>
 
           <div className="space-y-4 text-zinc-400 mb-8">
-            <p>{t('bio1')}</p>
-            <p>{t('bio2')}</p>
-            <p>{t('bio3')}</p>
+            <p>{t("bio1")}</p>
+            <p>{t("bio2")}</p>
+            <p>{t("bio3")}</p>
           </div>
 
           {/* Social icons */}
@@ -59,7 +59,9 @@ export default function AboutSection() {
             type="button"
             className="group inline-flex items-center gap-2 text-sm text-zinc-400 hover:text-white transition-colors"
           >
-            <span className="uppercase tracking-[0.2em]">{t('workExperience')}</span>
+            <span className="uppercase tracking-[0.2em]">
+              {t("workExperience")}
+            </span>
             <ArrowRight
               size={16}
               className="group-hover:translate-x-1 transition-transform"

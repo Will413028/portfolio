@@ -1,6 +1,6 @@
 import { ArrowRight, Calendar, Clock } from "lucide-react";
-import { useTranslations, useLocale } from "next-intl";
-import { getBlogPosts, getBlogCategories } from "@/lib/blog-posts";
+import { useLocale, useTranslations } from "next-intl";
+import { getBlogCategories, getBlogPosts } from "@/lib/blog-posts";
 
 export default function BlogPage() {
   const t = useTranslations("blogPage");
@@ -21,11 +21,11 @@ export default function BlogPage() {
         <h1 className="text-4xl md:text-6xl font-medium leading-tight mb-6">
           {t("title1")}
           <br />
-          <span className="gradient-text-pink font-serif italic">{t("titleHighlight")}</span>
+          <span className="gradient-text-pink font-serif italic">
+            {t("titleHighlight")}
+          </span>
         </h1>
-        <p className="text-xl text-zinc-400 max-w-2xl">
-          {t("subtitle")}
-        </p>
+        <p className="text-xl text-zinc-400 max-w-2xl">{t("subtitle")}</p>
       </section>
 
       {/* Categories */}
@@ -135,9 +135,7 @@ export default function BlogPage() {
             <h2 className="text-2xl font-medium mb-4">
               {t("newsletterTitle")}
             </h2>
-            <p className="text-zinc-400 mb-6">
-              {t("newsletterText")}
-            </p>
+            <p className="text-zinc-400 mb-6">{t("newsletterText")}</p>
             <div className="flex flex-col sm:flex-row gap-3">
               <input
                 type="email"
