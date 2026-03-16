@@ -1,11 +1,10 @@
 "use client";
 
-import { useTranslations } from 'next-intl';
-import { useLocale } from 'next-intl';
-import { getTestimonials } from '@/lib/testimonials';
+import { useLocale, useTranslations } from "next-intl";
+import { getTestimonials } from "@/lib/testimonials";
 
 export default function Testimonials() {
-  const t = useTranslations('testimonials');
+  const t = useTranslations("testimonials");
   const locale = useLocale();
   const testimonials = getTestimonials(locale);
   return (
@@ -13,12 +12,12 @@ export default function Testimonials() {
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-16">
           <p className="text-xs uppercase tracking-[0.2em] text-zinc-500 mb-4">
-            {t('label')}
+            {t("label")}
           </p>
           <h2 className="text-4xl md:text-5xl font-medium">
-            {t('heading')}{" "}
+            {t("heading")}{" "}
             <span className="font-serif italic gradient-text-pink">
-              {t('headingHighlight')}
+              {t("headingHighlight")}
             </span>
           </h2>
         </div>

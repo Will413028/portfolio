@@ -1,8 +1,8 @@
 "use client";
 
 import { ArrowRight, Copy } from "lucide-react";
-import { useTranslations } from "next-intl";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 export default function Hero() {
   const t = useTranslations("hero");
@@ -78,9 +78,7 @@ export default function Hero() {
           <span className="px-2.5 py-0.5 bg-emerald-500 text-black text-xs font-semibold rounded-full">
             {t("badge")}
           </span>
-          <span className="text-zinc-300 pr-2">
-            {t("badgeText")}
-          </span>
+          <span className="text-zinc-300 pr-2">{t("badgeText")}</span>
           <ArrowRight
             size={14}
             className="text-zinc-400 mr-2 group-hover:translate-x-0.5 transition-transform"

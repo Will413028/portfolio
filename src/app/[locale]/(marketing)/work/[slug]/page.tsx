@@ -6,9 +6,13 @@ import {
   Github,
 } from "lucide-react";
 import { notFound } from "next/navigation";
+import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
-import { getAllProjectSlugs, getProjectBySlug, getProjects } from "@/lib/projects";
-import { getTranslations } from 'next-intl/server';
+import {
+  getAllProjectSlugs,
+  getProjectBySlug,
+  getProjects,
+} from "@/lib/projects";
 
 export function generateStaticParams() {
   return getAllProjectSlugs().map((slug) => ({ slug }));
@@ -20,7 +24,7 @@ interface ProjectPageProps {
 
 export default async function ProjectPage({ params }: ProjectPageProps) {
   const { slug, locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'projectPage' });
+  const t = await getTranslations({ locale, namespace: "projectPage" });
   const project = getProjectBySlug(slug, locale);
 
   if (!project) {
@@ -46,7 +50,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             className="inline-flex items-center gap-2 text-white/70 hover:text-white mb-8 transition-colors"
           >
             <ArrowLeft size={16} />
-            {t('backToProjects')}
+            {t("backToProjects")}
           </Link>
 
           <div className="flex items-center gap-3 mb-4">
@@ -87,7 +91,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 className="inline-flex items-center gap-2 px-6 py-3 bg-white text-black font-medium rounded-full hover:bg-white/90 transition-colors"
               >
                 <ExternalLink size={18} />
-                {t('viewLive')}
+                {t("viewLive")}
               </a>
             )}
             {project.links.github && (
@@ -98,7 +102,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 className="inline-flex items-center gap-2 px-6 py-3 border border-white/30 text-white rounded-full hover:bg-white/10 transition-colors"
               >
                 <Github size={18} />
-                {t('sourceCode')}
+                {t("sourceCode")}
               </a>
             )}
           </div>
@@ -110,12 +114,12 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
           {/* Main Content */}
           <div className="lg:col-span-2">
-            <h2 className="text-2xl font-medium mb-6">{t('aboutProject')}</h2>
+            <h2 className="text-2xl font-medium mb-6">{t("aboutProject")}</h2>
             <p className="text-zinc-400 text-lg leading-relaxed mb-12">
               {project.longDescription}
             </p>
 
-            <h2 className="text-2xl font-medium mb-6">{t('keyFeatures')}</h2>
+            <h2 className="text-2xl font-medium mb-6">{t("keyFeatures")}</h2>
             <div className="space-y-4 mb-12">
               {project.features.map((feature, index) => (
                 <div key={index} className="flex items-start gap-3">
@@ -126,7 +130,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             </div>
 
             <h2 className="text-2xl font-medium mb-6">
-              {t('challengesAndSolutions')}
+              {t("challengesAndSolutions")}
             </h2>
             <div className="space-y-4">
               {project.challenges.map((challenge, index) => (
@@ -145,23 +149,23 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             <div className="sticky top-24 space-y-6">
               {/* Project Info Card */}
               <div className="p-6 bg-zinc-900/50 border border-zinc-800 rounded-2xl">
-                <h3 className="text-lg font-medium mb-4">{t('projectInfo')}</h3>
+                <h3 className="text-lg font-medium mb-4">{t("projectInfo")}</h3>
                 <div className="space-y-4">
                   <div>
                     <p className="text-xs text-zinc-500 uppercase tracking-wider mb-1">
-                      {t('type')}
+                      {t("type")}
                     </p>
                     <p className="text-zinc-200">{project.type}</p>
                   </div>
                   <div>
                     <p className="text-xs text-zinc-500 uppercase tracking-wider mb-1">
-                      {t('timeline')}
+                      {t("timeline")}
                     </p>
                     <p className="text-zinc-200">{project.quarter}</p>
                   </div>
                   <div>
                     <p className="text-xs text-zinc-500 uppercase tracking-wider mb-1">
-                      {t('stack')}
+                      {t("stack")}
                     </p>
                     <div className="flex flex-wrap gap-1.5 mt-2">
                       {project.tags.slice(0, 5).map((tag) => (
@@ -179,15 +183,15 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
               {/* CTA Card */}
               <div className="p-6 bg-gradient-to-br from-cyan-500/10 to-pink-500/10 border border-zinc-800 rounded-2xl">
-                <h3 className="text-lg font-medium mb-2">{t('likeWhatYouSee')}</h3>
-                <p className="text-sm text-zinc-400 mb-4">
-                  {t('letsDiscuss')}
-                </p>
+                <h3 className="text-lg font-medium mb-2">
+                  {t("likeWhatYouSee")}
+                </h3>
+                <p className="text-sm text-zinc-400 mb-4">{t("letsDiscuss")}</p>
                 <Link
                   href="/contact"
                   className="inline-flex items-center gap-2 w-full justify-center px-4 py-2.5 bg-white text-black font-medium rounded-full hover:bg-zinc-100 transition-colors text-sm"
                 >
-                  {t('getInTouch')}
+                  {t("getInTouch")}
                   <ArrowRight size={16} />
                 </Link>
               </div>
@@ -207,7 +211,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               >
                 <div className="flex items-center gap-2 text-zinc-500 mb-2">
                   <ArrowLeft size={16} />
-                  <span className="text-sm">{t('previousProject')}</span>
+                  <span className="text-sm">{t("previousProject")}</span>
                 </div>
                 <h3 className="text-xl font-medium text-white group-hover:text-cyan-400 transition-colors">
                   {prevProject.title}
@@ -223,7 +227,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 className="group p-6 bg-zinc-900/30 border border-zinc-800 rounded-2xl hover:border-zinc-700 transition-colors text-right"
               >
                 <div className="flex items-center justify-end gap-2 text-zinc-500 mb-2">
-                  <span className="text-sm">{t('nextProject')}</span>
+                  <span className="text-sm">{t("nextProject")}</span>
                   <ArrowRight size={16} />
                 </div>
                 <h3 className="text-xl font-medium text-white group-hover:text-cyan-400 transition-colors">

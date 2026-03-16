@@ -94,10 +94,12 @@ export default function CTASection() {
         {/* Main text */}
         <div className="text-center relative z-10">
           <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white mb-1 tracking-tight">
-            {t("line1")} <span className="text-zinc-900">{t("line1Highlight")}</span>
+            {t("line1")}{" "}
+            <span className="text-zinc-900">{t("line1Highlight")}</span>
           </h2>
           <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white mb-8 tracking-tight">
-            {t("line2")} <span className="text-zinc-900">{t("line2Highlight")}</span>
+            {t("line2")}{" "}
+            <span className="text-zinc-900">{t("line2Highlight")}</span>
           </h2>
 
           <button

@@ -95,8 +95,7 @@ const blogPostsZhTw: BlogPost[] = [
   {
     id: 3,
     title: "優化 Core Web Vitals 以提升 SEO",
-    excerpt:
-      "學習實用的技巧來改善網站的 Core Web Vitals，提升搜尋引擎排名。",
+    excerpt: "學習實用的技巧來改善網站的 Core Web Vitals，提升搜尋引擎排名。",
     date: "2026 年 2 月 5 日",
     readTime: "6 分鐘閱讀",
     category: "Performance",
@@ -105,8 +104,7 @@ const blogPostsZhTw: BlogPost[] = [
   {
     id: 4,
     title: "使用 Tailwind CSS 建立設計系統",
-    excerpt:
-      "使用 Tailwind CSS 和元件驅動開發建立一致、可維護的設計系統。",
+    excerpt: "使用 Tailwind CSS 和元件驅動開發建立一致、可維護的設計系統。",
     date: "2026 年 1 月 28 日",
     readTime: "10 分鐘閱讀",
     category: "CSS",
@@ -145,8 +143,6 @@ export function getBlogPosts(locale: string = "en"): BlogPost[] {
 
 export function getBlogCategories(locale: string = "en"): string[] {
   const allLabel = locale === "zh-TW" ? "全部" : "All";
-  const categories = [
-    ...new Set(getBlogPosts(locale).map((p) => p.category)),
-  ];
+  const categories = [...new Set(getBlogPosts(locale).map((p) => p.category))];
   return [allLabel, ...categories];
 }
