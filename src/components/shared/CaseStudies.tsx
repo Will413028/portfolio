@@ -3,7 +3,9 @@
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
-import { projects } from "@/lib/projects";
+import { getProjects } from "@/lib/projects";
+import { useTranslations } from 'next-intl';
+import { useLocale } from 'next-intl';
 
 // Decorative gradient arrow SVGs from original website
 const decorativeArrows = [
@@ -14,17 +16,19 @@ const decorativeArrows = [
 ];
 
 export default function CaseStudies() {
-  const displayProjects = projects.slice(0, 4);
+  const t = useTranslations('caseStudies');
+  const locale = useLocale();
+  const displayProjects = getProjects(locale).slice(0, 4);
 
   return (
     <section className="px-6 py-24 max-w-6xl mx-auto">
       <div className="text-center mb-16">
         <p className="text-[11px] uppercase tracking-[0.3em] text-zinc-500 mb-4">
-          Case Studies
+          {t('label')}
         </p>
         <h2 className="text-4xl md:text-5xl font-medium">
-          Curated{" "}
-          <span className="font-serif italic gradient-text-pink">work</span>
+          {t('curated')}{" "}
+          <span className="font-serif italic gradient-text-pink">{t('work')}</span>
         </h2>
       </div>
 
@@ -113,7 +117,7 @@ export default function CaseStudies() {
           href="/work"
           className="group inline-flex items-center gap-3 text-sm text-zinc-400 hover:text-white transition-colors"
         >
-          <span className="uppercase tracking-[0.2em]">See more projects</span>
+          <span className="uppercase tracking-[0.2em]">{t('seeMore')}</span>
           <ArrowRight
             size={16}
             className="group-hover:translate-x-1 transition-transform"

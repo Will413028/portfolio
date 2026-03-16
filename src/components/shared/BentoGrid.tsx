@@ -1,6 +1,7 @@
 "use client";
 
 import { Copy } from "lucide-react";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 
 const techStack = [
@@ -43,6 +44,7 @@ const timezones = [
 ];
 
 export default function BentoGrid() {
+  const t = useTranslations("bento");
   return (
     <section className="px-6 py-16 max-w-6xl mx-auto">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -62,20 +64,20 @@ export default function BentoGrid() {
             />
           </div>
           <p className="text-xs uppercase tracking-[0.2em] text-zinc-500 mb-2">
-            Collaboration
+            {t("collaborationLabel")}
           </p>
           <p className="text-xl text-zinc-200">
-            Open communication, async updates, zero surprises
+            {t("collaborationText")}
           </p>
         </div>
 
         {/* Tech Stack Card */}
         <div className="row-span-2 card-glow bg-zinc-900/50 border border-zinc-800 rounded-2xl p-6 overflow-hidden hover:border-zinc-700 transition-colors">
           <p className="text-xs uppercase tracking-[0.2em] text-zinc-500 mb-2 text-center">
-            Tech Stack
+            {t("techStackLabel")}
           </p>
           <p className="text-lg text-zinc-200 text-center mb-6">
-            Tools I ship production code with
+            {t("techStackText")}
           </p>
 
           {/* Marquee rows */}
@@ -139,10 +141,10 @@ export default function BentoGrid() {
                 <span className="text-white text-lg font-bold">Q</span>
               </div>
               <p className="text-sm font-semibold text-white">
-                Built to Perform.
+                {t("builtToPerform")}
               </p>
               <p className="text-xs text-zinc-400 mt-1">
-                Websites that impact your business.
+                {t("builtToPerformSub")}
               </p>
             </div>
           </div>
@@ -151,10 +153,10 @@ export default function BentoGrid() {
         {/* Timezone Card */}
         <div className="card-glow bg-zinc-900/50 border border-zinc-800 rounded-2xl p-6 hover:border-zinc-700 transition-colors">
           <p className="text-xl text-zinc-200 text-center mb-1">
-            Flexible with time
+            {t("flexibleWithTime")}
           </p>
           <p className="text-xl font-serif italic gradient-text-pink text-center mb-6">
-            zone communications
+            {t("zoneCommunications")}
           </p>
 
           <div className="flex justify-center gap-2 mb-6 flex-wrap">
@@ -176,10 +178,10 @@ export default function BentoGrid() {
           </div>
 
           <p className="text-xs uppercase tracking-[0.2em] text-zinc-500 mb-1 text-center">
-            Timezone
+            {t("timezoneLabel")}
           </p>
           <p className="text-lg text-zinc-200 text-center">
-            Based in India, available globally
+            {t("basedIn")}
           </p>
         </div>
 
@@ -189,10 +191,10 @@ export default function BentoGrid() {
             <span className="text-xl font-bold text-white">AB</span>
           </div>
           <p className="text-xl text-zinc-200 text-center">
-            Let's work together
+            {t("letsWorkTogether")}
           </p>
           <p className="text-xl font-serif italic gradient-text-pink text-center mb-6">
-            on your next project
+            {t("onYourNextProject")}
           </p>
 
           <button

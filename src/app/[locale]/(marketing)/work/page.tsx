@@ -1,7 +1,8 @@
 import Image from "next/image";
 import CTASection from "@/components/shared/CTASection";
 import { Link } from "@/i18n/navigation";
-import { projects } from "@/lib/projects";
+import { getProjects, type Project } from "@/lib/projects";
+import { useTranslations, useLocale } from 'next-intl';
 
 // Tech icon mapping with proper SVG icons from original website
 const getTechIcon = (tech: string) => {
@@ -60,7 +61,7 @@ function ProjectCard({
   project,
   index,
 }: {
-  project: (typeof projects)[0];
+  project: Project;
   index: number;
 }) {
   const projectNumber = String(index + 1).padStart(2, "0");
@@ -192,6 +193,10 @@ function ProjectCard({
 }
 
 export default function WorkPage() {
+  const t = useTranslations('workPage');
+  const locale = useLocale();
+  const projects = getProjects(locale);
+
   return (
     <main className="min-h-screen bg-[#0a0a0b] relative">
       {/* Paper texture overlay */}
@@ -207,11 +212,11 @@ export default function WorkPage() {
       {/* Hero Section */}
       <section className="px-6 pt-32 pb-16 max-w-6xl mx-auto text-center relative z-10">
         <p className="text-[11px] uppercase tracking-[0.35em] text-zinc-500 mb-5">
-          Case Studies
+          {t('label')}
         </p>
         <h1 className="text-4xl md:text-5xl lg:text-[56px] font-medium leading-tight">
-          Curated{" "}
-          <span className="gradient-text-pink font-serif italic">Work</span>
+          {t('curated')}{" "}
+          <span className="gradient-text-pink font-serif italic">{t('work')}</span>
         </h1>
       </section>
 

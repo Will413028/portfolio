@@ -1,8 +1,10 @@
 "use client";
 
 import { ArrowRight } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 export default function CTASection() {
+  const t = useTranslations("cta");
   return (
     <section className="px-6 py-16 max-w-6xl mx-auto">
       <div className="relative overflow-hidden rounded-3xl bg-gradient-to-b from-cyan-400 via-sky-500 to-cyan-500 p-12 md:p-16">
@@ -76,7 +78,7 @@ export default function CTASection() {
                 letterSpacing="1"
               >
                 <textPath href="#circlePath">
-                  OPEN TO WORK · OPEN TO WORK ·
+                  {t("openToWork")} · {t("openToWork")} ·
                 </textPath>
               </text>
             </svg>
@@ -92,17 +94,17 @@ export default function CTASection() {
         {/* Main text */}
         <div className="text-center relative z-10">
           <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white mb-1 tracking-tight">
-            FROM CONCEPT TO <span className="text-zinc-900">CREATION</span>
+            {t("line1")} <span className="text-zinc-900">{t("line1Highlight")}</span>
           </h2>
           <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white mb-8 tracking-tight">
-            LET'S MAKE IT <span className="text-zinc-900">HAPPEN!</span>
+            {t("line2")} <span className="text-zinc-900">{t("line2Highlight")}</span>
           </h2>
 
           <button
             type="button"
             className="group inline-flex items-center gap-2 px-6 py-3 bg-white text-black font-medium rounded-full hover:bg-zinc-100 transition-all duration-200 shadow-xl mb-8"
           >
-            Get In Touch
+            {t("getInTouch")}
             <span className="flex items-center justify-center w-6 h-6 bg-zinc-900 rounded-full">
               <ArrowRight
                 size={14}
@@ -112,11 +114,10 @@ export default function CTASection() {
           </button>
 
           <p className="text-lg md:text-xl font-semibold text-white mb-2">
-            I'm available for full-time roles & freelance projects.
+            {t("availability")}
           </p>
           <p className="text-zinc-800/80 max-w-md mx-auto">
-            I thrive on crafting dynamic web applications, and delivering
-            seamless user experiences.
+            {t("description")}
           </p>
         </div>
       </div>
