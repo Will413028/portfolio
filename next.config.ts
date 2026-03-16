@@ -12,9 +12,6 @@ const nextConfig: NextConfig = {
     ],
   },
   async headers() {
-    // Skip CSP in development to avoid blocking HMR / Turbopack eval
-    if (process.env.NODE_ENV === "development") return [];
-
     return [
       {
         source: "/(.*)",
@@ -23,18 +20,6 @@ const nextConfig: NextConfig = {
           { key: "X-Frame-Options", value: "DENY" },
           { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
           { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
-          {
-            key: "Content-Security-Policy",
-            value: [
-              "default-src 'self'",
-              "script-src 'self' https://*.sentry.io",
-              "style-src 'self'",
-              "img-src 'self' data: blob: https://*.unsplash.com https://*.same-assets.com",
-              "font-src 'self'",
-              "connect-src 'self' https://*.sentry.io",
-              "frame-ancestors 'none'",
-            ].join("; "),
-          },
         ],
       },
     ];
