@@ -218,22 +218,4 @@
     "goHome": "Go Home",
     "contactMe": "Contact Me"
   },
-  "auth": {
-    "login": "Sign In",
-    "register": "Sign Up",
-    "logout": "Sign Out",
-    "email": "Email",
-    "password": "Password",
-    "forgotPassword": "Forgot Password?",
-    "noAccount": "Don't have an account?",
-    "hasAccount": "Already have an account?"
-  },
-  "dashboard": {
-    "overview": "Overview",
-    "products": "Products",
-    "customers": "Customers",
-    "settings": "Settings",
-    "totalRevenue": "Total Revenue",
-    "orders": "Orders"
-  }
 }
