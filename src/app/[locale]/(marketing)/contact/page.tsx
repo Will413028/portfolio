@@ -7,6 +7,7 @@ import {
   ChevronRight,
   Clock,
   Globe,
+  Loader2,
   MessageSquare,
   Video,
 } from "lucide-react";
@@ -100,10 +101,25 @@ export default function ContactPage() {
     return dayOfWeek !== 0 && dayOfWeek !== 6 && !isPast;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [submitStatus, setSubmitStatus] = useState<
+    "idle" | "loading" | "success" | "error"
+  >("idle");
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(formData);
-    alert("Message sent! (Demo)");
+    setSubmitStatus("loading");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      if (!res.ok) throw new Error("Failed to send");
+      setSubmitStatus("success");
+      setFormData({ name: "", email: "", message: "" });
+    } catch {
+      setSubmitStatus("error");
+    }
   };
 
   return (
@@ -136,6 +152,7 @@ export default function ContactPage() {
         <div className="flex items-center justify-center gap-2 mb-8">
           {/* Book a Call Tab */}
           <button
+            type="button"
             onClick={() => setActiveTab("book")}
             className={`flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium transition-all ${
               activeTab === "book"
@@ -149,6 +166,7 @@ export default function ContactPage() {
 
           {/* Send Message Tab */}
           <button
+            type="button"
             onClick={() => setActiveTab("message")}
             className={`flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium transition-all ${
               activeTab === "message"
@@ -163,7 +181,7 @@ export default function ContactPage() {
           {/* Social Links */}
           <div className="flex items-center gap-2 ml-4">
             <a
-              href="mailto:hello@aayushbharti.in"
+              href="mailto:will413028@gmail.com"
               className="w-10 h-10 rounded-full bg-zinc-800/50 border border-zinc-700 flex items-center justify-center text-zinc-400 hover:text-white hover:border-zinc-500 transition-all"
               title="Email"
             >
@@ -175,7 +193,7 @@ export default function ContactPage() {
               />
             </a>
             <a
-              href="https://linkedin.com/in/iaayushbharti"
+              href="https://www.linkedin.com/in/will4130/"
               target="_blank"
               rel="noopener noreferrer"
               className="w-10 h-10 rounded-full bg-zinc-800/50 border border-zinc-700 flex items-center justify-center text-zinc-400 hover:text-white hover:border-zinc-500 transition-all"
@@ -189,7 +207,7 @@ export default function ContactPage() {
               />
             </a>
             <a
-              href="https://github.com/aayushbharti"
+              href="https://github.com/will413028"
               target="_blank"
               rel="noopener noreferrer"
               className="w-10 h-10 rounded-full bg-zinc-800/50 border border-zinc-700 flex items-center justify-center text-zinc-400 hover:text-white hover:border-zinc-500 transition-all"
@@ -198,20 +216,6 @@ export default function ContactPage() {
               <Image
                 src="https://ext.same-assets.com/4210891837/3395764652.svg"
                 alt="GitHub"
-                width={18}
-                height={18}
-              />
-            </a>
-            <a
-              href="https://x.com/iaayushbharti"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-10 h-10 rounded-full bg-zinc-800/50 border border-zinc-700 flex items-center justify-center text-zinc-400 hover:text-white hover:border-zinc-500 transition-all"
-              title="Twitter"
-            >
-              <Image
-                src="https://ext.same-assets.com/4210891837/102872261.svg"
-                alt="Twitter"
                 width={18}
                 height={18}
               />
@@ -228,7 +232,7 @@ export default function ContactPage() {
                 {/* Left Side - Meeting Info */}
                 <div className="p-6 border-b md:border-b-0 md:border-r border-zinc-800 md:w-[280px]">
                   <div className="w-10 h-10 rounded-lg bg-zinc-800 flex items-center justify-center mb-4">
-                    <span className="text-white font-bold text-sm">AB</span>
+                    <span className="text-white font-bold text-sm">WW</span>
                   </div>
                   <p className="text-zinc-400 text-sm mb-1">
                     {t("meetingHost")}
@@ -268,12 +272,14 @@ export default function ContactPage() {
                     </h4>
                     <div className="flex items-center gap-2">
                       <button
+                        type="button"
                         onClick={handlePrevMonth}
                         className="w-8 h-8 rounded-lg bg-zinc-800 flex items-center justify-center text-zinc-400 hover:text-white transition-colors"
                       >
                         <ChevronLeft size={16} />
                       </button>
                       <button
+                        type="button"
                         onClick={handleNextMonth}
                         className="w-8 h-8 rounded-lg bg-zinc-800 flex items-center justify-center text-zinc-400 hover:text-white transition-colors"
                       >
@@ -312,6 +318,7 @@ export default function ContactPage() {
 
                       return (
                         <button
+                          type="button"
                           key={day}
                           onClick={() => available && setSelectedDate(day)}
                           disabled={!available}
@@ -339,7 +346,7 @@ export default function ContactPage() {
                         {t("selected")} {monthNames[currentMonth]}{" "}
                         {selectedDate}, {currentYear}
                       </p>
-                      <button className="w-full py-3 bg-white text-black font-medium rounded-lg hover:bg-zinc-100 transition-colors">
+                      <button type="button" className="w-full py-3 bg-white text-black font-medium rounded-lg hover:bg-zinc-100 transition-colors">
                         {t("confirmBooking")}
                       </button>
                     </div>
@@ -417,10 +424,25 @@ export default function ContactPage() {
 
                 <button
                   type="submit"
-                  className="w-full py-4 bg-white text-black font-medium rounded-xl hover:bg-zinc-100 transition-colors"
+                  disabled={submitStatus === "loading"}
+                  className="w-full py-4 bg-white text-black font-medium rounded-xl hover:bg-zinc-100 transition-colors disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 >
+                  {submitStatus === "loading" && (
+                    <Loader2 size={18} className="animate-spin" />
+                  )}
                   {t("sendMessageButton")}
                 </button>
+
+                {submitStatus === "success" && (
+                  <p className="text-emerald-400 text-sm text-center mt-4">
+                    {t("messageSent")}
+                  </p>
+                )}
+                {submitStatus === "error" && (
+                  <p className="text-red-400 text-sm text-center mt-4">
+                    {t("messageError")}
+                  </p>
+                )}
               </form>
             </div>
           )}

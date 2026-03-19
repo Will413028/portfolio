@@ -56,10 +56,9 @@ export default function BentoGrid() {
             <div className="absolute -right-20 top-1/2 -translate-y-1/2 w-16 h-32 border-r-2 border-t-2 border-b-2 border-cyan-500/30 rounded-r-full" />
             <Image
               src="https://ext.same-assets.com/4210891837/1148079469.webp"
-              alt="Aayush"
+              alt="Will Wu"
               width={96}
               height={96}
-              unoptimized
               className="w-24 h-24 rounded-full object-cover border-4 border-cyan-500/30 shadow-lg shadow-cyan-500/10"
             />
           </div>
@@ -184,7 +183,7 @@ export default function BentoGrid() {
         {/* CTA Card */}
         <div className="card-glow bg-zinc-900/50 border border-zinc-800 rounded-2xl p-6 flex flex-col items-center justify-center hover:border-zinc-700 transition-colors">
           <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-zinc-700 to-zinc-800 flex items-center justify-center mb-4 border border-zinc-600 shadow-lg">
-            <span className="text-xl font-bold text-white">AB</span>
+            <span className="text-xl font-bold text-white">WW</span>
           </div>
           <p className="text-xl text-zinc-200 text-center">
             {t("letsWorkTogether")}
@@ -198,7 +197,7 @@ export default function BentoGrid() {
             className="flex items-center gap-2 px-5 py-2.5 bg-zinc-800 border border-zinc-700 rounded-full text-sm text-zinc-300 hover:text-white hover:border-zinc-600 transition-all"
           >
             <Copy size={14} />
-            hello@aayushbharti.in
+            will413028@gmail.com
           </button>
         </div>
       </div>

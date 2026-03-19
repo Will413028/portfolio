@@ -25,6 +25,7 @@
     "work": "作品",
     "blog": "部落格",
     "more": "更多",
+    "resume": "履歷",
     "bookACall": "預約通話"
   },
   "hero": {
@@ -33,7 +34,7 @@
     "headline1": "我幫助創辦人將想法",
     "headline2": "轉化為流暢的",
     "headlineHighlight": "數位體驗",
-    "greeting": "你好，我是 Aayush Bharti",
+    "greeting": "你好，我是 Will Wu",
     "role": "全端開發者",
     "cta": "與我聯繫"
   },
@@ -62,7 +63,7 @@
     "title1": "全端開發者",
     "title2": "同時也涉獵",
     "titleHighlight": "各種領域",
-    "bio1": "我是 Aayush Bharti，一位積極進取的全端開發者，熱衷於創造動態的網頁體驗。從前端到後端，我擅長以簡潔高效的程式碼解決複雜問題。我的專長涵蓋 React、Next.js 和 Node.js，並且始終保持學習的熱情。",
+    "bio1": "我是 Will Wu，一位積極進取的全端開發者，熱衷於創造動態的網頁體驗。從前端到後端，我擅長以簡潔高效的程式碼解決複雜問題。我的專長涵蓋 React、Next.js 和 Node.js，並且始終保持學習的熱情。",
     "bio2": "工作之餘，我喜歡探索新想法，保持好奇心。生活需要平衡，我享受其中的每一部分。",
     "bio3": "我相信每天醒來都要充滿熱情，準備好創造改變！",
     "workExperience": "工作經歷"
@@ -94,7 +95,7 @@
   },
   "aboutPage": {
     "label": "關於我",
-    "titlePrefix": "我是 Aayush Bharti，一位",
+    "titlePrefix": "我是 Will Wu，一位",
     "titleHighlight": "充滿熱情的開發者",
     "storyTitle": "我的故事",
     "story1": "我在 2020 年開始了網頁開發之旅，被創造數百萬人可以使用的事物的力量所吸引。最初的好奇心很快變成了熱情。",
@@ -155,7 +156,7 @@
     "titleHighlight": "聊聊",
     "bookACall": "預約通話",
     "sendMessage": "發送訊息",
-    "meetingHost": "Aayush Bharti",
+    "meetingHost": "Will Wu",
     "meetingTitle": "30 分鐘會議",
     "requiresConfirmation": "需要確認",
     "googleMeet": "Google Meet",
@@ -168,10 +169,12 @@
     "emailPlaceholder": "your@email.com",
     "messageLabel": "訊息",
     "messagePlaceholder": "告訴我關於你的專案...",
-    "sendMessageButton": "發送訊息"
+    "sendMessageButton": "發送訊息",
+    "messageSent": "訊息已成功送出！我會盡快回覆你。",
+    "messageError": "發送失敗，請重試或直接寄信給我。"
   },
   "footer": {
-    "brand": "我是 Aayush — 一位全端開發者、自由接案者和問題解決者。感謝你來看我的網站！",
+    "brand": "我是 Will — 一位全端開發者、自由接案者和問題解決者。感謝你來看我的網站！",
     "general": "一般",
     "specifics": "更多內容",
     "more": "其他",
@@ -191,6 +194,29 @@
     "copyright": "版權所有",
     "privacyPolicy": "隱私政策",
     "termsOfUse": "使用條款"
+  },
+  "resumePage": {
+    "label": "履歷",
+    "titlePrefix": "我的",
+    "titleHighlight": "履歷",
+    "subtitle": "擁有 4 年以上經驗的全端開發者，專精使用 React、Next.js 和 TypeScript 構建現代網頁應用程式。",
+    "downloadPdf": "下載 PDF",
+    "getInTouch": "聯繫我",
+    "experienceTitle": "工作經歷",
+    "skillsTitle": "技能與技術",
+    "educationTitle": "教育背景",
+    "degree": "電腦應用學士",
+    "university": "德里大學",
+    "educationPeriod": "2019 - 2022",
+    "ctaTitle": "有興趣一起合作嗎？",
+    "ctaText": "我隨時歡迎新的機會和有趣的專案。",
+    "ctaButton": "聯繫我"
+  },
+  "notFound": {
+    "title": "找不到頁面",
+    "description": "你要找的頁面不存在或已被移動。",
+    "goHome": "回首頁",
+    "contactMe": "聯繫我"
   },
   "auth": {
     "login": "登入",

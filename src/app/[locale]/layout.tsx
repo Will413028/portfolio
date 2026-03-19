@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
+import Analytics from "@/components/analytics";
 import { routing } from "@/i18n/routing";
 import { QueryProvider } from "@/providers/query-provider";
 
@@ -39,6 +40,7 @@ export default async function LocaleLayout({ children, params }: Props) {
   return (
     <html lang={locale} className={`${inter.variable} ${playfair.variable}`}>
       <body className="font-sans antialiased">
+        <Analytics />
         <NextIntlClientProvider>
           <QueryProvider>
             <NuqsAdapter>{children}</NuqsAdapter>

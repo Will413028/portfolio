@@ -19,6 +19,7 @@ export default function Navigation() {
     { href: "/about", label: t("about") },
     { href: "/work", label: t("work") },
     { href: "/blog", label: t("blog") },
+    { href: "/resume", label: t("resume") },
   ];
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [localeMenuOpen, setLocaleMenuOpen] = useState(false);
@@ -32,16 +33,24 @@ export default function Navigation() {
   }
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-4">
+    <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-4" aria-label="Main navigation">
+      {/* Skip to main content */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[60] focus:px-4 focus:py-2 focus:bg-white focus:text-black focus:rounded-lg focus:font-medium"
+      >
+        Skip to main content
+      </a>
       <div className="max-w-6xl mx-auto flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center">
+        <Link href="/" className="flex items-center" aria-label="Home">
           <svg
             width="32"
             height="32"
             viewBox="0 0 40 40"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
           >
             <path
               d="M20 5L35 35H5L20 5Z"
@@ -100,6 +109,9 @@ export default function Navigation() {
             <button
               type="button"
               onClick={() => setLocaleMenuOpen(!localeMenuOpen)}
+              aria-expanded={localeMenuOpen}
+              aria-haspopup="true"
+              aria-label="Switch language"
               className="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-zinc-900/80 border border-zinc-800 text-zinc-400 hover:text-white hover:border-zinc-700 transition-all duration-200 text-sm"
             >
               <Globe size={14} />
@@ -139,6 +151,8 @@ export default function Navigation() {
           type="button"
           className="md:hidden p-2 text-zinc-400 hover:text-white transition-colors"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          aria-expanded={mobileMenuOpen}
+          aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
         >
           {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>

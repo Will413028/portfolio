@@ -25,6 +25,7 @@
     "work": "Work",
     "blog": "Blog",
     "more": "More",
+    "resume": "Resume",
     "bookACall": "Book a Call"
   },
   "hero": {
@@ -33,7 +34,7 @@
     "headline1": "I help founders turn ideas",
     "headline2": "into seamless",
     "headlineHighlight": "digital experiences",
-    "greeting": "Hello, I'm Aayush Bharti",
+    "greeting": "Hello, I'm Will Wu",
     "role": "a Full Stack Developer",
     "cta": "Let's Connect"
   },
@@ -62,7 +63,7 @@
     "title1": "Full-Stack Developer",
     "title2": "and a little bit",
     "titleHighlight": "of everything",
-    "bio1": "I'm Aayush Bharti, a proactive full-stack developer passionate about creating dynamic web experiences. From frontend to backend, I thrive on solving complex problems with clean, efficient code. My expertise spans React, Next.js, and Node.js, and I'm always eager to learn more.",
+    "bio1": "I'm Will Wu, a proactive full-stack developer passionate about creating dynamic web experiences. From frontend to backend, I thrive on solving complex problems with clean, efficient code. My expertise spans React, Next.js, and Node.js, and I'm always eager to learn more.",
     "bio2": "When I'm not immersed in work, I'm exploring new ideas and staying curious. Life's about balance, and I love embracing every part of it.",
     "bio3": "I believe in waking up each day eager to make a difference!",
     "workExperience": "Work Experience"
@@ -94,7 +95,7 @@
   },
   "aboutPage": {
     "label": "About Me",
-    "titlePrefix": "I'm Aayush Bharti, a",
+    "titlePrefix": "I'm Will Wu, a",
     "titleHighlight": "passionate developer",
     "storyTitle": "My Story",
     "story1": "I started my journey in web development back in 2020, fascinated by the power of creating things that millions of people can use. What began as curiosity quickly turned into a passion.",
@@ -155,7 +156,7 @@
     "titleHighlight": "In Touch",
     "bookACall": "Book a Call",
     "sendMessage": "Send Message",
-    "meetingHost": "Aayush Bharti",
+    "meetingHost": "Will Wu",
     "meetingTitle": "30 Min Meeting",
     "requiresConfirmation": "Requires confirmation",
     "googleMeet": "Google Meet",
@@ -168,10 +169,12 @@
     "emailPlaceholder": "your@email.com",
     "messageLabel": "Message",
     "messagePlaceholder": "Tell me about your project...",
-    "sendMessageButton": "Send Message"
+    "sendMessageButton": "Send Message",
+    "messageSent": "Message sent successfully! I'll get back to you soon.",
+    "messageError": "Failed to send message. Please try again or email me directly."
   },
   "footer": {
-    "brand": "I'm Aayush - a full-stack developer, freelancer & problem solver. Thanks for checking out my site!",
+    "brand": "I'm Will - a full-stack developer, freelancer & problem solver. Thanks for checking out my site!",
     "general": "General",
     "specifics": "Specifics",
     "more": "More",
@@ -191,6 +194,29 @@
     "copyright": "All rights reserved",
     "privacyPolicy": "Privacy Policy",
     "termsOfUse": "Terms of Use"
+  },
+  "resumePage": {
+    "label": "Resume",
+    "titlePrefix": "My",
+    "titleHighlight": "Resume",
+    "subtitle": "Full-Stack Developer with 4+ years of experience building modern web applications with React, Next.js, and TypeScript.",
+    "downloadPdf": "Download PDF",
+    "getInTouch": "Get In Touch",
+    "experienceTitle": "Work Experience",
+    "skillsTitle": "Skills & Technologies",
+    "educationTitle": "Education",
+    "degree": "Bachelor of Computer Applications",
+    "university": "University of Delhi",
+    "educationPeriod": "2019 - 2022",
+    "ctaTitle": "Interested in working together?",
+    "ctaText": "I'm always open to new opportunities and interesting projects.",
+    "ctaButton": "Let's Talk"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "description": "The page you're looking for doesn't exist or has been moved.",
+    "goHome": "Go Home",
+    "contactMe": "Contact Me"
   },
   "auth": {
     "login": "Sign In",

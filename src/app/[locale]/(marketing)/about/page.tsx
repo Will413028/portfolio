@@ -1,7 +1,14 @@
+import type { Metadata } from "next";
 import { ArrowRight } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { getExperience, getSkills } from "@/lib/experience";
+
+export const metadata: Metadata = {
+  title: "About",
+  description:
+    "Learn about Will Wu — a full-stack developer specializing in React, Next.js, and TypeScript. My story, skills, and work experience.",
+};
 
 export default function AboutPage() {
   const t = useTranslations("aboutPage");

@@ -1,6 +1,13 @@
+import type { Metadata } from "next";
 import { ArrowRight, Calendar, Clock } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { getBlogCategories, getBlogPosts } from "@/lib/blog-posts";
+
+export const metadata: Metadata = {
+  title: "Blog",
+  description:
+    "Thoughts, tutorials, and insights on web development, design patterns, and lessons learned from building products.",
+};
 
 export default function BlogPage() {
   const t = useTranslations("blogPage");
