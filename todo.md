@@ -15,5 +15,4 @@
 
 | 項目 | 說明 |
 |------|------|
-| Dashboard 功能的必要性 | 有 auth + dashboard，但對作品集可能過度工程化。建議在 README 說明或移除 |
 | Blog 內容管理 | 目前文章寫在 blog-posts.ts 裡，未來可考慮 MDX 或 headless CMS |

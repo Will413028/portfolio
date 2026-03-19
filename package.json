@@ -16,12 +16,10 @@
     "analyze": "ANALYZE=true next build"
   },
   "dependencies": {
-    "@hookform/resolvers": "^5.2.2",
     "@next/bundle-analyzer": "^16.2.0",
     "@sentry/nextjs": "^10.42.0",
     "@tanstack/react-query": "^5.90.21",
     "@tanstack/react-query-devtools": "^5.91.3",
-    "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "framer-motion": "^12.34.5",
     "lucide-react": "^0.475.0",
@@ -30,12 +28,10 @@
     "nuqs": "^2.8.9",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
-    "react-hook-form": "^7.71.2",
     "resend": "^6.9.4",
     "tailwind-merge": "^3.3.0",
     "tailwindcss-animate": "^1.0.7",
-    "zod": "^4.3.6",
-    "zustand": "^5.0.11"
+    "zod": "^4.3.6"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.4.5",

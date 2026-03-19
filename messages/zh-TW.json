@@ -218,22 +218,4 @@
     "goHome": "回首頁",
     "contactMe": "聯繫我"
   },
-  "auth": {
-    "login": "登入",
-    "register": "註冊",
-    "logout": "登出",
-    "email": "電子郵件",
-    "password": "密碼",
-    "forgotPassword": "忘記密碼？",
-    "noAccount": "還沒有帳號？",
-    "hasAccount": "已經有帳號？"
-  },
-  "dashboard": {
-    "overview": "總覽",
-    "products": "商品",
-    "customers": "顧客",
-    "settings": "設定",
-    "totalRevenue": "總營收",
-    "orders": "訂單"
-  }
 }
