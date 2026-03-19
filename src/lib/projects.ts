@@ -66,7 +66,7 @@ const projectsEn: Project[] = [
     ],
     links: {
       live: "https://nextdemy.example.com",
-      github: "https://github.com/aayushbharti/nextdemy",
+      github: "https://github.com/will413028/nextdemy",
     },
   },
   {
@@ -112,7 +112,7 @@ const projectsEn: Project[] = [
       "Optimizing chart rendering for smooth animations",
     ],
     links: {
-      github: "https://github.com/aayushbharti/finote",
+      github: "https://github.com/will413028/finote",
     },
   },
   {
@@ -158,7 +158,7 @@ const projectsEn: Project[] = [
     ],
     links: {
       live: "https://nextventure.example.com",
-      github: "https://github.com/aayushbharti/next-venture",
+      github: "https://github.com/will413028/next-venture",
     },
   },
   {
@@ -201,7 +201,7 @@ const projectsEn: Project[] = [
     ],
     links: {
       live: "https://starforge.example.com",
-      github: "https://github.com/aayushbharti/star-forge",
+      github: "https://github.com/will413028/star-forge",
     },
   },
   {
@@ -242,7 +242,7 @@ const projectsEn: Project[] = [
     ],
     links: {
       live: "https://snippix.example.com",
-      github: "https://github.com/aayushbharti/snippix",
+      github: "https://github.com/will413028/snippix",
     },
   },
   {
@@ -282,7 +282,7 @@ const projectsEn: Project[] = [
     ],
     links: {
       live: "https://fluxlura.example.com",
-      github: "https://github.com/aayushbharti/flux-lura",
+      github: "https://github.com/will413028/flux-lura",
     },
   },
   {
@@ -326,7 +326,7 @@ const projectsEn: Project[] = [
     ],
     links: {
       live: "https://portfolio.example.com",
-      github: "https://github.com/aayushbharti/portfolio",
+      github: "https://github.com/will413028/portfolio",
     },
   },
 ];
@@ -377,7 +377,7 @@ const projectsZhTw: Project[] = [
     ],
     links: {
       live: "https://nextdemy.example.com",
-      github: "https://github.com/aayushbharti/nextdemy",
+      github: "https://github.com/will413028/nextdemy",
     },
   },
   {
@@ -422,7 +422,7 @@ const projectsZhTw: Project[] = [
       "優化圖表渲染以實現流暢動畫",
     ],
     links: {
-      github: "https://github.com/aayushbharti/finote",
+      github: "https://github.com/will413028/finote",
     },
   },
   {
@@ -467,7 +467,7 @@ const projectsZhTw: Project[] = [
     ],
     links: {
       live: "https://nextventure.example.com",
-      github: "https://github.com/aayushbharti/next-venture",
+      github: "https://github.com/will413028/next-venture",
     },
   },
   {
@@ -509,7 +509,7 @@ const projectsZhTw: Project[] = [
     ],
     links: {
       live: "https://starforge.example.com",
-      github: "https://github.com/aayushbharti/star-forge",
+      github: "https://github.com/will413028/star-forge",
     },
   },
   {
@@ -549,7 +549,7 @@ const projectsZhTw: Project[] = [
     ],
     links: {
       live: "https://snippix.example.com",
-      github: "https://github.com/aayushbharti/snippix",
+      github: "https://github.com/will413028/snippix",
     },
   },
   {
@@ -588,7 +588,7 @@ const projectsZhTw: Project[] = [
     ],
     links: {
       live: "https://fluxlura.example.com",
-      github: "https://github.com/aayushbharti/flux-lura",
+      github: "https://github.com/will413028/flux-lura",
     },
   },
   {
@@ -631,7 +631,7 @@ const projectsZhTw: Project[] = [
     ],
     links: {
       live: "https://portfolio.example.com",
-      github: "https://github.com/aayushbharti/portfolio",
+      github: "https://github.com/will413028/portfolio",
     },
   },
 ];

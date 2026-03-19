@@ -101,7 +101,7 @@ export default function Hero() {
           <div className="flex -space-x-1">
             <Image
               src="https://ext.same-assets.com/4210891837/1148079469.webp"
-              alt="Avatar"
+              alt="Will Wu"
               width={36}
               height={36}
               className="w-9 h-9 rounded-full border-2 border-zinc-900 object-cover"
@@ -109,7 +109,7 @@ export default function Hero() {
             <div className="w-9 h-9 rounded-full border-2 border-zinc-900 bg-gradient-to-br from-sky-400 via-cyan-500 to-teal-500 flex items-center justify-center overflow-hidden">
               <Image
                 src="https://ext.same-assets.com/4210891837/419887552.svg"
-                alt="Avatar pattern"
+                alt=""
                 width={36}
                 height={36}
                 className="w-full h-full object-cover"
@@ -142,7 +142,7 @@ export default function Hero() {
               size={16}
               className="group-hover:scale-110 transition-transform"
             />
-            <span>hello@aayushbharti.in</span>
+            <span>will413028@gmail.com</span>
           </button>
         </div>
       </div>

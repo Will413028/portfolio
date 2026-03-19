@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import {
   ArrowLeft,
   ArrowRight,
@@ -20,6 +21,18 @@ export function generateStaticParams() {
 
 interface ProjectPageProps {
   params: Promise<{ slug: string; locale: string }>;
+}
+
+export async function generateMetadata({
+  params,
+}: ProjectPageProps): Promise<Metadata> {
+  const { slug, locale } = await params;
+  const project = getProjectBySlug(slug, locale);
+  if (!project) return {};
+  return {
+    title: project.title,
+    description: project.description,
+  };
 }
 
 export default async function ProjectPage({ params }: ProjectPageProps) {

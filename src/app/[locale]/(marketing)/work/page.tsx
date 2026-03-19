@@ -1,8 +1,15 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import CTASection from "@/components/shared/CTASection";
 import { Link } from "@/i18n/navigation";
 import { getProjects, type Project } from "@/lib/projects";
+
+export const metadata: Metadata = {
+  title: "Work",
+  description:
+    "Explore my curated collection of web and mobile projects — from learning platforms to developer tools, built with modern technologies.",
+};
 
 // Tech icon mapping with proper SVG icons from original website
 const getTechIcon = (tech: string) => {
