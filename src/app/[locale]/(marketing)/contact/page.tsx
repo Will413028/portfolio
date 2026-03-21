@@ -302,41 +302,42 @@ export default function ContactPage() {
 
                   {/* Calendar Grid */}
                   <div className="grid grid-cols-7 gap-1">
-                    {calendarDays.map((day, calendarIndex) => {
-                      if (day === null) {
+                    {[
+                      ...Array(
+                        new Date(currentYear, currentMonth, 1).getDay(),
+                      ).keys(),
+                    ].map((slot) => (
+                      <div key={`empty-${slot}`} className="aspect-square" />
+                    ))}
+                    {calendarDays
+                      .filter((day): day is number => day !== null)
+                      .map((day) => {
+                        const available = isDateAvailable(day);
+                        const isSelected = selectedDate === day;
+                        const isToday =
+                          isCurrentMonth && day === today.getDate();
+
                         return (
-                          <div
-                            key={`empty-${calendarIndex}`}
-                            className="aspect-square"
-                          />
+                          <button
+                            type="button"
+                            key={day}
+                            onClick={() => available && setSelectedDate(day)}
+                            disabled={!available}
+                            className={`aspect-square rounded-full flex items-center justify-center text-sm transition-all relative ${
+                              isSelected
+                                ? "bg-zinc-700 text-white"
+                                : available
+                                  ? "text-white hover:bg-zinc-800"
+                                  : "text-zinc-600 cursor-not-allowed"
+                            }`}
+                          >
+                            {day}
+                            {isToday && (
+                              <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-cyan-500" />
+                            )}
+                          </button>
                         );
-                      }
-
-                      const available = isDateAvailable(day);
-                      const isSelected = selectedDate === day;
-                      const isToday = isCurrentMonth && day === today.getDate();
-
-                      return (
-                        <button
-                          type="button"
-                          key={day}
-                          onClick={() => available && setSelectedDate(day)}
-                          disabled={!available}
-                          className={`aspect-square rounded-full flex items-center justify-center text-sm transition-all relative ${
-                            isSelected
-                              ? "bg-zinc-700 text-white"
-                              : available
-                                ? "text-white hover:bg-zinc-800"
-                                : "text-zinc-600 cursor-not-allowed"
-                          }`}
-                        >
-                          {day}
-                          {isToday && (
-                            <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-cyan-500" />
-                          )}
-                        </button>
-                      );
-                    })}
+                      })}
                   </div>
 
                   {/* Selected Date Info */}

@@ -80,9 +80,22 @@ export default function BentoGrid() {
           {/* Marquee rows */}
           <div className="space-y-3 overflow-hidden">
             <div className="flex gap-2 animate-marquee">
-              {[...techStack, ...techStack].map((tech, i) => (
+              {techStack.map((tech) => (
                 <div
-                  key={`${tech.name}-a-${i}`}
+                  key={`${tech.name}-a`}
+                  className="flex items-center gap-2 px-3 py-1.5 bg-zinc-800/80 rounded-full whitespace-nowrap border border-zinc-700/50"
+                >
+                  <div className="w-4 h-4 rounded bg-gradient-to-br from-cyan-400 to-blue-500 flex items-center justify-center">
+                    <span className="text-[8px] text-white font-bold">
+                      {tech.name[0]}
+                    </span>
+                  </div>
+                  <span className="text-xs text-zinc-300">{tech.name}</span>
+                </div>
+              ))}
+              {techStack.map((tech) => (
+                <div
+                  key={`${tech.name}-b`}
                   className="flex items-center gap-2 px-3 py-1.5 bg-zinc-800/80 rounded-full whitespace-nowrap border border-zinc-700/50"
                 >
                   <div className="w-4 h-4 rounded bg-gradient-to-br from-cyan-400 to-blue-500 flex items-center justify-center">
@@ -95,9 +108,22 @@ export default function BentoGrid() {
               ))}
             </div>
             <div className="flex gap-2 animate-marquee-reverse">
-              {[...techStack2, ...techStack2].map((tech, i) => (
+              {techStack2.map((tech) => (
                 <div
-                  key={`${tech.name}-b-${i}`}
+                  key={`${tech.name}-a`}
+                  className="flex items-center gap-2 px-3 py-1.5 bg-zinc-800/80 rounded-full whitespace-nowrap border border-zinc-700/50"
+                >
+                  <div className="w-4 h-4 rounded bg-gradient-to-br from-purple-400 to-pink-500 flex items-center justify-center">
+                    <span className="text-[8px] text-white font-bold">
+                      {tech.name[0]}
+                    </span>
+                  </div>
+                  <span className="text-xs text-zinc-300">{tech.name}</span>
+                </div>
+              ))}
+              {techStack2.map((tech) => (
+                <div
+                  key={`${tech.name}-b`}
                   className="flex items-center gap-2 px-3 py-1.5 bg-zinc-800/80 rounded-full whitespace-nowrap border border-zinc-700/50"
                 >
                   <div className="w-4 h-4 rounded bg-gradient-to-br from-purple-400 to-pink-500 flex items-center justify-center">
@@ -110,9 +136,22 @@ export default function BentoGrid() {
               ))}
             </div>
             <div className="flex gap-2 animate-marquee">
-              {[...techStack3, ...techStack3].map((tech, i) => (
+              {techStack3.map((tech) => (
                 <div
-                  key={`${tech.name}-c-${i}`}
+                  key={`${tech.name}-a`}
+                  className="flex items-center gap-2 px-3 py-1.5 bg-zinc-800/80 rounded-full whitespace-nowrap border border-zinc-700/50"
+                >
+                  <div className="w-4 h-4 rounded bg-gradient-to-br from-emerald-400 to-teal-500 flex items-center justify-center">
+                    <span className="text-[8px] text-white font-bold">
+                      {tech.name[0]}
+                    </span>
+                  </div>
+                  <span className="text-xs text-zinc-300">{tech.name}</span>
+                </div>
+              ))}
+              {techStack3.map((tech) => (
+                <div
+                  key={`${tech.name}-b`}
                   className="flex items-center gap-2 px-3 py-1.5 bg-zinc-800/80 rounded-full whitespace-nowrap border border-zinc-700/50"
                 >
                   <div className="w-4 h-4 rounded bg-gradient-to-br from-emerald-400 to-teal-500 flex items-center justify-center">
