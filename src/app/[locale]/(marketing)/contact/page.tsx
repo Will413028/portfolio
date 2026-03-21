@@ -302,11 +302,11 @@ export default function ContactPage() {
 
                   {/* Calendar Grid */}
                   <div className="grid grid-cols-7 gap-1">
-                    {calendarDays.map((day, index) => {
+                    {calendarDays.map((day, calendarIndex) => {
                       if (day === null) {
                         return (
                           <div
-                            key={`empty-${index}`}
+                            key={`empty-${calendarIndex}`}
                             className="aspect-square"
                           />
                         );
@@ -346,7 +346,10 @@ export default function ContactPage() {
                         {t("selected")} {monthNames[currentMonth]}{" "}
                         {selectedDate}, {currentYear}
                       </p>
-                      <button type="button" className="w-full py-3 bg-white text-black font-medium rounded-lg hover:bg-zinc-100 transition-colors">
+                      <button
+                        type="button"
+                        className="w-full py-3 bg-white text-black font-medium rounded-lg hover:bg-zinc-100 transition-colors"
+                      >
                         {t("confirmBooking")}
                       </button>
                     </div>

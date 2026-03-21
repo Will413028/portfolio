@@ -143,14 +143,14 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
                 </div>
               ) : (
                 <div className="flex gap-2">
-                  {project.screenshots.slice(0, 3).map((screenshot, i) => (
+                  {project.screenshots.slice(0, 3).map((screenshot) => (
                     <div
-                      key={i}
+                      key={screenshot}
                       className="flex-1 rounded-xl overflow-hidden border border-zinc-800/50"
                     >
                       <Image
                         src={screenshot}
-                        alt={`${project.title} screenshot ${i + 1}`}
+                        alt={`${project.title} screenshot`}
                         width={160}
                         height={280}
                         className="w-full h-44 object-cover"

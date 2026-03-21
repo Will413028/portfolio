@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import {
   ArrowLeft,
   ArrowRight,
@@ -6,6 +5,7 @@ import {
   ExternalLink,
   Github,
 } from "lucide-react";
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
@@ -134,8 +134,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
             <h2 className="text-2xl font-medium mb-6">{t("keyFeatures")}</h2>
             <div className="space-y-4 mb-12">
-              {project.features.map((feature, index) => (
-                <div key={index} className="flex items-start gap-3">
+              {project.features.map((feature) => (
+                <div key={feature} className="flex items-start gap-3">
                   <CheckCircle2 className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" />
                   <p className="text-zinc-300">{feature}</p>
                 </div>
@@ -146,9 +146,9 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               {t("challengesAndSolutions")}
             </h2>
             <div className="space-y-4">
-              {project.challenges.map((challenge, index) => (
+              {project.challenges.map((challenge) => (
                 <div
-                  key={index}
+                  key={challenge}
                   className="p-4 bg-zinc-900/50 border border-zinc-800 rounded-xl"
                 >
                   <p className="text-zinc-300">{challenge}</p>

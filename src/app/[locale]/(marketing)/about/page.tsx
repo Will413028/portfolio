@@ -1,5 +1,5 @@
-import type { Metadata } from "next";
 import { ArrowRight } from "lucide-react";
+import type { Metadata } from "next";
 import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { getExperience, getSkills } from "@/lib/experience";
@@ -105,9 +105,9 @@ export default function AboutPage() {
       <section className="px-6 py-16 max-w-6xl mx-auto" id="experience">
         <h2 className="text-2xl font-medium mb-8">{t("experienceTitle")}</h2>
         <div className="space-y-6">
-          {experience.map((exp, index) => (
+          {experience.map((exp) => (
             <div
-              key={index}
+              key={`${exp.company}-${exp.period}`}
               className="p-6 bg-zinc-900/50 border border-zinc-800 rounded-2xl hover:border-zinc-700 transition-colors"
             >
               <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
