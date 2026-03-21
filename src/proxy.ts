@@ -14,7 +14,7 @@ const csp = [
   "frame-ancestors 'none'",
 ].join("; ");
 
-export default function middleware(request: NextRequest) {
+export default function proxy(request: NextRequest) {
   const response = intlMiddleware(request);
 
   // Skip CSP in development to avoid blocking HMR / Turbopack eval
@@ -26,5 +26,5 @@ export default function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/((?!api|_next|_vercel|.*\\..*).*)"],
+  matcher: ["/", "/((?!api|_next|_vercel|.*\\..*).*)"],
 };

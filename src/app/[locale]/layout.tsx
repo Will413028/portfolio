@@ -1,4 +1,3 @@
-import { Inter, Playfair_Display } from "next/font/google";
 import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
@@ -6,18 +5,6 @@ import { NuqsAdapter } from "nuqs/adapters/next/app";
 import Analytics from "@/components/analytics";
 import { routing } from "@/i18n/routing";
 import { QueryProvider } from "@/providers/query-provider";
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-});
-
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  variable: "--font-playfair",
-  display: "swap",
-});
 
 type Props = {
   children: React.ReactNode;
@@ -38,15 +25,13 @@ export default async function LocaleLayout({ children, params }: Props) {
   setRequestLocale(locale);
 
   return (
-    <html lang={locale} className={`${inter.variable} ${playfair.variable}`}>
-      <body className="font-sans antialiased">
-        <Analytics />
-        <NextIntlClientProvider>
-          <QueryProvider>
-            <NuqsAdapter>{children}</NuqsAdapter>
-          </QueryProvider>
-        </NextIntlClientProvider>
-      </body>
-    </html>
+    <>
+      <Analytics />
+      <NextIntlClientProvider>
+        <QueryProvider>
+          <NuqsAdapter>{children}</NuqsAdapter>
+        </QueryProvider>
+      </NextIntlClientProvider>
+    </>
   );
 }
