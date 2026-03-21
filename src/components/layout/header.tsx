@@ -33,7 +33,10 @@ export default function Navigation() {
   }
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-4" aria-label="Main navigation">
+    <nav
+      className="fixed top-0 left-0 right-0 z-50 px-6 py-4"
+      aria-label="Main navigation"
+    >
       {/* Skip to main content */}
       <a
         href="#main-content"

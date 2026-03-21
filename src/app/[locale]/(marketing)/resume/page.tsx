@@ -1,5 +1,5 @@
-import type { Metadata } from "next";
 import { ArrowRight, Download, Mail } from "lucide-react";
+import type { Metadata } from "next";
 import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { getExperience, getSkills } from "@/lib/experience";
@@ -29,9 +29,7 @@ export default function ResumePage() {
             {t("titleHighlight")}
           </span>
         </h1>
-        <p className="text-xl text-zinc-400 max-w-2xl mb-8">
-          {t("subtitle")}
-        </p>
+        <p className="text-xl text-zinc-400 max-w-2xl mb-8">{t("subtitle")}</p>
 
         <div className="flex items-center gap-4 flex-wrap">
           <a
@@ -108,9 +106,7 @@ export default function ResumePage() {
       <section className="px-6 py-16 max-w-4xl mx-auto">
         <h2 className="text-2xl font-medium mb-8">{t("educationTitle")}</h2>
         <div className="p-6 bg-zinc-900/50 border border-zinc-800 rounded-2xl">
-          <h3 className="text-lg font-medium text-white">
-            {t("degree")}
-          </h3>
+          <h3 className="text-lg font-medium text-white">{t("degree")}</h3>
           <p className="text-cyan-400 text-sm">{t("university")}</p>
           <p className="text-sm text-zinc-500 mt-1">{t("educationPeriod")}</p>
         </div>

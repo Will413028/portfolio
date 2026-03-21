@@ -1,5 +1,5 @@
-import type { Metadata } from "next";
 import { ArrowRight, Calendar, Clock } from "lucide-react";
+import type { Metadata } from "next";
 import { useLocale, useTranslations } from "next-intl";
 import { getBlogCategories, getBlogPosts } from "@/lib/blog-posts";
 
