@@ -10,7 +10,6 @@ export default function Footer() {
     { label: t("home"), href: "/" },
     { label: t("about"), href: "/about" },
     { label: t("projects"), href: "/work" },
-    { label: t("blog"), href: "/blog" },
   ];
 
   const specificsLinks = [

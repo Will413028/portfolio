@@ -18,7 +18,6 @@ export default function Navigation() {
     { href: "/", label: t("home") },
     { href: "/about", label: t("about") },
     { href: "/work", label: t("work") },
-    { href: "/blog", label: t("blog") },
     { href: "/resume", label: t("resume") },
   ];
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);

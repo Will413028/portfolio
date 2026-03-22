@@ -268,9 +268,6 @@ const projectsByLocale: Record<string, Project[]> = {
   "zh-TW": projectsZhTw,
 };
 
-/** @deprecated Use getProjects(locale) instead */
-export const projects = projectsEn;
-
 export function getProjects(locale: string = "en"): Project[] {
   return projectsByLocale[locale] || projectsByLocale.en;
 }
