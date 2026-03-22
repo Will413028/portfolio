@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   description:
     "Full-Stack Developer specializing in Next.js, React, TypeScript, and Sanity CMS. I build fast, accessible web apps and help founders ship products that users love.",
   icons: {
-    icon: "/favicon.ico",
+    icon: "/favicon.svg",
   },
   openGraph: {
     type: "website",
