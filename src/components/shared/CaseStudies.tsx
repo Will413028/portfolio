@@ -6,14 +6,6 @@ import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { getProjects } from "@/lib/projects";
 
-// Decorative gradient arrow SVGs from original website
-const decorativeArrows = [
-  "https://ext.same-assets.com/4210891837/1710691793.svg", // project 1
-  "https://ext.same-assets.com/4210891837/1549852767.svg", // project 2
-  "https://ext.same-assets.com/4210891837/2171624552.svg", // project 3
-  "https://ext.same-assets.com/4210891837/2377463393.svg", // project 4
-];
-
 export default function CaseStudies() {
   const t = useTranslations("caseStudies");
   const locale = useLocale();
@@ -35,9 +27,6 @@ export default function CaseStudies() {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {displayProjects.map((project, index) => {
-          const decorativeArrow =
-            decorativeArrows[index % decorativeArrows.length];
-
           return (
             <div key={project.id} className="flex flex-col">
               {/* Header: Type and Date */}
@@ -76,17 +65,6 @@ export default function CaseStudies() {
                 <div className="relative bg-[#111113]/80 rounded-2xl overflow-hidden h-full flex flex-col backdrop-blur-sm">
                   {/* Description header with arrow */}
                   <div className="p-5 pb-4 relative">
-                    {/* Decorative gradient arrow SVG */}
-                    <div className="absolute top-4 right-4 w-7 h-7 opacity-90">
-                      <Image
-                        src={decorativeArrow}
-                        alt=""
-                        width={28}
-                        height={28}
-                        className="w-full h-full"
-                      />
-                    </div>
-
                     <p className="text-[13px] text-zinc-300 leading-relaxed pr-10 font-light">
                       {project.description}
                     </p>
@@ -102,6 +80,7 @@ export default function CaseStudies() {
                           width={600}
                           height={300}
                           className="w-full h-48 object-cover"
+                          priority={index === 0}
                         />
                       </div>
                     </div>

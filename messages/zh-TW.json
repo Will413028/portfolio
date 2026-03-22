@@ -29,13 +29,11 @@
     "bookACall": "預約通話"
   },
   "hero": {
-    "badge": "即將推出",
-    "badgeText": "Nextnode 即將上線！",
-    "headline1": "我幫助創辦人將想法",
-    "headline2": "轉化為流暢的",
+    "headline1": "我打造可擴展的系統",
+    "headline2": "並創造流暢的",
     "headlineHighlight": "數位體驗",
     "greeting": "你好，我是 Will Wu",
-    "role": "全端開發者",
+    "role": "資深後端工程師",
     "cta": "與我聯繫"
   },
   "bento": {
@@ -48,7 +46,7 @@
     "flexibleWithTime": "彈性配合",
     "zoneCommunications": "跨時區溝通",
     "timezoneLabel": "時區",
-    "basedIn": "身處印度，服務全球",
+    "basedIn": "身處台灣，服務全球",
     "letsWorkTogether": "讓我們一起",
     "onYourNextProject": "打造你的下一個專案"
   },
@@ -63,9 +61,9 @@
     "title1": "全端開發者",
     "title2": "同時也涉獵",
     "titleHighlight": "各種領域",
-    "bio1": "我是 Will Wu，一位積極進取的全端開發者，熱衷於創造動態的網頁體驗。從前端到後端，我擅長以簡潔高效的程式碼解決複雜問題。我的專長涵蓋 React、Next.js 和 Node.js，並且始終保持學習的熱情。",
-    "bio2": "工作之餘，我喜歡探索新想法，保持好奇心。生活需要平衡，我享受其中的每一部分。",
-    "bio3": "我相信每天醒來都要充滿熱情，準備好創造改變！",
+    "bio1": "我是 Will Wu，擁有 4 年以上經驗的資深後端工程師，專精於大規模生產系統的建構。從企業 AI 平台到服務 200 萬以上月活用戶的內容平台，我擅長使用 Python、Go 和 TypeScript 設計穩健的架構。",
+    "bio2": "我擁有喬治梅森大學資料分析工程碩士學位與大同大學化學工程學士學位。跨領域的背景讓我在解決複雜工程問題時擁有獨特的視角。",
+    "bio3": "我熱衷於建構能產生真實影響的系統——無論是優化資料庫查詢以提升 80% 的回應速度，還是從零開始架構微服務。",
     "workExperience": "工作經歷"
   },
   "testimonials": {
@@ -98,9 +96,9 @@
     "titlePrefix": "我是 Will Wu，一位",
     "titleHighlight": "充滿熱情的開發者",
     "storyTitle": "我的故事",
-    "story1": "我在 2020 年開始了網頁開發之旅，被創造數百萬人可以使用的事物的力量所吸引。最初的好奇心很快變成了熱情。",
-    "story2": "如今，我專注於使用 React、Next.js 和 TypeScript 構建現代網頁應用。我喜歡與有大膽想法的新創公司和創辦人合作，幫助他們將願景化為現實。",
-    "story3": "不寫程式的時候，你會發現我在探索新技術、貢獻開源專案，或透過部落格文章和指導分享知識。",
+    "story1": "我的科技之旅始於化學工程學位，但很快發現自己真正的熱情在於軟體開發。在喬治梅森大學取得資料分析工程碩士後，我全心投入後端開發。",
+    "story2": "如今，我專注於使用 Python、Go 和 TypeScript 構建可擴展的後端系統。從企業 AI 平台到服務數百萬用戶的內容平台，我擅長設計能在真實壓力下運作的架構。",
+    "story3": "我曾帶領工程團隊、從零建構微服務、大幅優化系統效能。我持續探索新技術——從 LLM 整合到基礎設施即代碼。",
     "valuesTitle": "我的價值觀",
     "cleanCode": "整潔程式碼",
     "cleanCodeDesc": "撰寫可維護、有良好文件的程式碼，經得起時間考驗。",
@@ -174,7 +172,7 @@
     "messageError": "發送失敗，請重試或直接寄信給我。"
   },
   "footer": {
-    "brand": "我是 Will — 一位全端開發者、自由接案者和問題解決者。感謝你來看我的網站！",
+    "brand": "我是 Will — 資深後端工程師，專精 Python、Go 和 TypeScript。從台灣打造可擴展的系統。",
     "general": "一般",
     "specifics": "更多內容",
     "more": "其他",
@@ -199,15 +197,15 @@
     "label": "履歷",
     "titlePrefix": "我的",
     "titleHighlight": "履歷",
-    "subtitle": "擁有 4 年以上經驗的全端開發者，專精使用 React、Next.js 和 TypeScript 構建現代網頁應用程式。",
+    "subtitle": "擁有 4 年以上經驗的資深後端工程師，專精使用 Python、Go 和 TypeScript 構建可擴展系統。",
     "downloadPdf": "下載 PDF",
     "getInTouch": "聯繫我",
     "experienceTitle": "工作經歷",
     "skillsTitle": "技能與技術",
     "educationTitle": "教育背景",
-    "degree": "電腦應用學士",
-    "university": "德里大學",
-    "educationPeriod": "2019 - 2022",
+    "degree": "資料分析工程碩士 / 化學工程學士",
+    "university": "喬治梅森大學 / 大同大學",
+    "educationPeriod": "2019 - 2021 / 2013 - 2016",
     "ctaTitle": "有興趣一起合作嗎？",
     "ctaText": "我隨時歡迎新的機會和有趣的專案。",
     "ctaButton": "聯繫我"

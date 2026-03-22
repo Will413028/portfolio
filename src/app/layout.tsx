@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   description:
     "Full-Stack Developer specializing in Next.js, React, TypeScript, and Sanity CMS. I build fast, accessible web apps and help founders ship products that users love.",
   icons: {
-    icon: "https://ext.same-assets.com/4210891837/3065168410.svg",
+    icon: "/favicon.ico",
   },
   openGraph: {
     type: "website",
@@ -38,7 +38,6 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    creator: "@will4130",
     title: "Will Wu - Developer, Freelancer & Problem Solver",
     description:
       "Full-Stack Developer specializing in Next.js, React, TypeScript, and Sanity CMS.",
