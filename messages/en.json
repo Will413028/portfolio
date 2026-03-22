@@ -66,21 +66,6 @@
     "bio3": "I'm passionate about building systems that make a real impact — whether it's optimizing database queries for 80% faster response times or architecting microservices from scratch.",
     "workExperience": "Work Experience"
   },
-  "testimonials": {
-    "label": "Testimonials",
-    "heading": "Word on the street",
-    "headingHighlight": "about me"
-  },
-  "explore": {
-    "label": "My Site",
-    "title1": "Explore, experiment",
-    "title2": "&& say hello",
-    "usesLabel": "Uses",
-    "usesText": "Check out my favorite tools",
-    "guestbookLabel": "Guestbook",
-    "guestbookText": "Let me know you were here",
-    "lastPlayed": "Last Played"
-  },
   "cta": {
     "openToWork": "OPEN TO WORK",
     "line1": "FROM CONCEPT TO",

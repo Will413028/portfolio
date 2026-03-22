@@ -66,21 +66,6 @@
     "bio3": "我熱衷於建構能產生真實影響的系統——無論是優化資料庫查詢以提升 80% 的回應速度，還是從零開始架構微服務。",
     "workExperience": "工作經歷"
   },
-  "testimonials": {
-    "label": "客戶評價",
-    "heading": "他們怎麼說",
-    "headingHighlight": "關於我"
-  },
-  "explore": {
-    "label": "探索網站",
-    "title1": "探索、實驗",
-    "title2": "&& 打聲招呼",
-    "usesLabel": "工具",
-    "usesText": "看看我愛用的工具",
-    "guestbookLabel": "留言板",
-    "guestbookText": "留下你的足跡",
-    "lastPlayed": "最近播放"
-  },
   "cta": {
     "openToWork": "開放合作中",
     "line1": "從概念到",
