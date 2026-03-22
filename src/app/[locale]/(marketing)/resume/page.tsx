@@ -1,4 +1,4 @@
-import { ArrowRight, Download, Mail } from "lucide-react";
+import { ArrowRight, Mail } from "lucide-react";
 import type { Metadata } from "next";
 import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
@@ -33,14 +33,6 @@ export default function ResumePage() {
         <p className="text-xl text-zinc-400 max-w-2xl mb-8">{t("subtitle")}</p>
 
         <div className="flex items-center gap-4 flex-wrap">
-          <a
-            href="/resume.pdf"
-            download
-            className="group inline-flex items-center gap-2 px-6 py-3 bg-white text-black font-medium rounded-full hover:bg-zinc-100 transition-colors"
-          >
-            <Download size={18} />
-            {t("downloadPdf")}
-          </a>
           <Link
             href="/contact"
             className="inline-flex items-center gap-2 px-6 py-3 border border-zinc-700 text-zinc-300 rounded-full hover:border-zinc-500 hover:text-white transition-colors"
