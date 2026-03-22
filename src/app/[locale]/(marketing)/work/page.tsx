@@ -11,62 +11,12 @@ export const metadata: Metadata = {
     "Explore my curated collection of web and mobile projects — from learning platforms to developer tools, built with modern technologies.",
 };
 
-// Tech icon mapping with proper SVG icons from original website
-const getTechIcon = (tech: string) => {
-  const iconMap: Record<string, string> = {
-    "Next.js": "https://ext.same-assets.com/4210891837/3713030905.svg",
-    React: "https://ext.same-assets.com/4210891837/1405948304.svg",
-    TypeScript: "https://ext.same-assets.com/4210891837/2528715604.svg",
-    "Tailwind CSS": "https://ext.same-assets.com/4210891837/3016618163.svg",
-    "Shadcn UI": "https://ext.same-assets.com/4210891837/1642891050.svg",
-    "TanStack Query": "https://ext.same-assets.com/4210891837/4137464814.svg",
-    Zustand: "https://ext.same-assets.com/4210891837/4267146031.svg",
-    "Motion.dev": "https://ext.same-assets.com/4210891837/3920898803.svg",
-    "Node.js": "https://ext.same-assets.com/4210891837/4183917616.svg",
-    "Express.js": "https://ext.same-assets.com/4210891837/2102192602.svg",
-    Bun: "https://ext.same-assets.com/4210891837/3695715617.svg",
-    MongoDB: "https://ext.same-assets.com/4210891837/2421081261.svg",
-    Zod: "https://ext.same-assets.com/4210891837/142762284.svg",
-    Razorpay: "https://ext.same-assets.com/4210891837/11295171.svg",
-    Turborepo: "https://ext.same-assets.com/4210891837/777266580.svg",
-    Docker: "https://ext.same-assets.com/4210891837/741527898.svg",
-    "React-Native": "https://ext.same-assets.com/4210891837/1405948304.svg",
-    Expo: "https://ext.same-assets.com/4210891837/2946458762.svg",
-    Firebase: "https://ext.same-assets.com/4210891837/1880224428.svg",
-    Cloudinary: "https://ext.same-assets.com/4210891837/1880224428.svg",
-    Reanimated: "https://ext.same-assets.com/4210891837/3920898803.svg",
-    "Gifted-Charts": "https://ext.same-assets.com/4210891837/3920898803.svg",
-    "Sanity CMS": "https://ext.same-assets.com/4210891837/4208628319.svg",
-    "Better Auth": "https://ext.same-assets.com/4210891837/2980670338.svg",
-    GROQ: "https://ext.same-assets.com/4210891837/1786905707.svg",
-    Sentry: "https://ext.same-assets.com/4210891837/1786905707.svg",
-    Markdown: "https://ext.same-assets.com/4210891837/1406879536.svg",
-    Parallax: "https://ext.same-assets.com/4210891837/3920898803.svg",
-    Vercel: "https://ext.same-assets.com/4210891837/2047475379.svg",
-    HighlightJS: "https://ext.same-assets.com/4210891837/3920898803.svg",
-    "Hotkeys Hook": "https://ext.same-assets.com/4210891837/617334745.svg",
-    FFmpeg: "https://ext.same-assets.com/4210891837/2120376593.svg",
-    PostgreSQL: "https://ext.same-assets.com/4210891837/4074329355.svg",
-    "Prisma ORM": "https://ext.same-assets.com/4210891837/3295269427.svg",
-    MDX: "https://ext.same-assets.com/4210891837/172607403.svg",
-  };
-  return iconMap[tech] || null;
+const getTechIcon = (_tech: string) => {
+  return null;
 };
-
-// Decorative gradient arrow SVGs for each project from original website
-const decorativeArrows = [
-  "https://ext.same-assets.com/4210891837/1710691793.svg", // project 1
-  "https://ext.same-assets.com/4210891837/1549852767.svg", // project 2
-  "https://ext.same-assets.com/4210891837/2171624552.svg", // project 3
-  "https://ext.same-assets.com/4210891837/2377463393.svg", // project 4
-  "https://ext.same-assets.com/4210891837/783673468.svg", // project 5
-  "https://ext.same-assets.com/4210891837/2334167925.svg", // project 6
-  "https://ext.same-assets.com/4210891837/1454374180.svg", // project 7
-];
 
 function ProjectCard({ project, index }: { project: Project; index: number }) {
   const projectNumber = String(index + 1).padStart(2, "0");
-  const decorativeArrow = decorativeArrows[index % decorativeArrows.length];
 
   return (
     <div className="w-full max-w-[460px]">
@@ -112,17 +62,6 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
         <div className="relative bg-[#111114]/80 rounded-2xl overflow-hidden backdrop-blur-sm">
           {/* Description header with arrow */}
           <div className="p-5 pb-4 relative">
-            {/* Decorative gradient arrow SVG */}
-            <div className="absolute top-4 right-4 w-8 h-8 opacity-90">
-              <Image
-                src={decorativeArrow}
-                alt=""
-                width={32}
-                height={32}
-                className="w-full h-full"
-              />
-            </div>
-
             <p className="text-[14px] text-zinc-300 leading-relaxed pr-12 font-light">
               {project.description}
             </p>
@@ -139,6 +78,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
                     width={500}
                     height={300}
                     className="w-full h-auto object-cover"
+                    priority={index === 0}
                   />
                 </div>
               ) : (
@@ -204,7 +144,7 @@ export default function WorkPage() {
       <div
         className="absolute inset-0 pointer-events-none opacity-[0.03] mix-blend-overlay"
         style={{
-          backgroundImage: `url('https://ext.same-assets.com/4210891837/2445232556.avif')`,
+          backgroundImage: "none",
           backgroundSize: "cover",
           backgroundPosition: "center top",
         }}

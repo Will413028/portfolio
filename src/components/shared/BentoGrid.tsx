@@ -1,45 +1,44 @@
 "use client";
 
 import { Copy } from "lucide-react";
-import Image from "next/image";
 import { useTranslations } from "next-intl";
 
 const techStack = [
-  { name: "React" },
-  { name: "Next.js" },
+  { name: "Python" },
+  { name: "FastAPI" },
+  { name: "Go" },
+  { name: "Gin" },
   { name: "TypeScript" },
-  { name: "Tailwind CSS" },
-  { name: "Motion.dev" },
-  { name: "Sanity CMS" },
-  { name: "Figma" },
+  { name: "Next.js" },
   { name: "Node.js" },
+  { name: "Flask" },
 ];
 
 const techStack2 = [
   { name: "PostgreSQL" },
   { name: "MongoDB" },
-  { name: "Prisma" },
-  { name: "Drizzle" },
-  { name: "Turborepo" },
-  { name: "Zustand" },
-  { name: "PostHog" },
-  { name: "Bun" },
+  { name: "Redis" },
+  { name: "RabbitMQ" },
+  { name: "MariaDB" },
+  { name: "Qdrant" },
+  { name: "BigQuery" },
+  { name: "Docker" },
 ];
 
 const techStack3 = [
-  { name: "Linux" },
-  { name: "Bash" },
-  { name: "Git" },
-  { name: "GitHub" },
-  { name: "Vercel" },
-  { name: "Docker" },
+  { name: "GCP" },
   { name: "AWS" },
-  { name: "Cloudflare" },
+  { name: "Terraform" },
+  { name: "Ansible" },
+  { name: "GitLab CI" },
+  { name: "Git" },
+  { name: "Google ADK" },
+  { name: "Tauri" },
 ];
 
 const timezones = [
-  { city: "London", code: "UK" },
-  { city: "New Delhi", code: "INDIA", active: true },
+  { city: "Tokyo", code: "JP" },
+  { city: "Taipei", code: "TW", active: true },
   { city: "New York", code: "USA" },
 ];
 
@@ -54,13 +53,9 @@ export default function BentoGrid() {
             {/* Decorative curved lines */}
             <div className="absolute -left-20 top-1/2 -translate-y-1/2 w-16 h-32 border-l-2 border-t-2 border-b-2 border-cyan-500/30 rounded-l-full" />
             <div className="absolute -right-20 top-1/2 -translate-y-1/2 w-16 h-32 border-r-2 border-t-2 border-b-2 border-cyan-500/30 rounded-r-full" />
-            <Image
-              src="https://ext.same-assets.com/4210891837/1148079469.webp"
-              alt="Will Wu"
-              width={96}
-              height={96}
-              className="w-24 h-24 rounded-full object-cover border-4 border-cyan-500/30 shadow-lg shadow-cyan-500/10"
-            />
+            <div className="w-24 h-24 rounded-full border-4 border-cyan-500/30 shadow-lg shadow-cyan-500/10 bg-gradient-to-br from-sky-400 via-cyan-500 to-teal-500 flex items-center justify-center">
+              <span className="text-2xl font-bold text-white">WW</span>
+            </div>
           </div>
           <p className="text-xs uppercase tracking-[0.2em] text-zinc-500 mb-2">
             {t("collaborationLabel")}
@@ -206,7 +201,7 @@ export default function BentoGrid() {
                 }`}
               >
                 <span className="text-lg">
-                  {tz.code === "UK" ? "🇬🇧" : tz.code === "INDIA" ? "🇮🇳" : "🇺🇸"}
+                  {tz.code === "JP" ? "🇯🇵" : tz.code === "TW" ? "🇹🇼" : "🇺🇸"}
                 </span>
                 {tz.code}
               </div>

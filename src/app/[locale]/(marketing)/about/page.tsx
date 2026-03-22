@@ -119,7 +119,14 @@ export default function AboutPage() {
                   {exp.period}
                 </span>
               </div>
-              <p className="text-zinc-400">{exp.description}</p>
+              <ul className="space-y-1.5">
+                {exp.description.map((item) => (
+                  <li key={item} className="text-zinc-400 text-sm flex gap-2">
+                    <span className="text-cyan-500 mt-1 shrink-0">•</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           ))}
         </div>

@@ -6,12 +6,14 @@ import {
   ChevronLeft,
   ChevronRight,
   Clock,
+  Github,
   Globe,
+  Linkedin,
   Loader2,
+  Mail,
   MessageSquare,
   Video,
 } from "lucide-react";
-import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 import CTASection from "@/components/shared/CTASection";
@@ -128,7 +130,7 @@ export default function ContactPage() {
       <div
         className="absolute inset-0 pointer-events-none opacity-[0.03] mix-blend-overlay"
         style={{
-          backgroundImage: `url('https://ext.same-assets.com/4210891837/2445232556.avif')`,
+          backgroundImage: "none",
           backgroundSize: "cover",
           backgroundPosition: "center top",
         }}
@@ -185,12 +187,7 @@ export default function ContactPage() {
               className="w-10 h-10 rounded-full bg-zinc-800/50 border border-zinc-700 flex items-center justify-center text-zinc-400 hover:text-white hover:border-zinc-500 transition-all"
               title="Email"
             >
-              <Image
-                src="https://ext.same-assets.com/4210891837/2723767466.svg"
-                alt="Email"
-                width={18}
-                height={18}
-              />
+              <Mail size={18} />
             </a>
             <a
               href="https://www.linkedin.com/in/will4130/"
@@ -199,12 +196,7 @@ export default function ContactPage() {
               className="w-10 h-10 rounded-full bg-zinc-800/50 border border-zinc-700 flex items-center justify-center text-zinc-400 hover:text-white hover:border-zinc-500 transition-all"
               title="LinkedIn"
             >
-              <Image
-                src="https://ext.same-assets.com/4210891837/1899816707.svg"
-                alt="LinkedIn"
-                width={18}
-                height={18}
-              />
+              <Linkedin size={18} />
             </a>
             <a
               href="https://github.com/will413028"
@@ -213,12 +205,7 @@ export default function ContactPage() {
               className="w-10 h-10 rounded-full bg-zinc-800/50 border border-zinc-700 flex items-center justify-center text-zinc-400 hover:text-white hover:border-zinc-500 transition-all"
               title="GitHub"
             >
-              <Image
-                src="https://ext.same-assets.com/4210891837/3395764652.svg"
-                alt="GitHub"
-                width={18}
-                height={18}
-              />
+              <Github size={18} />
             </a>
           </div>
         </div>

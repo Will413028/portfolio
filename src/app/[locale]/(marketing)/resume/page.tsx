@@ -2,7 +2,7 @@ import { ArrowRight, Download, Mail } from "lucide-react";
 import type { Metadata } from "next";
 import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { getExperience, getSkills } from "@/lib/experience";
+import { getEducation, getExperience, getSkills } from "@/lib/experience";
 
 export const metadata: Metadata = {
   title: "Resume",
@@ -14,6 +14,7 @@ export default function ResumePage() {
   const t = useTranslations("resumePage");
   const locale = useLocale();
   const experience = getExperience(locale);
+  const education = getEducation(locale);
   const skills = getSkills(locale);
 
   return (
@@ -60,16 +61,26 @@ export default function ResumePage() {
               className="relative pl-8 border-l-2 border-zinc-800"
             >
               <div className="absolute left-[-9px] top-1 w-4 h-4 rounded-full bg-cyan-500 border-4 border-[#0a0a0b]" />
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
+              <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-2">
                 <div>
                   <h3 className="text-lg font-medium text-white">{exp.role}</h3>
-                  <p className="text-cyan-400 text-sm">{exp.company}</p>
+                  <p className="text-cyan-400 text-sm">
+                    {exp.company} · {exp.location}
+                  </p>
+                  <p className="text-xs text-zinc-500 mt-1">{exp.techStack}</p>
                 </div>
-                <span className="text-sm text-zinc-500 mt-1 md:mt-0">
+                <span className="text-sm text-zinc-500 mt-1 md:mt-0 md:shrink-0">
                   {exp.period}
                 </span>
               </div>
-              <p className="text-zinc-400 text-sm">{exp.description}</p>
+              <ul className="mt-3 space-y-1.5">
+                {exp.description.map((item) => (
+                  <li key={item} className="text-zinc-400 text-sm flex gap-2">
+                    <span className="text-cyan-500 mt-1.5 shrink-0">•</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           ))}
         </div>
@@ -105,10 +116,25 @@ export default function ResumePage() {
       {/* Education */}
       <section className="px-6 py-16 max-w-4xl mx-auto">
         <h2 className="text-2xl font-medium mb-8">{t("educationTitle")}</h2>
-        <div className="p-6 bg-zinc-900/50 border border-zinc-800 rounded-2xl">
-          <h3 className="text-lg font-medium text-white">{t("degree")}</h3>
-          <p className="text-cyan-400 text-sm">{t("university")}</p>
-          <p className="text-sm text-zinc-500 mt-1">{t("educationPeriod")}</p>
+        <div className="space-y-4">
+          {education.map((edu) => (
+            <div
+              key={edu.school}
+              className="p-6 bg-zinc-900/50 border border-zinc-800 rounded-2xl"
+            >
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between">
+                <div>
+                  <h3 className="text-lg font-medium text-white">
+                    {edu.degree}
+                  </h3>
+                  <p className="text-cyan-400 text-sm">{edu.school}</p>
+                </div>
+                <span className="text-sm text-zinc-500 mt-1 md:mt-0">
+                  {edu.period}
+                </span>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 

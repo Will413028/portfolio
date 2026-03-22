@@ -1,7 +1,6 @@
 "use client";
 
 import { ArrowRight, Copy } from "lucide-react";
-import Image from "next/image";
 import { useTranslations } from "next-intl";
 
 export default function Hero() {
@@ -73,18 +72,6 @@ export default function Hero() {
       </div>
 
       <div className="relative z-10 max-w-4xl mx-auto text-center">
-        {/* Announcement banner */}
-        <div className="inline-flex items-center gap-2 mb-8 px-1 py-1 bg-zinc-900/60 border border-zinc-800 rounded-full text-sm backdrop-blur-sm hover:border-zinc-700 transition-colors cursor-pointer group">
-          <span className="px-2.5 py-0.5 bg-emerald-500 text-black text-xs font-semibold rounded-full">
-            {t("badge")}
-          </span>
-          <span className="text-zinc-300 pr-2">{t("badgeText")}</span>
-          <ArrowRight
-            size={14}
-            className="text-zinc-400 mr-2 group-hover:translate-x-0.5 transition-transform"
-          />
-        </div>
-
         {/* Main headline */}
         <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium leading-[1.1] mb-8 tracking-tight">
           {t("headline1")}
@@ -99,21 +86,8 @@ export default function Hero() {
         <div className="flex items-center justify-center gap-3 mb-12 text-lg text-zinc-400 flex-wrap">
           <span>{t("greeting")}</span>
           <div className="flex -space-x-1">
-            <Image
-              src="https://ext.same-assets.com/4210891837/1148079469.webp"
-              alt="Will Wu"
-              width={36}
-              height={36}
-              className="w-9 h-9 rounded-full border-2 border-zinc-900 object-cover"
-            />
-            <div className="w-9 h-9 rounded-full border-2 border-zinc-900 bg-gradient-to-br from-sky-400 via-cyan-500 to-teal-500 flex items-center justify-center overflow-hidden">
-              <Image
-                src="https://ext.same-assets.com/4210891837/419887552.svg"
-                alt=""
-                width={36}
-                height={36}
-                className="w-full h-full object-cover"
-              />
+            <div className="w-9 h-9 rounded-full border-2 border-zinc-900 bg-gradient-to-br from-sky-400 via-cyan-500 to-teal-500 flex items-center justify-center">
+              <span className="text-xs font-bold text-white">WW</span>
             </div>
           </div>
           <span>{t("role")}</span>
