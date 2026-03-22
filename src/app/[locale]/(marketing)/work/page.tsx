@@ -11,10 +11,6 @@ export const metadata: Metadata = {
     "Explore my curated collection of web and mobile projects — from learning platforms to developer tools, built with modern technologies.",
 };
 
-const getTechIcon = (_tech: string) => {
-  return null;
-};
-
 function ProjectCard({ project, index }: { project: Project; index: number }) {
   const projectNumber = String(index + 1).padStart(2, "0");
 
@@ -106,28 +102,14 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 
       {/* Tech Stack Tags */}
       <div className="flex flex-wrap gap-2">
-        {project.tags.map((tag) => {
-          const icon = getTechIcon(tag);
-          return (
-            <span
-              key={tag}
-              className="inline-flex items-center gap-2 px-3 py-1.5 bg-[#161618] border border-zinc-800 rounded-full text-[11px] text-zinc-300 hover:border-zinc-600 transition-colors"
-            >
-              {icon && (
-                <Image
-                  src={icon}
-                  alt={tag}
-                  width={14}
-                  height={14}
-                  className="w-3.5 h-3.5"
-                />
-              )}
-              <span className="uppercase tracking-wider font-medium">
-                {tag}
-              </span>
-            </span>
-          );
-        })}
+        {project.tags.map((tag) => (
+          <span
+            key={tag}
+            className="inline-flex items-center gap-2 px-3 py-1.5 bg-[#161618] border border-zinc-800 rounded-full text-[11px] text-zinc-300 hover:border-zinc-600 transition-colors"
+          >
+            <span className="uppercase tracking-wider font-medium">{tag}</span>
+          </span>
+        ))}
       </div>
     </div>
   );
