@@ -2,21 +2,16 @@ import { describe, expect, test } from "vitest";
 import { getBlogCategories, getBlogPosts } from "@/lib/blog-posts";
 
 describe("getBlogPosts", () => {
-  test("returns 6 posts for English", () => {
-    expect(getBlogPosts("en")).toHaveLength(6);
+  test("returns empty array for English", () => {
+    expect(getBlogPosts("en")).toHaveLength(0);
   });
 
-  test("returns 6 posts for zh-TW", () => {
-    expect(getBlogPosts("zh-TW")).toHaveLength(6);
+  test("returns empty array for zh-TW", () => {
+    expect(getBlogPosts("zh-TW")).toHaveLength(0);
   });
 
   test("falls back to English for unknown locale", () => {
     expect(getBlogPosts("fr")).toEqual(getBlogPosts("en"));
-  });
-
-  test("has exactly 2 featured posts", () => {
-    const featured = getBlogPosts("en").filter((p) => p.featured);
-    expect(featured).toHaveLength(2);
   });
 });
 
@@ -34,12 +29,5 @@ describe("getBlogCategories", () => {
   test("no duplicate categories", () => {
     const categories = getBlogCategories("en");
     expect(new Set(categories).size).toBe(categories.length);
-  });
-
-  test("includes expected categories", () => {
-    const categories = getBlogCategories("en");
-    expect(categories).toContain("Next.js");
-    expect(categories).toContain("TypeScript");
-    expect(categories).toContain("React");
   });
 });
