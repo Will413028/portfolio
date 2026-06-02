@@ -9,6 +9,7 @@
     "start": "next start",
     "lint": "tsc --noEmit && biome check src/",
     "format": "biome format --write",
+    "resume:pdf": "typst compile resume/resume.typ public/resume.pdf",
     "check:deps": "knip --no-exit-code",
     "test": "vitest run",
     "test:watch": "vitest",
