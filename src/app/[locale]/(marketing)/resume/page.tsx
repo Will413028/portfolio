@@ -1,4 +1,4 @@
-import { ArrowRight, Mail } from "lucide-react";
+import { ArrowRight, Download, Mail } from "lucide-react";
 import type { Metadata } from "next";
 import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
@@ -7,7 +7,7 @@ import { getEducation, getExperience, getSkills } from "@/lib/experience";
 export const metadata: Metadata = {
   title: "Resume",
   description:
-    "Will Wu's resume — Full-Stack Developer specializing in React, Next.js, TypeScript. View experience, skills, and education.",
+    "Will Wu's resume — Senior Backend Engineer (Python, Go, TypeScript). Work experience, skills, and education. Download as PDF.",
 };
 
 export default function ResumePage() {
@@ -33,6 +33,14 @@ export default function ResumePage() {
         <p className="text-xl text-zinc-400 max-w-2xl mb-8">{t("subtitle")}</p>
 
         <div className="flex items-center gap-4 flex-wrap">
+          <a
+            href="/resume.pdf"
+            download
+            className="inline-flex items-center gap-2 px-6 py-3 bg-white text-black font-medium rounded-full hover:bg-zinc-100 transition-colors"
+          >
+            <Download size={18} />
+            {t("downloadPdf")}
+          </a>
           <Link
             href="/contact"
             className="inline-flex items-center gap-2 px-6 py-3 border border-zinc-700 text-zinc-300 rounded-full hover:border-zinc-500 hover:text-white transition-colors"
@@ -41,6 +49,7 @@ export default function ResumePage() {
             {t("getInTouch")}
           </Link>
         </div>
+        <p className="text-xs text-zinc-600 mt-3">Updated June 2026</p>
       </section>
 
       {/* Experience */}
