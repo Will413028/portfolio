@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
+import { siteUrl } from "@/lib/site-url";
 import "./globals.css";
 
 const inter = Inter({
@@ -13,8 +14,6 @@ const playfair = Playfair_Display({
   variable: "--font-playfair",
   display: "swap",
 });
-
-const siteUrl = process.env.NEXT_PUBLIC_APP_URL || "https://example.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

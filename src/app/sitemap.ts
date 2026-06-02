@@ -1,9 +1,10 @@
 import type { MetadataRoute } from "next";
 import { routing } from "@/i18n/routing";
 import { getAllProjectSlugs } from "@/lib/projects";
+import { siteUrl } from "@/lib/site-url";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://example.com";
+  const baseUrl = siteUrl;
   const staticPages = ["/", "/about", "/work", "/contact", "/resume"];
   const projectPages = getAllProjectSlugs().map((slug) => `/work/${slug}`);
   const pages = [...staticPages, ...projectPages];
