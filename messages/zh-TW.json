@@ -23,7 +23,6 @@
     "home": "首頁",
     "about": "關於",
     "work": "作品",
-    "blog": "部落格",
     "more": "更多",
     "resume": "履歷",
     "bookACall": "預約通話"
@@ -58,7 +57,7 @@
   },
   "aboutSection": {
     "label": "認識我",
-    "title1": "全端開發者",
+    "title1": "資深後端工程師",
     "title2": "同時也涉獵",
     "titleHighlight": "各種領域",
     "bio1": "我是 Will Wu，擁有 4 年以上經驗的資深後端工程師，專精於大規模生產系統的建構。從企業 AI 平台到服務 200 萬以上月活用戶的內容平台，我擅長使用 Python、Go 和 TypeScript 設計穩健的架構。",
@@ -79,7 +78,7 @@
   "aboutPage": {
     "label": "關於我",
     "titlePrefix": "我是 Will Wu，一位",
-    "titleHighlight": "充滿熱情的開發者",
+    "titleHighlight": "資深後端工程師",
     "storyTitle": "我的故事",
     "story1": "我的科技之旅始於化學工程學位，但很快發現自己真正的熱情在於軟體開發。在喬治梅森大學取得資料分析工程碩士後，我全心投入後端開發。",
     "story2": "如今，我專注於使用 Python、Go 和 TypeScript 構建可擴展的後端系統。從企業 AI 平台到服務數百萬用戶的內容平台，我擅長設計能在真實壓力下運作的架構。",
@@ -119,20 +118,6 @@
     "previousProject": "上一個專案",
     "nextProject": "下一個專案"
   },
-  "blogPage": {
-    "label": "部落格",
-    "title1": "想法、教學與",
-    "titleHighlight": "見解",
-    "subtitle": "我撰寫關於網頁開發、設計模式，以及從產品開發中學到的經驗。",
-    "featured": "精選文章",
-    "allPosts": "所有文章",
-    "readMore": "閱讀更多",
-    "all": "全部",
-    "newsletterTitle": "訂閱我的電子報",
-    "newsletterText": "當我發布新文章時收到通知。不會寄垃圾郵件，隨時可以取消訂閱。",
-    "emailPlaceholder": "輸入你的電子郵件",
-    "subscribe": "訂閱"
-  },
   "contactPage": {
     "label": "聯繫",
     "titlePrefix": "讓我們",
@@ -164,19 +149,8 @@
     "home": "首頁",
     "about": "關於",
     "projects": "作品集",
-    "blog": "部落格",
-    "guestBook": "留言板",
-    "bucketList": "願望清單",
-    "uses": "工具",
-    "attribution": "致謝",
     "bookACall": "預約通話",
-    "links": "連結",
-    "rss": "RSS",
-    "privacy": "隱私",
-    "terms": "條款",
-    "copyright": "版權所有",
-    "privacyPolicy": "隱私政策",
-    "termsOfUse": "使用條款"
+    "copyright": "版權所有"
   },
   "resumePage": {
     "label": "履歷",

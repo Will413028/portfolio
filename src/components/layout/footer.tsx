@@ -12,10 +12,7 @@ export default function Footer() {
     { label: t("projects"), href: "/work" },
   ];
 
-  const specificsLinks = [
-    { label: t("bookACall"), href: "/contact" },
-    { label: t("rss"), href: "/feed.xml", external: true },
-  ];
+  const specificsLinks = [{ label: t("bookACall"), href: "/contact" }];
 
   const socialLinks = [
     {
@@ -67,27 +64,16 @@ export default function Footer() {
               {t("specifics")}
             </h4>
             <ul className="space-y-2">
-              {specificsLinks.map((link) =>
-                "external" in link ? (
-                  <li key={link.label}>
-                    <a
-                      href={link.href}
-                      className="text-sm text-zinc-400 hover:text-white transition-colors"
-                    >
-                      {link.label}
-                    </a>
-                  </li>
-                ) : (
-                  <li key={link.label}>
-                    <Link
-                      href={link.href}
-                      className="text-sm text-zinc-400 hover:text-white transition-colors"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ),
-              )}
+              {specificsLinks.map((link) => (
+                <li key={link.label}>
+                  <Link
+                    href={link.href}
+                    className="text-sm text-zinc-400 hover:text-white transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
