@@ -1,6 +1,4 @@
-"use client";
-
-import { Copy } from "lucide-react";
+import { Mail } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 const techStack = [
@@ -226,13 +224,13 @@ export default function BentoGrid() {
             {t("onYourNextProject")}
           </p>
 
-          <button
-            type="button"
+          <a
+            href="mailto:will413028@gmail.com"
             className="flex items-center gap-2 px-5 py-2.5 bg-zinc-800 border border-zinc-700 rounded-full text-sm text-zinc-300 hover:text-white hover:border-zinc-600 transition-all"
           >
-            <Copy size={14} />
+            <Mail size={14} />
             will413028@gmail.com
-          </button>
+          </a>
         </div>
       </div>
     </section>
