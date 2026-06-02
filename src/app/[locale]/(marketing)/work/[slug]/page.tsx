@@ -4,6 +4,7 @@ import {
   CheckCircle2,
   ExternalLink,
   Github,
+  TrendingUp,
 } from "lucide-react";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -155,6 +156,22 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 </div>
               ))}
             </div>
+
+            {project.outcomes && project.outcomes.length > 0 && (
+              <>
+                <h2 className="text-2xl font-medium mb-6 mt-12">
+                  {t("impact")}
+                </h2>
+                <div className="space-y-4">
+                  {project.outcomes.map((outcome) => (
+                    <div key={outcome} className="flex items-start gap-3">
+                      <TrendingUp className="w-5 h-5 text-cyan-400 mt-0.5 flex-shrink-0" />
+                      <p className="text-zinc-300">{outcome}</p>
+                    </div>
+                  ))}
+                </div>
+              </>
+            )}
           </div>
 
           {/* Sidebar */}

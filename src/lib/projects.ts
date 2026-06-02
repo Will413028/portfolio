@@ -12,6 +12,7 @@ export interface Project {
   featured: boolean;
   features: string[];
   challenges: string[];
+  outcomes?: string[];
   screenshots: string[];
   links: {
     live?: string;
@@ -56,6 +57,10 @@ const projectsEn: Project[] = [
       "Building a performant desktop app with Tauri + Next.js",
       "Ensuring LLM inference runs efficiently on local hardware",
     ],
+    outcomes: [
+      "Serving paying customers in production",
+      "Fully on-prem — meets enterprise data-security requirements",
+    ],
     links: {
       github: "https://github.com/Will413028/meeting-helper-backend",
     },
@@ -99,6 +104,10 @@ const projectsEn: Project[] = [
       "Integrating payment gateway for seamless checkout",
       "Building real-time order tracking across buyer and seller apps",
     ],
+    outcomes: [
+      "Zero-downtime auth re-architecture + 20-service Alibaba Cloud RDS migration",
+      "Buyer & seller iOS apps shipped through their first App Store submission",
+    ],
     links: {
       live: "https://dailyfresh.food/",
       github: "https://github.com/dailyfresh-food/backend-payuni",
@@ -141,6 +150,10 @@ const projectsEn: Project[] = [
       "Designing a reliable rental workflow with real-time availability",
       "Setting up cloud infrastructure with Terraform for reproducible deployments",
     ],
+    outcomes: [
+      "Greenfield delivery in ~2 months with a 4-engineer team",
+      "50% faster deploys (GitLab CI + Ansible), 30% lower infra overhead (Terraform)",
+    ],
     links: {},
   },
   {
@@ -157,7 +170,7 @@ const projectsEn: Project[] = [
     quarter: "Q2 2026",
     gradient: "from-amber-900/80 via-orange-800/60 to-yellow-900/80",
     featured: false,
-    screenshots: [],
+    screenshots: ["/images/projects/bfx-funding-bot.png"],
     features: [
       "Event-sourced ledger with append-only event log and snapshot tables",
       "Periodic-reconcile correctness backbone (REST snapshot as source of truth, WebSocket as latency optimization)",
@@ -169,6 +182,10 @@ const projectsEn: Project[] = [
       "Diagnosing and fixing 6+ production incidents on live capital, each with a canary verification step",
       "Designing a reconciliation backbone resilient to WebSocket gaps (à la FIX drop-copy)",
       "Avoiding dual-writer double-counting in the ledger",
+    ],
+    outcomes: [
+      "Running on live capital with reconcile-based correctness",
+      "6+ production incidents diagnosed and fixed, each canary-verified",
     ],
     links: {},
   },
@@ -186,7 +203,7 @@ const projectsEn: Project[] = [
     quarter: "Q2 2026",
     gradient: "from-blue-900/80 via-indigo-800/60 to-violet-900/80",
     featured: false,
-    screenshots: [],
+    screenshots: ["/images/projects/divego.png"],
     features: [
       "Strangler-fig migration: domain-by-domain vertical slices",
       "Unified Next.js full-stack app with Hono + Drizzle",
@@ -198,6 +215,10 @@ const projectsEn: Project[] = [
       "Migrating each domain without breaking live functionality",
       "Schema handoff from Alembic to Drizzle",
       "Keeping cross-domain payloads consistent during the transition",
+    ],
+    outcomes: [
+      "Python / FastAPI backend fully retired (~567 tests passing)",
+      "Consolidated into a single unified Next.js full-stack codebase",
     ],
     links: {},
   },
@@ -239,6 +260,7 @@ const projectsZhTw: Project[] = [
       "使用 Tauri + Next.js 構建高效能桌面應用",
       "確保 LLM 推論在本地硬體上高效運行",
     ],
+    outcomes: ["已在生產環境服務付費客戶", "全地端部署——符合企業資料安全需求"],
     links: {
       github: "https://github.com/Will413028/meeting-helper-backend",
     },
@@ -280,6 +302,10 @@ const projectsZhTw: Project[] = [
       "為多個客戶端應用設計可擴展的微服務架構",
       "整合金流閘道實現無縫結帳",
       "在買家和賣家應用間建構即時訂單追蹤",
+    ],
+    outcomes: [
+      "零停機認證重構 + 20 微服務阿里雲 RDS 遷移",
+      "買賣家 iOS App 完成首次 App Store 送審",
     ],
     links: {
       live: "https://dailyfresh.food/",
@@ -323,6 +349,10 @@ const projectsZhTw: Project[] = [
       "設計具備即時可用性的可靠租賃流程",
       "使用 Terraform 建構可重複部署的雲端基礎設施",
     ],
+    outcomes: [
+      "~2 個月帶 4 人團隊從零交付",
+      "部署快 50%（GitLab CI + Ansible）、基礎設施開銷降 30%（Terraform）",
+    ],
     links: {},
   },
   {
@@ -339,7 +369,7 @@ const projectsZhTw: Project[] = [
     quarter: "2026 Q2",
     gradient: "from-amber-900/80 via-orange-800/60 to-yellow-900/80",
     featured: false,
-    screenshots: [],
+    screenshots: ["/images/projects/bfx-funding-bot.png"],
     features: [
       "事件溯源帳本（append-only event log + 快照表）",
       "週期對帳正確性骨幹（REST 快照為真實來源，WebSocket 為延遲最佳化）",
@@ -351,6 +381,10 @@ const projectsZhTw: Project[] = [
       "在真實資金上診斷並修復 6+ 起 production incident，每次都有 canary 驗證",
       "設計可承受 WebSocket 中斷的對帳骨幹（類 FIX drop-copy）",
       "避免帳本的 dual-writer 重複計算",
+    ],
+    outcomes: [
+      "以真實資金運行，對帳式正確性保障",
+      "診斷並修復 6+ 起 production incident，每次 canary 驗證",
     ],
     links: {},
   },
@@ -368,7 +402,7 @@ const projectsZhTw: Project[] = [
     quarter: "2026 Q2",
     gradient: "from-blue-900/80 via-indigo-800/60 to-violet-900/80",
     featured: false,
-    screenshots: [],
+    screenshots: ["/images/projects/divego.png"],
     features: [
       "strangler-fig 遷移：逐域垂直切片",
       "統一 Next.js 全端應用（Hono + Drizzle）",
@@ -380,6 +414,10 @@ const projectsZhTw: Project[] = [
       "逐域遷移且不中斷既有功能",
       "schema 從 Alembic 交棒至 Drizzle",
       "遷移過程保持跨域 payload 一致",
+    ],
+    outcomes: [
+      "Python / FastAPI 後端完全退役（~567 測試通過）",
+      "收斂成單一 Next.js 全端程式庫",
     ],
     links: {},
   },
