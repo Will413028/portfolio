@@ -1,6 +1,6 @@
 "use client";
 
-import { ChevronDown, Command, Globe, Menu, X } from "lucide-react";
+import { Globe, Menu, X } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { useState } from "react";
 import { Link, usePathname, useRouter } from "@/i18n/navigation";
@@ -85,12 +85,6 @@ export default function Navigation() {
               {link.label}
             </Link>
           ))}
-          <button
-            type="button"
-            className="flex items-center gap-1 px-4 py-1.5 text-sm text-zinc-400 hover:text-white rounded-full hover:bg-zinc-800/50 transition-all duration-200"
-          >
-            {t("more")} <ChevronDown size={14} />
-          </button>
           <div className="w-px h-5 bg-zinc-700 mx-1" />
           <Link
             href="/contact"
@@ -138,14 +132,6 @@ export default function Navigation() {
               </div>
             )}
           </div>
-
-          {/* Command palette trigger */}
-          <button
-            type="button"
-            className="flex items-center justify-center w-9 h-9 rounded-lg bg-zinc-900/80 border border-zinc-800 text-zinc-500 hover:text-white hover:border-zinc-700 transition-all duration-200"
-          >
-            <Command size={16} />
-          </button>
         </div>
 
         {/* Mobile menu button */}
