@@ -4,13 +4,12 @@ import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import Analytics from "@/components/analytics";
 import { routing } from "@/i18n/routing";
+import { siteUrl } from "@/lib/site-url";
 
 type Props = {
   children: React.ReactNode;
   params: Promise<{ locale: string }>;
 };
-
-const siteUrl = process.env.NEXT_PUBLIC_APP_URL || "https://example.com";
 
 const personJsonLd = {
   "@context": "https://schema.org",
