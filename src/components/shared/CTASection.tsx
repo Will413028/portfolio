@@ -2,6 +2,7 @@
 
 import { ArrowRight } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 
 export default function CTASection() {
   const t = useTranslations("cta");
@@ -102,8 +103,8 @@ export default function CTASection() {
             <span className="text-zinc-900">{t("line2Highlight")}</span>
           </h2>
 
-          <button
-            type="button"
+          <Link
+            href="/contact"
             className="group inline-flex items-center gap-2 px-6 py-3 bg-white text-black font-medium rounded-full hover:bg-zinc-100 transition-all duration-200 shadow-xl mb-8"
           >
             {t("getInTouch")}
@@ -113,7 +114,7 @@ export default function CTASection() {
                 className="text-white group-hover:translate-x-0.5 transition-transform"
               />
             </span>
-          </button>
+          </Link>
 
           <p className="text-lg md:text-xl font-semibold text-white mb-2">
             {t("availability")}

@@ -19,11 +19,11 @@ const siteUrl = process.env.NEXT_PUBLIC_APP_URL || "https://example.com";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Will Wu - Developer, Freelancer & Problem Solver",
+    default: "Will Wu — Senior Backend Engineer",
     template: "%s | Will Wu",
   },
   description:
-    "Full-Stack Developer specializing in Next.js, React, TypeScript, and Sanity CMS. I build fast, accessible web apps and help founders ship products that users love.",
+    "Senior Backend Engineer with 4+ years building production systems at scale — Python, Go, TypeScript. 2M+ MAU platforms, zero-downtime migrations, 80% latency cuts, SAML/RBAC security. Available for full-time roles and freelance backend / infrastructure projects. Based in Taiwan, working globally.",
   icons: {
     icon: "/favicon.svg",
   },
@@ -32,15 +32,15 @@ export const metadata: Metadata = {
     locale: "en",
     url: siteUrl,
     siteName: "Will Wu",
-    title: "Will Wu - Developer, Freelancer & Problem Solver",
+    title: "Will Wu — Senior Backend Engineer",
     description:
-      "Full-Stack Developer specializing in Next.js, React, TypeScript, and Sanity CMS. I build fast, accessible web apps and help founders ship products that users love.",
+      "Senior Backend Engineer — Python, Go, TypeScript. 2M+ MAU systems, zero-downtime migrations, 80% latency cuts. Open to full-time roles and freelance backend projects. Based in Taiwan.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Will Wu - Developer, Freelancer & Problem Solver",
+    title: "Will Wu — Senior Backend Engineer",
     description:
-      "Full-Stack Developer specializing in Next.js, React, TypeScript, and Sanity CMS.",
+      "Senior Backend Engineer — Python, Go, TypeScript. 2M+ MAU systems, zero-downtime migrations, 80% latency cuts.",
   },
   robots: {
     index: true,

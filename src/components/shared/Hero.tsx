@@ -1,7 +1,8 @@
 "use client";
 
-import { ArrowRight, Copy } from "lucide-react";
+import { ArrowRight, Mail } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 
 export default function Hero() {
   const t = useTranslations("hero");
@@ -95,8 +96,8 @@ export default function Hero() {
 
         {/* CTAs */}
         <div className="flex items-center justify-center gap-4 flex-wrap">
-          <button
-            type="button"
+          <Link
+            href="/contact"
             className="group flex items-center gap-2 px-6 py-3 bg-white text-black font-medium rounded-full hover:bg-zinc-100 transition-all duration-200 shadow-lg shadow-white/10"
           >
             {t("cta")}
@@ -106,18 +107,18 @@ export default function Hero() {
                 className="text-white group-hover:translate-x-0.5 transition-transform"
               />
             </span>
-          </button>
+          </Link>
 
-          <button
-            type="button"
+          <a
+            href="mailto:will413028@gmail.com"
             className="flex items-center gap-2 px-5 py-3 text-zinc-400 hover:text-white transition-colors group"
           >
-            <Copy
+            <Mail
               size={16}
               className="group-hover:scale-110 transition-transform"
             />
             <span>will413028@gmail.com</span>
-          </button>
+          </a>
         </div>
       </div>
     </section>

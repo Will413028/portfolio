@@ -23,7 +23,6 @@
     "home": "Home",
     "about": "About",
     "work": "Work",
-    "blog": "Blog",
     "more": "More",
     "resume": "Resume",
     "bookACall": "Book a Call"
@@ -58,7 +57,7 @@
   },
   "aboutSection": {
     "label": "Know About Me",
-    "title1": "Full-Stack Developer",
+    "title1": "Senior Backend Engineer",
     "title2": "and a little bit",
     "titleHighlight": "of everything",
     "bio1": "I'm Will Wu, a senior backend engineer with 4+ years of experience building production systems at scale. From enterprise AI platforms to content platforms serving 2M+ MAU, I specialize in designing robust architectures with Python, Go, and TypeScript.",
@@ -79,7 +78,7 @@
   "aboutPage": {
     "label": "About Me",
     "titlePrefix": "I'm Will Wu, a",
-    "titleHighlight": "passionate developer",
+    "titleHighlight": "Senior Backend Engineer",
     "storyTitle": "My Story",
     "story1": "My journey into tech began with a Chemical Engineering degree, but I quickly discovered my true passion lay in building software. After earning my MS in Data Analytics Engineering from George Mason University, I dove into backend development.",
     "story2": "Today, I specialize in building scalable backend systems using Python, Go, and TypeScript. From enterprise AI platforms to content platforms serving millions of users, I thrive on designing architectures that perform under real-world pressure.",
@@ -119,20 +118,6 @@
     "previousProject": "Previous Project",
     "nextProject": "Next Project"
   },
-  "blogPage": {
-    "label": "Blog",
-    "title1": "Thoughts, tutorials &",
-    "titleHighlight": "insights",
-    "subtitle": "I write about web development, design patterns, and lessons learned from building products.",
-    "featured": "Featured",
-    "allPosts": "All Posts",
-    "readMore": "Read More",
-    "all": "All",
-    "newsletterTitle": "Subscribe to my newsletter",
-    "newsletterText": "Get notified when I publish new articles. No spam, unsubscribe anytime.",
-    "emailPlaceholder": "Enter your email",
-    "subscribe": "Subscribe"
-  },
   "contactPage": {
     "label": "Contact",
     "titlePrefix": "Let's Get",
@@ -164,19 +149,8 @@
     "home": "Home",
     "about": "About",
     "projects": "Projects",
-    "blog": "Blog",
-    "guestBook": "Guest Book",
-    "bucketList": "Bucket List",
-    "uses": "Uses",
-    "attribution": "Attribution",
     "bookACall": "Book a call",
-    "links": "Links",
-    "rss": "RSS",
-    "privacy": "Privacy",
-    "terms": "Terms",
-    "copyright": "All rights reserved",
-    "privacyPolicy": "Privacy Policy",
-    "termsOfUse": "Terms of Use"
+    "copyright": "All rights reserved"
   },
   "resumePage": {
     "label": "Resume",

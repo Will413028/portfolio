@@ -336,6 +336,12 @@ export default function ContactPage() {
                       </p>
                       <button
                         type="button"
+                        onClick={() => {
+                          const subject = encodeURIComponent(
+                            `Meeting request: ${monthNames[currentMonth]} ${selectedDate}, ${currentYear}`,
+                          );
+                          window.location.href = `mailto:will413028@gmail.com?subject=${subject}`;
+                        }}
                         className="w-full py-3 bg-white text-black font-medium rounded-lg hover:bg-zinc-100 transition-colors"
                       >
                         {t("confirmBooking")}
