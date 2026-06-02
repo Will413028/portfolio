@@ -35,6 +35,20 @@ const experienceEn: Experience[] = [
     ],
   },
   {
+    role: "Sr. Backend Engineer · Part-time",
+    company: "dailyfresh",
+    period: "Jan 2025 - Present",
+    location: "Taipei, Taiwan",
+    techStack:
+      "Go (Gin), Java (Spring Boot), PostgreSQL, Redis, RabbitMQ, k3s, Next.js, Flutter",
+    description: [
+      "Senior engineer on a multi-vendor fresh-grocery marketplace (Go/Java microservices + Next.js web + Flutter buyer/seller apps), owning backend platform and cross-stack delivery",
+      "Re-architected web authentication to a gateway-owned session model (httpOnly cookies + CSRF + role-as-claim), unifying buyer/seller dual-role identity",
+      "Led a zero-downtime OAuth account-model refactor from 1:1 columns to a 1:N providers table across Google/Apple",
+      "Owned a production migration of 20 microservices to Alibaba Cloud RDS within an ~11-minute maintenance window",
+    ],
+  },
+  {
     role: "Sr. Backend Engineer",
     company: "Vocus",
     period: "Mar 2025 - Oct 2025",
@@ -92,6 +106,20 @@ const experienceZhTw: Experience[] = [
       "建構即時客服狀態系統——以 PostgreSQL trigger 實作 5 狀態機，並與 Cisco Finesse 電話系統跨系統互斥",
       "自建 3 層分散式追蹤（contextvar trace_id 貫穿 FastAPI 中介層與 RabbitMQ），在不適用 OpenTelemetry 時提供 PII-safe 結構化日誌",
       "建構自動化網頁爬蟲管線與 RAG 知識庫完整性工具鏈，將可行動的資料缺口從 64 降至 1",
+    ],
+  },
+  {
+    role: "資深後端工程師 · 兼職",
+    company: "日日生鮮",
+    period: "2025 年 1 月 - 至今",
+    location: "台北，台灣",
+    techStack:
+      "Go (Gin), Java (Spring Boot), PostgreSQL, Redis, RabbitMQ, k3s, Next.js, Flutter",
+    description: [
+      "生鮮電商平台（Go/Java 微服務 + Next.js 網站 + Flutter 買賣家 App）的資深工程師，負責後端平台與跨技術棧交付",
+      "將網頁認證重構為 gateway-owned session 模型（httpOnly cookie + CSRF + role-as-claim），統一買賣家雙角色身分",
+      "主導零停機 OAuth 帳號模型重構，從 1:1 欄位升級為跨 Google/Apple 的 1:N providers 表",
+      "負責 20 個微服務遷移至阿里雲 RDS，於約 11 分鐘維護視窗內零停機完成",
     ],
   },
   {
