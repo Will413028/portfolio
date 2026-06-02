@@ -24,11 +24,14 @@ const experienceEn: Experience[] = [
     company: "APMIC",
     period: "Nov 2025 - Present",
     location: "Taipei, Taiwan",
-    techStack: "Python (FastAPI), Next.js, PostgreSQL, Google ADK",
+    techStack:
+      "Python (FastAPI), React, Next.js, PostgreSQL, Hasura, RabbitMQ, Google ADK",
     description: [
       "Enterprise AI platform for on-premises LLM deployment and model fine-tuning",
-      "Built automated web scraping pipelines to continuously update knowledge bases, improving RAG pipeline accuracy",
-      "Design end-to-end LLM integration solutions for enterprise clients, translating complex business requirements into scalable AI architectures",
+      "Delivered SAML 2.0 SSO and an RBAC redesign for an enterprise customer-service platform, separating end-customers from operators to close a privilege-escalation gap",
+      "Built a real-time webchat agent-state system — a 5-state machine on PostgreSQL triggers with cross-system mutual exclusion against a Cisco Finesse telephony platform",
+      "Self-built 3-layer distributed tracing (contextvar trace_id across FastAPI middleware + RabbitMQ) with PII-safe structured logging where OpenTelemetry didn't fit",
+      "Built automated web-scraping pipelines and a RAG knowledge-base integrity toolchain, cutting actionable data gaps from 64 to 1",
     ],
   },
   {
@@ -81,11 +84,14 @@ const experienceZhTw: Experience[] = [
     company: "APMIC",
     period: "2025 年 11 月 - 至今",
     location: "台北，台灣",
-    techStack: "Python (FastAPI), Next.js, PostgreSQL, Google ADK",
+    techStack:
+      "Python (FastAPI), React, Next.js, PostgreSQL, Hasura, RabbitMQ, Google ADK",
     description: [
       "企業級 AI 平台，專注地端 LLM 部署與模型微調",
-      "建構自動化網頁爬蟲管線以持續更新知識庫，提升 RAG 管線精準度",
-      "為企業客戶設計端對端 LLM 整合方案，將複雜商業需求轉化為可擴展的 AI 架構",
+      "為企業客服平台交付 SAML 2.0 SSO 與 RBAC 重構，分離終端客戶與客服人員，修補權限越界漏洞",
+      "建構即時客服狀態系統——以 PostgreSQL trigger 實作 5 狀態機，並與 Cisco Finesse 電話系統跨系統互斥",
+      "自建 3 層分散式追蹤（contextvar trace_id 貫穿 FastAPI 中介層與 RabbitMQ），在不適用 OpenTelemetry 時提供 PII-safe 結構化日誌",
+      "建構自動化網頁爬蟲管線與 RAG 知識庫完整性工具鏈，將可行動的資料缺口從 64 降至 1",
     ],
   },
   {
@@ -161,11 +167,11 @@ const educationZhTw: Education[] = [
 const skillsEn: SkillCategory[] = [
   {
     category: "Languages",
-    items: ["Python", "Go", "TypeScript"],
+    items: ["Python", "Go", "TypeScript", "Java"],
   },
   {
     category: "Frameworks",
-    items: ["FastAPI", "Gin", "Next.js", "Flask"],
+    items: ["FastAPI", "Gin", "Spring Boot", "Next.js", "Flask"],
   },
   {
     category: "Databases",
@@ -173,18 +179,18 @@ const skillsEn: SkillCategory[] = [
   },
   {
     category: "Cloud & DevOps",
-    items: ["GCP", "AWS", "Docker", "GitLab CI", "Terraform", "Ansible"],
+    items: ["GCP", "AWS", "Docker", "k3s", "GitLab CI", "Terraform", "Ansible"],
   },
 ];
 
 const skillsZhTw: SkillCategory[] = [
   {
     category: "程式語言",
-    items: ["Python", "Go", "TypeScript"],
+    items: ["Python", "Go", "TypeScript", "Java"],
   },
   {
     category: "框架",
-    items: ["FastAPI", "Gin", "Next.js", "Flask"],
+    items: ["FastAPI", "Gin", "Spring Boot", "Next.js", "Flask"],
   },
   {
     category: "資料庫",
@@ -192,7 +198,7 @@ const skillsZhTw: SkillCategory[] = [
   },
   {
     category: "雲端與 DevOps",
-    items: ["GCP", "AWS", "Docker", "GitLab CI", "Terraform", "Ansible"],
+    items: ["GCP", "AWS", "Docker", "k3s", "GitLab CI", "Terraform", "Ansible"],
   },
 ];
 
