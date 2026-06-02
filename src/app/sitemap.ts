@@ -1,21 +1,25 @@
 import type { MetadataRoute } from "next";
 import { routing } from "@/i18n/routing";
+import { getAllProjectSlugs } from "@/lib/projects";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://example.com";
-  const pages = ["/", "/about", "/work", "/contact", "/resume"];
+  const staticPages = ["/", "/about", "/work", "/contact", "/resume"];
+  const projectPages = getAllProjectSlugs().map((slug) => `/work/${slug}`);
+  const pages = [...staticPages, ...projectPages];
+
+  const path = (locale: string, page: string) =>
+    `${baseUrl}/${locale}${page === "/" ? "" : page}`;
 
   return pages.flatMap((page) =>
     routing.locales.map((locale) => ({
-      url: `${baseUrl}/${locale}${page === "/" ? "" : page}`,
+      url: path(locale, page),
       lastModified: new Date(),
       alternates: {
-        languages: Object.fromEntries(
-          routing.locales.map((l) => [
-            l,
-            `${baseUrl}/${l}${page === "/" ? "" : page}`,
-          ]),
-        ),
+        languages: {
+          ...Object.fromEntries(routing.locales.map((l) => [l, path(l, page)])),
+          "x-default": path(routing.defaultLocale, page),
+        },
       },
     })),
   );

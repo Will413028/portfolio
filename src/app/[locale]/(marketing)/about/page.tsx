@@ -7,7 +7,7 @@ import { getExperience, getSkills } from "@/lib/experience";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Learn about Will Wu — a full-stack developer specializing in React, Next.js, and TypeScript. My story, skills, and work experience.",
+    "Learn about Will Wu — a Senior Backend Engineer (Python, Go, TypeScript). My story, skills, and work experience. Available for full-time roles and freelance backend projects.",
 };
 
 export default function AboutPage() {

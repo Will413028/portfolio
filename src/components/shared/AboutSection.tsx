@@ -1,7 +1,6 @@
-"use client";
-
 import { ArrowRight } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 
 export default function AboutSection() {
   const t = useTranslations("aboutSection");
@@ -65,8 +64,8 @@ export default function AboutSection() {
             </a>
           </div>
 
-          <button
-            type="button"
+          <Link
+            href="/resume"
             className="group inline-flex items-center gap-2 text-sm text-zinc-400 hover:text-white transition-colors"
           >
             <span className="uppercase tracking-[0.2em]">
@@ -76,7 +75,7 @@ export default function AboutSection() {
               size={16}
               className="group-hover:translate-x-1 transition-transform"
             />
-          </button>
+          </Link>
         </div>
 
         {/* Right: Logo */}
