@@ -98,6 +98,7 @@ const projectsEn: Project[] = [
       "Payment gateway integration with PayUni",
       "Marketing website built with Next.js",
       "Message queue for async order processing",
+      "Real-time messaging reliability layer across the gateway, web, and both Flutter apps — stateless HMAC WebSocket tickets with graceful Redis-outage degradation, bidirectional heartbeats, full-jitter reconnect, and a per-account connection cap",
     ],
     challenges: [
       "Designing a scalable microservice architecture for multiple client apps",
@@ -106,6 +107,7 @@ const projectsEn: Project[] = [
     ],
     outcomes: [
       "Zero-downtime auth re-architecture + 20-service Alibaba Cloud RDS migration",
+      "Zero-downtime rolling deploys across the full 21-microservice platform — verified by a live rolling-restart probe (7,910 requests, 0 downtime)",
       "Buyer & seller iOS apps shipped through their first App Store submission",
     ],
     links: {
@@ -297,6 +299,7 @@ const projectsZhTw: Project[] = [
       "整合 PayUni 金流",
       "使用 Next.js 構建的行銷網站",
       "使用訊息佇列處理非同步訂單",
+      "跨 gateway、web 與雙 Flutter App 的即時通訊可靠性層——無狀態 HMAC WebSocket 票券並支援 Redis 中斷時的優雅降級、雙向心跳、full-jitter 重連、每帳號連線數上限",
     ],
     challenges: [
       "為多個客戶端應用設計可擴展的微服務架構",
@@ -305,6 +308,7 @@ const projectsZhTw: Project[] = [
     ],
     outcomes: [
       "零停機認證重構 + 20 微服務阿里雲 RDS 遷移",
+      "全 21 微服務平台零停機滾動部署——經即時滾動重啟探測驗證（7,910 次請求、零停機）",
       "買賣家 iOS App 完成首次 App Store 送審",
     ],
     links: {

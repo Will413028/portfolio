@@ -28,6 +28,7 @@ const experienceEn: Experience[] = [
       "Python (FastAPI), React, Next.js, PostgreSQL, Hasura, RabbitMQ, Google ADK",
     description: [
       "Enterprise AI platform for on-premises LLM deployment and model fine-tuning",
+      "Consolidated the client's Google ADK agent platform into a single FastAPI app — collapsed a two-process deployment (fixing a cross-process fileset-cache correctness bug), refactored a hand-rolled agent state machine into declarative flow-control (721 → 144 lines, verified by 50 characterization tests), and hardened it with stateless HMAC-SHA256 request signing",
       "Delivered SAML 2.0 SSO and an RBAC redesign for an enterprise customer-service platform, separating end-customers from operators to close a privilege-escalation gap",
       "Built a real-time webchat agent-state system — a 5-state machine on PostgreSQL triggers with cross-system mutual exclusion against a Cisco Finesse telephony platform",
       "Self-built 3-layer distributed tracing (contextvar trace_id across FastAPI middleware + RabbitMQ) with PII-safe structured logging where OpenTelemetry didn't fit",
@@ -102,6 +103,7 @@ const experienceZhTw: Experience[] = [
       "Python (FastAPI), React, Next.js, PostgreSQL, Hasura, RabbitMQ, Google ADK",
     description: [
       "企業級 AI 平台，專注地端 LLM 部署與模型微調",
+      "將客戶的 Google ADK agent 平台整併為單一 FastAPI 應用——收斂雙進程部署（修復跨進程 fileset-cache 正確性 bug），將手刻的 agent 狀態機重構為宣告式流程控制（721 → 144 行，以 50 個 characterization test 驗證），並以無狀態 HMAC-SHA256 請求簽章強化安全",
       "為企業客服平台交付 SAML 2.0 SSO 與 RBAC 重構，分離終端客戶與客服人員，修補權限越界漏洞",
       "建構即時客服狀態系統——以 PostgreSQL trigger 實作 5 狀態機，並與 Cisco Finesse 電話系統跨系統互斥",
       "自建 3 層分散式追蹤（contextvar trace_id 貫穿 FastAPI 中介層與 RabbitMQ），在不適用 OpenTelemetry 時提供 PII-safe 結構化日誌",
