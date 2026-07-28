@@ -70,11 +70,49 @@
     #link("mailto:will413028@gmail.com")[will413028\@gmail.com]
     #h(0.5em)·#h(0.5em) +886 911-279-755
     #h(0.5em)·#h(0.5em) Taipei, Taiwan
+    #h(0.5em)·#h(0.5em) #link("https://portfolio-kohl-three-81.vercel.app/en")[Portfolio]
     #h(0.5em)·#h(0.5em) #link("https://www.linkedin.com/in/will4130/")[LinkedIn]
     #h(0.5em)·#h(0.5em) #link("https://github.com/Will413028")[GitHub]
   ]
 ]
 #v(0.45em)
+
+// =========================== SUMMARY ===========================
+// 三個定位版本。換版本只改下面 `active-summary` 那一行，不要改別處。
+// 事實來源全部出自 ~/second-brain/wiki/work/resume.md（SSOT）——
+// 這裡不得出現 SSOT 沒有的宣稱；要新增請先寫回 SSOT 再引用。
+
+#let summary-backend = [
+  Senior backend engineer with 4+ years shipping and operating production systems in Go, Python,
+  and Java. Moved a 20-microservice platform onto Alibaba Cloud RDS inside an 11-minute window,
+  then delivered zero-downtime Kubernetes rollout across 21 services, proven live at 7,910 requests
+  with 0 downtime. Cut MongoDB p95 by 80% on a platform serving \~3M weekly API calls. I take
+  systems end to end: architecture, migration, and the incident afterwards.
+]
+
+#let summary-ai = [
+  Backend engineer building enterprise LLM and agent platforms. Consolidated a Google ADK agent
+  platform into a single FastAPI service, replaced a hand-rolled agent state machine with
+  declarative flow control (721 → 144 lines, held in place by 50 characterization tests), and
+  hardened it with stateless HMAC-SHA256 request signing. Built a RAG corpus-integrity toolchain
+  that cut actionable gaps from 64 to 1. Outside work I run a live, real-money trading bot on an
+  event-sourced correctness backbone. MS in Data Analytics Engineering.
+]
+
+#let summary-product = [
+  Backend-first engineer who ships whole products, not just services. Delivered a
+  merchant-governance epic end to end in a day (\~16,000 lines across Go / proto / SQL / Next.js),
+  drove two Flutter apps through their first App Store submission, and shipped a commercial AI
+  meeting-summarization product solo in three months (Whisperx + local LLM + Tauri desktop).
+  Five languages in production: Python, Go, TypeScript, Dart, Java.
+]
+
+#let active-summary = summary-backend  // ← 換定位改這行：summary-backend / summary-ai / summary-product
+
+#sectiontitle("Summary")
+#block(above: 0.2em, below: 0.35em)[
+  #text(size: 9pt, fill: rgb("#404040"))[#active-summary]
+]
 
 // ========================= EXPERIENCE ==========================
 #sectiontitle("Work Experience")
@@ -144,7 +182,7 @@
 
 #proj(
   "bfx-funding-bot — Algorithmic Crypto Funding Bot (Solo)",
-  "2026 · Python (asyncio), PostgreSQL, Koyeb",
+  [2026 · Python (asyncio), PostgreSQL, Koyeb · #link("https://portfolio-kohl-three-81.vercel.app/en/work/bfx-funding-bot")[case study]],
   (
     [*Built and run a live, real-money Bitfinex margin-funding bot* end-to-end — event-sourced ledger with a periodic-reconcile correctness backbone (REST snapshot as source of truth, WebSocket as best-effort latency optimization, à la FIX drop-copy), single-writer exposure reconciliation, and balance-aware deployment gating; diagnosed and fixed 6+ production incidents on live capital, each shipped with a canary verification step.],
     [*Designed a quantitative strategy-validation framework* — walk-forward optimization, out-of-sample profitability with bootstrap confidence intervals and deflated Sharpe, and a bot-vs-idle attribution model.],
@@ -153,7 +191,7 @@
 
 #proj(
   "divego — Full-Stack Migration (Solo)",
-  "2026 · TypeScript (Next.js, Hono, Drizzle)",
+  [2026 · TypeScript (Next.js, Hono, Drizzle) · #link("https://portfolio-kohl-three-81.vercel.app/en/work/divego")[case study]],
   (
     [*Migrated a FastAPI backend to a unified Next.js full-stack app* (Hono + Drizzle on Next.js 16) using the strangler-fig pattern — domain-by-domain vertical slices with a cross-stack unified error protocol, retiring the Python backend entirely (\~567 tests).],
   ),
