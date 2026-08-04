@@ -33,6 +33,7 @@ const experienceEn: Experience[] = [
       "Built a real-time webchat agent-state system — a 5-state machine on PostgreSQL triggers with cross-system mutual exclusion against a Cisco Finesse telephony platform",
       "Self-built 3-layer distributed tracing (contextvar trace_id across FastAPI middleware + RabbitMQ) with PII-safe structured logging where OpenTelemetry didn't fit",
       "Built automated web-scraping pipelines and a RAG knowledge-base integrity toolchain, cutting actionable data gaps from 64 to 1",
+      "Root-caused intermittent production timeouts that survived removing the suspected trigger — three plausible hypotheses were each disproven by measurement before the real cause surfaced: two HTTP calls without timeouts exhausting a worker's thread pool. Closed the class with a resilience audit and an AST-based regression guard",
     ],
   },
   {
@@ -47,6 +48,9 @@ const experienceEn: Experience[] = [
       "Re-architected web authentication to a gateway-owned session model (httpOnly cookies + CSRF + role-as-claim), unifying buyer/seller dual-role identity",
       "Led a zero-downtime OAuth account-model refactor from 1:1 columns to a 1:N providers table across Google/Apple",
       "Owned a production migration of 20 microservices to Alibaba Cloud RDS within an ~11-minute maintenance window",
+      "Led a platform-wide identifier re-keying campaign separating login identity from business-entity keys across 5 repositories and 21 protobuf schemas, then closed ~20 dormant bugs of the same failure mode surfaced by a parallel-agent audit",
+      "Rebuilt three infrastructure layers in one month — a second production database migration with zero restarts, private WireGuard mesh networking (15 public ports withdrawn), and RabbitMQ from single-node SPOF to a 3-node cluster with declarative topology (132 → 26 objects)",
+      "Ported a Python price-forecasting pipeline to native Go inference and shipped it to sellers end to end — 36-dimension feature parity proven by 28 golden cases, plus a 5-year / 5.1M-row historical backfill",
     ],
   },
   {
@@ -108,6 +112,7 @@ const experienceZhTw: Experience[] = [
       "建構即時客服狀態系統——以 PostgreSQL trigger 實作 5 狀態機，並與 Cisco Finesse 電話系統跨系統互斥",
       "自建 3 層分散式追蹤（contextvar trace_id 貫穿 FastAPI 中介層與 RabbitMQ），在不適用 OpenTelemetry 時提供 PII-safe 結構化日誌",
       "建構自動化網頁爬蟲管線與 RAG 知識庫完整性工具鏈，將可行動的資料缺口從 64 降至 1",
+      "追出生產環境間歇性逾時的真正根因——移除疑似觸發源後問題仍在，三個看似合理的假設逐一被實測推翻，真因是兩個沒設 timeout 的 HTTP 呼叫拖垮 worker 的 thread pool。以韌性稽核與 AST 回歸守門機制根絕同類問題",
     ],
   },
   {
@@ -122,6 +127,9 @@ const experienceZhTw: Experience[] = [
       "將網頁認證重構為 gateway-owned session 模型（httpOnly cookie + CSRF + role-as-claim），統一買賣家雙角色身分",
       "主導零停機 OAuth 帳號模型重構，從 1:1 欄位升級為跨 Google/Apple 的 1:N providers 表",
       "負責 20 個微服務遷移至阿里雲 RDS，於約 11 分鐘維護視窗內零停機完成",
+      "主導跨 5 個 repository、21 份 protobuf schema 的識別碼正名工程，將登入身份與業務實體鍵分離，並以平行 agent 稽核找出並修復約 20 個同一失效模式的休眠 bug",
+      "一個月內翻新三層基礎設施——第二次生產資料庫遷移（零重啟）、生產環境移入 WireGuard 私有網路（收回 15 個公開連接埠）、RabbitMQ 從單機 SPOF 升級為 3 節點叢集並將拓樸收斂成宣告式定義（132 → 26 個物件）",
+      "將 Python 價格預測管線移植為 Go 原生推論並端到端交付給賣家——36 維特徵以 28 組 golden case 驗證與 Python 實作一致，另完成 5 年 / 510 萬列的歷史資料回填",
     ],
   },
   {
