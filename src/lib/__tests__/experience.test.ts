@@ -2,12 +2,12 @@ import { describe, expect, test } from "vitest";
 import { getEducation, getExperience, getSkills } from "@/lib/experience";
 
 describe("getExperience", () => {
-  test("returns 4 entries for English", () => {
-    expect(getExperience("en")).toHaveLength(4);
+  test("returns 5 entries for English", () => {
+    expect(getExperience("en")).toHaveLength(5);
   });
 
-  test("returns 4 entries for zh-TW", () => {
-    expect(getExperience("zh-TW")).toHaveLength(4);
+  test("returns 5 entries for zh-TW", () => {
+    expect(getExperience("zh-TW")).toHaveLength(5);
   });
 
   test("falls back to English for unknown locale", () => {

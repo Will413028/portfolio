@@ -6,12 +6,12 @@ import {
 } from "@/lib/projects";
 
 describe("getProjects", () => {
-  test("returns 3 projects for English", () => {
-    expect(getProjects("en")).toHaveLength(3);
+  test("returns 5 projects for English", () => {
+    expect(getProjects("en")).toHaveLength(5);
   });
 
-  test("returns 3 projects for zh-TW", () => {
-    expect(getProjects("zh-TW")).toHaveLength(3);
+  test("returns 5 projects for zh-TW", () => {
+    expect(getProjects("zh-TW")).toHaveLength(5);
   });
 
   test("falls back to English for unknown locale", () => {
@@ -46,8 +46,8 @@ describe("getProjectBySlug", () => {
 });
 
 describe("getAllProjectSlugs", () => {
-  test("returns 3 slugs", () => {
-    expect(getAllProjectSlugs()).toHaveLength(3);
+  test("returns 5 slugs", () => {
+    expect(getAllProjectSlugs()).toHaveLength(5);
   });
 
   test("all slugs are unique", () => {

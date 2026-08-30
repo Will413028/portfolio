@@ -172,7 +172,7 @@
   },
   "resumePage": {
     "label": "Resume",
-    "titlePrefix": "My",
+    "titlePrefix": "Will Wu's",
     "titleHighlight": "Resume",
     "subtitle": "Senior Backend Engineer with 4+ years of experience building scalable systems with Python, Go, and TypeScript.",
     "downloadPdf": "Download PDF",
