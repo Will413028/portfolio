@@ -19,6 +19,14 @@
     c1: "#1e1b4b",
     c2: "#0c2a4d",
   ),
+  "membership-booking-demo": (
+    kicker: "FREELANCE DEMO · 2026",
+    title: "Membership Booking",
+    subtitle: "Studio Membership & Class Booking",
+    tech: "Next.js · Supabase · PostgreSQL · Stripe",
+    c1: "#3f0d1f",
+    c2: "#44262e",
+  ),
 )
 
 #let d = data.at(sys.inputs.at("proj"))
