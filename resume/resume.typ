@@ -7,7 +7,7 @@
   paper: "a4",
   margin: (x: 1.4cm, top: 1.0cm, bottom: 0.85cm),
   footer: align(center, text(size: 7.5pt, fill: rgb("#9a9a9a"))[
-    Will Wu · Senior Backend Engineer · Updated June 2026
+    Will Wu · Senior Backend Engineer · Updated October 2026
   ]),
 )
 #set text(font: ("Helvetica Neue", "Arial"), size: 9.2pt, fill: rgb("#262626"))
@@ -130,9 +130,9 @@
 )
 
 #job(
-  "dailyfresh", "Sr. Backend Engineer", "Jan 2025 – Present",
+  "dailyfresh", "Sr. Backend Engineer", "Jan 2026 – Sep 2026",
   "Taipei, Taiwan · Go (Gin), Java (Spring Boot), PostgreSQL, Redis, RabbitMQ, k3s, Next.js, Flutter",
-  summary: [Multi-vendor fresh-grocery marketplace (Go / Java microservices + Next.js web + Flutter buyer/seller apps); senior engineer owning backend platform and cross-stack delivery.],
+  summary: [Multi-vendor fresh-grocery marketplace (Go / Java microservices + Next.js web + Flutter buyer/seller apps); senior engineer owning backend platform and cross-stack delivery; company wound down Sep 2026.],
   (
     [*Re-architected web authentication to a gateway-owned session model* — replaced a BFF / Better-Auth setup with opaque httpOnly cookies + CSRF protection and a role-as-claim design (per-request active-role hint validated against the account's role set), unifying buyer/seller dual-role identity; shipped with Playwright e2e regression guards and a single-use Redis-ticket scheme for cookie-authenticated WebSockets.],
     [*Led a zero-downtime OAuth account-model refactor* from 1:1 columns to a 1:N `auth_providers` table across Google / Apple providers — dual-write → read-cutover → drop-legacy migration with a conflict-resolution flow (tempBindToken + link-confirm + last-provider guard) and an in-process Apple-revoke worker (33 commits, no downtime).],
@@ -182,10 +182,11 @@
 
 #proj(
   "bfx-funding-bot — Algorithmic Crypto Funding Bot (Solo)",
-  [2026 · Python (asyncio), PostgreSQL, Koyeb · #link("https://portfolio-kohl-three-81.vercel.app/en/work/bfx-funding-bot")[case study]],
+  [2026 · Python (asyncio), PostgreSQL, Docker, GitHub Actions · #link("https://portfolio-kohl-three-81.vercel.app/en/work/bfx-funding-bot")[case study]],
   (
     [*Built and run a live, real-money Bitfinex margin-funding bot* end-to-end — event-sourced ledger with a periodic-reconcile correctness backbone (REST snapshot as source of truth, WebSocket as best-effort latency optimization, à la FIX drop-copy), single-writer exposure reconciliation, and balance-aware deployment gating; diagnosed and fixed 6+ production incidents on live capital, each shipped with a canary verification step.],
     [*Designed a quantitative strategy-validation framework* — walk-forward optimization, out-of-sample profitability with bootstrap confidence intervals and deflated Sharpe, and a bot-vs-idle attribution model.],
+    [*Took the live canary from stalled to measured returns* — order-book data availability 3.9% → 99.6%, cold-start quoting 60 min → 14–27 s; realized net APR of 3.75–5.14% in lending weeks, reconciled against the exchange's own ledger to within 0.1–2.9%.],
   ),
 )
 
