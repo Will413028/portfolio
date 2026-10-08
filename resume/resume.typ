@@ -100,14 +100,14 @@
 ]
 
 #let summary-product = [
-  Backend-first engineer who ships whole products, not just services. Delivered a
-  merchant-governance epic end to end in a day (\~16,000 lines across Go / proto / SQL / Next.js),
-  drove two Flutter apps through their first App Store submission, and shipped a commercial AI
-  meeting-summarization product solo in three months (Whisperx + local LLM + Tauri desktop).
-  Five languages in production: Python, Go, TypeScript, Dart, Java.
+  Backend-first engineer who ships whole products, not just services. Shipped a commercial AI
+  meeting-summarization product solo in three months (WhisperX + local LLM + Tauri desktop) that
+  now serves paying customers, built a cloud POS and an EV-rental system greenfield in about two
+  months each, and migrated a FastAPI backend to a unified Next.js full-stack app with the
+  strangler-fig pattern. Production code in Python, Go, and TypeScript.
 ]
 
-#let active-summary = summary-backend  // ← 換定位改這行：summary-backend / summary-ai / summary-product
+#let active-summary = summary-product  // ← 換定位改這行：summary-backend / summary-ai / summary-product
 
 #sectiontitle("Summary")
 #block(above: 0.2em, below: 0.35em)[

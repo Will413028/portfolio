@@ -20,7 +20,7 @@
     c2: "#0c2a4d",
   ),
   "membership-booking-demo": (
-    kicker: "FREELANCE DEMO · 2026",
+    kicker: "SIDE PROJECT · 2026",
     title: "Membership Booking",
     subtitle: "Studio Membership & Class Booking",
     tech: "Next.js · Supabase · PostgreSQL · Stripe",
