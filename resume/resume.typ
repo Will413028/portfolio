@@ -84,10 +84,10 @@
 
 #let summary-backend = [
   Senior backend engineer with 4+ years shipping and operating production systems in Go, Python,
-  and Java. Moved a 20-microservice platform onto Alibaba Cloud RDS inside an 11-minute window,
-  then delivered zero-downtime Kubernetes rollout across 21 services, proven live at 7,910 requests
-  with 0 downtime. Cut MongoDB p95 by 80% on a platform serving \~3M weekly API calls. I take
-  systems end to end: architecture, migration, and the incident afterwards.
+  and TypeScript. Cut MongoDB p95 by 80% on a platform serving \~3M weekly API calls, root-caused a
+  multi-layer SAML SSO failure down to a vendor XSD-validation conflict and shipped the production
+  hot-patch, and built 3-layer distributed tracing across FastAPI and RabbitMQ. I take systems end
+  to end: architecture, migration, and the incident afterwards.
 ]
 
 #let summary-ai = [
@@ -126,18 +126,6 @@
     [*Built a real-time webchat agent-state system* — a 5-state machine (ready / not-ready / serving / busy / offline) enforced by PostgreSQL triggers, supervisor 1-to-many assignment, and cross-system mutual exclusion against the client's Cisco Finesse telephony platform (fail-open REST gate), covered by unit + Playwright e2e suites.],
     [*Self-built 3-layer distributed tracing* — contextvar `trace_id` propagated across FastAPI middleware and RabbitMQ message headers, with dual-sink structured logging and PII-safe business-event instrumentation across 6 modules (chosen over OpenTelemetry where no downstream collector existed).],
     [*Built automated web-scraping pipelines and a RAG knowledge-base integrity toolchain* — manifest-diff verification with exponential-backoff retry that surfaced 64 missing upstream documents and cut actionable gaps from 64 to 1, keeping the LLM retrieval corpus fresh and complete.],
-  ),
-)
-
-#job(
-  "dailyfresh", "Sr. Backend Engineer", "Jan 2026 – Sep 2026",
-  "Taipei, Taiwan · Go (Gin), Java (Spring Boot), PostgreSQL, Redis, RabbitMQ, k3s, Next.js, Flutter",
-  summary: [Multi-vendor fresh-grocery marketplace (Go / Java microservices + Next.js web + Flutter buyer/seller apps); senior engineer owning backend platform and cross-stack delivery; company wound down Sep 2026.],
-  (
-    [*Re-architected web authentication to a gateway-owned session model* — replaced a BFF / Better-Auth setup with opaque httpOnly cookies + CSRF protection and a role-as-claim design (per-request active-role hint validated against the account's role set), unifying buyer/seller dual-role identity; shipped with Playwright e2e regression guards and a single-use Redis-ticket scheme for cookie-authenticated WebSockets.],
-    [*Led a zero-downtime OAuth account-model refactor* from 1:1 columns to a 1:N `auth_providers` table across Google / Apple providers — dual-write → read-cutover → drop-legacy migration with a conflict-resolution flow (tempBindToken + link-confirm + last-provider guard) and an in-process Apple-revoke worker (33 commits, no downtime).],
-    [*Owned a production database migration of a 20-microservice platform to Alibaba Cloud RDS* (11 Go + 9 Java services, 100 migrations, 19 pods) within an \~11-minute maintenance window — resolved migration-history, TLS, and Cloudflare-525 edge issues during cutover.],
-    [*Delivered a merchant-governance / food-safety-reporting epic end-to-end in a day* (\~16,000 lines across Go / proto / SQL / Next.js) and drove the buyer/seller iOS apps through their first App Store submission (full G0-G7 launch pipeline + root-caused an App Store Connect IRIS bundle-id substring-match bug).],
   ),
 )
 

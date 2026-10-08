@@ -21,12 +21,12 @@ export default function NotFound() {
           >
             {t("goHome")}
           </Link>
-          <Link
-            href="/contact"
+          <a
+            href="mailto:will413028@gmail.com"
             className="px-6 py-3 border border-zinc-700 text-zinc-300 rounded-full hover:border-zinc-500 hover:text-white transition-colors"
           >
             {t("contactMe")}
-          </Link>
+          </a>
         </div>
       </div>
     </div>

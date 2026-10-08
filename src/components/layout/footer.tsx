@@ -10,7 +10,10 @@ export default function Footer() {
     { label: t("projects"), href: "/work" },
   ];
 
-  const specificsLinks = [{ label: t("bookACall"), href: "/contact" }];
+  const specificsLinks = [
+    { label: t("contact"), href: "mailto:will413028@gmail.com" },
+    { label: t("resume"), href: "/resume.pdf" },
+  ];
 
   const socialLinks = [
     {
@@ -64,12 +67,12 @@ export default function Footer() {
             <ul className="space-y-2">
               {specificsLinks.map((link) => (
                 <li key={link.label}>
-                  <Link
+                  <a
                     href={link.href}
                     className="text-sm text-zinc-400 hover:text-white transition-colors"
                   >
                     {link.label}
-                  </Link>
+                  </a>
                 </li>
               ))}
             </ul>

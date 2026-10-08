@@ -1,13 +1,12 @@
-import { ArrowRight } from "lucide-react";
 import type { Metadata } from "next";
 import { useLocale, useTranslations } from "next-intl";
-import { Link } from "@/i18n/navigation";
+import Closing from "@/components/shared/Closing";
 import { getExperience, getSkills } from "@/lib/experience";
 
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Learn about Will Wu — a Senior Backend Engineer (Python, Go, TypeScript). My story, skills, and work experience. Available for full-time backend roles.",
+    "Learn about Will Wu — a Senior Backend Engineer (Python, Go, TypeScript). My story, skills, and work experience.",
 };
 
 export default function AboutPage() {
@@ -132,23 +131,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="px-6 py-16 max-w-6xl mx-auto">
-        <div className="p-8 bg-gradient-to-r from-cyan-500/10 to-pink-500/10 border border-zinc-800 rounded-2xl text-center">
-          <h2 className="text-2xl font-medium mb-4">{t("ctaTitle")}</h2>
-          <p className="text-zinc-400 mb-6">{t("ctaText")}</p>
-          <Link
-            href="/contact"
-            className="group inline-flex items-center gap-2 px-6 py-3 bg-white text-black font-medium rounded-full hover:bg-zinc-100 transition-colors"
-          >
-            {t("ctaButton")}
-            <ArrowRight
-              size={18}
-              className="group-hover:translate-x-1 transition-transform"
-            />
-          </Link>
-        </div>
-      </section>
+      <Closing />
     </main>
   );
 }

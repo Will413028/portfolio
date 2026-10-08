@@ -1,7 +1,7 @@
-import { ArrowRight, Download, Mail } from "lucide-react";
+import { Download, Mail } from "lucide-react";
 import type { Metadata } from "next";
 import { useLocale, useTranslations } from "next-intl";
-import { Link } from "@/i18n/navigation";
+import Closing from "@/components/shared/Closing";
 import { getEducation, getExperience, getSkills } from "@/lib/experience";
 
 export const metadata: Metadata = {
@@ -41,13 +41,13 @@ export default function ResumePage() {
             <Download size={18} />
             {t("downloadPdf")}
           </a>
-          <Link
-            href="/contact"
+          <a
+            href="mailto:will413028@gmail.com"
             className="inline-flex items-center gap-2 px-6 py-3 border border-zinc-700 text-zinc-300 rounded-full hover:border-zinc-500 hover:text-white transition-colors"
           >
             <Mail size={18} />
             {t("getInTouch")}
-          </Link>
+          </a>
         </div>
         <p className="text-xs text-zinc-600 mt-3">Updated June 2026</p>
       </section>
@@ -58,8 +58,9 @@ export default function ResumePage() {
         <div className="space-y-8">
           {experience.map((exp) => (
             <div
-              key={exp.company}
-              className="relative pl-8 border-l-2 border-zinc-800"
+              key={exp.slug}
+              id={exp.slug}
+              className="relative pl-8 border-l-2 border-zinc-800 scroll-mt-28"
             >
               <div className="absolute left-[-9px] top-1 w-4 h-4 rounded-full bg-cyan-500 border-4 border-[#0a0a0b]" />
               <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-2">
@@ -139,23 +140,7 @@ export default function ResumePage() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="px-6 py-16 max-w-4xl mx-auto">
-        <div className="p-8 bg-gradient-to-r from-cyan-500/10 to-pink-500/10 border border-zinc-800 rounded-2xl text-center">
-          <h2 className="text-2xl font-medium mb-4">{t("ctaTitle")}</h2>
-          <p className="text-zinc-400 mb-6">{t("ctaText")}</p>
-          <Link
-            href="/contact"
-            className="group inline-flex items-center gap-2 px-6 py-3 bg-white text-black font-medium rounded-full hover:bg-zinc-100 transition-colors"
-          >
-            {t("ctaButton")}
-            <ArrowRight
-              size={18}
-              className="group-hover:translate-x-1 transition-transform"
-            />
-          </Link>
-        </div>
-      </section>
+      <Closing />
     </main>
   );
 }

@@ -1,17 +1,17 @@
 import type { Metadata } from "next";
-import AboutSection from "@/components/shared/AboutSection";
-import BentoGrid from "@/components/shared/BentoGrid";
+import CareerLine from "@/components/shared/CareerLine";
 import CaseStudies from "@/components/shared/CaseStudies";
-import CTASection from "@/components/shared/CTASection";
+import Closing from "@/components/shared/Closing";
 import Hero from "@/components/shared/Hero";
 import ImpactStats from "@/components/shared/ImpactStats";
+import Judgments from "@/components/shared/Judgments";
 
 export const metadata: Metadata = {
   title: {
     absolute: "Will Wu — Senior Backend Engineer | Python, Go & TypeScript",
   },
   description:
-    "Senior Backend Engineer building scalable production systems — 2M+ MAU platforms, zero-downtime migrations, 80% latency cuts. Available for full-time backend roles. Based in Taiwan.",
+    "Will Wu, senior backend engineer in Taipei. Production systems in Python, Go and TypeScript — a 2M+ MAU content platform, enterprise on-prem AI, zero-downtime migrations — with every claim linked to evidence and engineering calls dated in public.",
 };
 
 export default function Home() {
@@ -19,10 +19,10 @@ export default function Home() {
     <main className="min-h-screen bg-[#0a0a0b]">
       <Hero />
       <ImpactStats />
-      <BentoGrid />
+      <CareerLine />
       <CaseStudies />
-      <AboutSection />
-      <CTASection />
+      <Judgments />
+      <Closing />
     </main>
   );
 }

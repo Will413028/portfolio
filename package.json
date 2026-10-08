@@ -25,10 +25,8 @@
     "next-intl": "^4.13.0",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
-    "resend": "^6.12.4",
     "tailwind-merge": "^3.6.0",
-    "tailwindcss-animate": "^1.0.7",
-    "zod": "^4.4.3"
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.4.16",

@@ -5,7 +5,6 @@
     "work": "Work",
     "blog": "Blog",
     "contact": "Contact",
-    "bookACall": "Book a Call",
     "getInTouch": "Get In Touch",
     "readMore": "Read More",
     "learnMore": "Learn More",
@@ -25,29 +24,15 @@
     "work": "Work",
     "more": "More",
     "resume": "Resume",
-    "bookACall": "Book a Call"
+    "contact": "Contact"
   },
   "hero": {
-    "headline1": "I build scalable systems",
-    "headline2": "and craft seamless",
-    "headlineHighlight": "digital experiences",
-    "greeting": "Hello, I'm Will Wu",
-    "role": "a Senior Backend Engineer",
-    "cta": "Let's Connect"
-  },
-  "bento": {
-    "collaborationLabel": "Collaboration",
-    "collaborationText": "Open communication, async updates, zero surprises",
-    "techStackLabel": "Tech Stack",
-    "techStackText": "Tools I ship production code with",
-    "builtToPerform": "Built to Perform.",
-    "builtToPerformSub": "Websites that impact your business.",
-    "flexibleWithTime": "Flexible with time",
-    "zoneCommunications": "zone communications",
-    "timezoneLabel": "Timezone",
-    "basedIn": "Based in Taiwan, available globally",
-    "letsWorkTogether": "Let's work together",
-    "onYourNextProject": "on your next project"
+    "eyebrow": "Will Wu · Senior Backend Engineer · Taipei",
+    "headline": "I build backend systems,",
+    "headlineHighlight": "and write down why.",
+    "intro": "Four years of production backends in Python, Go and TypeScript — a content platform serving 2M+ monthly users, enterprise on-prem AI, zero-downtime migrations. This page puts evidence first: every number links to the work behind it, and my engineering calls are dated so you can check them.",
+    "ctaJudgments": "Read my calls",
+    "ctaResume": "Résumé"
   },
   "stats": {
     "label": "Track Record",
@@ -58,33 +43,14 @@
     "v3": "20",
     "l3": "microservices migrated, zero-downtime",
     "v4": "4+ yrs",
-    "l4": "production backend"
+    "l4": "production backend",
+    "hint": "Every number links to the work behind it."
   },
   "caseStudies": {
     "label": "Case Studies",
     "curated": "Curated",
     "work": "work",
     "seeMore": "See more projects"
-  },
-  "aboutSection": {
-    "label": "Know About Me",
-    "title1": "Senior Backend Engineer",
-    "title2": "and a little bit",
-    "titleHighlight": "of everything",
-    "bio1": "I'm Will Wu, a senior backend engineer with 4+ years of experience building production systems at scale. From enterprise AI platforms to content platforms serving 2M+ MAU, I specialize in designing robust architectures with Python, Go, and TypeScript.",
-    "bio2": "I hold an MS in Data Analytics Engineering from George Mason University and a BS in Chemical Engineering from Tatung University. My cross-disciplinary background gives me a unique perspective on solving complex engineering problems.",
-    "bio3": "I'm passionate about building systems that make a real impact — whether it's optimizing database queries for 80% faster response times or architecting microservices from scratch.",
-    "workExperience": "Work Experience"
-  },
-  "cta": {
-    "openToWork": "OPEN TO WORK",
-    "line1": "FROM CONCEPT TO",
-    "line1Highlight": "CREATION",
-    "line2": "LET'S MAKE IT",
-    "line2Highlight": "HAPPEN!",
-    "getInTouch": "Get In Touch",
-    "availability": "I'm open to full-time roles.",
-    "description": "I thrive on crafting dynamic web applications, and delivering seamless user experiences."
   },
   "aboutPage": {
     "label": "About Me",
@@ -97,15 +63,12 @@
     "valuesTitle": "What I Value",
     "cleanCode": "Production Reliability",
     "cleanCodeDesc": "Systems that hold up at scale — 2M+ MAU platforms, zero-downtime migrations, 80% latency cuts.",
-    "userExperience": "Client-Focused Delivery",
-    "userExperienceDesc": "Deadlines met, clear communication, working in your stack at your pace.",
+    "userExperience": "Measured Decisions",
+    "userExperienceDesc": "Root causes proven by measurement, not guessed — latency, timeouts and migrations decided on data.",
     "continuousLearning": "Technical-Debt Reduction",
     "continuousLearningDesc": "Refactors that pay for themselves — OAuth / RBAC redesigns and microservice migrations done right.",
     "skillsTitle": "Skills & Technologies",
-    "experienceTitle": "Work Experience",
-    "ctaTitle": "Let's Work Together",
-    "ctaText": "Have a project in mind? I'd love to hear about it.",
-    "ctaButton": "Get In Touch"
+    "experienceTitle": "Work Experience"
   },
   "workPage": {
     "label": "Case Studies",
@@ -122,42 +85,13 @@
     "type": "Type",
     "timeline": "Timeline",
     "stack": "Stack",
-    "likeWhatYouSee": "Like what you see?",
-    "letsDiscuss": "Let's discuss how I can help with your project.",
+    "likeWhatYouSee": "Want the details?",
+    "letsDiscuss": "Ask me how this was built — I'm happy to go deeper.",
     "getInTouch": "Get in Touch",
     "viewLive": "View Live",
     "sourceCode": "Source Code",
     "previousProject": "Previous Project",
     "nextProject": "Next Project"
-  },
-  "contactPage": {
-    "label": "Contact",
-    "titlePrefix": "Let's Get",
-    "titleHighlight": "In Touch",
-    "intro": "Whether you're hiring for a backend role or have a project to build, tell me what you need.",
-    "intentHiring": "I'm hiring",
-    "intentProject": "I have a project",
-    "hiringHint": "Share the role, team, and stack — I'll tell you straight if it's a fit.",
-    "projectHint": "Outline the project, timeline, and rough budget so I can scope it.",
-    "orEmail": "Or email me directly:",
-    "bookACall": "Book a Call",
-    "sendMessage": "Send Message",
-    "meetingHost": "Will Wu",
-    "meetingTitle": "30 Min Meeting",
-    "requiresConfirmation": "Requires confirmation",
-    "googleMeet": "Google Meet",
-    "select": "Select...",
-    "selected": "Selected:",
-    "confirmBooking": "Confirm Booking",
-    "nameLabel": "Name",
-    "namePlaceholder": "Your name",
-    "emailLabel": "Email",
-    "emailPlaceholder": "your@email.com",
-    "messageLabel": "Message",
-    "messagePlaceholder": "Tell me about your project...",
-    "sendMessageButton": "Send Message",
-    "messageSent": "Message sent successfully! I'll get back to you soon.",
-    "messageError": "Failed to send message. Please try again or email me directly."
   },
   "footer": {
     "brand": "I'm Will — a senior backend engineer specializing in Python, Go & TypeScript. Building scalable systems from Taiwan.",
@@ -167,8 +101,9 @@
     "home": "Home",
     "about": "About",
     "projects": "Projects",
-    "bookACall": "Book a call",
-    "copyright": "All rights reserved"
+    "copyright": "All rights reserved",
+    "contact": "Contact",
+    "resume": "Résumé (PDF)"
   },
   "resumePage": {
     "label": "Resume",
@@ -182,15 +117,36 @@
     "educationTitle": "Education",
     "degree": "MS, Data Analytics Engineering / BS, Chemical Engineering",
     "university": "George Mason University / Tatung University",
-    "educationPeriod": "2019 - 2021 / 2013 - 2016",
-    "ctaTitle": "Interested in working together?",
-    "ctaText": "I'm always open to new opportunities and interesting projects.",
-    "ctaButton": "Let's Talk"
+    "educationPeriod": "2019 - 2021 / 2013 - 2016"
   },
   "notFound": {
     "title": "Page not found",
     "description": "The page you're looking for doesn't exist or has been moved.",
     "goHome": "Go Home",
     "contactMe": "Contact Me"
+  },
+  "career": {
+    "label": "Career",
+    "title": "The path",
+    "titleHighlight": "so far"
+  },
+  "judgments": {
+    "label": "Judgments",
+    "title": "Write the call down first,",
+    "titleHighlight": "then let time check it.",
+    "intro": "Engineering calls I've made in public, newest first. Each links to the record from the day it was made — right or wrong, they stay where they are.",
+    "source": "Original record",
+    "status": {
+      "open": "Pending",
+      "held": "Held up",
+      "missed": "Got it wrong"
+    },
+    "resolved": "Checked {date}"
+  },
+  "closing": {
+    "line": "Evidence first, claims second.",
+    "text": "If you're building a backend team and this way of working fits, I'd like to hear about the role.",
+    "email": "Email me",
+    "resume": "Résumé (PDF)"
   }
 }

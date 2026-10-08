@@ -217,13 +217,13 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                   {t("likeWhatYouSee")}
                 </h3>
                 <p className="text-sm text-zinc-400 mb-4">{t("letsDiscuss")}</p>
-                <Link
-                  href="/contact"
+                <a
+                  href="mailto:will413028@gmail.com"
                   className="inline-flex items-center gap-2 w-full justify-center px-4 py-2.5 bg-white text-black font-medium rounded-full hover:bg-zinc-100 transition-colors text-sm"
                 >
                   {t("getInTouch")}
                   <ArrowRight size={16} />
-                </Link>
+                </a>
               </div>
             </div>
           </div>
