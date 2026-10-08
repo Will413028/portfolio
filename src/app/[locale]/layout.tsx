@@ -4,6 +4,7 @@ import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import Analytics from "@/components/analytics";
 import { routing } from "@/i18n/routing";
+import { getEducation, getExperience } from "@/lib/experience";
 import { siteUrl } from "@/lib/site-url";
 
 type Props = {
@@ -11,29 +12,40 @@ type Props = {
   params: Promise<{ locale: string }>;
 };
 
-const personJsonLd = {
+// Generated from the same data the pages render, so they cannot drift.
+const [currentRole] = getExperience("en");
+const profileJsonLd = {
   "@context": "https://schema.org",
-  "@type": "Person",
-  name: "Will Wu",
-  jobTitle: "Senior Backend Engineer",
+  "@type": "ProfilePage",
   url: siteUrl,
-  email: "mailto:will413028@gmail.com",
-  image: `${siteUrl}/opengraph-image`,
-  sameAs: [
-    "https://github.com/will413028",
-    "https://www.linkedin.com/in/will4130/",
-  ],
-  knowsAbout: [
-    "Python",
-    "Go",
-    "TypeScript",
-    "FastAPI",
-    "PostgreSQL",
-    "Microservices",
-    "Distributed Systems",
-    "Backend Architecture",
-  ],
-  address: { "@type": "PostalAddress", addressCountry: "TW" },
+  mainEntity: {
+    "@type": "Person",
+    name: "Will Wu",
+    jobTitle: "Senior Backend Engineer",
+    url: siteUrl,
+    email: "mailto:will413028@gmail.com",
+    image: `${siteUrl}/opengraph-image`,
+    worksFor: { "@type": "Organization", name: currentRole.company },
+    alumniOf: getEducation("en").map((e) => ({
+      "@type": "CollegeOrUniversity",
+      name: e.school,
+    })),
+    sameAs: [
+      "https://github.com/will413028",
+      "https://www.linkedin.com/in/will4130/",
+    ],
+    knowsAbout: [
+      "Python",
+      "Go",
+      "TypeScript",
+      "FastAPI",
+      "PostgreSQL",
+      "Microservices",
+      "Distributed Systems",
+      "Backend Architecture",
+    ],
+    address: { "@type": "PostalAddress", addressCountry: "TW" },
+  },
 };
 
 export function generateStaticParams() {
@@ -53,7 +65,7 @@ export default async function LocaleLayout({ children, params }: Props) {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(profileJsonLd) }}
       />
       <Analytics />
       <NextIntlClientProvider>{children}</NextIntlClientProvider>

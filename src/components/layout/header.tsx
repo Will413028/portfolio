@@ -86,16 +86,12 @@ export default function Navigation() {
             </Link>
           ))}
           <div className="w-px h-5 bg-zinc-700 mx-1" />
-          <Link
-            href="/contact"
-            className={`px-4 py-1.5 text-sm rounded-full transition-all duration-200 ${
-              pathname === "/contact"
-                ? "text-white bg-zinc-800"
-                : "text-zinc-400 hover:text-white hover:bg-zinc-800/50"
-            }`}
+          <a
+            href="mailto:will413028@gmail.com"
+            className="px-4 py-1.5 text-sm rounded-full transition-all duration-200 text-zinc-400 hover:text-white hover:bg-zinc-800/50"
           >
-            {t("bookACall")}
-          </Link>
+            {t("contact")}
+          </a>
         </div>
 
         {/* Right side buttons */}
@@ -165,17 +161,13 @@ export default function Navigation() {
               </Link>
             ))}
             <div className="h-px bg-zinc-800 my-2" />
-            <Link
-              href="/contact"
+            <a
+              href="mailto:will413028@gmail.com"
               onClick={() => setMobileMenuOpen(false)}
-              className={`px-4 py-3 rounded-lg transition-colors ${
-                pathname === "/contact"
-                  ? "text-white bg-zinc-800"
-                  : "text-zinc-400 hover:text-white hover:bg-zinc-800/50"
-              }`}
+              className="px-4 py-3 rounded-lg transition-colors text-zinc-400 hover:text-white hover:bg-zinc-800/50"
             >
-              {t("bookACall")}
-            </Link>
+              {t("contact")}
+            </a>
           </div>
         </div>
       )}

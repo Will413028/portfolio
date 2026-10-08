@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     template: "%s | Will Wu",
   },
   description:
-    "Senior Backend Engineer with 4+ years building production systems at scale — Python, Go, TypeScript. 2M+ MAU platforms, zero-downtime migrations, 80% latency cuts, SAML/RBAC security. Available for full-time roles and freelance backend / infrastructure projects. Based in Taiwan, working globally.",
+    "Senior Backend Engineer with 4+ years building production systems at scale — Python, Go, TypeScript. 2M+ MAU platforms, zero-downtime migrations, 80% latency cuts, SAML/RBAC security. Based in Taipei, Taiwan.",
   icons: {
     icon: "/favicon.svg",
   },
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     siteName: "Will Wu",
     title: "Will Wu — Senior Backend Engineer",
     description:
-      "Senior Backend Engineer — Python, Go, TypeScript. 2M+ MAU systems, zero-downtime migrations, 80% latency cuts. Open to full-time roles and freelance backend projects. Based in Taiwan.",
+      "Senior Backend Engineer — Python, Go, TypeScript. 2M+ MAU systems, zero-downtime migrations, 80% latency cuts. Based in Taipei, Taiwan.",
   },
   twitter: {
     card: "summary_large_image",

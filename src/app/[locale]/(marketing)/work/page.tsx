@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
-import CTASection from "@/components/shared/CTASection";
+import Closing from "@/components/shared/Closing";
 import { Link } from "@/i18n/navigation";
 import { getProjects, type Project } from "@/lib/projects";
 
@@ -190,7 +190,7 @@ export default function WorkPage() {
       </section>
 
       {/* CTA Section */}
-      <CTASection />
+      <Closing />
     </main>
   );
 }

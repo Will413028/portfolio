@@ -1,6 +1,6 @@
 # portfolio
 
-求職 + 接案用個人網站，**強調呈現**而非 tech showcase。
+個人主頁（讀者是用人主管），**強調呈現與可驗證的證據**而非 tech showcase。
 
 ## Stack
 

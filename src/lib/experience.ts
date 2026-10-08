@@ -1,4 +1,5 @@
 export interface Experience {
+  slug: string;
   role: string;
   company: string;
   period: string;
@@ -20,6 +21,7 @@ export interface Education {
 
 const experienceEn: Experience[] = [
   {
+    slug: "apmic",
     role: "Sr. Backend Engineer",
     company: "APMIC",
     period: "Nov 2025 - Present",
@@ -39,26 +41,7 @@ const experienceEn: Experience[] = [
     ],
   },
   {
-    role: "Sr. Backend Engineer · Part-time",
-    company: "dailyfresh",
-    period: "Jan 2026 - Sep 2026",
-    location: "Taipei, Taiwan",
-    techStack:
-      "Go (Gin), Java (Spring Boot), PostgreSQL, Redis, RabbitMQ, k3s, Next.js, Flutter",
-    description: [
-      "Senior engineer on a multi-vendor fresh-grocery marketplace (Go/Java microservices + Next.js web + Flutter buyer/seller apps), owning backend platform and cross-stack delivery — authored ~60% of the 12,406 non-merge commits across five repositories until the company wound down in Sep 2026",
-      "Re-architected web authentication to a gateway-owned session model (httpOnly cookies + CSRF + role-as-claim), unifying buyer/seller dual-role identity",
-      "Led a zero-downtime OAuth account-model refactor from 1:1 columns to a 1:N providers table across Google/Apple",
-      "Owned a production migration of 20 microservices to Alibaba Cloud RDS within an ~11-minute maintenance window",
-      "Led a platform-wide identifier re-keying campaign separating login identity from business-entity keys across 5 repositories and 21 protobuf schemas, then closed ~20 dormant bugs of the same failure mode surfaced by a parallel-agent audit",
-      "Rebuilt three infrastructure layers in one month — a second production database migration with zero restarts, private WireGuard mesh networking (15 public ports withdrawn), and RabbitMQ from single-node SPOF to a 3-node cluster with declarative topology (132 → 26 objects)",
-      "Ported a Python price-forecasting pipeline to native Go inference and shipped it to sellers end to end — 36-dimension feature parity proven by 28 golden cases, plus a 5-year / 5.1M-row historical backfill",
-      "Replaced a denormalized role bitmask (one fact stored 8 ways in 5 incompatible encodings) with normalized role grants, cutting the leaked-credential window from 14 days to 15 minutes",
-      "Closed two silent fail-open paths in internal service authentication — an unrecognized auth-mode value fell back to permissive — then promoted to production: 25 releases Ready, zero gateway 5xx",
-      "Made the AI procurement agent's quality measurable: retrieve-then-rank item resolution (golden set 14/14, −1,363 lines of v1), canonical vendor taxonomy (0 → 10 matched vendors, 640 LLM labels with zero fabrications), and a repeated eval (27/28 vs 20/28) that justified deleting the fallback path",
-    ],
-  },
-  {
+    slug: "vocus",
     role: "Sr. Backend Engineer",
     company: "Vocus",
     period: "Mar 2025 - Oct 2025",
@@ -73,6 +56,7 @@ const experienceEn: Experience[] = [
     ],
   },
   {
+    slug: "chengchi",
     role: "Sr. Backend Engineer",
     company: "ChengChi Tech",
     period: "Apr 2024 - Mar 2025",
@@ -86,6 +70,7 @@ const experienceEn: Experience[] = [
     ],
   },
   {
+    slug: "ai-rider",
     role: "Backend Engineer",
     company: "AI-Rider",
     period: "Mar 2022 - Nov 2023",
@@ -104,6 +89,7 @@ const experienceEn: Experience[] = [
 
 const experienceZhTw: Experience[] = [
   {
+    slug: "apmic",
     role: "資深後端工程師",
     company: "APMIC",
     period: "2025 年 11 月 - 至今",
@@ -123,26 +109,7 @@ const experienceZhTw: Experience[] = [
     ],
   },
   {
-    role: "資深後端工程師 · 兼職",
-    company: "日日生鮮",
-    period: "2026 年 1 月 - 2026 年 9 月",
-    location: "台北，台灣",
-    techStack:
-      "Go (Gin), Java (Spring Boot), PostgreSQL, Redis, RabbitMQ, k3s, Next.js, Flutter",
-    description: [
-      "生鮮電商平台（Go/Java 微服務 + Next.js 網站 + Flutter 買賣家 App）的資深工程師，負責後端平台與跨技術棧交付；至 2026 年 9 月公司結束營運為止，五個 repo 共 12,406 筆 non-merge commit 中約 60% 出自我手",
-      "將網頁認證重構為 gateway-owned session 模型（httpOnly cookie + CSRF + role-as-claim），統一買賣家雙角色身分",
-      "主導零停機 OAuth 帳號模型重構，從 1:1 欄位升級為跨 Google/Apple 的 1:N providers 表",
-      "負責 20 個微服務遷移至阿里雲 RDS，於約 11 分鐘維護視窗內零停機完成",
-      "主導跨 5 個 repository、21 份 protobuf schema 的識別碼正名工程，將登入身份與業務實體鍵分離，並以平行 agent 稽核找出並修復約 20 個同一失效模式的休眠 bug",
-      "一個月內翻新三層基礎設施——第二次生產資料庫遷移（零重啟）、生產環境移入 WireGuard 私有網路（收回 15 個公開連接埠）、RabbitMQ 從單機 SPOF 升級為 3 節點叢集並將拓樸收斂成宣告式定義（132 → 26 個物件）",
-      "將 Python 價格預測管線移植為 Go 原生推論並端到端交付給賣家——36 維特徵以 28 組 golden case 驗證與 Python 實作一致，另完成 5 年 / 510 萬列的歷史資料回填",
-      "把反正規化的角色 bitmask（同一事實 8 處具現、5 種互不相容編碼）重構為正規化角色授予，憑證外洩窗口從 14 天降到 15 分鐘",
-      "修掉內部服務認證的兩條靜默 fail-open（無法辨識的認證模式值會回退成放行）後推上生產環境：25 個 release 全數 Ready、gateway 零 5xx",
-      "讓 AI 採購助手的品質可量測並據此決策：品項解析改為 retrieve-then-rank（黃金集 14/14、刪除 v1 共 −1,363 行）、站外業者改用 canonical taxonomy（可媒合業者 0 → 10、640 筆 LLM 標註零捏造），並以重複 eval（27/28 對 20/28）證明可刪除 fallback 路徑",
-    ],
-  },
-  {
+    slug: "vocus",
     role: "資深後端工程師",
     company: "Vocus 方格子",
     period: "2025 年 3 月 - 2025 年 10 月",
@@ -157,6 +124,7 @@ const experienceZhTw: Experience[] = [
     ],
   },
   {
+    slug: "chengchi",
     role: "資深後端工程師",
     company: "成奇科技",
     period: "2024 年 4 月 - 2025 年 3 月",
@@ -170,6 +138,7 @@ const experienceZhTw: Experience[] = [
     ],
   },
   {
+    slug: "ai-rider",
     role: "後端工程師",
     company: "AI-Rider",
     period: "2022 年 3 月 - 2023 年 11 月",

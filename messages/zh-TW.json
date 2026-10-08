@@ -5,7 +5,6 @@
     "work": "作品",
     "blog": "部落格",
     "contact": "聯繫",
-    "bookACall": "預約通話",
     "getInTouch": "聯繫我們",
     "readMore": "閱讀更多",
     "learnMore": "了解更多",
@@ -25,29 +24,15 @@
     "work": "作品",
     "more": "更多",
     "resume": "履歷",
-    "bookACall": "預約通話"
+    "contact": "聯繫"
   },
   "hero": {
-    "headline1": "我打造可擴展的系統",
-    "headline2": "並創造流暢的",
-    "headlineHighlight": "數位體驗",
-    "greeting": "你好，我是 Will Wu",
-    "role": "資深後端工程師",
-    "cta": "與我聯繫"
-  },
-  "bento": {
-    "collaborationLabel": "協作方式",
-    "collaborationText": "開放溝通、非同步更新、零意外",
-    "techStackLabel": "技術棧",
-    "techStackText": "用於產品級程式碼的工具",
-    "builtToPerform": "為效能而生。",
-    "builtToPerformSub": "影響你事業的網站。",
-    "flexibleWithTime": "彈性配合",
-    "zoneCommunications": "跨時區溝通",
-    "timezoneLabel": "時區",
-    "basedIn": "身處台灣，服務全球",
-    "letsWorkTogether": "讓我們一起",
-    "onYourNextProject": "打造你的下一個專案"
+    "eyebrow": "Will Wu · 資深後端工程師 · 台北",
+    "headline": "我做後端系統，",
+    "headlineHighlight": "也把判斷寫下來。",
+    "intro": "四年生產環境後端經驗，Python、Go、TypeScript——服務 200 萬月活的內容平台、企業地端 AI、零停機遷移。這一頁先放證據：每個數字都連到背後的工作，每個工程判斷都附日期，你可以自己檢查。",
+    "ctaJudgments": "看我的判斷",
+    "ctaResume": "履歷"
   },
   "stats": {
     "label": "實績",
@@ -58,33 +43,14 @@
     "v3": "20",
     "l3": "微服務零停機遷移",
     "v4": "4+ 年",
-    "l4": "生產後端經驗"
+    "l4": "生產後端經驗",
+    "hint": "每個數字都能點開，看背後的工作。"
   },
   "caseStudies": {
     "label": "精選作品",
     "curated": "精選",
     "work": "作品",
     "seeMore": "查看更多專案"
-  },
-  "aboutSection": {
-    "label": "認識我",
-    "title1": "資深後端工程師",
-    "title2": "同時也涉獵",
-    "titleHighlight": "各種領域",
-    "bio1": "我是 Will Wu，擁有 4 年以上經驗的資深後端工程師，專精於大規模生產系統的建構。從企業 AI 平台到服務 200 萬以上月活用戶的內容平台，我擅長使用 Python、Go 和 TypeScript 設計穩健的架構。",
-    "bio2": "我擁有喬治梅森大學資料分析工程碩士學位與大同大學化學工程學士學位。跨領域的背景讓我在解決複雜工程問題時擁有獨特的視角。",
-    "bio3": "我熱衷於建構能產生真實影響的系統——無論是優化資料庫查詢以提升 80% 的回應速度，還是從零開始架構微服務。",
-    "workExperience": "工作經歷"
-  },
-  "cta": {
-    "openToWork": "開放合作中",
-    "line1": "從概念到",
-    "line1Highlight": "實現",
-    "line2": "讓我們一起",
-    "line2Highlight": "完成！",
-    "getInTouch": "與我聯繫",
-    "availability": "我接受全職及自由接案合作。",
-    "description": "我熱衷於打造動態的網頁應用，提供流暢的使用者體驗。"
   },
   "aboutPage": {
     "label": "關於我",
@@ -97,15 +63,12 @@
     "valuesTitle": "我的價值觀",
     "cleanCode": "生產級可靠度",
     "cleanCodeDesc": "撐得住規模的系統——200 萬+ MAU 平台、零停機遷移、80% 延遲下降。",
-    "userExperience": "以客戶為中心的交付",
-    "userExperienceDesc": "準時交付、清楚溝通、用你的技術棧、配合你的節奏。",
+    "userExperience": "用量測做決定",
+    "userExperienceDesc": "根因靠量測證明，不靠猜——延遲、逾時、遷移都依資料決定。",
     "continuousLearning": "技術債清理",
     "continuousLearningDesc": "能回本的重構——OAuth / RBAC 重新設計、微服務遷移做到位。",
     "skillsTitle": "技能與技術",
-    "experienceTitle": "工作經歷",
-    "ctaTitle": "讓我們合作",
-    "ctaText": "有專案想法嗎？我很樂意聽你分享。",
-    "ctaButton": "聯繫我"
+    "experienceTitle": "工作經歷"
   },
   "workPage": {
     "label": "精選作品",
@@ -122,42 +85,13 @@
     "type": "類型",
     "timeline": "時程",
     "stack": "技術棧",
-    "likeWhatYouSee": "喜歡你看到的嗎？",
-    "letsDiscuss": "讓我們討論如何幫助你的專案。",
+    "likeWhatYouSee": "想知道更多細節？",
+    "letsDiscuss": "歡迎問我這是怎麼做的，我很樂意深入聊。",
     "getInTouch": "聯繫我",
     "viewLive": "查看線上版本",
     "sourceCode": "原始碼",
     "previousProject": "上一個專案",
     "nextProject": "下一個專案"
-  },
-  "contactPage": {
-    "label": "聯繫",
-    "titlePrefix": "讓我們",
-    "titleHighlight": "聊聊",
-    "intro": "無論你是要徵後端工程師，還是有專案要做，告訴我你的需求。",
-    "intentHiring": "我在徵才",
-    "intentProject": "我有專案",
-    "hiringHint": "說說職缺、團隊與技術棧——我會直接告訴你是否適合。",
-    "projectHint": "描述專案、時程與大致預算，我才能估算範圍。",
-    "orEmail": "或直接寄信給我：",
-    "bookACall": "預約通話",
-    "sendMessage": "發送訊息",
-    "meetingHost": "Will Wu",
-    "meetingTitle": "30 分鐘會議",
-    "requiresConfirmation": "需要確認",
-    "googleMeet": "Google Meet",
-    "select": "選擇...",
-    "selected": "已選擇：",
-    "confirmBooking": "確認預約",
-    "nameLabel": "姓名",
-    "namePlaceholder": "你的姓名",
-    "emailLabel": "電子郵件",
-    "emailPlaceholder": "your@email.com",
-    "messageLabel": "訊息",
-    "messagePlaceholder": "告訴我關於你的專案...",
-    "sendMessageButton": "發送訊息",
-    "messageSent": "訊息已成功送出！我會盡快回覆你。",
-    "messageError": "發送失敗，請重試或直接寄信給我。"
   },
   "footer": {
     "brand": "我是 Will — 資深後端工程師，專精 Python、Go 和 TypeScript。從台灣打造可擴展的系統。",
@@ -167,8 +101,9 @@
     "home": "首頁",
     "about": "關於",
     "projects": "作品集",
-    "bookACall": "預約通話",
-    "copyright": "版權所有"
+    "copyright": "版權所有",
+    "contact": "聯繫",
+    "resume": "履歷（PDF）"
   },
   "resumePage": {
     "label": "履歷",
@@ -182,15 +117,36 @@
     "educationTitle": "教育背景",
     "degree": "資料分析工程碩士 / 化學工程學士",
     "university": "喬治梅森大學 / 大同大學",
-    "educationPeriod": "2019 - 2021 / 2013 - 2016",
-    "ctaTitle": "有興趣一起合作嗎？",
-    "ctaText": "我隨時歡迎新的機會和有趣的專案。",
-    "ctaButton": "聯繫我"
+    "educationPeriod": "2019 - 2021 / 2013 - 2016"
   },
   "notFound": {
     "title": "找不到頁面",
     "description": "你要找的頁面不存在或已被移動。",
     "goHome": "回首頁",
     "contactMe": "聯繫我"
+  },
+  "career": {
+    "label": "經歷",
+    "title": "一路",
+    "titleHighlight": "走到現在"
+  },
+  "judgments": {
+    "label": "判斷",
+    "title": "先把判斷寫下來，",
+    "titleHighlight": "再讓時間檢驗。",
+    "intro": "我公開做過的工程判斷，由新到舊。每條都連到當天的原始記錄——說對說錯，都留在原處。",
+    "source": "原始記錄",
+    "status": {
+      "open": "待檢驗",
+      "held": "說對了",
+      "missed": "說錯了"
+    },
+    "resolved": "{date} 檢驗"
+  },
+  "closing": {
+    "line": "先放證據，再談說法。",
+    "text": "如果你在組後端團隊，覺得這種做事方式合適，歡迎告訴我職缺內容。",
+    "email": "寄信給我",
+    "resume": "履歷（PDF）"
   }
 }

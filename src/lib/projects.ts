@@ -237,9 +237,9 @@ const projectsEn: Project[] = [
     description:
       "A full-stack membership and class-booking system for a boutique studio — plans, payments, credits, and bookings, with an admin console",
     longDescription:
-      "A hosted freelance showcase set in a Pilates / yoga studio. Members buy a plan, pay through Stripe (test mode), and book classes against their credits; staff manage sessions, members, bookings, and orders from an admin console. Built on Supabase Auth, PostgreSQL row-level security, and atomic booking in the database, from product direction to hosted demo in three days.",
+      "A hosted side project set in a Pilates / yoga studio. Members buy a plan, pay through Stripe (test mode), and book classes against their credits; staff manage sessions, members, bookings, and orders from an admin console. Built on Supabase Auth, PostgreSQL row-level security, and atomic booking in the database, from product direction to hosted demo in three days.",
     tags: ["Next.js", "TypeScript", "Supabase", "PostgreSQL", "Stripe"],
-    type: "Freelance Demo",
+    type: "Side Project",
     quarter: "Q3 2026",
     gradient: "from-rose-900/80 via-pink-800/60 to-stone-900/80",
     featured: false,
@@ -480,9 +480,9 @@ const projectsZhTw: Project[] = [
     description:
       "為質感工作室打造的全端會員與課程預約系統——方案、付款、堂數與預約，並附管理後台",
     longDescription:
-      "以皮拉提斯／瑜伽工作室為情境的接案展示作品，已部署上線。會員購買方案、透過 Stripe（測試模式）付款，再以堂數預約課程；工作人員在後台管理場次、會員、預約與訂單。建構於 Supabase Auth、PostgreSQL row-level security 與資料庫內的原子預約，從產品方向到上線展示共三天。",
+      "以皮拉提斯／瑜伽工作室為情境的個人 side project，已部署上線。會員購買方案、透過 Stripe（測試模式）付款，再以堂數預約課程；工作人員在後台管理場次、會員、預約與訂單。建構於 Supabase Auth、PostgreSQL row-level security 與資料庫內的原子預約，從產品方向到上線展示共三天。",
     tags: ["Next.js", "TypeScript", "Supabase", "PostgreSQL", "Stripe"],
-    type: "接案展示",
+    type: "個人作品",
     quarter: "2026 Q3",
     gradient: "from-rose-900/80 via-pink-800/60 to-stone-900/80",
     featured: false,
