@@ -12,7 +12,7 @@ export default function CaseStudies() {
   return (
     <section className="px-6 py-24 max-w-6xl mx-auto">
       <div className="text-center mb-16">
-        <p className="text-[11px] uppercase tracking-[0.3em] text-zinc-500 mb-4">
+        <p className="text-[11px] uppercase tracking-[0.3em] text-subtle mb-4">
           {t("label")}
         </p>
         <h2 className="text-4xl md:text-5xl font-medium">
@@ -29,10 +29,10 @@ export default function CaseStudies() {
             <div key={project.id} className="flex flex-col">
               {/* Header: Type and Date */}
               <div className="flex items-center justify-between mb-2">
-                <span className="text-[10px] uppercase tracking-[0.2em] text-zinc-500">
+                <span className="text-[10px] uppercase tracking-[0.2em] text-subtle">
                   {project.type}
                 </span>
-                <span className="text-[11px] text-zinc-500">
+                <span className="text-[11px] text-subtle">
                   {project.quarter}
                 </span>
               </div>
@@ -42,7 +42,7 @@ export default function CaseStudies() {
                 <h3 className="text-xl font-serif text-white group-hover:text-zinc-300 transition-colors">
                   {project.title}
                   {project.subtitle && (
-                    <span className="text-zinc-500 ml-2 text-base font-serif">
+                    <span className="text-subtle ml-2 text-base font-serif">
                       {project.subtitle}
                     </span>
                   )}

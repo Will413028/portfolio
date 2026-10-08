@@ -71,7 +71,7 @@ export default function Hero() {
       </div>
 
       <div className="relative z-10 max-w-4xl mx-auto text-center">
-        <p className="text-[11px] uppercase tracking-[0.3em] text-zinc-500 mb-8">
+        <p className="text-[11px] uppercase tracking-[0.3em] text-subtle mb-8">
           {t("eyebrow")}
         </p>
 

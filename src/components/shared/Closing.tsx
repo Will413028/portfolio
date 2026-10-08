@@ -33,7 +33,7 @@ export default function Closing() {
         </a>
       </div>
 
-      <p className="text-sm text-zinc-500">
+      <p className="text-sm text-subtle">
         will413028@gmail.com ·{" "}
         <a
           href="https://github.com/will413028"

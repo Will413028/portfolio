@@ -14,7 +14,7 @@ export default function ImpactStats() {
 
   return (
     <section className="px-6 pb-12 max-w-5xl mx-auto">
-      <p className="text-center text-[11px] uppercase tracking-[0.3em] text-zinc-500 mb-6">
+      <p className="text-center text-[11px] uppercase tracking-[0.3em] text-subtle mb-6">
         {t("label")}
       </p>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -26,7 +26,7 @@ export default function ImpactStats() {
           >
             <ArrowUpRight
               size={14}
-              className="absolute top-3 right-3 text-zinc-600 group-hover:text-zinc-300 transition-colors"
+              className="absolute top-3 right-3 text-subtle group-hover:text-zinc-300 transition-colors"
               aria-hidden="true"
             />
             <div className="text-3xl md:text-4xl font-semibold gradient-text-pink">
@@ -36,7 +36,7 @@ export default function ImpactStats() {
           </Link>
         ))}
       </div>
-      <p className="text-center text-xs text-zinc-600 mt-4">{t("hint")}</p>
+      <p className="text-center text-xs text-subtle mt-4">{t("hint")}</p>
     </section>
   );
 }

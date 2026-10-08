@@ -19,7 +19,7 @@ export default function AboutPage() {
     <main className="min-h-screen bg-[#0a0a0b]">
       {/* Hero Section */}
       <section className="px-6 pt-32 pb-16 max-w-6xl mx-auto">
-        <p className="text-xs uppercase tracking-[0.2em] text-zinc-500 mb-4">
+        <p className="text-xs uppercase tracking-[0.2em] text-subtle mb-4">
           {t("label")}
         </p>
         <h1 className="text-4xl md:text-6xl font-medium leading-tight mb-8">
@@ -114,7 +114,7 @@ export default function AboutPage() {
                   <h3 className="text-xl font-medium text-white">{exp.role}</h3>
                   <p className="text-cyan-400">{exp.company}</p>
                 </div>
-                <span className="text-sm text-zinc-500 mt-2 md:mt-0">
+                <span className="text-sm text-subtle mt-2 md:mt-0">
                   {exp.period}
                 </span>
               </div>

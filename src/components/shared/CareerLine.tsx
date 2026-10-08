@@ -29,7 +29,7 @@ export default function CareerLine() {
   return (
     <section id="career" className="px-6 py-24 max-w-6xl mx-auto scroll-mt-20">
       <div className="text-center mb-14">
-        <p className="text-[11px] uppercase tracking-[0.3em] text-zinc-500 mb-4">
+        <p className="text-[11px] uppercase tracking-[0.3em] text-subtle mb-4">
           {t("label")}
         </p>
         <h2 className="text-4xl md:text-5xl font-medium">
@@ -55,7 +55,7 @@ export default function CareerLine() {
                 aria-hidden="true"
               />
               <Link href={stop.href} className="group block md:pt-8">
-                <p className="text-[11px] text-zinc-500 mb-1">{stop.period}</p>
+                <p className="text-[11px] text-subtle mb-1">{stop.period}</p>
                 <p className="text-lg text-white group-hover:text-zinc-300 transition-colors">
                   {stop.name}
                 </p>

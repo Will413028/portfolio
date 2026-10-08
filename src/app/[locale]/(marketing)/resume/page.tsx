@@ -21,7 +21,7 @@ export default function ResumePage() {
     <main className="min-h-screen bg-[#0a0a0b]">
       {/* Hero */}
       <section className="px-6 pt-32 pb-16 max-w-4xl mx-auto">
-        <p className="text-xs uppercase tracking-[0.2em] text-zinc-500 mb-4">
+        <p className="text-xs uppercase tracking-[0.2em] text-subtle mb-4">
           {t("label")}
         </p>
         <h1 className="text-4xl md:text-6xl font-medium leading-tight mb-6">
@@ -49,7 +49,7 @@ export default function ResumePage() {
             {t("getInTouch")}
           </a>
         </div>
-        <p className="text-xs text-zinc-600 mt-3">Updated June 2026</p>
+        <p className="text-xs text-subtle mt-3">Updated June 2026</p>
       </section>
 
       {/* Experience */}
@@ -69,9 +69,9 @@ export default function ResumePage() {
                   <p className="text-cyan-400 text-sm">
                     {exp.company} · {exp.location}
                   </p>
-                  <p className="text-xs text-zinc-500 mt-1">{exp.techStack}</p>
+                  <p className="text-xs text-subtle mt-1">{exp.techStack}</p>
                 </div>
-                <span className="text-sm text-zinc-500 mt-1 md:mt-0 md:shrink-0">
+                <span className="text-sm text-subtle mt-1 md:mt-0 md:shrink-0">
                   {exp.period}
                 </span>
               </div>
@@ -131,7 +131,7 @@ export default function ResumePage() {
                   </h3>
                   <p className="text-cyan-400 text-sm">{edu.school}</p>
                 </div>
-                <span className="text-sm text-zinc-500 mt-1 md:mt-0">
+                <span className="text-sm text-subtle mt-1 md:mt-0">
                   {edu.period}
                 </span>
               </div>

@@ -37,12 +37,12 @@ export default function Footer() {
                 <span className="text-lg font-bold">WW</span>
               </div>
             </div>
-            <p className="text-sm text-zinc-500">{t("brand")}</p>
+            <p className="text-sm text-subtle">{t("brand")}</p>
           </div>
 
           {/* General */}
           <div>
-            <h4 className="text-xs uppercase tracking-widest text-zinc-500 mb-4">
+            <h4 className="text-xs uppercase tracking-widest text-subtle mb-4">
               {t("general")}
             </h4>
             <ul className="space-y-2">
@@ -61,7 +61,7 @@ export default function Footer() {
 
           {/* Specifics */}
           <div>
-            <h4 className="text-xs uppercase tracking-widest text-zinc-500 mb-4">
+            <h4 className="text-xs uppercase tracking-widest text-subtle mb-4">
               {t("specifics")}
             </h4>
             <ul className="space-y-2">
@@ -80,7 +80,7 @@ export default function Footer() {
 
           {/* Social */}
           <div>
-            <h4 className="text-xs uppercase tracking-widest text-zinc-500 mb-4">
+            <h4 className="text-xs uppercase tracking-widest text-subtle mb-4">
               {t("more")}
             </h4>
             <ul className="space-y-2">
@@ -102,7 +102,7 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="pt-8 border-t border-zinc-800 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-zinc-500">
+          <p className="text-sm text-subtle">
             &copy; 2026 <span className="text-zinc-300">Will Wu</span>.{" "}
             {t("copyright")}
           </p>

@@ -182,19 +182,19 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 <h3 className="text-lg font-medium mb-4">{t("projectInfo")}</h3>
                 <div className="space-y-4">
                   <div>
-                    <p className="text-xs text-zinc-500 uppercase tracking-wider mb-1">
+                    <p className="text-xs text-subtle uppercase tracking-wider mb-1">
                       {t("type")}
                     </p>
                     <p className="text-zinc-200">{project.type}</p>
                   </div>
                   <div>
-                    <p className="text-xs text-zinc-500 uppercase tracking-wider mb-1">
+                    <p className="text-xs text-subtle uppercase tracking-wider mb-1">
                       {t("timeline")}
                     </p>
                     <p className="text-zinc-200">{project.quarter}</p>
                   </div>
                   <div>
-                    <p className="text-xs text-zinc-500 uppercase tracking-wider mb-1">
+                    <p className="text-xs text-subtle uppercase tracking-wider mb-1">
                       {t("stack")}
                     </p>
                     <div className="flex flex-wrap gap-1.5 mt-2">
@@ -239,7 +239,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 href={`/work/${prevProject.slug}`}
                 className="group p-6 bg-zinc-900/30 border border-zinc-800 rounded-2xl hover:border-zinc-700 transition-colors"
               >
-                <div className="flex items-center gap-2 text-zinc-500 mb-2">
+                <div className="flex items-center gap-2 text-subtle mb-2">
                   <ArrowLeft size={16} />
                   <span className="text-sm">{t("previousProject")}</span>
                 </div>
@@ -256,7 +256,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 href={`/work/${nextProject.slug}`}
                 className="group p-6 bg-zinc-900/30 border border-zinc-800 rounded-2xl hover:border-zinc-700 transition-colors text-right"
               >
-                <div className="flex items-center justify-end gap-2 text-zinc-500 mb-2">
+                <div className="flex items-center justify-end gap-2 text-subtle mb-2">
                   <span className="text-sm">{t("nextProject")}</span>
                   <ArrowRight size={16} />
                 </div>

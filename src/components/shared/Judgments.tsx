@@ -21,7 +21,7 @@ export default function Judgments() {
       className="px-6 py-24 max-w-4xl mx-auto scroll-mt-20"
     >
       <div className="text-center mb-6">
-        <p className="text-[11px] uppercase tracking-[0.3em] text-zinc-500 mb-4">
+        <p className="text-[11px] uppercase tracking-[0.3em] text-subtle mb-4">
           {t("label")}
         </p>
         <h2 className="text-4xl md:text-5xl font-medium leading-tight">
@@ -48,7 +48,7 @@ export default function Judgments() {
               {String(judgments.length - index).padStart(2, "0")}
             </span>
             <div className="flex items-center gap-3 mb-2 flex-wrap">
-              <time dateTime={j.date} className="text-sm text-zinc-500">
+              <time dateTime={j.date} className="text-sm text-subtle">
                 {j.date}
               </time>
               <span

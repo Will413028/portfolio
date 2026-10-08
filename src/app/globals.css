@@ -32,6 +32,8 @@
 }
 
 @theme {
+  /* Secondary text: >= 4.5:1 on every dark surface (#0a0a0b to zinc-900) */
+  --color-subtle: #82828b;
   --color-background: hsl(var(--background));
   --color-foreground: hsl(var(--foreground));
 

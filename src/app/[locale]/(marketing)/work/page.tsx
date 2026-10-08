@@ -19,15 +19,15 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       {/* Header: Number --- TYPE and Date */}
       <div className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-3">
-          <span className="text-[13px] text-zinc-500 font-light">
+          <span className="text-[13px] text-subtle font-light">
             {projectNumber}
           </span>
           <div className="h-px bg-zinc-700 w-10" />
-          <span className="text-[10px] uppercase tracking-[0.2em] text-zinc-500">
+          <span className="text-[10px] uppercase tracking-[0.2em] text-subtle">
             {project.type}
           </span>
         </div>
-        <span className="text-[11px] text-zinc-500 tracking-wide">
+        <span className="text-[11px] text-subtle tracking-wide">
           {project.quarter}
         </span>
       </div>
@@ -37,7 +37,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
         <h2 className="text-[26px] font-serif text-white group-hover:text-zinc-300 transition-colors leading-tight">
           {project.title}
           {project.subtitle && (
-            <span className="text-zinc-500 ml-2 text-[20px] font-serif">
+            <span className="text-subtle ml-2 text-[20px] font-serif">
               {project.subtitle}
             </span>
           )}
@@ -134,7 +134,7 @@ export default function WorkPage() {
 
       {/* Hero Section */}
       <section className="px-6 pt-32 pb-16 max-w-6xl mx-auto text-center relative z-10">
-        <p className="text-[11px] uppercase tracking-[0.35em] text-zinc-500 mb-5">
+        <p className="text-[11px] uppercase tracking-[0.35em] text-subtle mb-5">
           {t("label")}
         </p>
         <h1 className="text-4xl md:text-5xl lg:text-[56px] font-medium leading-tight">

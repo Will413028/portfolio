@@ -90,7 +90,7 @@ const projectsEn: Project[] = [
     quarter: "Q1 2026",
     gradient: "from-emerald-900/80 via-green-800/60 to-teal-900/80",
     featured: true,
-    screenshots: ["/images/projects/dailyfresh.png"],
+    screenshots: ["/images/projects/dailyfresh.jpg"],
     features: [
       "Microservice backend architecture with Go and Gin",
       "Buyer and seller Flutter mobile apps",
@@ -333,7 +333,7 @@ const projectsZhTw: Project[] = [
     quarter: "2026 Q1",
     gradient: "from-emerald-900/80 via-green-800/60 to-teal-900/80",
     featured: true,
-    screenshots: ["/images/projects/dailyfresh.png"],
+    screenshots: ["/images/projects/dailyfresh.jpg"],
     features: [
       "使用 Go 和 Gin 的微服務後端架構",
       "買家和賣家 Flutter 行動應用",
