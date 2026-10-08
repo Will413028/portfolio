@@ -4,7 +4,7 @@
 
 ## Stack
 
-Next.js + pnpm（`packageManager: pnpm@10.26.2`，`pnpm-lock.yaml` 是 Vercel 用的真 lock；`bun.lock` 是 stale leftover）+ Biome（linter / formatter）+ shadcn/ui + next-intl（多語系，見 `messages/`）。
+Next.js + pnpm（`packageManager: pnpm@10.26.2`，lockfile 是 `pnpm-lock.yaml`）+ Biome（linter / formatter）+ shadcn/ui + next-intl（多語系，見 `messages/`）。
 
 - `pnpm install` / `pnpm run`（非 npm / bun）
 - `biome check` / `biome format`（非 ESLint / Prettier）
