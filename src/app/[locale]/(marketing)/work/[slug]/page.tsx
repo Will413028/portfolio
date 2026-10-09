@@ -1,12 +1,6 @@
-import {
-  ArrowLeft,
-  ArrowRight,
-  CheckCircle2,
-  ExternalLink,
-  Github,
-  TrendingUp,
-} from "lucide-react";
+import { ArrowLeft, ArrowRight, ExternalLink } from "lucide-react";
 import type { Metadata } from "next";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
@@ -45,7 +39,6 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     notFound();
   }
 
-  // Get next and previous projects
   const projects = getProjects(locale);
   const currentIndex = projects.findIndex((p) => p.slug === slug);
   const prevProject = currentIndex > 0 ? projects[currentIndex - 1] : null;
@@ -53,221 +46,177 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     currentIndex < projects.length - 1 ? projects[currentIndex + 1] : null;
 
   return (
-    <main className="min-h-screen bg-[#0a0a0b]">
-      {/* Hero Section */}
-      <section
-        className={`relative px-6 pt-32 pb-24 bg-gradient-to-br ${project.gradient}`}
-      >
-        <div className="max-w-6xl mx-auto">
+    <main>
+      <section className="bg-navy text-on-navy">
+        <div className="mx-auto max-w-6xl px-6 pt-12 pb-16 md:pt-16 md:pb-20">
           <Link
             href="/work"
-            className="inline-flex items-center gap-2 text-white/70 hover:text-white mb-8 transition-colors"
+            className="inline-flex items-center gap-2 text-sm text-on-navy-muted hover:text-on-navy"
           >
-            <ArrowLeft size={16} />
-            {t("backToProjects")}
+            <ArrowLeft size={16} aria-hidden="true" />
+            {t("back")}
           </Link>
-
-          <div className="flex items-center gap-3 mb-4">
-            <span className="px-3 py-1 bg-white/10 rounded-full text-sm text-white/80">
-              {project.type}
-            </span>
-            <span className="text-sm text-white/60">{project.quarter}</span>
-          </div>
-
-          <h1 className="text-4xl md:text-6xl font-medium text-white mb-4">
+          <p className="mt-10 text-sm font-bold text-peach">
+            {project.type} · {project.quarter}
+          </p>
+          <h1 className="mt-4 font-serif font-black text-4xl md:text-6xl leading-tight">
             {project.title}
-            {project.subtitle && (
-              <span className="text-white/60 ml-4">{project.subtitle}</span>
-            )}
           </h1>
-
-          <p className="text-xl text-white/80 max-w-3xl mb-8">
+          {project.subtitle && (
+            <p className="mt-3 text-xl text-on-navy-muted">
+              {project.subtitle}
+            </p>
+          )}
+          <p className="mt-6 max-w-3xl text-lg leading-relaxed text-on-navy-muted">
             {project.description}
           </p>
-
-          <div className="flex flex-wrap gap-2 mb-8">
-            {project.tags.map((tag) => (
-              <span
-                key={tag}
-                className="px-3 py-1.5 bg-white/10 border border-white/20 rounded-full text-sm text-white/90"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-
-          <div className="flex items-center gap-4">
-            {project.links.live && (
-              <a
-                href={project.links.live}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-white text-black font-medium rounded-full hover:bg-white/90 transition-colors"
-              >
-                <ExternalLink size={18} />
-                {t("viewLive")}
-              </a>
-            )}
-            {project.links.github && (
-              <a
-                href={project.links.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 border border-white/30 text-white rounded-full hover:bg-white/10 transition-colors"
-              >
-                <Github size={18} />
-                {t("sourceCode")}
-              </a>
-            )}
-          </div>
-        </div>
-      </section>
-
-      {/* Project Details */}
-      <section className="px-6 py-24 max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
-          {/* Main Content */}
-          <div className="lg:col-span-2">
-            <h2 className="text-2xl font-medium mb-6">{t("aboutProject")}</h2>
-            <p className="text-zinc-400 text-lg leading-relaxed mb-12">
-              {project.longDescription}
-            </p>
-
-            <h2 className="text-2xl font-medium mb-6">{t("keyFeatures")}</h2>
-            <div className="space-y-4 mb-12">
-              {project.features.map((feature) => (
-                <div key={feature} className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" />
-                  <p className="text-zinc-300">{feature}</p>
-                </div>
-              ))}
-            </div>
-
-            <h2 className="text-2xl font-medium mb-6">
-              {t("challengesAndSolutions")}
-            </h2>
-            <div className="space-y-4">
-              {project.challenges.map((challenge) => (
-                <div
-                  key={challenge}
-                  className="p-4 bg-zinc-900/50 border border-zinc-800 rounded-xl"
-                >
-                  <p className="text-zinc-300">{challenge}</p>
-                </div>
-              ))}
-            </div>
-
-            {project.outcomes && project.outcomes.length > 0 && (
-              <>
-                <h2 className="text-2xl font-medium mb-6 mt-12">
-                  {t("impact")}
-                </h2>
-                <div className="space-y-4">
-                  {project.outcomes.map((outcome) => (
-                    <div key={outcome} className="flex items-start gap-3">
-                      <TrendingUp className="w-5 h-5 text-cyan-400 mt-0.5 flex-shrink-0" />
-                      <p className="text-zinc-300">{outcome}</p>
-                    </div>
-                  ))}
-                </div>
-              </>
-            )}
-          </div>
-
-          {/* Sidebar */}
-          <div className="lg:col-span-1">
-            <div className="sticky top-24 space-y-6">
-              {/* Project Info Card */}
-              <div className="p-6 bg-zinc-900/50 border border-zinc-800 rounded-2xl">
-                <h3 className="text-lg font-medium mb-4">{t("projectInfo")}</h3>
-                <div className="space-y-4">
-                  <div>
-                    <p className="text-xs text-subtle uppercase tracking-wider mb-1">
-                      {t("type")}
-                    </p>
-                    <p className="text-zinc-200">{project.type}</p>
-                  </div>
-                  <div>
-                    <p className="text-xs text-subtle uppercase tracking-wider mb-1">
-                      {t("timeline")}
-                    </p>
-                    <p className="text-zinc-200">{project.quarter}</p>
-                  </div>
-                  <div>
-                    <p className="text-xs text-subtle uppercase tracking-wider mb-1">
-                      {t("stack")}
-                    </p>
-                    <div className="flex flex-wrap gap-1.5 mt-2">
-                      {project.tags.slice(0, 5).map((tag) => (
-                        <span
-                          key={tag}
-                          className="px-2 py-1 bg-zinc-800 rounded text-xs text-zinc-400"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* CTA Card */}
-              <div className="p-6 bg-gradient-to-br from-cyan-500/10 to-pink-500/10 border border-zinc-800 rounded-2xl">
-                <h3 className="text-lg font-medium mb-2">
-                  {t("likeWhatYouSee")}
-                </h3>
-                <p className="text-sm text-zinc-400 mb-4">{t("letsDiscuss")}</p>
+          {(project.links.live || project.links.github) && (
+            <div className="mt-8 flex flex-wrap gap-3">
+              {project.links.live && (
                 <a
-                  href="mailto:will413028@gmail.com"
-                  className="inline-flex items-center gap-2 w-full justify-center px-4 py-2.5 bg-white text-black font-medium rounded-full hover:bg-zinc-100 transition-colors text-sm"
+                  href={project.links.live}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex h-12 items-center gap-2 rounded-lg bg-bright px-6 font-bold text-navy hover:bg-peach transition-colors"
                 >
-                  {t("getInTouch")}
-                  <ArrowRight size={16} />
+                  <ExternalLink size={16} aria-hidden="true" />
+                  {t("viewLive")}
                 </a>
-              </div>
+              )}
+              {project.links.github && (
+                <a
+                  href={project.links.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex h-12 items-center rounded-lg border border-navy-line px-6 font-medium hover:border-on-navy-muted transition-colors"
+                >
+                  {t("sourceCode")}
+                </a>
+              )}
             </div>
-          </div>
+          )}
         </div>
       </section>
 
-      {/* Navigation to Other Projects */}
-      <section className="px-6 py-16 border-t border-zinc-800">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {prevProject ? (
-              <Link
-                href={`/work/${prevProject.slug}`}
-                className="group p-6 bg-zinc-900/30 border border-zinc-800 rounded-2xl hover:border-zinc-700 transition-colors"
-              >
-                <div className="flex items-center gap-2 text-subtle mb-2">
-                  <ArrowLeft size={16} />
-                  <span className="text-sm">{t("previousProject")}</span>
-                </div>
-                <h3 className="text-xl font-medium text-white group-hover:text-cyan-400 transition-colors">
-                  {prevProject.title}
-                </h3>
-              </Link>
-            ) : (
-              <div />
-            )}
-
-            {nextProject && (
-              <Link
-                href={`/work/${nextProject.slug}`}
-                className="group p-6 bg-zinc-900/30 border border-zinc-800 rounded-2xl hover:border-zinc-700 transition-colors text-right"
-              >
-                <div className="flex items-center justify-end gap-2 text-subtle mb-2">
-                  <span className="text-sm">{t("nextProject")}</span>
-                  <ArrowRight size={16} />
-                </div>
-                <h3 className="text-xl font-medium text-white group-hover:text-cyan-400 transition-colors">
-                  {nextProject.title}
-                </h3>
-              </Link>
-            )}
-          </div>
+      <div className="mx-auto max-w-6xl px-6">
+        <div className="relative mt-12 aspect-[16/9] overflow-hidden rounded-2xl bg-band">
+          <Image
+            src={project.screenshots[0]}
+            alt={project.title}
+            fill
+            sizes="(min-width: 1152px) 1104px, 100vw"
+            className="object-contain"
+            priority
+          />
         </div>
+      </div>
+
+      <section className="mx-auto grid max-w-6xl gap-16 px-6 py-20 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
+        <div>
+          {project.outcomes && project.outcomes.length > 0 && (
+            <>
+              <h2 className="font-serif font-black text-3xl">{t("impact")}</h2>
+              <ul className="mt-6 list-disc space-y-3 pl-5 text-lg leading-relaxed text-body marker:text-accent">
+                {project.outcomes.map((outcome) => (
+                  <li key={outcome}>{outcome}</li>
+                ))}
+              </ul>
+            </>
+          )}
+
+          <h2 className="mt-14 font-serif font-black text-3xl">{t("about")}</h2>
+          <p className="mt-6 text-lg leading-relaxed text-body">
+            {project.longDescription}
+          </p>
+
+          <h2 className="mt-14 font-serif font-black text-3xl">
+            {t("features")}
+          </h2>
+          <ul className="mt-6 list-disc space-y-2 pl-5 text-base leading-relaxed text-body marker:text-accent">
+            {project.features.map((feature) => (
+              <li key={feature}>{feature}</li>
+            ))}
+          </ul>
+
+          <h2 className="mt-14 font-serif font-black text-3xl">
+            {t("challenges")}
+          </h2>
+          <ul className="mt-6 list-disc space-y-2 pl-5 text-base leading-relaxed text-body marker:text-accent">
+            {project.challenges.map((challenge) => (
+              <li key={challenge}>{challenge}</li>
+            ))}
+          </ul>
+        </div>
+
+        <aside className="lg:sticky lg:top-24 lg:self-start">
+          <dl className="space-y-5 rounded-2xl bg-card p-6 border border-line">
+            <div>
+              <dt className="text-sm text-muted">{t("type")}</dt>
+              <dd className="mt-1 font-medium">{project.type}</dd>
+            </div>
+            <div>
+              <dt className="text-sm text-muted">{t("timeline")}</dt>
+              <dd className="mt-1 font-medium">{project.quarter}</dd>
+            </div>
+            <div>
+              <dt className="text-sm text-muted">{t("stack")}</dt>
+              <dd className="mt-1 text-base text-body">
+                {project.tags.join(" · ")}
+              </dd>
+            </div>
+          </dl>
+          <div className="mt-6 rounded-2xl bg-navy p-6 text-on-navy">
+            <p className="font-bold">{t("contactTitle")}</p>
+            <p className="mt-2 text-sm text-on-navy-muted">
+              {t("contactText")}
+            </p>
+            <a
+              href="mailto:will413028@gmail.com"
+              className="mt-5 inline-flex h-11 w-full items-center justify-center rounded-lg bg-bright font-bold text-navy hover:bg-peach transition-colors"
+            >
+              {t("contactCta")}
+            </a>
+          </div>
+        </aside>
       </section>
+
+      <nav
+        aria-label={t("otherProjects")}
+        className="border-t border-line bg-band"
+      >
+        <div className="mx-auto grid max-w-6xl gap-6 px-6 py-12 md:grid-cols-2">
+          {prevProject ? (
+            <Link
+              href={`/work/${prevProject.slug}`}
+              className="group rounded-2xl bg-card p-6 hover:shadow-sm"
+            >
+              <span className="inline-flex items-center gap-2 text-sm text-muted">
+                <ArrowLeft size={14} aria-hidden="true" />
+                {t("previous")}
+              </span>
+              <span className="mt-2 block font-serif font-black text-xl group-hover:text-accent">
+                {prevProject.title}
+              </span>
+            </Link>
+          ) : (
+            <div />
+          )}
+          {nextProject && (
+            <Link
+              href={`/work/${nextProject.slug}`}
+              className="group rounded-2xl bg-card p-6 text-right hover:shadow-sm"
+            >
+              <span className="inline-flex items-center gap-2 text-sm text-muted">
+                {t("next")}
+                <ArrowRight size={14} aria-hidden="true" />
+              </span>
+              <span className="mt-2 block font-serif font-black text-xl group-hover:text-accent">
+                {nextProject.title}
+              </span>
+            </Link>
+          )}
+        </div>
+      </nav>
     </main>
   );
 }

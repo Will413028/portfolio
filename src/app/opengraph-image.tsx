@@ -14,29 +14,29 @@ export default function OpengraphImage() {
         flexDirection: "column",
         justifyContent: "center",
         padding: "80px",
-        background: "#0a0a0b",
-        color: "#ffffff",
+        background: "#16233b",
+        color: "#f3f1ea",
         fontFamily: "sans-serif",
       }}
     >
       <div
         style={{
           fontSize: 32,
-          color: "#7dd3fc",
+          color: "#f0b07e",
           letterSpacing: 6,
           textTransform: "uppercase",
         }}
       >
         Senior Backend Engineer
       </div>
-      <div style={{ fontSize: 92, fontWeight: 700, marginTop: 12 }}>
+      <div style={{ fontSize: 120, fontWeight: 700, marginTop: 12 }}>
         Will Wu
       </div>
-      <div style={{ fontSize: 38, color: "#a1a1aa", marginTop: 28 }}>
+      <div style={{ fontSize: 38, color: "#a9b2c6", marginTop: 28 }}>
         Python · Go · TypeScript
       </div>
-      <div style={{ fontSize: 30, color: "#71717a", marginTop: 44 }}>
-        2M+ MAU systems · 80% latency cuts · zero-downtime migrations
+      <div style={{ fontSize: 30, color: "#a9b2c6", marginTop: 44 }}>
+        Taipei · Case studies, dated engineering calls, résumé
       </div>
     </div>,
     { ...size },

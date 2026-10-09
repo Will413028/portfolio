@@ -1,6 +1,7 @@
 import { describe, expect, test } from "vitest";
 import {
   getAllProjectSlugs,
+  getHomeProjects,
   getProjectBySlug,
   getProjects,
 } from "@/lib/projects";
@@ -58,6 +59,19 @@ describe("getAllProjectSlugs", () => {
   test("every slug is resolvable", () => {
     for (const slug of getAllProjectSlugs()) {
       expect(getProjectBySlug(slug)).toBeDefined();
+    }
+  });
+});
+
+describe("getHomeProjects", () => {
+  test("resolves the lead and supporting case studies in every locale", () => {
+    for (const locale of ["en", "zh-TW"]) {
+      const { lead, supporting } = getHomeProjects(locale);
+      expect(lead.slug).toBe("dailyfresh");
+      expect(supporting.map((p) => p.slug)).toEqual([
+        "saywe",
+        "bfx-funding-bot",
+      ]);
     }
   });
 });

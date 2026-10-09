@@ -1,58 +1,37 @@
-import { ArrowRight, FileText } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 export default function Closing() {
   const t = useTranslations("closing");
 
   return (
-    <section className="px-6 py-28 max-w-3xl mx-auto text-center">
-      <p className="text-2xl md:text-4xl font-serif italic text-white leading-snug mb-6">
-        {t("line")}
-      </p>
-      <p className="text-zinc-400 max-w-xl mx-auto mb-10">{t("text")}</p>
-
-      <div className="flex items-center justify-center gap-4 flex-wrap mb-10">
-        <a
-          href="mailto:will413028@gmail.com"
-          className="group flex items-center gap-2 px-6 py-3 bg-white text-black font-medium rounded-full hover:bg-zinc-100 transition-all duration-200 shadow-lg shadow-white/10"
-        >
-          {t("email")}
-          <span className="flex items-center justify-center w-6 h-6 bg-zinc-900 rounded-full">
-            <ArrowRight
-              size={14}
-              className="text-white group-hover:translate-x-0.5 transition-transform"
-            />
-          </span>
-        </a>
-        <a
-          href="/resume.pdf"
-          className="flex items-center gap-2 px-5 py-3 rounded-full border border-zinc-700 text-zinc-300 hover:text-white hover:border-zinc-500 transition-colors"
-        >
-          <FileText size={16} />
-          {t("resume")}
-        </a>
+    <section aria-labelledby="closing-title" className="bg-navy text-on-navy">
+      <div className="mx-auto flex max-w-6xl flex-col gap-10 px-6 py-20 md:py-24 lg:flex-row lg:items-end lg:justify-between">
+        <div>
+          <h2
+            id="closing-title"
+            className="font-serif font-black text-4xl md:text-5xl leading-tight"
+          >
+            {t("title")}
+          </h2>
+          <p className="mt-5 max-w-xl text-lg leading-relaxed text-on-navy-muted">
+            {t("text")}
+          </p>
+        </div>
+        <div className="flex flex-wrap gap-3">
+          <a
+            href="mailto:will413028@gmail.com"
+            className="inline-flex h-12 items-center rounded-lg bg-bright px-6 font-bold text-navy hover:bg-peach transition-colors"
+          >
+            will413028@gmail.com
+          </a>
+          <a
+            href="/resume.pdf"
+            className="inline-flex h-12 items-center rounded-lg border border-navy-line px-6 font-medium text-on-navy hover:border-on-navy-muted transition-colors"
+          >
+            {t("resume")}
+          </a>
+        </div>
       </div>
-
-      <p className="text-sm text-subtle">
-        will413028@gmail.com ·{" "}
-        <a
-          href="https://github.com/will413028"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover:text-white transition-colors"
-        >
-          GitHub
-        </a>{" "}
-        ·{" "}
-        <a
-          href="https://www.linkedin.com/in/will4130/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover:text-white transition-colors"
-        >
-          LinkedIn
-        </a>
-      </p>
     </section>
   );
 }
