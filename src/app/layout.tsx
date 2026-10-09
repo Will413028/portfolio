@@ -1,19 +1,9 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
 import { siteUrl } from "@/lib/site-url";
 import "./globals.css";
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-});
-
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  variable: "--font-playfair",
-  display: "swap",
-});
+const description =
+  "Will Wu is a senior backend engineer in Taipei working in Python, Go and TypeScript. Currently building an enterprise on-premises AI platform at APMIC.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -21,8 +11,7 @@ export const metadata: Metadata = {
     default: "Will Wu — Senior Backend Engineer",
     template: "%s | Will Wu",
   },
-  description:
-    "Senior Backend Engineer with 4+ years building production systems at scale — Python, Go, TypeScript. 2M+ MAU platforms, zero-downtime migrations, 80% latency cuts, SAML/RBAC security. Based in Taipei, Taiwan.",
+  description,
   icons: {
     icon: "/favicon.svg",
   },
@@ -32,14 +21,12 @@ export const metadata: Metadata = {
     url: siteUrl,
     siteName: "Will Wu",
     title: "Will Wu — Senior Backend Engineer",
-    description:
-      "Senior Backend Engineer — Python, Go, TypeScript. 2M+ MAU systems, zero-downtime migrations, 80% latency cuts. Based in Taipei, Taiwan.",
+    description,
   },
   twitter: {
     card: "summary_large_image",
     title: "Will Wu — Senior Backend Engineer",
-    description:
-      "Senior Backend Engineer — Python, Go, TypeScript. 2M+ MAU systems, zero-downtime migrations, 80% latency cuts.",
+    description,
   },
   robots: {
     index: true,
@@ -47,14 +34,12 @@ export const metadata: Metadata = {
   },
 };
 
+// The <html> element lives in app/[locale]/layout.tsx so its lang attribute
+// follows the active locale (next-intl's recommended structure).
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
-      <body className="font-sans antialiased">{children}</body>
-    </html>
-  );
+  return children;
 }

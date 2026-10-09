@@ -1,14 +1,19 @@
-import { Download, Mail } from "lucide-react";
 import type { Metadata } from "next";
 import { useLocale, useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import Closing from "@/components/shared/Closing";
+import PageHeader from "@/components/shared/PageHeader";
 import { getEducation, getExperience, getSkills } from "@/lib/experience";
 
-export const metadata: Metadata = {
-  title: "Resume",
-  description:
-    "Will Wu's resume — Senior Backend Engineer (Python, Go, TypeScript). Work experience, skills, and education. Download as PDF.",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "metadata" });
+  return { title: t("resume.title"), description: t("resume.description") };
+}
 
 export default function ResumePage() {
   const t = useTranslations("resumePage");
@@ -18,125 +23,86 @@ export default function ResumePage() {
   const skills = getSkills(locale);
 
   return (
-    <main className="min-h-screen bg-[#0a0a0b]">
-      {/* Hero */}
-      <section className="px-6 pt-32 pb-16 max-w-4xl mx-auto">
-        <p className="text-xs uppercase tracking-[0.2em] text-subtle mb-4">
-          {t("label")}
-        </p>
-        <h1 className="text-4xl md:text-6xl font-medium leading-tight mb-6">
-          {t("titlePrefix")}{" "}
-          <span className="gradient-text-pink font-serif italic">
-            {t("titleHighlight")}
-          </span>
-        </h1>
-        <p className="text-xl text-zinc-400 max-w-2xl mb-8">{t("subtitle")}</p>
-
-        <div className="flex items-center gap-4 flex-wrap">
+    <main>
+      <PageHeader label={t("label")} title={t("title")} intro={t("intro")}>
+        <div className="mt-8 flex flex-wrap items-center gap-3">
           <a
             href="/resume.pdf"
             download
-            className="inline-flex items-center gap-2 px-6 py-3 bg-white text-black font-medium rounded-full hover:bg-zinc-100 transition-colors"
+            className="inline-flex h-12 items-center rounded-lg bg-bright px-6 font-bold text-navy hover:bg-peach transition-colors"
           >
-            <Download size={18} />
             {t("downloadPdf")}
           </a>
           <a
             href="mailto:will413028@gmail.com"
-            className="inline-flex items-center gap-2 px-6 py-3 border border-zinc-700 text-zinc-300 rounded-full hover:border-zinc-500 hover:text-white transition-colors"
+            className="inline-flex h-12 items-center rounded-lg border border-navy-line px-6 font-medium text-on-navy hover:border-on-navy-muted transition-colors"
           >
-            <Mail size={18} />
-            {t("getInTouch")}
+            {t("email")}
           </a>
         </div>
-        <p className="text-xs text-subtle mt-3">Updated June 2026</p>
-      </section>
+      </PageHeader>
 
-      {/* Experience */}
-      <section className="px-6 py-16 max-w-4xl mx-auto">
-        <h2 className="text-2xl font-medium mb-8">{t("experienceTitle")}</h2>
-        <div className="space-y-8">
+      <section className="mx-auto max-w-4xl px-6 py-20">
+        <h2 className="font-serif font-black text-3xl">
+          {t("experienceTitle")}
+        </h2>
+        <ol className="mt-8 space-y-12">
           {experience.map((exp) => (
-            <div
+            <li
               key={exp.slug}
               id={exp.slug}
-              className="relative pl-8 border-l-2 border-zinc-800 scroll-mt-28"
+              className="scroll-mt-24 border-t border-line pt-8"
             >
-              <div className="absolute left-[-9px] top-1 w-4 h-4 rounded-full bg-cyan-500 border-4 border-[#0a0a0b]" />
-              <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-2">
-                <div>
-                  <h3 className="text-lg font-medium text-white">{exp.role}</h3>
-                  <p className="text-cyan-400 text-sm">
-                    {exp.company} · {exp.location}
-                  </p>
-                  <p className="text-xs text-subtle mt-1">{exp.techStack}</p>
-                </div>
-                <span className="text-sm text-subtle mt-1 md:mt-0 md:shrink-0">
-                  {exp.period}
-                </span>
+              <div className="flex flex-col gap-1 md:flex-row md:items-baseline md:justify-between">
+                <h3 className="font-serif font-bold text-2xl">{exp.company}</h3>
+                <p className="text-sm text-muted">{exp.period}</p>
               </div>
-              <ul className="mt-3 space-y-1.5">
+              <p className="mt-1 font-medium">
+                {exp.role} · {exp.location}
+              </p>
+              <p className="mt-2 text-sm text-muted">{exp.techStack}</p>
+              <ul className="mt-5 list-disc space-y-2 pl-5 text-base leading-relaxed text-body marker:text-accent">
                 {exp.description.map((item) => (
-                  <li key={item} className="text-zinc-400 text-sm flex gap-2">
-                    <span className="text-cyan-500 mt-1.5 shrink-0">•</span>
-                    <span>{item}</span>
-                  </li>
+                  <li key={item}>{item}</li>
                 ))}
               </ul>
-            </div>
+            </li>
           ))}
-        </div>
+        </ol>
       </section>
 
-      {/* Skills */}
-      <section className="px-6 py-16 max-w-4xl mx-auto">
-        <h2 className="text-2xl font-medium mb-8">{t("skillsTitle")}</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {skills.map((skill) => (
-            <div
-              key={skill.category}
-              className="p-6 bg-zinc-900/50 border border-zinc-800 rounded-2xl"
-            >
-              <h3 className="text-lg font-medium text-white mb-4">
-                {skill.category}
-              </h3>
-              <div className="flex flex-wrap gap-2">
-                {skill.items.map((item) => (
-                  <span
-                    key={item}
-                    className="px-3 py-1.5 bg-zinc-800 border border-zinc-700 rounded-full text-sm text-zinc-300"
-                  >
-                    {item}
-                  </span>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Education */}
-      <section className="px-6 py-16 max-w-4xl mx-auto">
-        <h2 className="text-2xl font-medium mb-8">{t("educationTitle")}</h2>
-        <div className="space-y-4">
-          {education.map((edu) => (
-            <div
-              key={edu.school}
-              className="p-6 bg-zinc-900/50 border border-zinc-800 rounded-2xl"
-            >
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between">
-                <div>
-                  <h3 className="text-lg font-medium text-white">
-                    {edu.degree}
-                  </h3>
-                  <p className="text-cyan-400 text-sm">{edu.school}</p>
+      <section className="bg-band">
+        <div className="mx-auto grid max-w-4xl gap-16 px-6 py-20 md:grid-cols-2">
+          <div>
+            <h2 className="font-serif font-black text-3xl">
+              {t("skillsTitle")}
+            </h2>
+            <dl className="mt-8 space-y-5">
+              {skills.map((skill) => (
+                <div key={skill.category}>
+                  <dt className="font-bold">{skill.category}</dt>
+                  <dd className="mt-1 text-base text-body">
+                    {skill.items.join(" · ")}
+                  </dd>
                 </div>
-                <span className="text-sm text-subtle mt-1 md:mt-0">
-                  {edu.period}
-                </span>
-              </div>
-            </div>
-          ))}
+              ))}
+            </dl>
+          </div>
+          <div>
+            <h2 className="font-serif font-black text-3xl">
+              {t("educationTitle")}
+            </h2>
+            <ul className="mt-8 space-y-5">
+              {education.map((edu) => (
+                <li key={edu.school}>
+                  <p className="font-bold">{edu.school}</p>
+                  <p className="mt-1 text-base text-body">
+                    {edu.degree} · {edu.period}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </section>
 

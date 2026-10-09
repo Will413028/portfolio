@@ -8,7 +8,7 @@ const csp = [
   "default-src 'self'",
   "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com",
   "style-src 'self' 'unsafe-inline'",
-  "img-src 'self' data: blob: https://*.unsplash.com https://*.same-assets.com",
+  "img-src 'self' data: blob:",
   "font-src 'self'",
   "connect-src 'self' https://www.google-analytics.com",
   "frame-ancestors 'none'",

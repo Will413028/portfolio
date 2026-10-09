@@ -8,8 +8,6 @@ export interface Project {
   tags: string[];
   type: string;
   quarter: string;
-  gradient: string;
-  featured: boolean;
   features: string[];
   challenges: string[];
   outcomes?: string[];
@@ -41,8 +39,6 @@ const projectsEn: Project[] = [
     ],
     type: "Desktop App",
     quarter: "Q3 2024",
-    gradient: "from-indigo-900/80 via-purple-800/60 to-blue-900/80",
-    featured: true,
     screenshots: ["/images/projects/saywe.jpg"],
     features: [
       "Speech-to-text transcription powered by Whisper",
@@ -88,8 +84,6 @@ const projectsEn: Project[] = [
     ],
     type: "Full-Stack Platform",
     quarter: "Q1 2026",
-    gradient: "from-emerald-900/80 via-green-800/60 to-teal-900/80",
-    featured: true,
     screenshots: ["/images/projects/dailyfresh.jpg"],
     features: [
       "Microservice backend architecture with Go and Gin",
@@ -106,7 +100,7 @@ const projectsEn: Project[] = [
       "Building real-time order tracking across buyer and seller apps",
     ],
     outcomes: [
-      "Zero-downtime auth re-architecture + 20-service Alibaba Cloud RDS migration",
+      "20-service Alibaba Cloud RDS migration inside an ~11-minute maintenance window; auth re-architecture shipped with zero downtime",
       "Zero-downtime rolling deploys across the full 21-microservice platform — verified by a live rolling-restart probe (7,910 requests, 0 downtime)",
       "Buyer & seller iOS apps shipped through their first App Store submission",
       "Authored ~60% of 12,406 non-merge commits across 22 Go/Java microservices, web, admin, and both apps",
@@ -138,8 +132,6 @@ const projectsEn: Project[] = [
     ],
     type: "Web App",
     quarter: "Q2 2024",
-    gradient: "from-blue-900/80 via-sky-800/60 to-cyan-900/80",
-    featured: true,
     screenshots: ["/images/projects/escooter-pos.jpg"],
     features: [
       "Cloud-based POS system for rental operations",
@@ -172,8 +164,6 @@ const projectsEn: Project[] = [
     tags: ["Python", "asyncio", "PostgreSQL", "Docker", "GitHub Actions"],
     type: "Trading System",
     quarter: "Q2 2026",
-    gradient: "from-amber-900/80 via-orange-800/60 to-yellow-900/80",
-    featured: false,
     screenshots: ["/images/projects/bfx-funding-bot.png"],
     features: [
       "Event-sourced ledger with append-only event log and snapshot tables",
@@ -208,8 +198,6 @@ const projectsEn: Project[] = [
     tags: ["Next.js", "Hono", "Drizzle", "TypeScript", "PostgreSQL"],
     type: "Full-Stack Migration",
     quarter: "Q2 2026",
-    gradient: "from-blue-900/80 via-indigo-800/60 to-violet-900/80",
-    featured: false,
     screenshots: ["/images/projects/divego.png"],
     features: [
       "Strangler-fig migration: domain-by-domain vertical slices",
@@ -241,8 +229,6 @@ const projectsEn: Project[] = [
     tags: ["Next.js", "TypeScript", "Supabase", "PostgreSQL", "Stripe"],
     type: "Side Project",
     quarter: "Q3 2026",
-    gradient: "from-rose-900/80 via-pink-800/60 to-stone-900/80",
-    featured: false,
     screenshots: ["/images/projects/membership-booking-demo.png"],
     features: [
       "Monthly subscriptions (8 classes or unlimited) and a single trial class",
@@ -288,8 +274,6 @@ const projectsZhTw: Project[] = [
     ],
     type: "桌面應用",
     quarter: "2024 Q3",
-    gradient: "from-indigo-900/80 via-purple-800/60 to-blue-900/80",
-    featured: true,
     screenshots: ["/images/projects/saywe.jpg"],
     features: [
       "使用 Whisper 驅動的語音轉文字逐字稿",
@@ -331,8 +315,6 @@ const projectsZhTw: Project[] = [
     ],
     type: "全端平台",
     quarter: "2026 Q1",
-    gradient: "from-emerald-900/80 via-green-800/60 to-teal-900/80",
-    featured: true,
     screenshots: ["/images/projects/dailyfresh.jpg"],
     features: [
       "使用 Go 和 Gin 的微服務後端架構",
@@ -349,7 +331,7 @@ const projectsZhTw: Project[] = [
       "在買家和賣家應用間建構即時訂單追蹤",
     ],
     outcomes: [
-      "零停機認證重構 + 20 微服務阿里雲 RDS 遷移",
+      "在約 11 分鐘的維護窗內完成 20 個微服務的阿里雲 RDS 遷移；認證架構重構零停機上線",
       "全 21 微服務平台零停機滾動部署——經即時滾動重啟探測驗證（7,910 次請求、零停機）",
       "買賣家 iOS App 完成首次 App Store 送審",
       "橫跨 22 個 Go/Java 微服務、網站、後台與兩支 App，12,406 筆 non-merge commit 中約 60% 出自我手",
@@ -381,8 +363,6 @@ const projectsZhTw: Project[] = [
     ],
     type: "網頁應用",
     quarter: "2024 Q2",
-    gradient: "from-blue-900/80 via-sky-800/60 to-cyan-900/80",
-    featured: true,
     screenshots: ["/images/projects/escooter-pos.jpg"],
     features: [
       "雲端 POS 系統用於租賃營運",
@@ -415,8 +395,6 @@ const projectsZhTw: Project[] = [
     tags: ["Python", "asyncio", "PostgreSQL", "Docker", "GitHub Actions"],
     type: "交易系統",
     quarter: "2026 Q2",
-    gradient: "from-amber-900/80 via-orange-800/60 to-yellow-900/80",
-    featured: false,
     screenshots: ["/images/projects/bfx-funding-bot.png"],
     features: [
       "事件溯源帳本（append-only event log + 快照表）",
@@ -451,8 +429,6 @@ const projectsZhTw: Project[] = [
     tags: ["Next.js", "Hono", "Drizzle", "TypeScript", "PostgreSQL"],
     type: "全端遷移",
     quarter: "2026 Q2",
-    gradient: "from-blue-900/80 via-indigo-800/60 to-violet-900/80",
-    featured: false,
     screenshots: ["/images/projects/divego.png"],
     features: [
       "strangler-fig 遷移：逐域垂直切片",
@@ -484,8 +460,6 @@ const projectsZhTw: Project[] = [
     tags: ["Next.js", "TypeScript", "Supabase", "PostgreSQL", "Stripe"],
     type: "個人作品",
     quarter: "2026 Q3",
-    gradient: "from-rose-900/80 via-pink-800/60 to-stone-900/80",
-    featured: false,
     screenshots: ["/images/projects/membership-booking-demo.png"],
     features: [
       "月訂閱（8 堂或無限堂）與單堂體驗",
@@ -529,4 +503,25 @@ export function getProjectBySlug(
 
 export function getAllProjectSlugs(): string[] {
   return projectsEn.map((p) => p.slug);
+}
+
+// Home page placement is the same in every locale, so it is stored once.
+const homePlacement = {
+  lead: "dailyfresh",
+  supporting: ["saywe", "bfx-funding-bot"],
+} as const;
+
+export function getHomeProjects(locale: string = "en"): {
+  lead: Project;
+  supporting: Project[];
+} {
+  const find = (slug: string) => {
+    const project = getProjectBySlug(slug, locale);
+    if (!project) throw new Error(`home placement names unknown slug: ${slug}`);
+    return project;
+  };
+  return {
+    lead: find(homePlacement.lead),
+    supporting: homePlacement.supporting.map(find),
+  };
 }

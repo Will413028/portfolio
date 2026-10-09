@@ -1,176 +1,117 @@
 "use client";
 
-import { Globe, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { useState } from "react";
-import { Link, usePathname, useRouter } from "@/i18n/navigation";
-import { routing } from "@/i18n/routing";
-
-const localeLabels: Record<string, string> = {
-  en: "EN",
-  "zh-TW": "中文",
-};
+import { Link, usePathname } from "@/i18n/navigation";
 
 export default function Navigation() {
   const t = useTranslations("nav");
+  const locale = useLocale();
+  const pathname = usePathname();
+  const [open, setOpen] = useState(false);
+  const otherLocale = locale === "zh-TW" ? "en" : "zh-TW";
 
-  const navLinks = [
-    { href: "/", label: t("home") },
-    { href: "/about", label: t("about") },
+  const links = [
     { href: "/work", label: t("work") },
+    { href: "/#judgments", label: t("judgments") },
+    { href: "/about", label: t("about") },
     { href: "/resume", label: t("resume") },
   ];
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [localeMenuOpen, setLocaleMenuOpen] = useState(false);
-  const pathname = usePathname();
-  const router = useRouter();
-  const locale = useLocale();
-
-  function switchLocale(nextLocale: string) {
-    router.replace(pathname, { locale: nextLocale });
-    setLocaleMenuOpen(false);
-  }
 
   return (
-    <nav
-      className="fixed top-0 left-0 right-0 z-50 px-6 py-4"
-      aria-label="Main navigation"
-    >
-      {/* Skip to main content */}
+    <header className="sticky top-0 z-50 bg-navy text-on-navy border-b border-navy-line">
       <a
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[60] focus:px-4 focus:py-2 focus:bg-white focus:text-black focus:rounded-lg focus:font-medium"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-lg focus:bg-on-navy focus:px-4 focus:py-2 focus:font-bold focus:text-navy"
       >
-        Skip to main content
+        {t("skip")}
       </a>
-      <div className="max-w-6xl mx-auto flex items-center justify-between">
-        {/* Logo */}
-        <Link href="/" className="flex items-center" aria-label="Home">
-          <svg
-            width="32"
-            height="32"
-            viewBox="0 0 40 40"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            aria-hidden="true"
-          >
-            <path
-              d="M20 5L35 35H5L20 5Z"
-              stroke="white"
-              strokeWidth="2"
-              fill="none"
-            />
-            <path
-              d="M20 15L28 35H12L20 15Z"
-              stroke="white"
-              strokeWidth="1.5"
-              fill="none"
-            />
-            <path d="M12 27H28" stroke="white" strokeWidth="1.5" />
-          </svg>
+      <nav
+        aria-label={t("label")}
+        className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6"
+      >
+        <Link href="/" className="flex items-baseline gap-3">
+          <span className="font-display font-bold text-xl">Will Wu</span>
+          <span className="hidden text-sm text-on-navy-muted sm:inline">
+            {t("role")}
+          </span>
         </Link>
 
-        {/* Desktop Menu */}
-        <div className="hidden md:flex items-center gap-0.5 bg-zinc-900/90 backdrop-blur-xl rounded-full px-1.5 py-1 border border-zinc-800/80">
-          {navLinks.map((link) => (
+        <div className="hidden items-center gap-7 md:flex">
+          {links.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className={`px-4 py-1.5 text-sm rounded-full transition-all duration-200 ${
-                pathname === link.href
-                  ? "text-white bg-zinc-800"
-                  : "text-zinc-400 hover:text-white hover:bg-zinc-800/50"
-              }`}
+              aria-current={pathname === link.href ? "page" : undefined}
+              className="text-sm text-on-navy-muted hover:text-on-navy aria-[current=page]:text-on-navy transition-colors"
             >
               {link.label}
             </Link>
           ))}
-          <div className="w-px h-5 bg-zinc-700 mx-1" />
-          <a
-            href="mailto:will413028@gmail.com"
-            className="px-4 py-1.5 text-sm rounded-full transition-all duration-200 text-zinc-400 hover:text-white hover:bg-zinc-800/50"
+          <Link
+            href={pathname}
+            locale={otherLocale}
+            className="inline-flex h-10 items-center rounded-lg border border-navy-line px-3 text-sm hover:border-on-navy-muted transition-colors"
           >
-            {t("contact")}
+            {t("otherLanguage")}
+          </Link>
+          <a
+            href="/resume.pdf"
+            className="inline-flex h-10 items-center rounded-lg bg-on-navy px-4 text-sm font-bold text-navy hover:bg-peach transition-colors"
+          >
+            {t("downloadResume")}
           </a>
         </div>
 
-        {/* Right side buttons */}
-        <div className="hidden md:flex items-center gap-2">
-          {/* Language switcher */}
-          <div className="relative">
-            <button
-              type="button"
-              onClick={() => setLocaleMenuOpen(!localeMenuOpen)}
-              aria-expanded={localeMenuOpen}
-              aria-haspopup="true"
-              aria-label="Switch language"
-              className="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-zinc-900/80 border border-zinc-800 text-zinc-400 hover:text-white hover:border-zinc-700 transition-all duration-200 text-sm"
-            >
-              <Globe size={14} />
-              {localeLabels[locale] || locale}
-            </button>
-            {localeMenuOpen && (
-              <div className="absolute right-0 top-full mt-1 bg-zinc-900 border border-zinc-800 rounded-lg shadow-xl overflow-hidden min-w-[100px]">
-                {routing.locales.map((loc) => (
-                  <button
-                    key={loc}
-                    type="button"
-                    onClick={() => switchLocale(loc)}
-                    className={`w-full px-4 py-2 text-left text-sm transition-colors ${
-                      loc === locale
-                        ? "text-white bg-zinc-800"
-                        : "text-zinc-400 hover:text-white hover:bg-zinc-800"
-                    }`}
-                  >
-                    {localeLabels[loc] || loc}
-                  </button>
-                ))}
-              </div>
-            )}
-          </div>
-        </div>
-
-        {/* Mobile menu button */}
         <button
           type="button"
-          className="md:hidden p-2 text-zinc-400 hover:text-white transition-colors"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          aria-expanded={mobileMenuOpen}
-          aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+          onClick={() => setOpen(!open)}
+          aria-expanded={open}
+          aria-controls="mobile-menu"
+          aria-label={open ? t("closeMenu") : t("openMenu")}
+          className="inline-flex h-11 w-11 items-center justify-center rounded-lg text-on-navy-muted hover:text-on-navy md:hidden"
         >
-          {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          {open ? <X size={22} /> : <Menu size={22} />}
         </button>
-      </div>
+      </nav>
 
-      {/* Mobile Menu */}
-      {mobileMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-zinc-900/98 backdrop-blur-xl border-t border-zinc-800 p-6 shadow-2xl">
-          <div className="flex flex-col gap-1">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className={`px-4 py-3 rounded-lg transition-colors ${
-                  pathname === link.href
-                    ? "text-white bg-zinc-800"
-                    : "text-zinc-400 hover:text-white hover:bg-zinc-800/50"
-                }`}
-              >
-                {link.label}
-              </Link>
+      {open && (
+        <div
+          id="mobile-menu"
+          className="border-t border-navy-line px-6 pb-6 md:hidden"
+        >
+          <ul className="flex flex-col py-2">
+            {links.map((link) => (
+              <li key={link.href}>
+                <Link
+                  href={link.href}
+                  onClick={() => setOpen(false)}
+                  className="block py-3 text-base text-on-navy"
+                >
+                  {link.label}
+                </Link>
+              </li>
             ))}
-            <div className="h-px bg-zinc-800 my-2" />
-            <a
-              href="mailto:will413028@gmail.com"
-              onClick={() => setMobileMenuOpen(false)}
-              className="px-4 py-3 rounded-lg transition-colors text-zinc-400 hover:text-white hover:bg-zinc-800/50"
+          </ul>
+          <div className="flex gap-3">
+            <Link
+              href={pathname}
+              locale={otherLocale}
+              onClick={() => setOpen(false)}
+              className="inline-flex h-11 items-center rounded-lg border border-navy-line px-4 text-sm"
             >
-              {t("contact")}
+              {t("otherLanguage")}
+            </Link>
+            <a
+              href="/resume.pdf"
+              className="inline-flex h-11 items-center rounded-lg bg-on-navy px-4 text-sm font-bold text-navy"
+            >
+              {t("downloadResume")}
             </a>
           </div>
         </div>
       )}
-    </nav>
+    </header>
   );
 }

@@ -1,152 +1,142 @@
 {
-  "common": {
-    "home": "首頁",
-    "about": "關於",
-    "work": "作品",
-    "blog": "部落格",
-    "contact": "聯繫",
-    "getInTouch": "聯繫我們",
-    "readMore": "閱讀更多",
-    "learnMore": "了解更多",
-    "viewAll": "查看全部",
-    "goHome": "回首頁",
-    "subscribe": "訂閱",
-    "send": "發送",
-    "cancel": "取消",
-    "confirm": "確認",
-    "loading": "載入中...",
-    "error": "發生錯誤",
-    "noResults": "找不到結果"
+  "metadata": {
+    "home": {
+      "title": "Will Wu — 資深後端工程師｜Python、Go、TypeScript",
+      "description": "Will Wu，台北的資深後端工程師。在 APMIC 做企業地端部署的 AI 平台；在方格子把 API 回應時間降了 80%。這裡有作品案例、附日期的技術判斷和履歷。"
+    },
+    "about": {
+      "title": "關於",
+      "description": "關於 Will Wu：台北的資深後端工程師，他的背景、做事方式和常用的技術。"
+    },
+    "work": {
+      "title": "作品",
+      "description": "Will Wu 的作品案例：問題、做法，以及結果怎麼驗證。"
+    },
+    "resume": {
+      "title": "履歷",
+      "description": "Will Wu 的履歷：資深後端工程師，Python、Go、TypeScript。工作經歷、技術與學歷，可下載 PDF。"
+    }
   },
   "nav": {
-    "home": "首頁",
-    "about": "關於",
+    "label": "主選單",
+    "skip": "跳到主要內容",
+    "role": "資深後端工程師",
     "work": "作品",
-    "more": "更多",
+    "judgments": "判斷",
+    "about": "關於",
     "resume": "履歷",
-    "contact": "聯繫"
+    "otherLanguage": "EN",
+    "downloadResume": "下載履歷",
+    "openMenu": "開啟選單",
+    "closeMenu": "關閉選單"
   },
   "hero": {
-    "eyebrow": "Will Wu · 資深後端工程師 · 台北",
-    "headline": "我做後端系統，",
-    "headlineHighlight": "也把判斷寫下來。",
-    "intro": "四年生產環境後端經驗，Python、Go、TypeScript——服務 200 萬月活的內容平台、企業地端 AI、零停機遷移。這一頁先放證據：每個數字都連到背後的工作，每個工程判斷都附日期，你可以自己檢查。",
-    "ctaJudgments": "看我的判斷",
-    "ctaResume": "履歷"
+    "role": "資深後端工程師 · 台北",
+    "intro": "我是 Will，在台北寫後端，主要用 Python 和 Go。現在在 APMIC 做企業地端部署的 AI 平台；之前在方格子把 MongoDB 查詢裡的 lookup 拿掉，API 回應時間降了 80%。",
+    "ctaEmail": "寄信給我",
+    "ctaResume": "下載履歷（PDF）",
+    "careerLabel": "經歷",
+    "careerNote": "學歷與工作，由舊到新"
   },
-  "stats": {
-    "label": "實績",
-    "v1": "2M+",
-    "l1": "月活用戶平台",
-    "v2": "80%",
-    "l2": "API 延遲下降",
-    "v3": "20",
-    "l3": "微服務零停機遷移",
-    "v4": "4+ 年",
-    "l4": "生產後端經驗",
-    "hint": "每個數字都能點開，看背後的工作。"
+  "highlights": {
+    "label": "成果",
+    "hint": "點開可以看到出處"
   },
-  "caseStudies": {
-    "label": "精選作品",
-    "curated": "精選",
-    "work": "作品",
-    "seeMore": "查看更多專案"
-  },
-  "aboutPage": {
-    "label": "關於我",
-    "titlePrefix": "我是 Will Wu，一位",
-    "titleHighlight": "資深後端工程師",
-    "storyTitle": "我的故事",
-    "story1": "我的科技之旅始於化學工程學位，但很快發現自己真正的熱情在於軟體開發。在喬治梅森大學取得資料分析工程碩士後，我全心投入後端開發。",
-    "story2": "如今，我專注於使用 Python、Go 和 TypeScript 構建可擴展的後端系統。從企業 AI 平台到服務數百萬用戶的內容平台，我擅長設計能在真實壓力下運作的架構。",
-    "story3": "我曾帶領工程團隊、從零建構微服務、大幅優化系統效能。我持續探索新技術——從 LLM 整合到基礎設施即代碼。",
-    "valuesTitle": "我的價值觀",
-    "cleanCode": "生產級可靠度",
-    "cleanCodeDesc": "撐得住規模的系統——200 萬+ MAU 平台、零停機遷移、80% 延遲下降。",
-    "userExperience": "用量測做決定",
-    "userExperienceDesc": "根因靠量測證明，不靠猜——延遲、逾時、遷移都依資料決定。",
-    "continuousLearning": "技術債清理",
-    "continuousLearningDesc": "能回本的重構——OAuth / RBAC 重新設計、微服務遷移做到位。",
-    "skillsTitle": "技能與技術",
-    "experienceTitle": "工作經歷"
-  },
-  "workPage": {
-    "label": "精選作品",
-    "curated": "精選",
-    "work": "作品"
-  },
-  "projectPage": {
-    "backToProjects": "返回作品列表",
-    "aboutProject": "關於專案",
-    "keyFeatures": "主要功能",
-    "challengesAndSolutions": "挑戰與解決方案",
-    "impact": "成果",
-    "projectInfo": "專案資訊",
-    "type": "類型",
-    "timeline": "時程",
-    "stack": "技術棧",
-    "likeWhatYouSee": "想知道更多細節？",
-    "letsDiscuss": "歡迎問我這是怎麼做的，我很樂意深入聊。",
-    "getInTouch": "聯繫我",
-    "viewLive": "查看線上版本",
-    "sourceCode": "原始碼",
-    "previousProject": "上一個專案",
-    "nextProject": "下一個專案"
-  },
-  "footer": {
-    "brand": "我是 Will — 資深後端工程師，專精 Python、Go 和 TypeScript。從台灣打造可擴展的系統。",
-    "general": "一般",
-    "specifics": "更多內容",
-    "more": "其他",
-    "home": "首頁",
-    "about": "關於",
-    "projects": "作品集",
-    "copyright": "版權所有",
-    "contact": "聯繫",
-    "resume": "履歷（PDF）"
-  },
-  "resumePage": {
-    "label": "履歷",
-    "titlePrefix": "Will Wu 的",
-    "titleHighlight": "履歷",
-    "subtitle": "擁有 4 年以上經驗的資深後端工程師，專精使用 Python、Go 和 TypeScript 構建可擴展系統。",
-    "downloadPdf": "下載 PDF",
-    "getInTouch": "聯繫我",
-    "experienceTitle": "工作經歷",
-    "skillsTitle": "技能與技術",
-    "educationTitle": "教育背景",
-    "degree": "資料分析工程碩士 / 化學工程學士",
-    "university": "喬治梅森大學 / 大同大學",
-    "educationPeriod": "2019 - 2021 / 2013 - 2016"
-  },
-  "notFound": {
-    "title": "找不到頁面",
-    "description": "你要找的頁面不存在或已被移動。",
-    "goHome": "回首頁",
-    "contactMe": "聯繫我"
-  },
-  "career": {
-    "label": "經歷",
-    "title": "一路",
-    "titleHighlight": "走到現在"
+  "works": {
+    "label": "作品",
+    "title": "三個上過生產環境的系統",
+    "intro": "一個有付費客戶，一個用真錢運作，一個有 22 個微服務。每個案例都寫了做法，以及結果怎麼驗證。",
+    "readCase": "看案例",
+    "seeAll": "全部作品"
   },
   "judgments": {
     "label": "判斷",
-    "title": "先把判斷寫下來，",
-    "titleHighlight": "再讓時間檢驗。",
-    "intro": "我公開做過的工程判斷，由新到舊。每條都連到當天的原始記錄——說對說錯，都留在原處。",
+    "title": "我公開寫下的技術判斷",
+    "intro": "每一條都附上當天公開的原始記錄。結果出來以後，說對或說錯都會標在原處。",
     "source": "原始記錄",
+    "resolved": "{date} 檢驗",
     "status": {
       "open": "待檢驗",
       "held": "說對了",
       "missed": "說錯了"
-    },
-    "resolved": "{date} 檢驗"
+    }
   },
   "closing": {
-    "line": "先放證據，再談說法。",
-    "text": "如果你在組後端團隊，覺得這種做事方式合適，歡迎告訴我職缺內容。",
-    "email": "寄信給我",
+    "title": "在找後端工程師嗎？",
+    "text": "寄信給我，或先下載履歷看看。",
+    "resume": "下載履歷（PDF）"
+  },
+  "footer": {
+    "tagline": "台北的後端工程師",
+    "work": "作品",
+    "about": "關於",
     "resume": "履歷（PDF）"
+  },
+  "aboutPage": {
+    "label": "關於",
+    "title": "我是 Will Wu",
+    "story1": "大學在大同大學念化學工程，之後到喬治梅森大學讀資料分析工程碩士，畢業後開始寫後端。",
+    "story2": "第一份工作在 AI-Rider，維護全台上千座停車場的管理系統和硬體整合。之後在成奇科技帶四人團隊，從零做出雲端 POS 和電動車租賃系統；在方格子參與一個 200 萬月活內容平台的後端架構重構。",
+    "story3": "現在在 APMIC，做企業地端部署的 LLM 平台：SSO 與權限、跨服務的分散式追蹤、RAG 的資料管線。",
+    "howTitle": "我怎麼做事",
+    "how": {
+      "measure": {
+        "title": "先量測，再下結論",
+        "text": "追一個間歇的生產環境逾時時，三個看似合理的假設都被量測一一推翻，最後才找到真正的原因。"
+      },
+      "verify": {
+        "title": "改動要能驗證",
+        "text": "把 721 行的手寫狀態機改成 144 行的宣告式流程之前，先寫 50 個 characterization test 鎖住原本的行為。"
+      },
+      "writeDown": {
+        "title": "判斷先寫下來",
+        "text": "重要的技術判斷先公開寫下並附上日期，事後再回頭對答案。首頁的判斷區就是這些紀錄。"
+      }
+    },
+    "skillsTitle": "常用的技術"
+  },
+  "workPage": {
+    "label": "作品",
+    "title": "做過的系統",
+    "intro": "每個案例都寫了問題、做法和結果。",
+    "readCase": "看案例"
+  },
+  "projectPage": {
+    "back": "所有作品",
+    "impact": "成果",
+    "about": "背景",
+    "features": "做了什麼",
+    "challenges": "難處",
+    "type": "類型",
+    "timeline": "時間",
+    "stack": "技術",
+    "viewLive": "看線上版本",
+    "sourceCode": "原始碼",
+    "contactTitle": "想聊這個案例？",
+    "contactText": "寄信給我，我可以講更多細節。",
+    "contactCta": "寄信給我",
+    "otherProjects": "其他作品",
+    "previous": "上一個",
+    "next": "下一個"
+  },
+  "resumePage": {
+    "label": "履歷",
+    "title": "Will Wu 的履歷",
+    "intro": "資深後端工程師，Python、Go、TypeScript。完整經歷在下面，也可以直接下載 PDF。",
+    "downloadPdf": "下載 PDF",
+    "email": "寄信給我",
+    "experienceTitle": "工作經歷",
+    "skillsTitle": "技術",
+    "educationTitle": "學歷"
+  },
+  "notFound": {
+    "title": "找不到這個頁面",
+    "description": "網址可能打錯了，或是頁面已經搬走。",
+    "goHome": "回首頁"
+  },
+  "error": {
+    "title": "頁面出了點問題",
+    "description": "這一頁沒有載入成功，請再試一次，或稍後再回來。",
+    "retry": "再試一次"
   }
 }

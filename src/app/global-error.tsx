@@ -1,5 +1,8 @@
 "use client";
 
+import "./globals.css";
+
+// Replaces the root layout when it fails, so it renders its own <html>.
 export default function GlobalError({
   error: _error,
   reset,
@@ -9,20 +12,20 @@ export default function GlobalError({
 }) {
   return (
     <html lang="en">
-      <body className="bg-[#0a0a0b] text-white font-sans antialiased">
-        <div className="min-h-screen flex items-center justify-center px-4">
+      <body className="bg-paper text-ink antialiased">
+        <main className="min-h-screen flex items-center justify-center px-6">
           <div className="text-center">
-            <h1 className="text-6xl font-medium mb-4">500</h1>
-            <p className="text-xl text-zinc-400 mb-8">Something went wrong</p>
+            <p className="text-sm font-bold text-accent">500</p>
+            <h1 className="mt-3 text-3xl font-bold">Something went wrong.</h1>
             <button
               type="button"
               onClick={reset}
-              className="px-6 py-3 bg-white text-black font-medium rounded-full hover:bg-zinc-100 transition-colors"
+              className="mt-8 h-12 px-6 rounded-lg bg-navy text-on-navy font-bold hover:bg-navy-raised transition-colors"
             >
-              Try Again
+              Try again
             </button>
           </div>
-        </div>
+        </main>
       </body>
     </html>
   );

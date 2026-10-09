@@ -1,152 +1,142 @@
 {
-  "common": {
-    "home": "Home",
-    "about": "About",
-    "work": "Work",
-    "blog": "Blog",
-    "contact": "Contact",
-    "getInTouch": "Get In Touch",
-    "readMore": "Read More",
-    "learnMore": "Learn More",
-    "viewAll": "View All",
-    "goHome": "Go Home",
-    "subscribe": "Subscribe",
-    "send": "Send",
-    "cancel": "Cancel",
-    "confirm": "Confirm",
-    "loading": "Loading...",
-    "error": "Something went wrong",
-    "noResults": "No results found"
+  "metadata": {
+    "home": {
+      "title": "Will Wu — Senior Backend Engineer | Python, Go & TypeScript",
+      "description": "Will Wu, senior backend engineer in Taipei. Builds an on-premises enterprise AI platform at APMIC; at Vocus he cut API response time by 80%. Case studies, dated technical calls and a résumé."
+    },
+    "about": {
+      "title": "About",
+      "description": "About Will Wu, a senior backend engineer in Taipei: background, how he works, and the tools he uses."
+    },
+    "work": {
+      "title": "Work",
+      "description": "Case studies by Will Wu: the problem, what he built, and how the result was verified."
+    },
+    "resume": {
+      "title": "Résumé",
+      "description": "Will Wu's résumé: senior backend engineer working in Python, Go and TypeScript. Experience, skills and education, with a PDF download."
+    }
   },
   "nav": {
-    "home": "Home",
-    "about": "About",
+    "label": "Main",
+    "skip": "Skip to main content",
+    "role": "Senior backend engineer",
     "work": "Work",
-    "more": "More",
-    "resume": "Resume",
-    "contact": "Contact"
+    "judgments": "Calls",
+    "about": "About",
+    "resume": "Résumé",
+    "otherLanguage": "中文",
+    "downloadResume": "Download résumé",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
   },
   "hero": {
-    "eyebrow": "Will Wu · Senior Backend Engineer · Taipei",
-    "headline": "I build backend systems,",
-    "headlineHighlight": "and write down why.",
-    "intro": "Four years of production backends in Python, Go and TypeScript — a content platform serving 2M+ monthly users, enterprise on-prem AI, zero-downtime migrations. This page puts evidence first: every number links to the work behind it, and my engineering calls are dated so you can check them.",
-    "ctaJudgments": "Read my calls",
-    "ctaResume": "Résumé"
+    "role": "Senior backend engineer · Taipei",
+    "intro": "I'm Will, a backend engineer in Taipei who mostly writes Python and Go. At APMIC I build an on-premises AI platform for enterprises; before that, at Vocus, I removed lookups from MongoDB queries and cut API response time by 80%.",
+    "ctaEmail": "Email me",
+    "ctaResume": "Download résumé (PDF)",
+    "careerLabel": "Career",
+    "careerNote": "Education and roles, oldest first"
   },
-  "stats": {
-    "label": "Track Record",
-    "v1": "2M+",
-    "l1": "MAU platforms served",
-    "v2": "80%",
-    "l2": "API latency reduction",
-    "v3": "20",
-    "l3": "microservices migrated, zero-downtime",
-    "v4": "4+ yrs",
-    "l4": "production backend",
-    "hint": "Every number links to the work behind it."
+  "highlights": {
+    "label": "Results",
+    "hint": "Each one links to its source"
   },
-  "caseStudies": {
-    "label": "Case Studies",
-    "curated": "Curated",
-    "work": "work",
-    "seeMore": "See more projects"
-  },
-  "aboutPage": {
-    "label": "About Me",
-    "titlePrefix": "I'm Will Wu, a",
-    "titleHighlight": "Senior Backend Engineer",
-    "storyTitle": "My Story",
-    "story1": "My journey into tech began with a Chemical Engineering degree, but I quickly discovered my true passion lay in building software. After earning my MS in Data Analytics Engineering from George Mason University, I dove into backend development.",
-    "story2": "Today, I specialize in building scalable backend systems using Python, Go, and TypeScript. From enterprise AI platforms to content platforms serving millions of users, I thrive on designing architectures that perform under real-world pressure.",
-    "story3": "I've led engineering teams, built microservices from scratch, and optimized systems for dramatic performance gains. I'm always exploring new technologies — from LLM integration to infrastructure as code.",
-    "valuesTitle": "What I Value",
-    "cleanCode": "Production Reliability",
-    "cleanCodeDesc": "Systems that hold up at scale — 2M+ MAU platforms, zero-downtime migrations, 80% latency cuts.",
-    "userExperience": "Measured Decisions",
-    "userExperienceDesc": "Root causes proven by measurement, not guessed — latency, timeouts and migrations decided on data.",
-    "continuousLearning": "Technical-Debt Reduction",
-    "continuousLearningDesc": "Refactors that pay for themselves — OAuth / RBAC redesigns and microservice migrations done right.",
-    "skillsTitle": "Skills & Technologies",
-    "experienceTitle": "Work Experience"
-  },
-  "workPage": {
-    "label": "Case Studies",
-    "curated": "Curated",
-    "work": "Work"
-  },
-  "projectPage": {
-    "backToProjects": "Back to Projects",
-    "aboutProject": "About the Project",
-    "keyFeatures": "Key Features",
-    "challengesAndSolutions": "Challenges & Solutions",
-    "impact": "Impact",
-    "projectInfo": "Project Info",
-    "type": "Type",
-    "timeline": "Timeline",
-    "stack": "Stack",
-    "likeWhatYouSee": "Want the details?",
-    "letsDiscuss": "Ask me how this was built — I'm happy to go deeper.",
-    "getInTouch": "Get in Touch",
-    "viewLive": "View Live",
-    "sourceCode": "Source Code",
-    "previousProject": "Previous Project",
-    "nextProject": "Next Project"
-  },
-  "footer": {
-    "brand": "I'm Will — a senior backend engineer specializing in Python, Go & TypeScript. Building scalable systems from Taiwan.",
-    "general": "General",
-    "specifics": "Specifics",
-    "more": "More",
-    "home": "Home",
-    "about": "About",
-    "projects": "Projects",
-    "copyright": "All rights reserved",
-    "contact": "Contact",
-    "resume": "Résumé (PDF)"
-  },
-  "resumePage": {
-    "label": "Resume",
-    "titlePrefix": "Will Wu's",
-    "titleHighlight": "Resume",
-    "subtitle": "Senior Backend Engineer with 4+ years of experience building scalable systems with Python, Go, and TypeScript.",
-    "downloadPdf": "Download PDF",
-    "getInTouch": "Get In Touch",
-    "experienceTitle": "Work Experience",
-    "skillsTitle": "Skills & Technologies",
-    "educationTitle": "Education",
-    "degree": "MS, Data Analytics Engineering / BS, Chemical Engineering",
-    "university": "George Mason University / Tatung University",
-    "educationPeriod": "2019 - 2021 / 2013 - 2016"
-  },
-  "notFound": {
-    "title": "Page not found",
-    "description": "The page you're looking for doesn't exist or has been moved.",
-    "goHome": "Go Home",
-    "contactMe": "Contact Me"
-  },
-  "career": {
-    "label": "Career",
-    "title": "The path",
-    "titleHighlight": "so far"
+  "works": {
+    "label": "Work",
+    "title": "Three systems that ran in production",
+    "intro": "One has paying customers, one trades real money, one spans 22 microservices. Each case study covers what I did and how the result was verified.",
+    "readCase": "Read the case study",
+    "seeAll": "All work"
   },
   "judgments": {
-    "label": "Judgments",
-    "title": "Write the call down first,",
-    "titleHighlight": "then let time check it.",
-    "intro": "Engineering calls I've made in public, newest first. Each links to the record from the day it was made — right or wrong, they stay where they are.",
+    "label": "Calls",
+    "title": "Technical calls I've made in public",
+    "intro": "Each one links to the record I published that day. Once the outcome is known, I mark it right or wrong here, in place.",
     "source": "Original record",
+    "resolved": "Checked {date}",
     "status": {
       "open": "Pending",
       "held": "Held up",
       "missed": "Got it wrong"
-    },
-    "resolved": "Checked {date}"
+    }
   },
   "closing": {
-    "line": "Evidence first, claims second.",
-    "text": "If you're building a backend team and this way of working fits, I'd like to hear about the role.",
-    "email": "Email me",
+    "title": "Hiring a backend engineer?",
+    "text": "Email me, or start with the résumé.",
+    "resume": "Download résumé (PDF)"
+  },
+  "footer": {
+    "tagline": "Backend engineer in Taipei",
+    "work": "Work",
+    "about": "About",
     "resume": "Résumé (PDF)"
+  },
+  "aboutPage": {
+    "label": "About",
+    "title": "I'm Will Wu",
+    "story1": "I studied chemical engineering at Tatung University, then took an MS in Data Analytics Engineering at George Mason University, and started writing backends after graduating.",
+    "story2": "My first role, at AI-Rider, was maintaining a parking management system and its hardware integrations across more than 1,000 lots in Taiwan. At ChengChi Tech I led a team of four that built a cloud POS and an e-scooter rental system from scratch; at Vocus I contributed to the backend re-architecture of a 2M+ MAU content platform.",
+    "story3": "Now at APMIC I work on an on-premises LLM platform for enterprises: SSO and permissions, distributed tracing across services, and the data pipelines behind RAG.",
+    "howTitle": "How I work",
+    "how": {
+      "measure": {
+        "title": "Measure before concluding",
+        "text": "Chasing an intermittent production timeout, three plausible hypotheses were each disproven by measurement before the real cause surfaced."
+      },
+      "verify": {
+        "title": "Make changes verifiable",
+        "text": "Before turning a 721-line hand-rolled state machine into 144 lines of declarative flow, I pinned its behaviour with 50 characterization tests."
+      },
+      "writeDown": {
+        "title": "Write the call down first",
+        "text": "I publish important technical calls with a date, then come back to check them. The calls section on the home page is that record."
+      }
+    },
+    "skillsTitle": "Tools I use"
+  },
+  "workPage": {
+    "label": "Work",
+    "title": "Systems I've built",
+    "intro": "Each case study covers the problem, what I did, and the result.",
+    "readCase": "Read the case study"
+  },
+  "projectPage": {
+    "back": "All work",
+    "impact": "Results",
+    "about": "Background",
+    "features": "What I built",
+    "challenges": "Hard parts",
+    "type": "Type",
+    "timeline": "When",
+    "stack": "Stack",
+    "viewLive": "View live",
+    "sourceCode": "Source code",
+    "contactTitle": "Want to talk about this one?",
+    "contactText": "Email me and I'll go into the details.",
+    "contactCta": "Email me",
+    "otherProjects": "Other work",
+    "previous": "Previous",
+    "next": "Next"
+  },
+  "resumePage": {
+    "label": "Résumé",
+    "title": "Will Wu's résumé",
+    "intro": "Senior backend engineer working in Python, Go and TypeScript. The full history is below, or download the PDF.",
+    "downloadPdf": "Download PDF",
+    "email": "Email me",
+    "experienceTitle": "Experience",
+    "skillsTitle": "Skills",
+    "educationTitle": "Education"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "description": "The address may be mistyped, or the page has moved.",
+    "goHome": "Go home"
+  },
+  "error": {
+    "title": "Something went wrong.",
+    "description": "This page failed to load. Try again, or come back in a moment.",
+    "retry": "Try again"
   }
 }

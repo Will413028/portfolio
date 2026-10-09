@@ -1,26 +1,30 @@
 import type { Metadata } from "next";
-import CareerLine from "@/components/shared/CareerLine";
-import CaseStudies from "@/components/shared/CaseStudies";
+import { getTranslations } from "next-intl/server";
 import Closing from "@/components/shared/Closing";
 import Hero from "@/components/shared/Hero";
-import ImpactStats from "@/components/shared/ImpactStats";
+import Highlights from "@/components/shared/Highlights";
 import Judgments from "@/components/shared/Judgments";
+import Works from "@/components/shared/Works";
 
-export const metadata: Metadata = {
-  title: {
-    absolute: "Will Wu — Senior Backend Engineer | Python, Go & TypeScript",
-  },
-  description:
-    "Will Wu, senior backend engineer in Taipei. Production systems in Python, Go and TypeScript — a 2M+ MAU content platform, enterprise on-prem AI, zero-downtime migrations — with every claim linked to evidence and engineering calls dated in public.",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "metadata" });
+  return {
+    title: { absolute: t("home.title") },
+    description: t("home.description"),
+  };
+}
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#0a0a0b]">
+    <main>
       <Hero />
-      <ImpactStats />
-      <CareerLine />
-      <CaseStudies />
+      <Highlights />
+      <Works />
       <Judgments />
       <Closing />
     </main>
