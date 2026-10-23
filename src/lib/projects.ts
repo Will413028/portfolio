@@ -217,41 +217,6 @@ const projectsEn: Project[] = [
     ],
     links: {},
   },
-  {
-    id: 6,
-    slug: "membership-booking-demo",
-    title: "Membership Booking",
-    subtitle: "Studio Membership & Class Booking",
-    description:
-      "A full-stack membership and class-booking system for a boutique studio — plans, payments, credits, and bookings, with an admin console",
-    longDescription:
-      "A hosted side project set in a Pilates / yoga studio. Members buy a plan, pay through Stripe (test mode), and book classes against their credits; staff manage sessions, members, bookings, and orders from an admin console. Built on Supabase Auth, PostgreSQL row-level security, and atomic booking in the database, from product direction to hosted demo in three days.",
-    tags: ["Next.js", "TypeScript", "Supabase", "PostgreSQL", "Stripe"],
-    type: "Side Project",
-    quarter: "Q3 2026",
-    screenshots: ["/images/projects/membership-booking-demo.png"],
-    features: [
-      "Monthly subscriptions (8 classes or unlimited) and a single trial class",
-      "Stripe Checkout with signed webhooks syncing membership state",
-      "Credit-based class booking and cancellation, enforced atomically in PostgreSQL",
-      "Row-level security on every member-facing table",
-      "Admin console for sessions, members, bookings, and orders",
-      "Database migrations auto-applied to production from CI",
-    ],
-    challenges: [
-      "Keeping membership state consistent with asynchronous payment webhooks",
-      "Preventing overbooking and double-spent credits under concurrent requests",
-      "Proving database security rules with tests, not just UI checks",
-    ],
-    outcomes: [
-      "Product direction to hosted demo in three days",
-      "Verified by 150+ unit tests, 88 pgTAP database tests, and 15 production-style Playwright runs",
-      "Two real Stripe test checkouts walked end to end: payment → membership → booking → cancellation",
-    ],
-    links: {
-      live: "https://membership-booking-demo.vercel.app",
-    },
-  },
 ];
 
 const projectsZhTw: Project[] = [
@@ -447,41 +412,6 @@ const projectsZhTw: Project[] = [
       "收斂成單一 Next.js 全端程式庫",
     ],
     links: {},
-  },
-  {
-    id: 6,
-    slug: "membership-booking-demo",
-    title: "會員預約系統",
-    subtitle: "工作室會員與課程預約",
-    description:
-      "為質感工作室打造的全端會員與課程預約系統——方案、付款、堂數與預約，並附管理後台",
-    longDescription:
-      "以皮拉提斯／瑜伽工作室為情境的個人 side project，已部署上線。會員購買方案、透過 Stripe（測試模式）付款，再以堂數預約課程；工作人員在後台管理場次、會員、預約與訂單。建構於 Supabase Auth、PostgreSQL row-level security 與資料庫內的原子預約，從產品方向到上線展示共三天。",
-    tags: ["Next.js", "TypeScript", "Supabase", "PostgreSQL", "Stripe"],
-    type: "個人作品",
-    quarter: "2026 Q3",
-    screenshots: ["/images/projects/membership-booking-demo.png"],
-    features: [
-      "月訂閱（8 堂或無限堂）與單堂體驗",
-      "Stripe Checkout 搭配簽章驗證的 webhook 同步會員狀態",
-      "以堂數預約與取消，由 PostgreSQL 原子性保證",
-      "所有會員端資料表皆啟用 row-level security",
-      "管理後台：場次、會員、預約與訂單",
-      "資料庫 migration 由 CI 自動套用到生產環境",
-    ],
-    challenges: [
-      "讓會員狀態與非同步付款 webhook 保持一致",
-      "在並發請求下防止超賣與堂數重複扣用",
-      "用測試證明資料庫安全規則，而不只靠畫面檢查",
-    ],
-    outcomes: [
-      "從產品方向到上線展示共三天",
-      "以 150+ 個單元測試、88 個 pgTAP 資料庫測試與 15 個生產環境形態的 Playwright 測試驗收",
-      "兩筆真實 Stripe 測試付款走完整條流程：付款 → 會員資格 → 預約 → 取消",
-    ],
-    links: {
-      live: "https://membership-booking-demo.vercel.app",
-    },
   },
 ];
 
