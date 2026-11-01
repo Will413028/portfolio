@@ -8,6 +8,7 @@ Next.js + pnpm（`packageManager: pnpm@10.26.2`，lockfile 是 `pnpm-lock.yaml`�
 
 - `pnpm install` / `pnpm run`（非 npm / bun）
 - `biome check` / `biome format`（非 ESLint / Prettier）
+- Branch model：日常改動推到 `dev`；`main` 只經 `dev`→`main` 的 PR 以 merge commit 合併（不 squash、不 rebase），不直推 `main`；推 `main` 才觸發 Vercel Production。
 - repo root 驗證入口：`pnpm lint`、`pnpm test`、`pnpm build`；依行為變更選受影響測試，純文字／文件改動核對內容與路徑即可。
 
 ## 取捨
