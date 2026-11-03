@@ -101,6 +101,9 @@ export default function ResumePage() {
                   <p className="mt-1 text-base text-body">
                     {edu.degree} · {edu.period}
                   </p>
+                  {edu.gpa && (
+                    <p className="mt-1 text-sm text-muted">{edu.gpa}</p>
+                  )}
                 </li>
               ))}
             </ul>

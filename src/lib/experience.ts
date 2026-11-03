@@ -20,6 +20,7 @@ export interface Education {
   degree: string;
   school: string;
   period: string;
+  gpa?: string;
 }
 
 const experienceEn: Experience[] = [
@@ -157,6 +158,7 @@ const educationEn: Education[] = [
     degree: "MS, Data Analytics Engineering",
     school: "George Mason University",
     period: "2019 - 2021",
+    gpa: "GPA 3.78/4.0",
   },
   {
     degree: "BS, Chemical Engineering",
@@ -170,6 +172,7 @@ const educationZhTw: Education[] = [
     degree: "資料分析工程碩士",
     school: "喬治梅森大學",
     period: "2019 - 2021",
+    gpa: "GPA 3.78/4.0",
   },
   {
     degree: "化學工程學士",

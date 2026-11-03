@@ -193,5 +193,6 @@
   columns: (1fr, auto),
   row-gutter: 0.35em,
   [*George Mason University* — MS, Data Analytics Engineering], text(fill: rgb("#525252"), size: 9pt)[2019 – 2021],
+  [#h(0.8em)GPA 3.78/4.0], [],
   [*Tatung University* — BS, Chemical Engineering], text(fill: rgb("#525252"), size: 9pt)[2013 – 2016],
 )

@@ -62,6 +62,12 @@ describe("getEducation", () => {
     expect(getEducation("zh-TW")).toHaveLength(2);
   });
 
+  test("states the master's GPA with its scale", () => {
+    for (const locale of ["en", "zh-TW"]) {
+      expect(getEducation(locale)[0].gpa).toBe("GPA 3.78/4.0");
+    }
+  });
+
   test("falls back to English for unknown locale", () => {
     expect(getEducation("fr")).toEqual(getEducation("en"));
   });
