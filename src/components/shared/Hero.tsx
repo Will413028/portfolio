@@ -1,6 +1,7 @@
 import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { getEducation, getExperience } from "@/lib/experience";
+import { RESUME_PDF_FILENAME, RESUME_PDF_HREF } from "@/lib/resume-file";
 
 // The name is the visual anchor (no photo); the career line sits directly
 // under it in a deeper band, oldest stop first.
@@ -48,7 +49,8 @@ export default function Hero() {
             {t("ctaEmail")}
           </a>
           <a
-            href="/resume.pdf"
+            href={RESUME_PDF_HREF}
+            download={RESUME_PDF_FILENAME}
             className="inline-flex h-12 items-center rounded-lg border border-navy-line px-6 font-medium text-on-navy hover:border-on-navy-muted transition-colors"
           >
             {t("ctaResume")}

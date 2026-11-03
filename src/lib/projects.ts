@@ -69,7 +69,7 @@ const projectsEn: Project[] = [
     description:
       "A full-stack fresh food e-commerce platform connecting local farmers directly to consumers with cold-chain delivery",
     longDescription:
-      "DailyFresh is a fresh food e-commerce platform that connects local farmers and premium food suppliers directly with consumers. The platform includes a buyer app, seller app, admin dashboard, and marketing website, all backed by a microservice architecture, plus a conversational AI procurement agent for buyer requests and seller quotes. The company wound down in September 2026; with the owner's consent the code lives on as a private monorepo, where the backend is being rewritten as a Go modular monolith.",
+      "DailyFresh is a fresh food e-commerce platform that connects local farmers and premium food suppliers directly with consumers. The platform includes a buyer app, seller app, admin dashboard, and marketing website, all backed by a microservice architecture, plus a conversational AI procurement agent for buyer requests and seller quotes. The company wound down in September 2026; with the owner's consent the code was rebranded and published as the public repository Hawkr, where the backend is being rewritten as a Go modular monolith and the product re-scoped to general e-commerce.",
     tags: [
       "Go",
       "Gin",
@@ -105,10 +105,11 @@ const projectsEn: Project[] = [
       "Buyer & seller iOS apps shipped through their first App Store submission",
       "Authored ~60% of 12,406 non-merge commits across 22 Go/Java microservices, web, admin, and both apps",
       "After closure: 22 services re-planned as 24 modules of a Go modular monolith from measured coupling (730 RPCs, 212 events, 455 PRs of co-change)",
+      "Published as Hawkr: every third-party and proprietary asset replaced or removed (asset scan 1,614 → 0), legacy REST surface 612 → 437 under a CI test that only lets the count fall, Clerk replaced by self-built federated login",
     ],
     links: {
       live: "https://dailyfresh.food/",
-      github: "https://github.com/dailyfresh-food/backend-payuni",
+      github: "https://github.com/Will413028/hawkr",
     },
   },
   {
@@ -217,6 +218,60 @@ const projectsEn: Project[] = [
     ],
     links: {},
   },
+  {
+    id: 6,
+    slug: "tidehold",
+    title: "tidehold",
+    subtitle: "Weather-Cancellation Deposits for Dive Operators",
+    description:
+      "An agent that turns a dive operator's own cancellation policy into cited rules and settles weather-cancelled deposits",
+    longDescription:
+      "tidehold is a PayPal AI Hackathon entry for dive operators whose trips are cancelled by weather. The agent compiles the operator's own cancellation policy into rules with verbatim citations, flags clauses that need a human ruling, and drives deposit and balance collection from immutable policy versions.",
+    tags: ["Python", "FastAPI", "Next.js", "PostgreSQL", "LLM"],
+    type: "AI Agent",
+    quarter: "Q4 2026",
+    screenshots: ["/images/projects/tidehold.png"],
+    features: [
+      "Policy compiler with verbatim citations and needs-ruling flags",
+      "Immutable policy versions behind every ruling",
+      "Deposit and balance collection driven by the compiled policy",
+      "Operator console and guest pages with Playwright end-to-end tests",
+    ],
+    challenges: [
+      "Operators' weather clauses are inconsistent; most depend on the operator's own decision rather than official warnings",
+      "Choosing a default model from a same-prompt benchmark across providers",
+    ],
+    outcomes: [
+      "Deployment latency measured before deciding against a connection pool: DB connection 9 ms, routes 13–27 ms",
+    ],
+    links: {
+      github: "https://github.com/Will413028/tidehold",
+    },
+  },
+  {
+    id: 7,
+    slug: "agentfile-lint",
+    title: "agentfile-lint",
+    subtitle: "Linter for AI Agent Instruction Files",
+    description:
+      "An open-source checker that keeps AGENTS.md and CLAUDE.md files within size and structure budgets",
+    longDescription:
+      "agentfile-lint checks the instruction files that coding agents read (AGENTS.md, CLAUDE.md). Rules live in one TOML file and a standard-library Python runner is shared by pre-commit hooks and CI, so every repository enforces the same budgets.",
+    tags: ["Python", "PyPI", "GitHub Actions"],
+    type: "Developer Tool",
+    quarter: "Q4 2026",
+    screenshots: ["/images/projects/agentfile-lint.png"],
+    features: [
+      "One TOML rule file with per-glob byte and line budgets",
+      "Standard-library Python runner, no dependencies",
+      "Same entry point for pre-commit, lefthook, and CI",
+    ],
+    challenges: [
+      "Renamed after finding a same-named PyPI package that a bare uvx would have installed instead",
+    ],
+    outcomes: ["Published v0.4.0 to PyPI", "Adopted in four repositories"],
+    links: {},
+  },
 ];
 
 const projectsZhTw: Project[] = [
@@ -265,7 +320,7 @@ const projectsZhTw: Project[] = [
     subtitle: "產地直送電商平台",
     description: "全端生鮮電商平台，透過冷鏈配送將在地小農與消費者直接連結",
     longDescription:
-      "日日生鮮是一個生鮮電商平台，將在地小農和頂級食材供應商與消費者直接連結。平台包含買家 App、賣家 App、管理後台和行銷網站，全部由微服務架構支撐，另有處理買家詢價與賣家報價的對話式 AI 採購助手。公司於 2026 年 9 月結束營運；經老闆同意，程式碼以私人 monorepo 保留，後端正改寫為 Go modular monolith。",
+      "日日生鮮是一個生鮮電商平台，將在地小農和頂級食材供應商與消費者直接連結。平台包含買家 App、賣家 App、管理後台和行銷網站，全部由微服務架構支撐，另有處理買家詢價與賣家報價的對話式 AI 採購助手。公司於 2026 年 9 月結束營運；經老闆同意，程式碼更換品牌後以公開 repo Hawkr 發布，後端正改寫為 Go modular monolith，產品範圍也改為一般電商。",
     tags: [
       "Go",
       "Gin",
@@ -301,10 +356,11 @@ const projectsZhTw: Project[] = [
       "買賣家 iOS App 完成首次 App Store 送審",
       "橫跨 22 個 Go/Java 微服務、網站、後台與兩支 App，12,406 筆 non-merge commit 中約 60% 出自我手",
       "公司結束後：依實測耦合（730 RPC、212 事件、455 個 PR 的共同變更）把 22 個服務重新切成 Go modular monolith 的 24 個模組",
+      "以 Hawkr 公開：第三方與專屬素材全部替換或刪除（素材掃描 1,614 → 0）；舊 REST 端點 612 → 437，由只准變少的 CI 測試鎖住；Clerk 換成自建聯合登入",
     ],
     links: {
       live: "https://dailyfresh.food/",
-      github: "https://github.com/dailyfresh-food/backend-payuni",
+      github: "https://github.com/Will413028/hawkr",
     },
   },
   {
@@ -411,6 +467,55 @@ const projectsZhTw: Project[] = [
       "Python / FastAPI 後端完全退役（~567 測試通過）",
       "收斂成單一 Next.js 全端程式庫",
     ],
+    links: {},
+  },
+  {
+    id: 6,
+    slug: "tidehold",
+    title: "tidehold",
+    subtitle: "潛水業者的天候取消訂金",
+    description:
+      "把潛水業者自己的取消條款編譯成附引用的規則，處理因天候取消的訂金",
+    longDescription:
+      "tidehold 是 PayPal AI Hackathon 參賽作品，對象是行程常因天候取消的潛水業者。agent 把業者自己的取消條款編譯成附逐字引用的規則，條款沒寫清楚的標成需要人工裁定，訂金與尾款依不可變的條款版本處理。",
+    tags: ["Python", "FastAPI", "Next.js", "PostgreSQL", "LLM"],
+    type: "AI Agent",
+    quarter: "2026 Q4",
+    screenshots: ["/images/projects/tidehold.png"],
+    features: [
+      "條款編譯器：附逐字引用，並標出需要裁定的條款",
+      "每次裁定都對應不可變的條款版本",
+      "訂金與尾款依編譯後的條款收取",
+      "業者主控台與潛客頁面，附 Playwright 端對端測試",
+    ],
+    challenges: [
+      "業者的天候條款寫法不一，多數以業者自己決定取消為準，而非官方警報",
+      "以同一 prompt 跨廠商評測，選出預設模型",
+    ],
+    outcomes: ["先量部署延遲再決定不加連線池：DB 連線 9 ms、route 13–27 ms"],
+    links: {
+      github: "https://github.com/Will413028/tidehold",
+    },
+  },
+  {
+    id: 7,
+    slug: "agentfile-lint",
+    title: "agentfile-lint",
+    subtitle: "AI agent 指令檔檢查器",
+    description: "開源檢查器，讓 AGENTS.md、CLAUDE.md 維持在大小與結構預算內",
+    longDescription:
+      "agentfile-lint 檢查 coding agent 讀的指令檔（AGENTS.md、CLAUDE.md）。規則是一份 TOML，執行器是只用標準庫的 Python，pre-commit hook 與 CI 共用同一支，每個 repo 都套同一套預算。",
+    tags: ["Python", "PyPI", "GitHub Actions"],
+    type: "開發者工具",
+    quarter: "2026 Q4",
+    screenshots: ["/images/projects/agentfile-lint.png"],
+    features: [
+      "一份 TOML 規則，依 glob 設 bytes 與行數上限",
+      "只用標準庫的 Python 執行器，無相依套件",
+      "pre-commit、lefthook 與 CI 共用同一入口",
+    ],
+    challenges: ["發現 PyPI 上已有同名套件、裸 uvx 會裝到別人的程式，因此改名"],
+    outcomes: ["v0.4.0 發布到 PyPI", "四個 repo 採用"],
     links: {},
   },
 ];

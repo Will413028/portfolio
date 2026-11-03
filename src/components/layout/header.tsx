@@ -4,6 +4,7 @@ import { Menu, X } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { useState } from "react";
 import { Link, usePathname } from "@/i18n/navigation";
+import { RESUME_PDF_FILENAME, RESUME_PDF_HREF } from "@/lib/resume-file";
 
 export default function Navigation() {
   const t = useTranslations("nav");
@@ -57,7 +58,8 @@ export default function Navigation() {
             {t("otherLanguage")}
           </Link>
           <a
-            href="/resume.pdf"
+            href={RESUME_PDF_HREF}
+            download={RESUME_PDF_FILENAME}
             className="inline-flex h-10 items-center rounded-lg bg-on-navy px-4 text-sm font-bold text-navy hover:bg-peach transition-colors"
           >
             {t("downloadResume")}
@@ -104,7 +106,8 @@ export default function Navigation() {
               {t("otherLanguage")}
             </Link>
             <a
-              href="/resume.pdf"
+              href={RESUME_PDF_HREF}
+              download={RESUME_PDF_FILENAME}
               className="inline-flex h-11 items-center rounded-lg bg-on-navy px-4 text-sm font-bold text-navy"
             >
               {t("downloadResume")}

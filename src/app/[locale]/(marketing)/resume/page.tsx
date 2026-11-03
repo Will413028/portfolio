@@ -4,6 +4,7 @@ import { getTranslations } from "next-intl/server";
 import Closing from "@/components/shared/Closing";
 import PageHeader from "@/components/shared/PageHeader";
 import { getEducation, getExperience, getSkills } from "@/lib/experience";
+import { RESUME_PDF_FILENAME, RESUME_PDF_HREF } from "@/lib/resume-file";
 
 export async function generateMetadata({
   params,
@@ -27,8 +28,8 @@ export default function ResumePage() {
       <PageHeader label={t("label")} title={t("title")} intro={t("intro")}>
         <div className="mt-8 flex flex-wrap items-center gap-3">
           <a
-            href="/resume.pdf"
-            download
+            href={RESUME_PDF_HREF}
+            download={RESUME_PDF_FILENAME}
             className="inline-flex h-12 items-center rounded-lg bg-bright px-6 font-bold text-navy hover:bg-peach transition-colors"
           >
             {t("downloadPdf")}
@@ -57,6 +58,7 @@ export default function ResumePage() {
                 <h3 className="font-serif font-bold text-2xl">{exp.company}</h3>
                 <p className="text-sm text-muted">{exp.period}</p>
               </div>
+              <p className="mt-1 text-sm text-muted">{exp.intro}</p>
               <p className="mt-1 font-medium">
                 {exp.role} · {exp.location}
               </p>
@@ -99,6 +101,9 @@ export default function ResumePage() {
                   <p className="mt-1 text-base text-body">
                     {edu.degree} · {edu.period}
                   </p>
+                  {edu.gpa && (
+                    <p className="mt-1 text-sm text-muted">{edu.gpa}</p>
+                  )}
                 </li>
               ))}
             </ul>

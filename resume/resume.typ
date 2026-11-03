@@ -1,4 +1,6 @@
 // Will Wu — CV. Source of truth mirrors ~/second-brain/wiki/work/resume.md
+// Writing rules: ~/second-brain/wiki/work/english-resume-guide.md
+//   (one page, 3–4 bullets per role, each bullet leads with the result, company and title on separate lines)
 // Build:  pnpm resume:pdf   (-> ../public/resume.pdf)
 // ATS notes: single column, selectable text, standard section headings.
 
@@ -7,7 +9,7 @@
   paper: "a4",
   margin: (x: 1.4cm, top: 1.0cm, bottom: 0.85cm),
   footer: align(center, text(size: 7.5pt, fill: rgb("#9a9a9a"))[
-    Will Wu · Senior Backend Engineer · Updated October 2026
+    Will Wu · Senior Backend Engineer · Updated November 2026
   ]),
 )
 #set text(font: ("Helvetica Neue", "Arial"), size: 9.2pt, fill: rgb("#262626"))
@@ -17,45 +19,42 @@
 #let accent = rgb("#0e7490")
 #set list(marker: text(fill: accent)[•], body-indent: 0.4em, spacing: 0.3em, indent: 0.2em)
 
-#let sectiontitle(t) = {
-  v(0.34em)
-  text(size: 10.3pt, weight: "bold", fill: accent, tracking: 0.6pt)[#upper(t)]
-  v(0.1em)
-  line(length: 100%, stroke: 0.6pt + rgb("#cbd5d8"))
-  v(0.16em)
-}
+#let sectiontitle(t) = block(above: 1.0em, below: 0.5em, breakable: false, sticky: true)[
+  #text(size: 10.3pt, weight: "bold", fill: accent, tracking: 0.6pt)[#upper(t)]
+  #v(-0.5em)
+  #line(length: 100%, stroke: 0.6pt + rgb("#cbd5d8"))
+]
 
-#let job(company, role, dates, meta, bullets, summary: none) = {
-  block(above: 0.42em, below: 0.1em, breakable: true)[
-    #block(breakable: false)[
+// Line 1: company + one-line introduction for readers who do not know it, dates on the right.
+// Line 2: job title on its own, tech stack, location on the right.
+#let job(company, intro, role, dates, place, stack, bullets) = {
+  block(above: 0.75em, below: 0.1em, breakable: true)[
+    #block(breakable: false, below: 0.3em)[
       #grid(
         columns: (1fr, auto),
-        text(size: 10.2pt)[*#company*#h(0.32em)#text(fill: rgb("#525252"), size: 9.5pt)[— #role]],
+        row-gutter: 0.32em,
+        text(size: 10.2pt)[*#company*#h(0.4em)#text(size: 8.6pt, fill: rgb("#525252"))[#intro]],
         text(size: 8.8pt, fill: rgb("#525252"))[#dates],
+        text(size: 9.4pt)[*#role*#h(0.5em)#text(size: 8.4pt, fill: rgb("#737373"))[#emph(stack)]],
+        text(size: 8.4pt, fill: rgb("#737373"))[#place],
       )
-      #v(0.1em)
-      #text(size: 8.4pt, fill: rgb("#737373"))[#emph(meta)]
-      #if summary != none {
-        v(0.18em)
-        text(size: 9pt, fill: rgb("#404040"))[#summary]
-      }
     ]
-    #v(0.12em)
+    #v(0.18em)
     #list(..bullets)
   ]
 }
 
 #let proj(title, meta, bullets) = {
-  block(above: 0.55em, below: 0.1em, breakable: true)[
-    #text(size: 10pt)[*#title*]#h(0.5em)#text(size: 8.4pt, fill: rgb("#737373"))[#emph(meta)]
-    #v(0.1em)
+  block(above: 0.75em, below: 0.1em, breakable: true)[
+    #block(breakable: false, below: 0.3em)[
+      #text(size: 10pt)[*#title*]#h(0.5em)#text(size: 8.4pt, fill: rgb("#737373"))[#emph(meta)]
+    ]
+    #v(0.18em)
     #list(..bullets)
   ]
 }
 
-#let skillrow(cat, items) = grid(
-  columns: (8.6em, 1fr),
-  gutter: 0.5em,
+#let skillrow(cat, items) = (
   text(size: 9pt, weight: "bold")[#cat],
   text(size: 9pt)[#items],
 )
@@ -79,32 +78,25 @@
 
 // =========================== SUMMARY ===========================
 // 三個定位版本。換版本只改下面 `active-summary` 那一行，不要改別處。
+// 每版一到兩行、只放具體事實（不放 communication / problem solving 這類形容詞）。
 // 事實來源全部出自 ~/second-brain/wiki/work/resume.md（SSOT）——
 // 這裡不得出現 SSOT 沒有的宣稱；要新增請先寫回 SSOT 再引用。
 
 #let summary-backend = [
-  Senior backend engineer with 4+ years shipping and operating production systems in Go, Python,
-  and TypeScript. Cut MongoDB p95 by 80% on a platform serving \~3M weekly API calls, root-caused a
-  multi-layer SAML SSO failure down to a vendor XSD-validation conflict and shipped the production
-  hot-patch, and built 3-layer distributed tracing across FastAPI and RabbitMQ. I take systems end
-  to end: architecture, migration, and the incident afterwards.
+  Senior backend engineer, 4+ years in Go, Python, and TypeScript. Cut MongoDB p95 latency on hotspot endpoints by 80%
+  on a platform serving \~3M weekly API calls, shipped SAML SSO for a global insurance client, and built
+  3-layer distributed tracing across FastAPI and RabbitMQ.
 ]
 
 #let summary-ai = [
-  Backend engineer building enterprise LLM and agent platforms. Consolidated a Google ADK agent
-  platform into a single FastAPI service, replaced a hand-rolled agent state machine with
-  declarative flow control (721 → 144 lines, held in place by 50 characterization tests), and
-  hardened it with stateless HMAC-SHA256 request signing. Built a RAG corpus-integrity toolchain
-  that cut actionable gaps from 64 to 1. Outside work I run a live, real-money trading bot on an
-  event-sourced correctness backbone. MS in Data Analytics Engineering.
+  Backend engineer building enterprise LLM and agent platforms. Consolidated a Google ADK agent platform
+  into one FastAPI service (agent state machine 721 → 144 lines, held by 50 characterization tests) and
+  cut actionable gaps in a RAG retrieval corpus from 64 to 1.
 ]
 
 #let summary-product = [
-  Backend-first engineer who ships whole products, not just services. Shipped a commercial AI
-  meeting-summarization product solo in three months (WhisperX + local LLM + Tauri desktop) that
-  now serves paying customers, built a cloud POS and an EV-rental system greenfield in about two
-  months each, and migrated a FastAPI backend to a unified Next.js full-stack app with the
-  strangler-fig pattern. Production code in Python, Go, and TypeScript.
+  Backend-first engineer who ships whole products: built a commercial AI meeting-summarization app solo
+  in 3 months that now serves paying customers, plus a cloud POS and an EV-rental system in \~2 months each.
 ]
 
 #let active-summary = summary-product  // ← 換定位改這行：summary-backend / summary-ai / summary-product
@@ -118,50 +110,47 @@
 #sectiontitle("Work Experience")
 
 #job(
-  "APMIC", "Sr. Backend Engineer", "Nov 2025 – Present",
-  "Taipei, Taiwan · Python (FastAPI), React, Next.js, PostgreSQL, Hasura, RabbitMQ, Google ADK",
-  summary: [Enterprise AI platform for on-premises LLM deployment and model fine-tuning; deliver end-to-end LLM / agent integrations and the full-stack enterprise systems around them for clients.],
+  "APMIC", "(enterprise AI platform for on-premises LLM deployment and model fine-tuning)",
+  "Sr. Backend Engineer", "Nov 2025 – Present", "Taipei, Taiwan",
+  "Python (FastAPI), React, Next.js, PostgreSQL, Hasura, RabbitMQ, Google ADK",
   (
-    [*Delivered SAML 2.0 SSO and a privilege-isolating RBAC redesign* for an enterprise customer-service platform (iframe-embedded for a global insurance client) — root-caused a multi-layer SSO failure down to a vendor `xsi:type` XSD-validation conflict and shipped a production hot-patch; introduced a `type` discriminator to cleanly separate JIT-provisioned end-customers from operators, closing a privilege-escalation gap.],
-    [*Built a real-time webchat agent-state system* — a 5-state machine (ready / not-ready / serving / busy / offline) enforced by PostgreSQL triggers, supervisor 1-to-many assignment, and cross-system mutual exclusion against the client's Cisco Finesse telephony platform (fail-open REST gate), covered by unit + Playwright e2e suites.],
-    [*Self-built 3-layer distributed tracing* — contextvar `trace_id` propagated across FastAPI middleware and RabbitMQ message headers, with dual-sink structured logging and PII-safe business-event instrumentation across 6 modules (chosen over OpenTelemetry where no downstream collector existed).],
-    [*Built automated web-scraping pipelines and a RAG knowledge-base integrity toolchain* — manifest-diff verification with exponential-backoff retry that surfaced 64 missing upstream documents and cut actionable gaps from 64 to 1, keeping the LLM retrieval corpus fresh and complete.],
+    [*Shipped SAML 2.0 SSO and an RBAC redesign for a global insurance client*, closing a privilege-escalation gap; traced an SSO failure to a vendor XSD-validation conflict and hot-patched production.],
+    [*Cleared the client's pre-audit security scan for an on-premises delivery* (static findings 5 → 0, dependency vulnerabilities 16 → 2, `npm audit` 20 → 0) by triaging 1,699 raw findings down to 6 production-code sites.],
+    [*Cut AI report generation from 7m37s to 1m57s* with asyncio parallelization, and *quarterly-report Q&A from \~80s to \~7s* by timing download and parse separately and swapping the spreadsheet reader.],
+    [*Shrank the agent state machine from 721 to 144 lines* with declarative flow control (behavior locked by 50 characterization tests), while consolidating a Google ADK agent platform into one FastAPI service with HMAC-SHA256 request signing.],
   ),
 )
 
 #job(
-  "Vocus", "Sr. Backend Engineer", "Mar 2025 – Oct 2025",
-  "Taipei, Taiwan · Go (Gin), MongoDB, Redis, Qdrant, Cloudflare, AWS, GCP",
+  "Vocus", "(Taiwan's top-tier content-creator platform; ~3M weekly API calls)",
+  "Sr. Backend Engineer", "Mar 2025 – Oct 2025", "Taipei, Taiwan",
+  "Go (Gin), MongoDB, Redis, Qdrant, Cloudflare, AWS, GCP",
   (
-    [*Contributed to DDD refactoring of Taiwan's top-tier content-creator platform* (CDN-fronted, 94%+ Cloudflare cache-hit; backend handled \~3M weekly API calls for memberships, subscriptions, comments, recommendations, payments) — migrated legacy handlers into a 4-layer architecture across 73+ API modules; designed composition patterns (single-responsibility services + functional decorator chains with concurrent fan-out) to cut god-function complexity.],
-    [*Owned end-to-end migration of the NewebPay payment integration* from server-side to iframe-redirect mode across all 4 payment types (subscription / one-time / recurring / donation) — moved card-data collection to the gateway's iframe to reduce PCI-DSS scope; redesigned token lifecycle across legacy + new paths.],
-    [*Reduced MongoDB p95 latency on hotspot endpoints by 80%* (platform-wide API p95 80 ms, p50 4 ms) — restructured queries from `$lookup` cross-collection joins to single-collection reads + application-layer joins (goroutine fan-out), leveraging the document model instead of mimicking SQL.],
-    [*Implemented batched async pipelines* — AWS SQS delayed-notification queue (batch 100–500, group-by aggregation, retry with backoff), hourly stats aggregation via worker pool (`InsertMany` replacing per-event writes), and periodic Qdrant-driven recommendation computation for article internal linking (SEO).],
-    [*Migrated the recommendation system from BigQuery to self-hosted Qdrant vector DB, lowering infra cost by 20%* — eliminated per-query usage-based pricing for the highest-traffic query path.],
+    [*Reduced MongoDB p95 latency on hotspot endpoints by 80%* by replacing `$lookup` cross-collection joins with single-collection reads and application-layer joins (goroutine fan-out).],
+    [*Lowered recommendation infrastructure cost by 20%* by migrating from BigQuery to a self-hosted Qdrant vector DB, removing per-query pricing on the highest-traffic path.],
+    [*Owned the NewebPay payment migration to iframe-redirect mode* across all 4 payment types (subscription, one-time, recurring, donation), reducing PCI-DSS scope by moving card-data collection to the gateway.],
   ),
 )
 
 #job(
-  "ChengChi Tech", "Sr. Backend Engineer", "Apr 2024 – Mar 2025",
-  "New Taipei, Taiwan · Python (FastAPI), Next.js, Tauri, PostgreSQL, Redis, GCP, Azure",
+  "ChengChi Tech", "(early-stage startup building POS, EV-rental, AI and ERP products)",
+  "Sr. Backend Engineer", "Apr 2024 – Mar 2025", "New Taipei, Taiwan",
+  "Python (FastAPI), Next.js, Tauri, PostgreSQL, Redis, GCP, Azure",
   (
-    [Joined as the company's first and only Sr. backend engineer in an early-stage startup; architected and built 9 backend microservices from scratch (unified Python 3.12 / FastAPI / SQLAlchemy 2) covering cloud POS, short-term EV rental, AI meeting summarization, and multiple vertical ERPs.],
-    [Owned all backend architectural decisions, technical selection, and code review; mentored junior engineers as the team grew from 4 to 7–8 people.],
-    [Built development infrastructure from zero — self-hosted GitLab, CI/CD (GitLab CI + Ansible) reducing deployment time by 50%, IaC (Terraform) reducing infrastructure overhead by 30%, SonarQube quality gates.],
-    [Shipped a commercial AI meeting-summarization product solo in 3 months — Whisperx (ASR with speaker diarization) + Ollama (local LLM) + a Tauri desktop app (Next.js 16 / React 19); currently serving paying customers.],
-    [Shipped a cloud POS (F&B + retail) and a short-term EV-rental system (IoT + payment + SMS) — each \~2 months greenfield solo development.],
+    [*First and only senior backend engineer*: architected 9 microservices from scratch (Python 3.12 / FastAPI), owned all backend architecture and code review, and mentored juniors as the team grew from 4 to 7–8.],
+    [*Shipped three products solo*: an AI meeting-summarization app in 3 months (WhisperX + Ollama + Tauri), now serving paying customers, plus a cloud POS and an EV-rental system in \~2 months each.],
+    [*Cut deployment time by 50% and infrastructure overhead by 30%* by building CI/CD (self-hosted GitLab CI + Ansible), Terraform IaC, and SonarQube quality gates from zero.],
   ),
 )
 
 #job(
-  "AI-Rider", "Backend Engineer", "Mar 2022 – Nov 2023",
-  "New Taipei, Taiwan · Node.js (Koa), Python (Flask), MariaDB, Redis, RabbitMQ, Modbus TCP",
+  "AI-Rider", "(parking-technology company; POS and devices across ~1,000 parking sites)",
+  "Backend Engineer", "Mar 2022 – Nov 2023", "New Taipei, Taiwan",
+  "Node.js (Koa), Python (Flask), MariaDB, Redis, RabbitMQ, Modbus TCP",
   (
-    [*Primary backend engineer on a POS system powering \~1,000 on-premise parking sites* (DuDuParking as flagship client, 50%+ of company revenue) — handled multi-tenant billing (time-tiered, monthly pass, EV-charging pre-auth, municipal contract rates).],
-    [*Architected a hardware abstraction layer (ioserver) supporting 10+ device types* via Modbus TCP — ANPR cameras, gate arms, ETag, LED boards — with OOP design and a unified REST API hiding protocol complexity from upstream services.],
-    [*Rebuilt the LED broadcasting system controlling thousands of LED panels across \~1,000 sites* — consolidated a 2-service legacy architecture (Go datasync + Python device backend) into a unified Turbo monorepo (Next.js + Electron + Python Flask), retiring the legacy Go service entirely.],
-    [Optimized SQL queries reducing execution time by 50% for a customer with \~4–5M parking records (EXPLAIN analysis + compound indexes).],
-    [Built a YouTube-based Asian facial dataset pipeline processing 1,000+ videos (multi-stream threading pool, incremental validation) to address facial-recognition model bias.],
+    [*Primary backend engineer on the POS system for \~1,000 parking sites*, whose flagship client brought in 50%+ of company revenue; handled multi-tenant billing (time tiers, monthly passes, EV-charging pre-auth).],
+    [*Architected a hardware abstraction layer for 10+ device types* over Modbus TCP (ANPR cameras, gate arms, ETag readers, LED boards) behind one REST API.],
+    [*Halved SQL execution time* for a customer with \~4–5M parking records using EXPLAIN analysis and compound indexes.],
   ),
 )
 
@@ -170,11 +159,10 @@
 
 #proj(
   "bfx-funding-bot — Algorithmic Crypto Funding Bot (Solo)",
-  [2026 · Python (asyncio), PostgreSQL, Docker, GitHub Actions · #link("https://portfolio-kohl-three-81.vercel.app/en/work/bfx-funding-bot")[case study]],
+  [2026 · Python (asyncio), PostgreSQL, Docker · #link("https://portfolio-kohl-three-81.vercel.app/en/work/bfx-funding-bot")[case study]],
   (
-    [*Built and run a live, real-money Bitfinex margin-funding bot* end-to-end — event-sourced ledger with a periodic-reconcile correctness backbone (REST snapshot as source of truth, WebSocket as best-effort latency optimization, à la FIX drop-copy), single-writer exposure reconciliation, and balance-aware deployment gating; diagnosed and fixed 6+ production incidents on live capital, each shipped with a canary verification step.],
-    [*Designed a quantitative strategy-validation framework* — walk-forward optimization, out-of-sample profitability with bootstrap confidence intervals and deflated Sharpe, and a bot-vs-idle attribution model.],
-    [*Took the live canary from stalled to measured returns* — order-book data availability 3.9% → 99.6%, cold-start quoting 60 min → 14–27 s; realized net APR of 3.75–5.14% in lending weeks, reconciled against the exchange's own ledger to within 0.1–2.9%.],
+    [*Built and run a live, real-money Bitfinex margin-funding bot* on an event-sourced ledger reconciled against exchange snapshots; fixed 6+ production incidents on live capital, each shipped with a canary check.],
+    [*Raised order-book data availability from 3.9% to 99.6%* and cut cold-start quoting from 60 min to 14–27 s; realized net APR of 3.75–5.14% in lending weeks, reconciled to the exchange's own ledger within 0.1–2.9%.],
   ),
 )
 
@@ -182,30 +170,29 @@
   "divego — Full-Stack Migration (Solo)",
   [2026 · TypeScript (Next.js, Hono, Drizzle) · #link("https://portfolio-kohl-three-81.vercel.app/en/work/divego")[case study]],
   (
-    [*Migrated a FastAPI backend to a unified Next.js full-stack app* (Hono + Drizzle on Next.js 16) using the strangler-fig pattern — domain-by-domain vertical slices with a cross-stack unified error protocol, retiring the Python backend entirely (\~567 tests).],
+    [*Retired a Python backend (\~567 tests)* via a strangler-fig migration to a unified Next.js full-stack app (Hono + Drizzle).],
   ),
 )
 
 // ============================= SKILLS ==========================
-#sectiontitle("Skills & Technical Competencies")
-#block(spacing: 0.4em)[
-  #skillrow("Languages", "Python, Go, TypeScript, Dart, Java")
-  #skillrow("Backend", "FastAPI, Gin, Koa, Flask, Spring Boot, Hono")
-  #skillrow("Frontend / Desktop", "Next.js, React, Tauri, Flutter")
-  #skillrow("Databases", "PostgreSQL, MariaDB, MongoDB, Redis, Qdrant (vector DB)")
-  #skillrow("Data / Migration", "SQLAlchemy, Drizzle, Atlas, Alembic, Flyway")
-  #skillrow("Messaging", "RabbitMQ, MQTT")
-  #skillrow("AI / ML", "Whisperx (ASR), Ollama (local LLM), Google ADK, PyTorch / CUDA")
-  #skillrow("Cloud", "GCP, AWS, Azure, Cloudflare, Alibaba Cloud")
-  #skillrow("DevOps / Infra", "Docker, k3s, GitLab CI, Terraform, Ansible, Self-hosted GitLab")
-  #skillrow("Protocols", "REST, gRPC, GraphQL (Hasura), SAML / OAuth, Modbus TCP, JSON-RPC, Webhooks")
-]
+#sectiontitle("Skills")
+#grid(
+  columns: (8.6em, 1fr),
+  column-gutter: 0.5em,
+  row-gutter: 0.42em,
+  ..skillrow("Languages", "Python, Go, TypeScript, Java, Dart"),
+  ..skillrow("Backend & Data", "FastAPI, Gin, Spring Boot, Hono · PostgreSQL, MongoDB, Redis, Qdrant · RabbitMQ · gRPC, GraphQL"),
+  ..skillrow("Cloud & DevOps", "GCP, AWS, Azure, Cloudflare, Alibaba Cloud · Docker, k3s, Terraform, Ansible, GitLab CI"),
+  ..skillrow("AI & Frontend", "Google ADK, Ollama, WhisperX, PyTorch · Next.js, React, Tauri, Flutter"),
+)
+#v(0.2em)
 
 // =========================== EDUCATION =========================
 #sectiontitle("Education")
 #grid(
   columns: (1fr, auto),
   row-gutter: 0.35em,
-  [*MS, Data Analytics Engineering* — George Mason University], text(fill: rgb("#525252"), size: 9pt)[2019 – 2021],
-  [*BS, Chemical Engineering* — Tatung University], text(fill: rgb("#525252"), size: 9pt)[2013 – 2016],
+  [*George Mason University* — MS, Data Analytics Engineering], text(fill: rgb("#525252"), size: 9pt)[2019 – 2021],
+  [#h(0.8em)GPA 3.78/4.0], [],
+  [*Tatung University* — BS, Chemical Engineering], text(fill: rgb("#525252"), size: 9pt)[2013 – 2016],
 )

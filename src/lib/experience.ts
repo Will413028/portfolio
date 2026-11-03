@@ -5,6 +5,9 @@ export interface Experience {
   period: string;
   location: string;
   techStack: string;
+  /** One line for readers who do not know the company. */
+  intro: string;
+  /** 3-4 bullets, each opening with its result (see the resume writing guide). */
   description: string[];
 }
 
@@ -17,6 +20,7 @@ export interface Education {
   degree: string;
   school: string;
   period: string;
+  gpa?: string;
 }
 
 const experienceEn: Experience[] = [
@@ -28,16 +32,13 @@ const experienceEn: Experience[] = [
     location: "Taipei, Taiwan",
     techStack:
       "Python (FastAPI), React, Next.js, PostgreSQL, Hasura, RabbitMQ, Google ADK",
-    description: [
+    intro:
       "Enterprise AI platform for on-premises LLM deployment and model fine-tuning",
-      "Consolidated the client's Google ADK agent platform into a single FastAPI app — collapsed a two-process deployment (fixing a cross-process fileset-cache correctness bug), refactored a hand-rolled agent state machine into declarative flow-control (721 → 144 lines, verified by 50 characterization tests), and hardened it with stateless HMAC-SHA256 request signing",
-      "Delivered SAML 2.0 SSO and an RBAC redesign for an enterprise customer-service platform, separating end-customers from operators to close a privilege-escalation gap",
-      "Built a real-time webchat agent-state system — a 5-state machine on PostgreSQL triggers with cross-system mutual exclusion against a Cisco Finesse telephony platform",
-      "Self-built 3-layer distributed tracing (contextvar trace_id across FastAPI middleware + RabbitMQ) with PII-safe structured logging where OpenTelemetry didn't fit",
-      "Built automated web-scraping pipelines and a RAG knowledge-base integrity toolchain, cutting actionable data gaps from 64 to 1",
-      "Root-caused intermittent production timeouts that survived removing the suspected trigger — three plausible hypotheses were each disproven by measurement before the real cause surfaced: two HTTP calls without timeouts exhausting a worker's thread pool. Closed the class with a resilience audit and an AST-based regression guard",
-      "Cut quarterly-report Q&A latency on an AI investment-report product from ~80s to ~7s — measured download and parsing separately, traced the cost to the spreadsheet reader (parse 57–147s → 1.7–2.7s), and swapped readers with a cell-by-cell equivalence check",
-      "Cleared a client's pre-audit security scan for an offline on-premises delivery — production-code static findings 5 → 0, dependency vulnerabilities 16 → 2, npm audit 20 → 0 — triaging 1,699 raw findings down to the one real vulnerability, plus two real holes the static tools don't flag",
+    description: [
+      "Shipped SAML 2.0 SSO and an RBAC redesign for a global insurance client, closing a privilege-escalation gap; traced an SSO failure to a vendor XSD-validation conflict and hot-patched production",
+      "Cleared the client's pre-audit security scan for an on-premises delivery (static findings 5 → 0, dependency vulnerabilities 16 → 2, npm audit 20 → 0) by triaging 1,699 raw findings down to 6 production-code sites",
+      "Cut AI report generation from 7m37s to 1m57s with asyncio parallelization, and quarterly-report Q&A from ~80s to ~7s by timing download and parse separately and swapping the spreadsheet reader",
+      "Shrank the agent state machine from 721 to 144 lines with declarative flow control (behavior locked by 50 characterization tests), while consolidating a Google ADK agent platform into one FastAPI service with HMAC-SHA256 request signing",
     ],
   },
   {
@@ -46,13 +47,13 @@ const experienceEn: Experience[] = [
     company: "Vocus",
     period: "Mar 2025 - Oct 2025",
     location: "Taipei, Taiwan",
-    techStack: "Golang (Gin), MongoDB, Redis, AWS, GCP",
+    techStack: "Go (Gin), MongoDB, Redis, Qdrant, Cloudflare, AWS, GCP",
+    intro: "Taiwan's top-tier content-creator platform; ~3M weekly API calls",
     description: [
-      "Contributed to backend architecture refactoring for Taiwan's largest content platform (2M+ MAU), redesigning core modules using domain-driven design",
-      "Refactored core modules and integrated payment gateway on social media blogging SaaS platform",
-      "Optimized MongoDB queries by eliminating lookups, reducing API response time by 80%",
-      "Implemented a message queue for batch writes to improve database efficiency and SEO performance",
-      "Migrated recommendation system from BigQuery to Qdrant, lowering costs by 20%",
+      "Reduced MongoDB p95 latency on hotspot endpoints by 80% by replacing $lookup cross-collection joins with single-collection reads and application-layer joins (goroutine fan-out)",
+      "Lowered recommendation infrastructure cost by 20% by migrating from BigQuery to a self-hosted Qdrant vector DB, removing per-query pricing on the highest-traffic path",
+      "Owned the NewebPay payment migration to iframe-redirect mode across all 4 payment types (subscription, one-time, recurring, donation), reducing PCI-DSS scope by moving card-data collection to the gateway",
+      "Designed the composition patterns (single-responsibility services + decorator chains with concurrent fan-out) for a DDD refactor that moved 73+ API modules into a 4-layer architecture",
     ],
   },
   {
@@ -61,12 +62,13 @@ const experienceEn: Experience[] = [
     company: "ChengChi Tech",
     period: "Apr 2024 - Mar 2025",
     location: "New Taipei, Taiwan",
-    techStack: "Python (FastAPI), Next.js, PostgreSQL, Redis, GCP",
+    techStack:
+      "Python (FastAPI), Next.js, Tauri, PostgreSQL, Redis, GCP, Azure",
+    intro: "Early-stage startup building POS, EV-rental, AI and ERP products",
     description: [
-      "Led a team of 4 engineers to build a cloud-based POS system and scooter rental system from scratch",
-      "Built CI/CD pipelines with GitLab CI and Ansible, reducing deployment time by 50%",
-      "Implemented infrastructure as code using Terraform, reducing infrastructure maintenance overhead by 30%",
-      "Developed an AI meeting summarization app with Tauri + Next.js, integrating Whisper and local LLM",
+      "First and only senior backend engineer: architected 9 microservices from scratch (Python 3.12 / FastAPI), owned all backend architecture and code review, and mentored juniors as the team grew from 4 to 7–8",
+      "Shipped three products solo: an AI meeting-summarization app in 3 months (WhisperX + Ollama + Tauri), now serving paying customers, plus a cloud POS and an EV-rental system in ~2 months each",
+      "Cut deployment time by 50% and infrastructure overhead by 30% by building CI/CD (self-hosted GitLab CI + Ansible), Terraform IaC, and SonarQube quality gates from zero",
     ],
   },
   {
@@ -75,14 +77,14 @@ const experienceEn: Experience[] = [
     company: "AI-Rider",
     period: "Mar 2022 - Nov 2023",
     location: "New Taipei, Taiwan",
-    techStack: "Python (Flask), Node.js (Koa), MariaDB, RabbitMQ",
+    techStack:
+      "Node.js (Koa), Python (Flask), MariaDB, Redis, RabbitMQ, Modbus TCP",
+    intro:
+      "Parking-technology company; POS and devices across ~1,000 parking sites",
     description: [
-      "Maintained a smart parking management system serving 1,000+ parking lots nationwide",
-      "Optimized SQL queries, reducing execution time by 50% and improving system responsiveness",
-      "Collaborated with the hardware team on device integration, reducing hardware costs by 20%",
-      "Built an Asian facial recognition dataset from 1,000+ YouTube videos to address model bias",
-      "Trained a vehicle re-identification model to enhance DeepSORT trajectory prediction accuracy",
-      "Refactored IoT service (Golang → Python) with OOP design, abstracting hardware types into a unified API",
+      "Primary backend engineer on the POS system for ~1,000 parking sites, whose flagship client brought in 50%+ of company revenue; handled multi-tenant billing (time tiers, monthly passes, EV-charging pre-auth)",
+      "Architected a hardware abstraction layer for 10+ device types over Modbus TCP (ANPR cameras, gate arms, ETag readers, LED boards) behind one REST API",
+      "Halved SQL execution time for a customer with ~4–5M parking records using EXPLAIN analysis and compound indexes",
     ],
   },
 ];
@@ -96,16 +98,12 @@ const experienceZhTw: Experience[] = [
     location: "台北，台灣",
     techStack:
       "Python (FastAPI), React, Next.js, PostgreSQL, Hasura, RabbitMQ, Google ADK",
+    intro: "企業級 AI 平台，專注地端 LLM 部署與模型微調",
     description: [
-      "企業級 AI 平台，專注地端 LLM 部署與模型微調",
-      "將客戶的 Google ADK agent 平台整併為單一 FastAPI 應用——收斂雙進程部署（修復跨進程 fileset-cache 正確性 bug），將手刻的 agent 狀態機重構為宣告式流程控制（721 → 144 行，以 50 個 characterization test 驗證），並以無狀態 HMAC-SHA256 請求簽章強化安全",
-      "為企業客服平台交付 SAML 2.0 SSO 與 RBAC 重構，分離終端客戶與客服人員，修補權限越界漏洞",
-      "建構即時客服狀態系統——以 PostgreSQL trigger 實作 5 狀態機，並與 Cisco Finesse 電話系統跨系統互斥",
-      "自建 3 層分散式追蹤（contextvar trace_id 貫穿 FastAPI 中介層與 RabbitMQ），在不適用 OpenTelemetry 時提供 PII-safe 結構化日誌",
-      "建構自動化網頁爬蟲管線與 RAG 知識庫完整性工具鏈，將可行動的資料缺口從 64 降至 1",
-      "追出生產環境間歇性逾時的真正根因——移除疑似觸發源後問題仍在，三個看似合理的假設逐一被實測推翻，真因是兩個沒設 timeout 的 HTTP 呼叫拖垮 worker 的 thread pool。以韌性稽核與 AST 回歸守門機制根絕同類問題",
-      "將 AI 投資報告產品的季報問答延遲從約 80 秒降到約 7 秒——把下載與解析分開量測，定位到試算表讀取器（解析 57–147 秒 → 1.7–2.7 秒），更換讀取器並以逐格比對證明輸出等價",
-      "為客戶的離線地端交付把稽核前弱掃清到零——生產程式碼靜態掃描 5 → 0、依賴弱點 16 → 2、npm audit 20 → 0；從 1,699 筆原始發現收斂出唯一的真漏洞，另抓出兩個靜態工具不會報的真實漏洞",
+      "為全球保險客戶交付 SAML 2.0 SSO 與 RBAC 重構，修補權限越界漏洞；追出 SSO 失敗源自廠商的 XSD 驗證衝突，並在生產環境上線熱修補",
+      "為同一客戶的地端交付把稽核前弱掃清到零（靜態掃描 5 → 0、依賴弱點 16 → 2、npm audit 20 → 0），從 1,699 筆原始發現收斂到 6 個生產程式碼位置",
+      "以 asyncio 平行化把 AI 報告產生時間從 7 分 37 秒降到 1 分 57 秒；把下載與解析分開量測、更換試算表讀取器，季報問答從約 80 秒降到約 7 秒",
+      "以宣告式流程控制把 agent 狀態機從 721 行縮到 144 行（以 50 個 characterization test 鎖住行為），同時把 Google ADK agent 平台整併成單一 FastAPI 服務並加上 HMAC-SHA256 請求簽章",
     ],
   },
   {
@@ -114,13 +112,13 @@ const experienceZhTw: Experience[] = [
     company: "Vocus 方格子",
     period: "2025 年 3 月 - 2025 年 10 月",
     location: "台北，台灣",
-    techStack: "Golang (Gin), MongoDB, Redis, AWS, GCP",
+    techStack: "Go (Gin), MongoDB, Redis, Qdrant, Cloudflare, AWS, GCP",
+    intro: "台灣頂尖的內容創作平台，每週約 300 萬次 API 呼叫",
     description: [
-      "參與台灣最大內容平台（200 萬+ MAU）的後端架構重構，使用領域驅動設計重新設計核心模組",
-      "重構核心模組並在社群部落格 SaaS 平台上整合金流閘道",
-      "優化 MongoDB 查詢，消除 lookup 操作，將 API 回應時間降低 80%",
-      "實作訊息佇列進行批次寫入，提升資料庫效率與 SEO 效能",
-      "將推薦系統從 BigQuery 遷移至 Qdrant，降低成本 20%",
+      "把熱點端點的 MongoDB p95 延遲降低 80%：以單集合讀取加應用層 join（goroutine fan-out）取代 $lookup 跨集合 join",
+      "推薦系統從 BigQuery 遷到自架 Qdrant 向量資料庫，基礎設施成本降低 20%，流量最高的查詢路徑不再按次計費",
+      "主導藍新金流改為 iframe 導轉模式，涵蓋全部 4 種付款類型（訂閱、單次、定期定額、贊助），卡號改由金流端收集以縮小 PCI-DSS 範圍",
+      "為 DDD 重構設計組合模式（單一職責服務 + 並行 fan-out 的 decorator 鏈），將 73+ 個 API 模組搬進四層架構",
     ],
   },
   {
@@ -129,12 +127,13 @@ const experienceZhTw: Experience[] = [
     company: "成奇科技",
     period: "2024 年 4 月 - 2025 年 3 月",
     location: "新北，台灣",
-    techStack: "Python (FastAPI), Next.js, PostgreSQL, Redis, GCP",
+    techStack:
+      "Python (FastAPI), Next.js, Tauri, PostgreSQL, Redis, GCP, Azure",
+    intro: "早期新創，產品涵蓋 POS、電動車租賃、AI 與 ERP",
     description: [
-      "帶領 4 人工程團隊從零建構雲端 POS 系統與電動車租賃系統",
-      "使用 GitLab CI 和 Ansible 建構 CI/CD 管線，將部署時間縮短 50%",
-      "使用 Terraform 實作基礎設施即代碼，將基礎設施維護開銷降低 30%",
-      "使用 Tauri + Next.js 開發 AI 會議摘要應用，整合 Whisper 與本地 LLM",
+      "公司第一位也是唯一的資深後端工程師：從零架構 9 個微服務（Python 3.12 / FastAPI），負責全部後端架構決策與 code review，團隊從 4 人成長到 7–8 人期間帶領新進工程師",
+      "獨自交付三個產品：3 個月完成 AI 會議摘要 app（WhisperX + Ollama + Tauri），目前有付費客戶；雲端 POS 與電動車租賃系統各約 2 個月完成",
+      "從零建立 CI/CD（自架 GitLab CI + Ansible）、Terraform IaC 與 SonarQube 品質門檻，部署時間縮短 50%、基礎設施維運負擔降低 30%",
     ],
   },
   {
@@ -143,14 +142,13 @@ const experienceZhTw: Experience[] = [
     company: "AI-Rider",
     period: "2022 年 3 月 - 2023 年 11 月",
     location: "新北，台灣",
-    techStack: "Python (Flask), Node.js (Koa), MariaDB, RabbitMQ",
+    techStack:
+      "Node.js (Koa), Python (Flask), MariaDB, Redis, RabbitMQ, Modbus TCP",
+    intro: "停車科技公司，POS 與設備遍布約 1,000 個停車場",
     description: [
-      "維護服務全國 1,000+ 停車場的智慧停車管理系統",
-      "優化 SQL 查詢，將執行時間降低 50%，提升系統回應速度",
-      "與硬體團隊協作進行設備整合，降低硬體成本 20%",
-      "從 1,000+ 支 YouTube 影片建構亞洲人臉辨識資料集，解決模型偏差問題",
-      "訓練車輛重識別模型以提升 DeepSORT 軌跡預測精準度",
-      "重構 IoT 服務（Golang → Python），使用 OOP 設計將硬體類型抽象為統一 API",
+      "約 1,000 個停車場 POS 系統的主要後端工程師，旗艦客戶貢獻公司 50% 以上營收；負責多租戶計費（分時費率、月租、電動車充電預授權）",
+      "以 Modbus TCP 架構硬體抽象層，支援 10+ 種設備（車牌辨識攝影機、柵欄機、ETag、LED 看板），對上游只露出一個 REST API",
+      "以 EXPLAIN 分析與複合索引，把約 400–500 萬筆停車紀錄客戶的 SQL 執行時間減半",
     ],
   },
 ];
@@ -160,6 +158,7 @@ const educationEn: Education[] = [
     degree: "MS, Data Analytics Engineering",
     school: "George Mason University",
     period: "2019 - 2021",
+    gpa: "GPA 3.78/4.0",
   },
   {
     degree: "BS, Chemical Engineering",
@@ -173,6 +172,7 @@ const educationZhTw: Education[] = [
     degree: "資料分析工程碩士",
     school: "喬治梅森大學",
     period: "2019 - 2021",
+    gpa: "GPA 3.78/4.0",
   },
   {
     degree: "化學工程學士",

@@ -19,6 +19,16 @@ describe("getExperience", () => {
     expect(exp[0].role).toMatch(/[\u4e00-\u9fff]/);
   });
 
+  test("each entry introduces the company and keeps 3-4 bullets", () => {
+    for (const locale of ["en", "zh-TW"]) {
+      for (const exp of getExperience(locale)) {
+        expect(exp.intro.length).toBeGreaterThan(0);
+        expect(exp.description.length).toBeGreaterThanOrEqual(3);
+        expect(exp.description.length).toBeLessThanOrEqual(4);
+      }
+    }
+  });
+
   test("each entry has description as array", () => {
     for (const exp of getExperience("en")) {
       expect(Array.isArray(exp.description)).toBe(true);
@@ -50,6 +60,12 @@ describe("getEducation", () => {
 
   test("returns 2 entries for zh-TW", () => {
     expect(getEducation("zh-TW")).toHaveLength(2);
+  });
+
+  test("states the master's GPA with its scale", () => {
+    for (const locale of ["en", "zh-TW"]) {
+      expect(getEducation(locale)[0].gpa).toBe("GPA 3.78/4.0");
+    }
   });
 
   test("falls back to English for unknown locale", () => {
