@@ -1,5 +1,6 @@
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
+import { RESUME_PDF_FILENAME, RESUME_PDF_HREF } from "@/lib/resume-file";
 
 export default function Footer() {
   const t = useTranslations("footer");
@@ -22,7 +23,11 @@ export default function Footer() {
             </Link>
           </li>
           <li>
-            <a href="/resume.pdf" className="hover:text-on-navy">
+            <a
+              href={RESUME_PDF_HREF}
+              download={RESUME_PDF_FILENAME}
+              className="hover:text-on-navy"
+            >
               {t("resume")}
             </a>
           </li>
