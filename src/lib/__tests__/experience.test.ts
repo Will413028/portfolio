@@ -19,6 +19,16 @@ describe("getExperience", () => {
     expect(exp[0].role).toMatch(/[\u4e00-\u9fff]/);
   });
 
+  test("each entry introduces the company and keeps 3-4 bullets", () => {
+    for (const locale of ["en", "zh-TW"]) {
+      for (const exp of getExperience(locale)) {
+        expect(exp.intro.length).toBeGreaterThan(0);
+        expect(exp.description.length).toBeGreaterThanOrEqual(3);
+        expect(exp.description.length).toBeLessThanOrEqual(4);
+      }
+    }
+  });
+
   test("each entry has description as array", () => {
     for (const exp of getExperience("en")) {
       expect(Array.isArray(exp.description)).toBe(true);

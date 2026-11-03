@@ -39,14 +39,14 @@ const highlights: HighlightRecord[] = [
     id: "mongodb-latency",
     value: { en: "−80%", "zh-TW": "−80%" },
     label: {
-      en: "API response time on hot MongoDB queries",
-      "zh-TW": "熱點 MongoDB 查詢的 API 回應時間",
+      en: "MongoDB p95 latency on hotspot endpoints",
+      "zh-TW": "熱點端點的 MongoDB p95 延遲",
     },
     context: { en: "Vocus", "zh-TW": "Vocus 方格子" },
     href: "/resume#vocus",
     evidence: {
-      en: "reducing API response time by 80%",
-      "zh-TW": "將 API 回應時間降低 80%",
+      en: "p95 latency on hotspot endpoints by 80%",
+      "zh-TW": "熱點端點的 MongoDB p95 延遲降低 80%",
     },
   },
   {
