@@ -36,7 +36,9 @@
         "noUnusedVariables": "off"
       },
       "suspicious": {
-        "noArrayIndexKey": "warn"
+        "noArrayIndexKey": "warn",
+        "noSkippedTests": "error",
+        "noFocusedTests": "error"
       },
       "nursery": {
         "noFloatingPromises": "error",
