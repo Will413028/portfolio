@@ -7,8 +7,8 @@ payments. Production is `main`; every merge to `main` deploys.
 
 | Indicator | Objective | Measured by |
 |---|---|---|
-| Availability: `GET /en` returns 200 | 99.5% per rolling 30 days (about 3.6 hours of downtime) | External uptime probe every 5 minutes |
-| Latency: `GET /en` | 95% of probes under 1.5 s | Same probe |
+| Availability: `GET /en` returns 200 | 99.5% per rolling 30 days (about 3.6 hours of downtime) | Blackbox probe every 60 seconds |
+| Latency: `GET /en` | 95% of probes under 1.5 s (provisional: revisit after 30 days of probe data) | Same probe |
 | Page quality | Lighthouse desktop performance ≥ 0.9, accessibility ≥ 0.95, SEO ≥ 0.95 | `lighthouse` CI job, every change |
 
 There is no error budget policy yet: the site has a single maintainer and no paying users.
@@ -17,7 +17,7 @@ There is no error budget policy yet: the site has a single maintainer and no pay
 
 Re-check this list when the hosting, domain or build setup changes.
 
-- [ ] Monitoring: an external probe on `/en` with an alert (see "Site down" below).
+- [x] Monitoring: a Prometheus blackbox probe on `/en` every 60 seconds from the homelab VM; Grafana alerts through Telegram after 5 minutes of failures. Test alert sent and received 2026-11-17.
 - [x] Rollback: Vercel instant rollback, rehearsed 2026-11-17 (see below).
 - [x] Backups: not applicable; all content lives in git.
 - [x] Capacity: served by Vercel's CDN; no server-side state.
