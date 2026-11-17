@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     description,
   },
   robots: {
-    index: true,
+    index: false,
     follow: true,
   },
 };

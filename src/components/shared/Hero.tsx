@@ -32,12 +32,12 @@ export default function Hero() {
         <p className="text-sm font-bold tracking-wide text-peach">
           {t("role")}
         </p>
-        <h1
+        <p
           id="hero-name"
           className="mt-5 font-display font-bold text-7xl sm:text-8xl md:text-9xl leading-none tracking-tight"
         >
           Will Wu
-        </h1>
+        </p>
         <p className="mt-10 max-w-2xl text-lg md:text-xl leading-relaxed text-on-navy-muted">
           {t("intro")}
         </p>
