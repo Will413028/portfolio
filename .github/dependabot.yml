@@ -9,6 +9,9 @@ updates:
     schedule:
       interval: monthly
       time: '06:00'
+    # Wait a week after a release before proposing it
+    cooldown:
+      default-days: 7
     # Limit the number of open pull requests for version updates to 1
     open-pull-requests-limit: 1
     # Commit message format
@@ -34,6 +37,9 @@ updates:
     schedule:
       interval: monthly
       time: '06:05'
+    # Wait a week after a release before proposing it
+    cooldown:
+      default-days: 7
     # Limit the number of open pull requests for version updates to 1
     open-pull-requests-limit: 1
     # Commit message format

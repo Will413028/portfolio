@@ -1,0 +1,9 @@
+rules:
+  unpinned-uses:
+    config:
+      policies:
+        # Every third-party and first-party action must be pinned to a full commit SHA.
+        "*": hash-pin
+  self-repository:
+    # Local composite actions are referenced with ./ paths; the dedicated syntax is not needed here.
+    disable: true
