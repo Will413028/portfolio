@@ -72,6 +72,9 @@ jobs:
       - name: Lint and type check
         run: pnpm run lint
 
+      - name: Check dependency direction and cycles
+        run: pnpm run check:arch
+
       - name: Check unused dependencies
         run: pnpm run check:deps
 

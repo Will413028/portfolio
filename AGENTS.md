@@ -24,3 +24,11 @@ Next.js + pnpm（`packageManager: pnpm@10.26.2`，lockfile 是 `pnpm-lock.yaml`�
 - 新版本冷卻期 7 天：pnpm 的 `minimumReleaseAge`（`pnpm-workspace.yaml`）與 Dependabot 的 `cooldown`。lockfile 一律進版控。
 - 漏洞修補期限（依嚴重度）：Critical 7 天、High 30 天、Medium／Low 90 天。回報管道見 `SECURITY.md`。
 - agent 不自己新增或升級依賴：先列出套件與版本，確認套件真的存在、不是剛註冊的，等 Will 同意。
+
+## 依賴方向
+
+`src/` 分層，只准上層 import 下層：`app/`、`proxy.ts` → `components/layout`、`components/analytics.tsx` → `components/shared` → `i18n/` → `lib/`；`lib/` 不 import `src/` 內任何程式，全專案不得有依賴環。
+
+- 檢查：`pnpm check:arch`（dependency-cruiser，規則在 `.dependency-cruiser.cjs`），CI 的 static job 會跑。
+- 例外清單 `.dependency-cruiser-known-violations.json` 目前為空，`src/__tests__/architecture.test.ts` 把條數鎖成等於現值，只減不增；清掉一條就在同一個改動調低。
+- 同一個測試對每條規則跑故意違規的 fixture，並確認每個路徑 pattern 都對到實際檔案；改規則時同步改 fixture。

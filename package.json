@@ -14,7 +14,8 @@
     "check:deps": "knip --no-exit-code",
     "test": "vitest run",
     "test:watch": "vitest",
-    "analyze": "ANALYZE=true next build"
+    "analyze": "ANALYZE=true next build",
+    "check:arch": "depcruise src --config .dependency-cruiser.cjs --ignore-known"
   },
   "dependencies": {
     "@next/bundle-analyzer": "^16.4.6",
@@ -30,6 +31,7 @@
     "@types/node": "^20.19.43",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
+    "dependency-cruiser": "18.7.2",
     "knip": "^5.88.1",
     "postcss": "^8.5.29",
     "tailwindcss": "^4.3.3",
