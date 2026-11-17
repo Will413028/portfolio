@@ -1,0 +1,12 @@
+{
+  "$schema": "https://unpkg.com/knip@5/schema.json",
+  "ignoreBinaries": ["typst"],
+  "ignoreDependencies": ["postcss-load-config"],
+  "ignoreIssues": {
+    "src/i18n/navigation.ts": ["exports"],
+    "src/lib/experience.ts": ["types"],
+    "src/lib/highlights.ts": ["types"],
+    "src/lib/judgments.ts": ["types"],
+    "src/lib/projects.ts": ["types"]
+  }
+}

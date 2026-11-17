@@ -110,6 +110,12 @@ frame-ancestors 'none'
 ```
 - **禁止被嵌入 iframe**：防止點擊劫持（Clickjacking）
 
+```
+form-action 'self'
+base-uri 'self'
+```
+- **表單與 base URL**：表單只能送回同源，`<base>` 只能指向同源。這兩個指令不會退回 `default-src`，要另外寫（ZAP 規則 10055）。
+
 ---
 
 ## 開發環境的處理
@@ -184,6 +190,8 @@ if (process.env.NODE_ENV !== "development") {
 | `X-Frame-Options` | `DENY` | 禁止被嵌入 iframe（與 CSP `frame-ancestors 'none'` 雙重防護） |
 | `Referrer-Policy` | `strict-origin-when-cross-origin` | 跨域請求只送 origin，不送完整 URL（保護用戶隱私） |
 | `Permissions-Policy` | `camera=(), microphone=(), geolocation=()` | 禁用攝影機、麥克風、定位（本站不需要這些權限） |
+
+另外 `next.config.ts` 設 `poweredByHeader: false`，回應不帶 `X-Powered-By: Next.js`（ZAP 規則 10037）。
 
 ---
 

@@ -1,0 +1,7 @@
+# Temporary exceptions. Each one has a reason and an expiry; when it expires the
+# scan blocks again. Remove the entry as soon as a fixed version is installed.
+
+[[IgnoredVulns]]
+id = "GHSA-fc5q-39xc-vjpf"
+ignoreUntil = 2026-12-17T00:00:00Z
+reason = "picomatch ReDoS, no fixed release yet. Reached only through dev tooling and next-intl -> @parcel/watcher (build-time file watching); no visitor input reaches a glob pattern. Expiry follows the 30-day High deadline."

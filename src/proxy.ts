@@ -12,12 +12,15 @@ const csp = [
   "font-src 'self'",
   "connect-src 'self' https://www.google-analytics.com",
   "frame-ancestors 'none'",
+  "form-action 'self'",
+  "base-uri 'self'",
 ].join("; ");
 
 export default function proxy(request: NextRequest) {
   const response = intlMiddleware(request);
 
   // Skip CSP in development to avoid blocking HMR / Turbopack eval
+  // biome-ignore lint/style/noProcessEnv: NODE_ENV only toggles CSP in dev; existing baseline
   if (process.env.NODE_ENV !== "development") {
     response.headers.set("Content-Security-Policy", csp);
   }

@@ -72,6 +72,9 @@ jobs:
       - name: Lint and type check
         run: pnpm run lint
 
+      - name: Check dependency direction and cycles
+        run: pnpm run check:arch
+
       - name: Check unused dependencies
         run: pnpm run check:deps
 
@@ -95,7 +98,52 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: Run unit tests
-        run: pnpm test
+        run: pnpm run test:ci
+
+  e2e:
+    name: Smoke e2e and accessibility
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Set up Node.js environment
+        uses: ./.github/actions/setup-project
+        with:
+          node-version: 24.x
+          restore-nextjs-cache: 'true'
+
+      - name: Install Chromium
+        run: pnpm exec playwright install --with-deps chromium
+
+      - name: Run smoke tests
+        run: pnpm run test:e2e
+
+  lighthouse:
+    name: Lighthouse budgets
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Set up Node.js environment
+        uses: ./.github/actions/setup-project
+        with:
+          node-version: 24.x
+          restore-nextjs-cache: 'true'
+
+      - name: Run Lighthouse CI
+        uses: treosh/lighthouse-ci-action@3e7e23fb74242897f95c0ba9cabad3d0227b9b18 # 12.6.2
+        with:
+          configPath: ./lighthouserc.json
+          uploadArtifacts: false
+          temporaryPublicStorage: false
 
   secrets:
     name: Scan for leaked secrets
@@ -115,7 +163,7 @@ jobs:
           GITLEAKS_ENABLE_COMMENTS: false
 
   vulnerabilities:
-    name: Scan dependencies for known vulnerabilities
+    name: Scan dependencies for vulnerabilities and licenses
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -126,6 +174,7 @@ jobs:
         with:
           scan-args: |-
             --lockfile=pnpm-lock.yaml
+            --licenses=MIT,MIT-0,Apache-2.0,ISC,BSD-2-Clause,BSD-3-Clause,0BSD,BlueOak-1.0.0,CC0-1.0,CC-BY-4.0,MPL-2.0,LGPL-3.0-or-later,WTFPL
 
   workflows:
     name: Lint and audit GitHub workflows
@@ -147,7 +196,7 @@ jobs:
     # The only required check on main: it passes when every other job in this workflow succeeded or was skipped.
     name: gate (CI)
     if: always()
-    needs: [build, static, test, secrets, vulnerabilities, workflows]
+    needs: [build, static, test, e2e, lighthouse, secrets, vulnerabilities, workflows]
     runs-on: ubuntu-latest
     timeout-minutes: 5
     permissions: {}
