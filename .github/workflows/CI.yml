@@ -98,7 +98,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: Run unit tests
-        run: pnpm test
+        run: pnpm run test:ci
 
   secrets:
     name: Scan for leaked secrets

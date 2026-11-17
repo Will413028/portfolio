@@ -32,3 +32,11 @@ Next.js + pnpm（`packageManager: pnpm@10.26.2`，lockfile 是 `pnpm-lock.yaml`�
 - 檢查：`pnpm check:arch`（dependency-cruiser，規則在 `.dependency-cruiser.cjs`），CI 的 static job 會跑。
 - 例外清單 `.dependency-cruiser-known-violations.json` 目前為空，`src/__tests__/architecture.test.ts` 把條數鎖成等於現值，只減不增；清掉一條就在同一個改動調低。
 - 同一個測試對每條規則跑故意違規的 fixture，並確認每個路徑 pattern 都對到實際檔案；改規則時同步改 fixture。
+
+## 設計反模式檢查與鎖定值
+
+- Biome（`pnpm lint` 帶 `--error-on-warnings`）另開 `noFloatingPromises`、`noMisusedPromises`、`useExhaustiveSwitchCases`、`useMaxParams`、`noProcessEnv`；環境變數只准在 `src/lib/site-url.ts`、`src/components/analytics.tsx` 讀（`biome.json` 的 overrides），`src/proxy.ts` 一處列為既有例外。
+- knip（`pnpm check:deps`）會擋；既有的 7 條忽略寫在 `knip.json`。
+- 鎖定值，只減不增（`src/__tests__/baselines.test.ts`）：`biome-ignore` 2 個、`@ts-ignore`／`@ts-expect-error`／`eslint-disable` 0 個、`knip.json` 忽略 7 條。清掉一條就在同一個改動調低；往壞的方向動要在 commit 訊息寫理由。
+- 執行的測試數只增不減：CI 跑 `pnpm test:ci`，`scripts/check-test-count.mjs` 的 `MIN_TESTS` 是下限；加測試時調高，刪測試要在 commit 訊息列出。
+- pre-commit 的 biome 用 `--write` 加 `stage_fixed: true`，自動修正會一起進 commit。
