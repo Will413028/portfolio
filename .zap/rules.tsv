@@ -9,3 +9,4 @@
 10109	IGNORE	(informational: the site is a modern web app)
 90004	IGNORE	(no cross-origin isolation needed; COEP would block third-party analytics)
 90005	IGNORE	(informational: request header advice, not a server setting)
+10055	IGNORE	(only script-src 'unsafe-inline' remains, an accepted trade-off in docs/security-headers.md; e2e/smoke.spec.ts asserts form-action, base-uri and frame-ancestors directly)
