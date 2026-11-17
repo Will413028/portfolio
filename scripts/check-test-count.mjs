@@ -3,7 +3,7 @@
 // it needs a commit message that lists the removed tests.
 import { readFileSync } from "node:fs";
 
-const MIN_TESTS = 47;
+const MIN_TESTS = 53;
 const report = JSON.parse(readFileSync(process.argv[2] ?? "vitest-report.json", "utf8"));
 const { numTotalTests, numPassedTests, numFailedTestSuites } = report;
 
