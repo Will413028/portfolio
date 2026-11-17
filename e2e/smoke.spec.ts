@@ -29,3 +29,12 @@ test("a work case study opens from the work page", async ({ page }) => {
   await expect(page).toHaveURL(/\/en\/work\/[^/]+$/);
   await expect(page.locator("h1").first()).toBeVisible();
 });
+
+test("responses hide the framework and lock down forms and base URLs", async ({ request }) => {
+  const response = await request.get("/en");
+  const headers = response.headers();
+  expect(headers["x-powered-by"]).toBeUndefined();
+  expect(headers["content-security-policy"]).toContain("form-action 'self'");
+  expect(headers["content-security-policy"]).toContain("base-uri 'self'");
+  expect(headers["content-security-policy"]).toContain("frame-ancestors 'none'");
+});

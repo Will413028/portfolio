@@ -22,4 +22,5 @@ jobs:
           target: https://portfolio-kohl-three-81.vercel.app/en
           allow_issue_writing: false
           fail_action: true
+          rules_file_name: .zap/rules.tsv
           cmd_options: -a

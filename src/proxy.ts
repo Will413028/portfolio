@@ -12,6 +12,8 @@ const csp = [
   "font-src 'self'",
   "connect-src 'self' https://www.google-analytics.com",
   "frame-ancestors 'none'",
+  "form-action 'self'",
+  "base-uri 'self'",
 ].join("; ");
 
 export default function proxy(request: NextRequest) {
