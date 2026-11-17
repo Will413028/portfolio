@@ -41,3 +41,8 @@ Next.js + pnpm（`packageManager: pnpm@10.26.2`，lockfile 是 `pnpm-lock.yaml`�
 - 鎖定值，只減不增（`src/__tests__/baselines.test.ts`）：`biome-ignore` 2 個、`@ts-ignore`／`@ts-expect-error`／`eslint-disable` 0 個、`knip.json` 忽略 7 條。清掉一條就在同一個改動調低；往壞的方向動要在 commit 訊息寫理由。
 - 執行的測試數只增不減：CI 跑 `pnpm test:ci`，`scripts/check-test-count.mjs` 的 `MIN_TESTS` 是下限；加測試時調高，刪測試要在 commit 訊息列出。
 - pre-commit 的 biome 用 `--write` 加 `stage_fixed: true`，自動修正會一起進 commit。
+
+## E2E 與效能預算（只在 CI 跑）
+
+- `e2e/smoke.spec.ts`（Playwright，`pnpm test:e2e`）：首頁、作品、關於、履歷、zh-TW 首頁回 200 且有 h1，axe 沒有 serious／critical 違規；履歷 PDF 可下載；作品頁能點進案例。本機不跑 Playwright，推上去讓 CI 跑。
+- `lighthouserc.json`：`/en`、`/en/work` 桌面版三次取樣，performance ≥ 0.9、accessibility ≥ 0.95、best-practices ≥ 0.9、SEO ≥ 0.95，低於就失敗。
