@@ -30,11 +30,25 @@ test("a work case study opens from the work page", async ({ page }) => {
   await expect(page.locator("h1").first()).toBeVisible();
 });
 
-test("responses hide the framework and lock down forms and base URLs", async ({ request }) => {
-  const response = await request.get("/en");
-  const headers = response.headers();
-  expect(headers["x-powered-by"]).toBeUndefined();
-  expect(headers["content-security-policy"]).toContain("form-action 'self'");
-  expect(headers["content-security-policy"]).toContain("base-uri 'self'");
-  expect(headers["content-security-policy"]).toContain("frame-ancestors 'none'");
-});
+// The full policy from src/proxy.ts. ZAP's CSP rules (10038, 10055) are ignored because of the
+// accepted 'unsafe-inline', so this exact match is what catches any other loosening.
+const expectedCsp = [
+  "default-src 'self'",
+  "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com",
+  "style-src 'self' 'unsafe-inline'",
+  "img-src 'self' data: blob:",
+  "font-src 'self'",
+  "connect-src 'self' https://www.google-analytics.com",
+  "frame-ancestors 'none'",
+  "form-action 'self'",
+  "base-uri 'self'",
+].join("; ");
+
+for (const path of [...pages, "/en/work/saywe"]) {
+  test(`${path} sends the exact CSP and hides the framework`, async ({ request }) => {
+    const response = await request.get(path);
+    const headers = response.headers();
+    expect(headers["x-powered-by"]).toBeUndefined();
+    expect(headers["content-security-policy"]).toBe(expectedCsp);
+  });
+}

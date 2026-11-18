@@ -12,7 +12,7 @@
 | 設定位置 | 負責內容 | 為什麼放這裡 |
 |----------|----------|-------------|
 | `next.config.ts` → `headers()` | 靜態安全標頭（X-Frame-Options 等） | 不需要每次請求動態產生 |
-| `middleware.ts` | Content-Security-Policy（CSP） | 與認證、多語系邏輯統一管理 |
+| `src/proxy.ts` | Content-Security-Policy（CSP） | 與多語系邏輯統一管理 |
 
 ---
 
@@ -70,7 +70,7 @@ CSP 的作用：**即使攻擊者成功注入了 HTML，瀏覽器也會因為 CS
 
 ## 目前的 CSP 規則明細
 
-以下是 `middleware.ts` 中每條 CSP 指令的說明：
+以下是 `src/proxy.ts` 中每條 CSP 指令的說明（`e2e/smoke.spec.ts` 在每個 smoke 頁面逐字比對完整值，改這裡要同步改測試）：
 
 ```
 default-src 'self'
@@ -79,9 +79,9 @@ default-src 'self'
 - 未被其他指令覆蓋的資源類型都套用這條
 
 ```
-script-src 'self' 'unsafe-inline' https://*.sentry.io
+script-src 'self' 'unsafe-inline' https://www.googletagmanager.com
 ```
-- **JavaScript**：允許同源腳本、inline script、Sentry SDK
+- **JavaScript**：允許同源腳本、inline script、Google Analytics 的載入腳本
 - `'unsafe-inline'` 是 SSG 所必需的 — Next.js 會產生 inline script 來做 hydration
 
 ```
@@ -89,11 +89,12 @@ style-src 'self' 'unsafe-inline'
 ```
 - **CSS**：允許同源樣式表和 inline styles
 - Tailwind CSS 會產生 inline styles，所以必須允許
+- script-src 與 style-src 的 `'unsafe-inline'` 都是接受的取捨（見上方「為什麼用 `'unsafe-inline'`」），ZAP 規則 10055 因此忽略
 
 ```
-img-src 'self' data: blob: https://*.unsplash.com https://*.same-assets.com
+img-src 'self' data: blob:
 ```
-- **圖片**：同源 + data URI（小圖 base64）+ blob URL + 外部圖片服務
+- **圖片**：同源 + data URI（小圖 base64）+ blob URL；沒有外部圖片來源
 
 ```
 font-src 'self'
@@ -101,9 +102,9 @@ font-src 'self'
 - **字型**：只允許同源（`next/font` 會自動 self-host 字型）
 
 ```
-connect-src 'self' https://*.sentry.io
+connect-src 'self' https://www.google-analytics.com
 ```
-- **API 請求**（fetch、XHR、WebSocket）：同源 + Sentry 的錯誤回報端點
+- **API 請求**（fetch、XHR、WebSocket）：同源 + Google Analytics 的事件回報端點
 
 ```
 frame-ancestors 'none'
@@ -137,18 +138,18 @@ if (process.env.NODE_ENV !== "development") {
 
 ## 常見情境操作指南
 
-### 新增第三方腳本（例如 Google Analytics）
+### 新增第三方腳本（例如 Plausible）
 
-打開 `middleware.ts`，在 `csp` 陣列的 `script-src` 加上該腳本的 domain：
+打開 `src/proxy.ts`，在 `csp` 陣列的 `script-src` 加上該腳本的 domain：
 
 ```typescript
-"script-src 'self' 'unsafe-inline' https://*.sentry.io https://www.googletagmanager.com",
+"script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://plausible.io",
 ```
 
 如果該腳本還會發 API 請求，也要加到 `connect-src`：
 
 ```typescript
-"connect-src 'self' https://*.sentry.io https://www.google-analytics.com",
+"connect-src 'self' https://www.google-analytics.com https://plausible.io",
 ```
 
 ### 新增外部圖片來源
@@ -156,7 +157,7 @@ if (process.env.NODE_ENV !== "development") {
 在 `img-src` 加上新的 domain：
 
 ```typescript
-"img-src 'self' data: blob: https://*.unsplash.com https://*.same-assets.com https://cdn.example.com",
+"img-src 'self' data: blob: https://cdn.example.com",
 ```
 
 同時也要在 `next.config.ts` 的 `images.remotePatterns` 加上對應設定（Next.js Image 元件的獨立限制）。
@@ -210,9 +211,9 @@ if (process.env.NODE_ENV !== "development") {
    ```
    Refused to load the script 'https://example.com/sdk.js'
    because it violates the following Content Security Policy directive:
-   "script-src 'self' 'unsafe-inline' https://*.sentry.io"
+   "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com"
    ```
-3. 根據被擋的資源類型，到 `middleware.ts` 的 `csp` 陣列加上對應的 domain
+3. 根據被擋的資源類型，到 `src/proxy.ts` 的 `csp` 陣列加上對應的 domain
 4. 部署後用 `vercel --prod` 更新
 
 ### 快速驗證
@@ -286,7 +287,7 @@ Build 輸出：
 |------|------|------|
 | Nonce vs `'unsafe-inline'` | `'unsafe-inline'` | SSG 不支援 nonce（HTML 在 build 時固定） |
 | SSR vs SSG | 維持 SSG | 作品集網站效能優先，XSS 風險低（無使用者輸入） |
-| CSP 放哪裡 | middleware.ts | 集中管理、未來擴展性好 |
+| CSP 放哪裡 | `src/proxy.ts`（Next.js 16 起 middleware 改名 proxy） | 集中管理、未來擴展性好 |
 | 開發環境 CSP | 跳過 | HMR / Turbopack 需要 eval 和 inline script |
 
 ---
@@ -295,8 +296,5 @@ Build 輸出：
 
 | 檔案 | 安全相關的職責 |
 |------|--------------|
-| `middleware.ts` | CSP header、認證路由保護 |
+| `src/proxy.ts` | CSP header、多語系路由 |
 | `next.config.ts` | 靜態安全標頭（X-Frame-Options 等）、圖片 domain 白名單 |
-| `sentry.client.config.ts` | Sentry 前端初始化（需要 CSP 允許 `*.sentry.io`） |
-| `sentry.server.config.ts` | Sentry 後端初始化 |
-| `sentry.edge.config.ts` | Sentry Edge Runtime 初始化 |
