@@ -47,7 +47,7 @@ Rehearsal 2026-11-17: rolled back from `dpl_FdMq31Dwss7U56S8RnBXXLq8fxqA` to the
 
 Run the `ZAP baseline scan` workflow by hand after changes to headers, CSP or routes.
 
-First run 2026-11-17 (run 44126074882): 0 FAIL, 13 WARN, 58 PASS. The warnings are being triaged.
+First run 2026-11-17 (run 44126074882): 0 FAIL, 13 WARN, 58 PASS. Fixed X-Powered-By and the missing form-action and base-uri directives; the rest are ignored in `.zap/rules.tsv` with a reason each. Rerun on main after the fix (run 44131649141): 0 FAIL, 1 WARN (script-src 'unsafe-inline', accepted and now ignored), 59 PASS. Run with the final rules file (run 44131941693): 0 FAIL, 0 WARN, 12 IGNORE, 59 PASS. Rule 10055 is ignored as a whole, which mutes every CSP alert; the e2e smoke test matches the full CSP exactly instead.
 
 ## Incidents
 

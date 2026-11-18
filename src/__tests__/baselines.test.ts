@@ -1,4 +1,5 @@
-import { readdirSync, readFileSync } from "node:fs";
+import { execFileSync } from "node:child_process";
+import { readFileSync } from "node:fs";
 import { join, resolve } from "node:path";
 import { describe, expect, test } from "vitest";
 
@@ -7,14 +8,17 @@ import { describe, expect, test } from "vitest";
 // in the commit message.
 const root = resolve(__dirname, "../..");
 
-const sourceFiles = readdirSync(join(root, "src"), {
-  recursive: true,
+// Every tracked script in the repository, not only src/: e2e, scripts and root
+// config files are type-checked too.
+const sourceFiles = execFileSync("git", ["ls-files"], {
+  cwd: root,
   encoding: "utf8",
 })
+  .split("\n")
   .filter((f) => /\.(ts|tsx|js|jsx|mjs|cjs)$/.test(f))
   // This file names the patterns it counts, so it is left out.
-  .filter((f) => !f.endsWith("baselines.test.ts"))
-  .map((f) => join(root, "src", f));
+  .filter((f) => f !== "src/__tests__/baselines.test.ts")
+  .map((f) => join(root, f));
 
 function countMatches(pattern: RegExp): number {
   let count = 0;
@@ -37,6 +41,11 @@ describe("locked baselines", () => {
     expect(
       countMatches(/@ts-ignore|@ts-expect-error|@ts-nocheck|eslint-disable/g),
     ).toBe(0);
+  });
+
+  test("rules turned off in biome.json stay at 4", () => {
+    const biome = readFileSync(join(root, "biome.json"), "utf8");
+    expect((biome.match(/"off"/g) ?? []).length).toBe(4);
   });
 
   test("knip ignore entries stay at 7", () => {

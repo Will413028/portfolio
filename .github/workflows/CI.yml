@@ -193,7 +193,8 @@ jobs:
           config: .github/zizmor.yml
 
   gate:
-    # The only required check on main: it passes when every other job in this workflow succeeded or was skipped.
+    # The only required check on main: it passes only when every other job in this workflow succeeded.
+    # A skipped job fails it too, so adding an `if:` to a job cannot turn its check off silently.
     name: gate (CI)
     if: always()
     needs: [build, static, test, e2e, lighthouse, secrets, vulnerabilities, workflows]
@@ -201,10 +202,10 @@ jobs:
     timeout-minutes: 5
     permissions: {}
     steps:
-      - name: Every job succeeded or was skipped
+      - name: Every job succeeded
         env:
           RESULTS: ${{ join(needs.*.result, ' ') }}
         run: |
           for r in $RESULTS; do
-            case "$r" in success|skipped) ;; *) echo "a needed job ended with: $r"; exit 1 ;; esac
+            case "$r" in success) ;; *) echo "a needed job ended with: $r"; exit 1 ;; esac
           done
