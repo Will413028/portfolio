@@ -89,9 +89,9 @@
 ]
 
 #let summary-ai = [
-  Backend engineer building enterprise LLM and agent platforms. Consolidated a Google ADK agent platform
-  into one FastAPI service (agent state machine 721 → 144 lines, held by 50 characterization tests) and
-  cut actionable gaps in a RAG retrieval corpus from 64 to 1.
+  Backend engineer building on-prem LLM and agent systems. Raised a VC investment-analysis agent from 14 to
+  26.7 correct answers on a 30-question financial golden set (wrong answers 11 → 1) on an on-prem Gemma 4 26B,
+  and made text-to-SQL usable for a government agency by cutting the schema the model sees from 44,482 to \~3,800 characters.
 ]
 
 #let summary-product = [
@@ -112,12 +112,23 @@
 #job(
   "APMIC", "(enterprise AI platform for on-premises LLM deployment and model fine-tuning)",
   "Sr. Backend Engineer", "Nov 2025 – Present", "Taipei, Taiwan",
-  "Python (FastAPI), React, Next.js, PostgreSQL, Hasura, RabbitMQ, Google ADK",
+  "Python (FastAPI), React, Next.js, PostgreSQL, Hasura, RabbitMQ, LiteLLM, MCP, Gemma 4 (on-prem)",
   (
+    [*Raised a VC investment-analysis agent from 14 to 26.7 correct answers* on a 30-question financial golden set (wrong 11 → 1, mean of 3 runs) on an on-prem Gemma 4 26B, after benchmarking 7 ways of handing the model its data and keeping retrieval as a tool it calls.],
+    [*Made text-to-SQL usable for a government agency's on-prem LLM*: a 13-table query layer and an eval-driven database guide shrank the schema the model sees from 44,482 to \~3,800 characters, plus a case-search MCP server hardened against SQL injection.],
     [*Shipped SAML 2.0 SSO and an RBAC redesign for a global insurance client*, closing a privilege-escalation gap; traced an SSO failure to a vendor XSD-validation conflict and hot-patched production.],
-    [*Cleared the client's pre-audit security scan for an on-premises delivery* (static findings 5 → 0, dependency vulnerabilities 16 → 2, `npm audit` 20 → 0) by triaging 1,699 raw findings down to 6 production-code sites.],
     [*Cut AI report generation from 7m37s to 1m57s* with asyncio parallelization, and *quarterly-report Q&A from \~80s to \~7s* by timing download and parse separately and swapping the spreadsheet reader.],
-    [*Shrank the agent state machine from 721 to 144 lines* with declarative flow control (behavior locked by 50 characterization tests), while consolidating a Google ADK agent platform into one FastAPI service with HMAC-SHA256 request signing.],
+  ),
+)
+
+#job(
+  "dailyfresh", "(multi-vendor fresh-grocery marketplace; 22 microservices, web and two mobile apps)",
+  "Sr. Full-Stack Engineer (Part-time)", "Jan 2026 – Sep 2026", "Taipei, Taiwan",
+  "Next.js, TypeScript, TanStack Query, Flutter, Go, Java (Spring Boot), PostgreSQL, k3s",
+  (
+    [*Owned the Next.js web front end*: moved server state to TanStack Query site-wide, removing a cache layer that leaked one account's private data into another, and built the AI agent's streaming chat panels over SSE.],
+    [*Delivered a merchant-governance epic end to end in one day* (\~16,000 lines across Go, protobuf, SQL and Next.js) and took both iOS apps through their first App Store submission.],
+    [*Delivered zero-downtime Kubernetes rollout across 21 Go/Java microservices*, proven by a live rolling restart (7,910 requests, 0 downtime).],
   ),
 )
 
@@ -127,7 +138,6 @@
   "Go (Gin), MongoDB, Redis, Qdrant, Cloudflare, AWS, GCP",
   (
     [*Reduced MongoDB p95 latency on hotspot endpoints by 80%* by replacing `$lookup` cross-collection joins with single-collection reads and application-layer joins (goroutine fan-out).],
-    [*Lowered recommendation infrastructure cost by 20%* by migrating from BigQuery to a self-hosted Qdrant vector DB, removing per-query pricing on the highest-traffic path.],
     [*Owned the NewebPay payment migration to iframe-redirect mode* across all 4 payment types (subscription, one-time, recurring, donation), reducing PCI-DSS scope by moving card-data collection to the gateway.],
   ),
 )
@@ -139,7 +149,6 @@
   (
     [*First and only senior backend engineer*: architected 9 microservices from scratch (Python 3.12 / FastAPI), owned all backend architecture and code review, and mentored juniors as the team grew from 4 to 7–8.],
     [*Shipped three products solo*: an AI meeting-summarization app in 3 months (WhisperX + Ollama + Tauri), now serving paying customers, plus a cloud POS and an EV-rental system in \~2 months each.],
-    [*Cut deployment time by 50% and infrastructure overhead by 30%* by building CI/CD (self-hosted GitLab CI + Ansible), Terraform IaC, and SonarQube quality gates from zero.],
   ),
 )
 
@@ -149,7 +158,7 @@
   "Node.js (Koa), Python (Flask), MariaDB, Redis, RabbitMQ, Modbus TCP",
   (
     [*Primary backend engineer on the POS system for \~1,000 parking sites*, whose flagship client brought in 50%+ of company revenue; handled multi-tenant billing (time tiers, monthly passes, EV-charging pre-auth).],
-    [*Architected a hardware abstraction layer for 10+ device types* over Modbus TCP (ANPR cameras, gate arms, ETag readers, LED boards) behind one REST API.],
+    [*Integrated the POS with on-site hardware control* (ANPR cameras, gate arms, ETag readers) and fixed silent ETag reader disconnects with epoll + TCP keepalive, detecting dead connections in \~7 s.],
     [*Halved SQL execution time* for a customer with \~4–5M parking records using EXPLAIN analysis and compound indexes.],
   ),
 )
@@ -166,14 +175,6 @@
   ),
 )
 
-#proj(
-  "divego — Full-Stack Migration (Solo)",
-  [2026 · TypeScript (Next.js, Hono, Drizzle) · #link("https://portfolio-kohl-three-81.vercel.app/en/work/divego")[case study]],
-  (
-    [*Retired a Python backend (\~567 tests)* via a strangler-fig migration to a unified Next.js full-stack app (Hono + Drizzle).],
-  ),
-)
-
 // ============================= SKILLS ==========================
 #sectiontitle("Skills")
 #grid(
@@ -183,7 +184,7 @@
   ..skillrow("Languages", "Python, Go, TypeScript, Java, Dart"),
   ..skillrow("Backend & Data", "FastAPI, Gin, Spring Boot, Hono · PostgreSQL, MongoDB, Redis, Qdrant · RabbitMQ · gRPC, GraphQL"),
   ..skillrow("Cloud & DevOps", "GCP, AWS, Azure, Cloudflare, Alibaba Cloud · Docker, k3s, Terraform, Ansible, GitLab CI"),
-  ..skillrow("AI & Frontend", "Google ADK, Ollama, WhisperX, PyTorch · Next.js, React, Tauri, Flutter"),
+  ..skillrow("AI & Frontend", "LLM agents, RAG, text-to-SQL, MCP, evals · Next.js, React, TanStack Query, Flutter, Tauri"),
 )
 #v(0.2em)
 
@@ -192,7 +193,6 @@
 #grid(
   columns: (1fr, auto),
   row-gutter: 0.35em,
-  [*George Mason University* — MS, Data Analytics Engineering], text(fill: rgb("#525252"), size: 9pt)[2019 – 2021],
-  [#h(0.8em)GPA 3.78/4.0], [],
+  [*George Mason University* — MS, Data Analytics Engineering · GPA 3.78/4.0], text(fill: rgb("#525252"), size: 9pt)[2019 – 2021],
   [*Tatung University* — BS, Chemical Engineering], text(fill: rgb("#525252"), size: 9pt)[2013 – 2016],
 )
