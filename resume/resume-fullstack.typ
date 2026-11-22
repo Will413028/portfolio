@@ -33,8 +33,8 @@
     #v(-0.3em)
     #set text(size: 8.6pt)
     #grid(columns: (auto, auto), column-gutter: 1em, row-gutter: 0.45em,
-      [MS, Data Analytics Engineering, George Mason University (GPA 3.78/4.0)], text(fill: rgb("#777"))[2019 - 2021],
-      [BS, Chemical Engineering, Tatung University], text(fill: rgb("#777"))[2013 - 2016])
+      [MS, Data Analytics Engineering, George Mason University (GPA 3.78/4.0)], text(fill: rgb("#777"))[2019 – 2021],
+      [BS, Chemical Engineering, Tatung University], text(fill: rgb("#777"))[2013 – 2016])
   ],
   align(left)[
     #set text(size: 8.6pt)
@@ -61,7 +61,7 @@
   [Resolved intermittent production timeouts by ruling out 3 hypotheses with measurements and tracing them to an unbounded HTTP call exhausting the thread pool; added an AST lint rule to prevent recurrence],
 ))
 
-#job("dailyfresh", "https://dailyfresh.food", "(grocery marketplace: 22 microservices, web and two mobile apps)", "Jan 2026 – Sep 2026", "Sr. Full-Stack Engineer (Part-time)", "Taipei, Taiwan",
+#job("dailyfresh", "https://dailyfresh.food", "(grocery marketplace: 20+ microservices, web and two mobile apps)", "Jan 2026 – Sep 2026", "Sr. Full-Stack Engineer (Part-time)", "Taipei, Taiwan",
   "Next.js, React, TypeScript, TanStack Query, Flutter, Go, Java (Spring Boot), PostgreSQL, k3s, Grafana LGTM", (
   [Took over an AI-generated prototype mixing Rust, Go and Java with no deployment process; cut deploys from \~1 hour of manual builds to under 20 minutes through CI with lint and tests onto k3s, rewrote the 2 Rust services in Go, and added Grafana LGTM observability],
   [Achieved zero-downtime deploys across 21 Go/Java microservices (7,910 requests, 0 failures in a live rolling restart) with PodDisruptionBudgets and Helm auto-rollback],
@@ -69,19 +69,19 @@
   [Unified buyer/seller identity across the web and two Flutter apps with gateway-owned sessions, guarded by Playwright e2e tests],
 ))
 
-#job("Vocus", "https://vocus.cc/", "(Taiwan content-creator platform)", "March 2025 – Oct 2025", "Sr. Backend Engineer", "Taipei, Taiwan",
+#job("Vocus", "https://vocus.cc/", "(Taiwan content-creator platform)", "Mar 2025 – Oct 2025", "Sr. Backend Engineer", "Taipei, Taiwan",
   "Go (Gin), MongoDB, Redis, Qdrant, AWS, GCP", (
   [Cut p95 latency by 80% on hot endpoints of a \~3M-weekly-call API by replacing MongoDB `$lookup` joins with concurrent application-layer joins in Go],
   [Took card data off company servers for 4 payment types by moving the NewebPay integration to iframe redirect, shrinking PCI-DSS scope],
 ))
 
-#job("ChengChi Tech", "https://chengchitech.com.tw/", "(early-stage software startup)", "April 2024 – March 2025", "Sr. Backend Engineer", "New Taipei, Taiwan",
+#job("ChengChi Tech", "https://chengchitech.com.tw/", "(early-stage software startup)", "Apr 2024 – Mar 2025", "Sr. Backend Engineer", "New Taipei, Taiwan",
   "Python (FastAPI), Next.js, React, Tauri, PostgreSQL, Redis, GCP", (
   [Shipped a commercial AI meeting-summarization desktop app solo in 3 months, sold to paying customers: speech recognition with speaker diarization (WhisperX), an offline local LLM (Ollama) and a Tauri/Next.js client],
   [Joined as the only backend engineer beside one junior front-end developer and one designer; built 9 backend services from scratch, owned architecture and mentored the second backend hire as the team grew to 6],
 ))
 
-#job("AI-Rider", "https://www.ai-rider.com/?lang=en", "(parking technology, ~1,000 sites)", "March 2022 – Nov 2023", "Backend Engineer", "New Taipei, Taiwan",
+#job("AI-Rider", "https://www.ai-rider.com/?lang=en", "(parking technology, ~1,000 sites)", "Mar 2022 – Nov 2023", "Backend Engineer", "New Taipei, Taiwan",
   "Node.js (Koa), Python (Flask), MariaDB, Redis, RabbitMQ", (
   [Halved SQL execution time on 4–5M parking records with EXPLAIN analysis and compound indexes, as primary backend engineer on the sites' POS system],
 ))
@@ -89,7 +89,7 @@
 #section("Skills")
 #set text(size: 10pt)
 #grid(columns: (1fr, 1fr), column-gutter: 1.2em, row-gutter: 0.42em,
-  [• Languages: Python, Go, TypeScript, Java, Dart], [• Front-end: Next.js, React, Flutter, Tauri],
+  [• Languages: Python, Go, TypeScript / JavaScript, Java, Dart], [• Front-end: Next.js, React, Flutter, Tauri],
   [• Back-end: FastAPI, Gin, Spring Boot, Node.js, gRPC], [• Data: PostgreSQL, MongoDB, Redis, Qdrant],
-  [• Infra: Docker, Kubernetes, GitHub Actions, LGTM], [• AI: LLM agents, RAG, text-to-SQL, MCP, evals],
+  [• Infra: Docker, Kubernetes, GitHub Actions, Grafana], [• AI: LLM agents, RAG, text-to-SQL, MCP, evals],
 )
