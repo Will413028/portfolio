@@ -15,16 +15,15 @@
   #line(length: 100%, stroke: 0.5pt)
 ]
 
-#let job(company, url, dates, role, place, stack, bullets) = block(above: 0.75em, below: 0pt)[
+#let job(company, url, intro, dates, role, place, stack, bullets) = block(above: 0.75em, below: 0pt)[
   #grid(columns: (1fr, auto), row-gutter: 0.42em, align: (left, right),
-    text(weight: "bold", size: 11pt)[#ul(url, company)], emph(dates),
+    [#text(weight: "bold", size: 11pt)[#ul(url, company)]#h(0.4em)#text(size: 8.6pt, fill: rgb("#555"))[#intro]], emph(dates),
     text(weight: "bold")[#role], emph(place))
   #v(-0.3em)
   #emph[Tech Stack: #stack]
   #v(-0.25em)
   #list(..bullets)
 ]
-
 // ---------------- header ----------------
 #grid(columns: (1fr, auto), column-gutter: 1em,
   [
@@ -49,48 +48,47 @@
 )
 
 #v(0.2em)
-#text(size: 10pt)[4+ years building and operating production full-stack systems in Python, Go, TypeScript, Java and Dart, from Next.js/React and Flutter clients through APIs, auth and databases to Kubernetes. Comfortable taking over unfamiliar codebases, debugging across browser, API and database layers, and measuring LLM features with golden-set evals before shipping them.]
+#text(size: 10pt)[4+ years shipping production full-stack systems in Python, Go, TypeScript, Java and Dart, from Next.js/React and Flutter clients to APIs, databases and Kubernetes.]
 
 #section("Work Experience")
 
-#job("APMIC", "https://www.apmic.ai/", "Nov 2025 – Present", "Sr. Backend Engineer", "Taipei, Taiwan",
-  "Python (FastAPI), Next.js, PostgreSQL, LiteLLM, MCP, Gemma 4 (on-prem), RabbitMQ", (
-  [Raised an investment-analysis agent's accuracy on a 30-question financial golden set from 14 to 26.7 correct (wrong answers 11 → 1, mean of 3 runs) on an on-prem Gemma 4 26B, after benchmarking 7 ways of feeding data and keeping retrieval as a tool the model calls],
-  [Made text-to-SQL usable for an on-prem LLM deployment: built a 13-table query layer and an eval-driven database guide that shrank the schema the model sees from 44,482 to \~3,800 characters, plus an MCP search server hardened against SQL injection],
-  [Moved the investment product's Next.js API routes to the Python backend route by route, switching only after old and new ran side by side with 0 diffs; merged \~40 PRs in two days and deleted \~57,000 lines of retired code],
-  [Root-caused intermittent production timeouts after disproving three hypotheses by measurement: HTTP calls without timeouts exhausted a worker thread pool; added an AST-based guard so the class cannot return],
+#job("APMIC", "https://www.apmic.ai/", "(enterprise AI platform for on-premises LLM deployment)", "Nov 2025 – Present", "Sr. Backend Engineer", "Taipei, Taiwan",
+  "Python (FastAPI), Next.js, React, PostgreSQL, LiteLLM, MCP, Gemma 4 (on-prem)", (
+  [Raised an investment-analysis agent from 14 to 26.7 correct answers on a 30-question financial golden set (wrong 11 → 1, mean of 3 runs) by benchmarking 7 ways of feeding it data and keeping retrieval as a tool the model calls],
+  [Cut the database schema an on-prem LLM reads for text-to-SQL from 44,482 to \~3,800 characters by building a 13-table query layer and an eval-driven database guide, plus an MCP search server hardened against SQL injection],
+  [Caught two security-relevant defects and a test that asserted nothing in AI-generated code by running whole-branch review and hand-run mutation tests on a 9-task subagent-built financial-ratio engine (API, UI, e2e)],
+  [Moved an undocumented Next.js API layer to the Python backend with 0 diffs by recording its behavior as characterization fixtures and running old and new side by side 6–64 times per route before each cutover],
+  [Fixed intermittent production timeouts by disproving three hypotheses with measurements and tracing the cause to HTTP calls without timeouts exhausting a worker thread pool; added an AST-based guard],
 ))
 
-#job("dailyfresh", "https://dailyfresh.food", "Jan 2026 – Sep 2026", "Sr. Full-Stack Engineer (Part-time)", "Taipei, Taiwan",
-  "Next.js, TypeScript, TanStack Query, Flutter, Go, Java (Spring Boot), PostgreSQL, k3s", (
-  [Owned the Next.js web front end: moved server state to TanStack Query site-wide, fixing a cross-account private-data leak in a two-layer cache; put 25+ raw fetch calls behind one API client with a lint gate; built the AI agent's streaming chat panels over SSE],
-  [Re-architected web auth to a gateway-owned session model (httpOnly cookies, CSRF, role-as-claim) across Next.js and two Flutter apps, guarded by Playwright e2e tests],
-  [Delivered a merchant-governance epic end to end in one day (\~16,000 lines across Go, protobuf, SQL and Next.js); took both iOS apps through their first App Store submission],
-  [Delivered zero-downtime Kubernetes rollout across 21 Go/Java microservices, proven by a live rolling restart (7,910 requests, 0 downtime); migrated the production database within an 11-minute window],
+#job("dailyfresh", "https://dailyfresh.food", "(grocery marketplace: 22 microservices, web and two mobile apps)", "Jan 2026 – Sep 2026", "Sr. Full-Stack Engineer (Part-time)", "Taipei, Taiwan",
+  "Next.js, React, TypeScript, TanStack Query, Flutter, Go, Java (Spring Boot), PostgreSQL, k3s", (
+  [Authored \~60% of non-merge commits (7,456 of 12,406) across five repositories while owning the Next.js web front end and the backend platform],
+  [Closed a cross-account private-data leak by moving server state to TanStack Query site-wide; put 25+ raw fetch calls behind one API client with a lint gate and built the AI agent's streaming chat UI over SSE],
+  [Unified buyer/seller authentication across Next.js and two Flutter apps by moving to gateway-owned sessions (httpOnly cookies, CSRF, role-as-claim), guarded by Playwright e2e tests],
+  [Kept 7,910 requests at 0 downtime during a live rolling restart of 21 Go/Java microservices by adding PodDisruptionBudgets, dual-replica gateways and Helm auto-rollback],
 ))
 
-#job("Vocus", "https://vocus.cc/", "March 2025 – Oct 2025", "Sr. Backend Engineer", "Taipei, Taiwan",
+#job("Vocus", "https://vocus.cc/", "(Taiwan content-creator platform, ~3M weekly API calls)", "March 2025 – Oct 2025", "Sr. Backend Engineer", "Taipei, Taiwan",
   "Go (Gin), MongoDB, Redis, Qdrant, AWS, GCP", (
-  [Cut MongoDB p95 latency by 80% on hotspot endpoints of a content platform serving \~3M weekly API calls],
-  [Owned the payment-gateway migration to iframe-redirect mode across 4 payment types, reducing PCI-DSS scope],
+  [Cut MongoDB p95 latency on hotspot endpoints by 80% by replacing `$lookup` joins with single-collection reads and concurrent application-layer joins],
+  [Reduced PCI-DSS scope by migrating 4 payment types to the gateway's iframe-redirect mode],
 ))
 
-#job("ChengChi Tech", "https://chengchitech.com.tw/", "April 2024 – March 2025", "Sr. Backend Engineer", "New Taipei, Taiwan",
+#job("ChengChi Tech", "https://chengchitech.com.tw/", "(early-stage software startup)", "April 2024 – March 2025", "Sr. Backend Engineer", "New Taipei, Taiwan",
   "Python (FastAPI), Next.js, React, Tauri, PostgreSQL, Redis, GCP", (
   [Shipped a commercial AI meeting-summarization app solo in 3 months (WhisperX + local LLM + Tauri/Next.js desktop), now serving paying customers],
-  [Built 9 backend services from scratch and shipped a cloud POS and an EV-rental system, each in 2 months],
+  [First and only senior backend engineer: built 9 services from scratch, owned architecture and code review, and mentored juniors as the team grew from 4 to 7–8],
 ))
 
-#job("AI-Rider", "https://www.ai-rider.com/?lang=en", "March 2022 – Nov 2023", "Backend Engineer", "New Taipei, Taiwan",
+#job("AI-Rider", "https://www.ai-rider.com/?lang=en", "(parking technology, ~1,000 sites)", "March 2022 – Nov 2023", "Backend Engineer", "New Taipei, Taiwan",
   "Node.js (Koa), Python (Flask), MariaDB, Redis, RabbitMQ", (
-  [Primary backend engineer on a POS system running \~1,000 parking sites, including billing and on-site device integration],
-  [Optimized SQL queries on 4–5M parking records, reducing execution time by 50%],
+  [Halved SQL execution time on 4–5M parking records with EXPLAIN analysis and compound indexes, as primary backend engineer on the sites' POS system],
 ))
 
-#section("Skills and Technical Competencies")
+#section("Skills")
 #set text(size: 10pt)
 #grid(columns: (1fr, 1fr), column-gutter: 1.2em, row-gutter: 0.42em,
   [• Languages: Python, Go, TypeScript, Java, Dart], [• Front-end: Next.js, React, Flutter, Tauri],
-  [• Back-end: FastAPI, Gin, Spring Boot, Node.js, gRPC], [• Data: PostgreSQL, MongoDB, Redis, Qdrant],
-  [• Infra: Docker, Kubernetes, Terraform, GitHub Actions], [• AI: LLM agents, RAG, text-to-SQL, MCP, evals],
+  [• Back-end & data: FastAPI, Gin, Spring Boot, Node.js, PostgreSQL, MongoDB, Redis], [• Infra & AI: Docker, Kubernetes, Terraform; LLM agents, RAG, MCP, evals],
 )
