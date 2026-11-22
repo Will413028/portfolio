@@ -1,6 +1,6 @@
 #set document(title: "Will Wu — Resume", author: "Will Wu")
 #set page(paper: "us-letter", margin: (x: 0.6in, top: 0.45in, bottom: 0.4in))
-#set text(font: ("Helvetica Neue", "Arial"), size: 9.5pt)
+#set text(font: ("Helvetica Neue", "Arial"), size: 9.3pt)
 #set par(leading: 0.42em)
 #set list(marker: [•], indent: 0pt, body-indent: 0.35em, spacing: 0.32em)
 
@@ -54,31 +54,31 @@
 
 #job("APMIC", "https://www.apmic.ai/", "(enterprise AI platform for on-premises LLM deployment)", "Nov 2025 – Present", "Sr. Backend Engineer", "Taipei, Taiwan",
   "Python (FastAPI), Next.js, React, PostgreSQL, LiteLLM, MCP, Gemma 4 (on-prem)", (
-  [Raised an investment-analysis agent from 14 to 26.7 correct answers on a 30-question financial golden set (wrong 11 → 1, mean of 3 runs) by benchmarking 7 ways of feeding it data and keeping retrieval as a tool the model calls],
-  [Cut the database schema an on-prem LLM reads for text-to-SQL from 44,482 to \~3,800 characters by building a 13-table query layer and an eval-driven database guide, plus an MCP search server hardened against SQL injection],
-  [Caught two security-relevant defects and a test that asserted nothing in AI-generated code by running whole-branch review and hand-run mutation tests on a 9-task subagent-built financial-ratio engine (API, UI, e2e)],
-  [Moved an undocumented Next.js API layer to the Python backend with 0 diffs by recording its behavior as characterization fixtures and running old and new side by side 6–64 times per route before each cutover],
-  [Fixed intermittent production timeouts by disproving three hypotheses with measurements and tracing the cause to HTTP calls without timeouts exhausting a worker thread pool; added an AST-based guard],
+  [Raised an investment-analysis agent's accuracy on a financial golden set from 47% to 89% (error rate 37% → 3%) on an on-prem Gemma 4 26B by benchmarking 7 data-feeding strategies and exposing retrieval as an agentic tool],
+  [Cut the schema an on-prem LLM reads for text-to-SQL by 91% by building a 13-table PostgreSQL query layer and an eval-driven schema guide, plus an MCP server hardened against SQL injection],
+  [Delivered a financial-ratio engine (14 ratios, API, UI, e2e) with AI coding agents in 9 tasks, gating merges on whole-branch code review and mutation testing that caught 2 security defects before release],
+  [Migrated an undocumented Next.js API layer to FastAPI route by route (strangler fig) with 0 behavior diffs across 6–64 side-by-side runs per route, merging \~40 PRs in two days],
+  [Resolved intermittent production timeouts by ruling out 3 hypotheses with measurements and tracing them to an unbounded HTTP call exhausting the thread pool; added an AST lint rule to prevent recurrence],
 ))
 
 #job("dailyfresh", "https://dailyfresh.food", "(grocery marketplace: 22 microservices, web and two mobile apps)", "Jan 2026 – Sep 2026", "Sr. Full-Stack Engineer (Part-time)", "Taipei, Taiwan",
-  "Next.js, React, TypeScript, TanStack Query, Flutter, Go, Java (Spring Boot), PostgreSQL, k3s", (
-  [Authored \~60% of non-merge commits (7,456 of 12,406) across five repositories while owning the Next.js web front end and the backend platform],
-  [Closed a cross-account private-data leak by moving server state to TanStack Query site-wide; put 25+ raw fetch calls behind one API client with a lint gate and built the AI agent's streaming chat UI over SSE],
-  [Unified buyer/seller authentication across Next.js and two Flutter apps by moving to gateway-owned sessions (httpOnly cookies, CSRF, role-as-claim), guarded by Playwright e2e tests],
-  [Kept 7,910 requests at 0 downtime during a live rolling restart of 21 Go/Java microservices by adding PodDisruptionBudgets, dual-replica gateways and Helm auto-rollback],
+  "Next.js, React, TypeScript, TanStack Query, Flutter, Go, Java (Spring Boot), PostgreSQL, k3s, Grafana LGTM", (
+  [Took over an AI-generated prototype mixing Rust, Go and Java with no deployment process; cut deploys from \~1 hour of manual builds to under 20 minutes through CI with lint and tests onto k3s, rewrote the 2 Rust services in Go, and added Grafana LGTM observability],
+  [Achieved zero-downtime deploys across 21 Go/Java microservices (7,910 requests, 0 failures in a live rolling restart) with PodDisruptionBudgets and Helm auto-rollback],
+  [Owned the Next.js web front end, fixing a cross-account private-data leak by moving server state to TanStack Query and building the AI agent's streaming chat UI over SSE],
+  [Unified buyer/seller identity across the web and two Flutter apps with gateway-owned sessions, guarded by Playwright e2e tests],
 ))
 
-#job("Vocus", "https://vocus.cc/", "(Taiwan content-creator platform, ~3M weekly API calls)", "March 2025 – Oct 2025", "Sr. Backend Engineer", "Taipei, Taiwan",
+#job("Vocus", "https://vocus.cc/", "(Taiwan content-creator platform)", "March 2025 – Oct 2025", "Sr. Backend Engineer", "Taipei, Taiwan",
   "Go (Gin), MongoDB, Redis, Qdrant, AWS, GCP", (
-  [Cut MongoDB p95 latency on hotspot endpoints by 80% by replacing `$lookup` joins with single-collection reads and concurrent application-layer joins],
-  [Reduced PCI-DSS scope by migrating 4 payment types to the gateway's iframe-redirect mode],
+  [Cut p95 latency by 80% on hot endpoints of a \~3M-weekly-call API by replacing MongoDB `$lookup` joins with concurrent application-layer joins in Go],
+  [Took card data off company servers for 4 payment types by moving the NewebPay integration to iframe redirect, shrinking PCI-DSS scope],
 ))
 
 #job("ChengChi Tech", "https://chengchitech.com.tw/", "(early-stage software startup)", "April 2024 – March 2025", "Sr. Backend Engineer", "New Taipei, Taiwan",
   "Python (FastAPI), Next.js, React, Tauri, PostgreSQL, Redis, GCP", (
-  [Shipped a commercial AI meeting-summarization app solo in 3 months (WhisperX + local LLM + Tauri/Next.js desktop), now serving paying customers],
-  [First and only senior backend engineer: built 9 services from scratch, owned architecture and code review, and mentored juniors as the team grew from 4 to 7–8],
+  [Shipped a commercial AI meeting-summarization desktop app solo in 3 months, sold to paying customers: speech recognition with speaker diarization (WhisperX), an offline local LLM (Ollama) and a Tauri/Next.js client],
+  [Joined as the only backend engineer beside one junior front-end developer and one designer; built 9 backend services from scratch, owned architecture and mentored the second backend hire as the team grew to 6],
 ))
 
 #job("AI-Rider", "https://www.ai-rider.com/?lang=en", "(parking technology, ~1,000 sites)", "March 2022 – Nov 2023", "Backend Engineer", "New Taipei, Taiwan",
@@ -90,5 +90,6 @@
 #set text(size: 10pt)
 #grid(columns: (1fr, 1fr), column-gutter: 1.2em, row-gutter: 0.42em,
   [• Languages: Python, Go, TypeScript, Java, Dart], [• Front-end: Next.js, React, Flutter, Tauri],
-  [• Back-end & data: FastAPI, Gin, Spring Boot, Node.js, PostgreSQL, MongoDB, Redis], [• Infra & AI: Docker, Kubernetes, Terraform; LLM agents, RAG, MCP, evals],
+  [• Back-end: FastAPI, Gin, Spring Boot, Node.js, gRPC], [• Data: PostgreSQL, MongoDB, Redis, Qdrant],
+  [• Infra: Docker, Kubernetes, GitHub Actions, LGTM], [• AI: LLM agents, RAG, text-to-SQL, MCP, evals],
 )
