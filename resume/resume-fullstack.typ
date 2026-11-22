@@ -89,7 +89,7 @@
 #section("Skills")
 #set text(size: 10pt)
 #grid(columns: (1fr, 1fr), column-gutter: 1.2em, row-gutter: 0.42em,
-  [• Languages: Python, Go, TypeScript / JavaScript, Java, Dart], [• Front-end: Next.js, React, Flutter, Tauri],
+  [• Languages: Python, Go, TypeScript, JavaScript, Java], [• Front-end: Next.js, React, Flutter (Dart), Tauri],
   [• Back-end: FastAPI, Gin, Spring Boot, Node.js, gRPC], [• Data: PostgreSQL, MongoDB, Redis, Qdrant],
   [• Infra: Docker, Kubernetes, GitHub Actions, Grafana], [• AI: LLM agents, RAG, text-to-SQL, MCP, evals],
 )
