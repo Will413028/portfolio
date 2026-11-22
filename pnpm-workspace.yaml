@@ -1,2 +1,7 @@
 # Only install package versions that have been public for at least 7 days (in minutes).
 minimumReleaseAge: 10080
+
+# Build scripts stay disabled, matching the pnpm 10 default these projects ran with.
+allowBuilds:
+  "@parcel/watcher": false
+  "@swc/core": false
