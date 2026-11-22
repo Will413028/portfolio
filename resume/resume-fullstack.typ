@@ -78,7 +78,7 @@
 #job("ChengChi Tech", "https://chengchitech.com.tw/", "(early-stage software startup)", "Apr 2024 – Mar 2025", "Sr. Backend Engineer", "New Taipei, Taiwan",
   "Python (FastAPI), Next.js, React, Tauri, PostgreSQL, Redis, GCP", (
   [Shipped a commercial AI meeting-summarization desktop app solo in 3 months, sold to paying customers: speech recognition with speaker diarization (WhisperX), an offline local LLM (Ollama) and a Tauri/Next.js client],
-  [Built 9 backend services from scratch as the sole backend engineer, owning architecture and code review, then mentored the second backend hire as the team grew from 3 to 6],
+  [Built 9 backend services from scratch as the sole backend engineer, owning architecture and code review, then mentored the second backend hire as the team grew from 4 to 7],
 ))
 
 #job("AI-Rider", "https://www.ai-rider.com/?lang=en", "(parking technology; POS system running at ~1,000 sites)", "Mar 2022 – Nov 2023", "Backend Engineer", "New Taipei, Taiwan",
