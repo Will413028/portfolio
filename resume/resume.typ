@@ -84,14 +84,14 @@
 
 #let summary-backend = [
   Senior backend engineer, 4+ years in Go, Python, and TypeScript. Cut MongoDB p95 latency on hotspot endpoints by 80%
-  on a platform serving \~3M weekly API calls, shipped SAML SSO for a global insurance client, and built
+  on a platform serving \~3M weekly API calls, shipped SAML SSO for an enterprise client, and built
   3-layer distributed tracing across FastAPI and RabbitMQ.
 ]
 
 #let summary-ai = [
-  Backend engineer building on-prem LLM and agent systems. Raised a VC investment-analysis agent from 14 to
+  Backend engineer building on-prem LLM and agent systems. Raised an investment-analysis agent from 14 to
   26.7 correct answers on a 30-question financial golden set (wrong answers 11 → 1) on an on-prem Gemma 4 26B,
-  and made text-to-SQL usable for a government agency by cutting the schema the model sees from 44,482 to \~3,800 characters.
+  and made text-to-SQL usable for an on-prem LLM deployment by cutting the schema the model sees from 44,482 to \~3,800 characters.
 ]
 
 #let summary-product = [
@@ -114,9 +114,9 @@
   "Sr. Backend Engineer", "Nov 2025 – Present", "Taipei, Taiwan",
   "Python (FastAPI), React, Next.js, PostgreSQL, Hasura, RabbitMQ, LiteLLM, MCP, Gemma 4 (on-prem)",
   (
-    [*Raised a VC investment-analysis agent from 14 to 26.7 correct answers* on a 30-question financial golden set (wrong 11 → 1, mean of 3 runs) on an on-prem Gemma 4 26B, after benchmarking 7 ways of handing the model its data and keeping retrieval as a tool it calls.],
-    [*Made text-to-SQL usable for a government agency's on-prem LLM*: a 13-table query layer and an eval-driven database guide shrank the schema the model sees from 44,482 to \~3,800 characters, plus a case-search MCP server hardened against SQL injection.],
-    [*Shipped SAML 2.0 SSO and an RBAC redesign for a global insurance client*, closing a privilege-escalation gap; traced an SSO failure to a vendor XSD-validation conflict and hot-patched production.],
+    [*Raised an investment-analysis agent from 14 to 26.7 correct answers* on a 30-question financial golden set (wrong 11 → 1, mean of 3 runs) on an on-prem Gemma 4 26B, after benchmarking 7 ways of handing the model its data and keeping retrieval as a tool it calls.],
+    [*Made text-to-SQL usable for an on-prem LLM deployment*: a 13-table query layer and an eval-driven database guide shrank the schema the model sees from 44,482 to \~3,800 characters, plus a case-search MCP server hardened against SQL injection.],
+    [*Shipped SAML 2.0 SSO and an RBAC redesign for an enterprise client*, closing a privilege-escalation gap; traced an SSO failure to a vendor XSD-validation conflict and hot-patched production.],
     [*Cut AI report generation from 7m37s to 1m57s* with asyncio parallelization, and *quarterly-report Q&A from \~80s to \~7s* by timing download and parse separately and swapping the spreadsheet reader.],
   ),
 )

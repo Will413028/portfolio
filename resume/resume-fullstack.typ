@@ -55,8 +55,8 @@
 
 #job("APMIC", "https://www.apmic.ai/", "Nov 2025 – Present", "Sr. Backend Engineer", "Taipei, Taiwan",
   "Python (FastAPI), Next.js, PostgreSQL, LiteLLM, MCP, Gemma 4 (on-prem), RabbitMQ", (
-  [Raised a VC investment-analysis agent's accuracy on a 30-question financial golden set from 14 to 26.7 correct (wrong answers 11 → 1, mean of 3 runs) on an on-prem Gemma 4 26B, after benchmarking 7 ways of feeding data and keeping retrieval as a tool the model calls],
-  [Made text-to-SQL usable for a government agency's on-prem LLM: built a 13-table query layer and an eval-driven database guide that shrank the schema the model sees from 44,482 to \~3,800 characters, plus an MCP search server hardened against SQL injection],
+  [Raised an investment-analysis agent's accuracy on a 30-question financial golden set from 14 to 26.7 correct (wrong answers 11 → 1, mean of 3 runs) on an on-prem Gemma 4 26B, after benchmarking 7 ways of feeding data and keeping retrieval as a tool the model calls],
+  [Made text-to-SQL usable for an on-prem LLM deployment: built a 13-table query layer and an eval-driven database guide that shrank the schema the model sees from 44,482 to \~3,800 characters, plus an MCP search server hardened against SQL injection],
   [Moved the investment product's Next.js API routes to the Python backend route by route, switching only after old and new ran side by side with 0 diffs; merged \~40 PRs in two days and deleted \~57,000 lines of retired code],
   [Root-caused intermittent production timeouts after disproving three hypotheses by measurement: HTTP calls without timeouts exhausted a worker thread pool; added an AST-based guard so the class cannot return],
 ))
