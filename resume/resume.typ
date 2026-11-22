@@ -89,9 +89,9 @@
 ]
 
 #let summary-ai = [
-  Backend engineer building on-prem LLM and agent systems. Raised an investment-analysis agent from 14 to
-  26.7 correct answers on a 30-question financial golden set (wrong answers 11 → 1) on an on-prem Gemma 4 26B,
-  and made text-to-SQL usable for an on-prem LLM deployment by cutting the schema the model sees from 44,482 to \~3,800 characters.
+  Backend engineer building on-prem LLM and agent systems. Raised an investment-analysis agent's accuracy
+  on a financial golden set from 47% to 89% (error rate 37% → 3%) on an on-prem Gemma 4 26B,
+  and cut the schema an on-prem LLM reads for text-to-SQL by 91%.
 ]
 
 #let summary-product = [
@@ -114,20 +114,20 @@
   "Sr. Backend Engineer", "Nov 2025 – Present", "Taipei, Taiwan",
   "Python (FastAPI), React, Next.js, PostgreSQL, Hasura, RabbitMQ, LiteLLM, MCP, Gemma 4 (on-prem)",
   (
-    [*Raised an investment-analysis agent from 14 to 26.7 correct answers* on a 30-question financial golden set (wrong 11 → 1, mean of 3 runs) on an on-prem Gemma 4 26B, after benchmarking 7 ways of handing the model its data and keeping retrieval as a tool it calls.],
-    [*Made text-to-SQL usable for an on-prem LLM deployment*: a 13-table query layer and an eval-driven database guide shrank the schema the model sees from 44,482 to \~3,800 characters, plus a case-search MCP server hardened against SQL injection.],
+    [*Raised an investment-analysis agent's accuracy from 47% to 89%* on a financial golden set (error rate 37% → 3%) on an on-prem Gemma 4 26B by benchmarking 7 data-feeding strategies and exposing retrieval as an agentic tool.],
+    [*Cut the schema an on-prem LLM reads for text-to-SQL by 91%* by building a 13-table PostgreSQL query layer and an eval-driven schema guide, plus an MCP server hardened against SQL injection.],
     [*Shipped SAML 2.0 SSO and an RBAC redesign for an enterprise client*, closing a privilege-escalation gap; traced an SSO failure to a vendor XSD-validation conflict and hot-patched production.],
     [*Cut AI report generation from 7m37s to 1m57s* with asyncio parallelization, and *quarterly-report Q&A from \~80s to \~7s* by timing download and parse separately and swapping the spreadsheet reader.],
   ),
 )
 
 #job(
-  "dailyfresh", "(multi-vendor fresh-grocery marketplace; 22 microservices, web and two mobile apps)",
+  "dailyfresh", "(multi-vendor fresh-grocery marketplace; 20+ microservices, web and two mobile apps)",
   "Sr. Full-Stack Engineer (Part-time)", "Jan 2026 – Sep 2026", "Taipei, Taiwan",
   "Next.js, TypeScript, TanStack Query, Flutter, Go, Java (Spring Boot), PostgreSQL, k3s",
   (
+    [*Cut deploys from \~1 hour of manual builds to under 20 minutes* after taking over an AI-generated prototype mixing Rust, Go and Java: built CI with lint and tests onto k3s, rewrote the 2 Rust services in Go, and added Grafana LGTM observability.],
     [*Owned the Next.js web front end*: moved server state to TanStack Query site-wide, removing a cache layer that leaked one account's private data into another, and built the AI agent's streaming chat panels over SSE.],
-    [*Delivered a merchant-governance epic end to end in one day* (\~16,000 lines across Go, protobuf, SQL and Next.js) and took both iOS apps through their first App Store submission.],
     [*Delivered zero-downtime Kubernetes rollout across 21 Go/Java microservices*, proven by a live rolling restart (7,910 requests, 0 downtime).],
   ),
 )
@@ -147,7 +147,7 @@
   "Sr. Backend Engineer", "Apr 2024 – Mar 2025", "New Taipei, Taiwan",
   "Python (FastAPI), Next.js, Tauri, PostgreSQL, Redis, GCP, Azure",
   (
-    [*First and only senior backend engineer*: architected 9 microservices from scratch (Python 3.12 / FastAPI), owned all backend architecture and code review, and mentored juniors as the team grew from 4 to 7–8.],
+    [*First and only senior backend engineer*: architected 9 microservices from scratch (Python 3.12 / FastAPI), owned all backend architecture and code review, and mentored the second backend hire as the team grew from 4 to 7.],
     [*Shipped three products solo*: an AI meeting-summarization app in 3 months (WhisperX + Ollama + Tauri), now serving paying customers, plus a cloud POS and an EV-rental system in \~2 months each.],
   ),
 )
